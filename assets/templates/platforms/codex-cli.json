@@ -1,0 +1,29 @@
+{
+  "platform": "codex-cli",
+  "displayName": "OpenAI Codex CLI",
+  "installType": "full",
+  "folderStructure": {
+    "projectRoot": ".codex",
+    "globalRoot": "~/.codex",
+    "skillPath": "skills/wp-elementor-ops",
+    "filename": "SKILL.md"
+  },
+  "sections": {
+    "skill": true,
+    "references": true,
+    "tools": true,
+    "data": true,
+    "examples": true
+  },
+  "frontmatter": {
+    "name": "wp-elementor-ops",
+    "description": "Safely audit and edit WordPress + Elementor sites - verify plugin/media usage before removing anything, edit shared Elementor templates without breaking other pages, and manage cache layers correctly.",
+    "license": "MIT",
+    "author": "moksa (https://moksaweb.com)",
+    "version": "1.0.0"
+  },
+  "loaderBehaviour": "Confirmed (2026-07-11): Codex CLI natively supports the SKILL.md spec. Place SKILL.md under .codex/skills/<name>/ (project) or ~/.codex/skills/<name>/ (personal) and Codex loads the name+description at session start, then the full body on demand. A parallel, broader convention .agents/skills/ (searched from cwd up to repo root, then ~/.agents/skills/) also exists across multiple tools - if your Codex CLI version prioritizes that path instead, mirror the same SKILL.md there.",
+  "verified": true,
+  "verifiedAsOf": "2026-07-11",
+  "verificationNote": "Upgraded from unverified: as of 2026-07-11 this is documented, native behaviour, not best-effort. Still confirm against your specific Codex CLI version since .agents/skills/ vs .codex/skills/ precedence can vary by build."
+}

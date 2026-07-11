@@ -1,0 +1,29 @@
+{
+  "platform": "gemini-cli",
+  "displayName": "Gemini CLI",
+  "installType": "full",
+  "folderStructure": {
+    "projectRoot": ".gemini",
+    "globalRoot": "~/.gemini",
+    "skillPath": "skills/wp-elementor-ops",
+    "filename": "SKILL.md"
+  },
+  "sections": {
+    "skill": true,
+    "references": true,
+    "tools": true,
+    "data": true,
+    "examples": true
+  },
+  "frontmatter": {
+    "name": "wp-elementor-ops",
+    "description": "Safely audit and edit WordPress + Elementor sites - verify plugin/media usage before removing anything, edit shared Elementor templates without breaking other pages, and manage cache layers correctly.",
+    "license": "MIT",
+    "author": "moksa (https://moksaweb.com)",
+    "version": "1.0.0"
+  },
+  "loaderBehaviour": "CHANGED as of 2026-07-11: Gemini CLI now natively supports the same SKILL.md standard as Claude Code and Codex CLI - the same directory-based skill works unmodified. Gemini CLI discovers skills in this precedence order: built-in, extension skills, ~/.gemini/skills/ (personal), .gemini/skills/ (project, shared via version control). At session start Gemini injects each discovered skill's name+description into the system prompt and calls activate_skill when a task matches.",
+  "verified": true,
+  "verifiedAsOf": "2026-07-11",
+  "verificationNote": "This is a DIFFERENT convention than the older .gemini/extensions/<name>/GEMINI.md extension-wrapper approach some skills still ship - that approach still works for bundling a skill inside a distributable extension, but is no longer the simplest or only path for a standalone skill install. Re-check before assuming either convention if this drifts again."
+}

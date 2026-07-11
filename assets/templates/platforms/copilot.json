@@ -1,0 +1,38 @@
+{
+  "platform": "copilot",
+  "displayName": "GitHub Copilot",
+  "installType": "full",
+  "folderStructure": {
+    "projectRoot": ".github",
+    "globalRoot": null,
+    "skillPath": "skills/wp-elementor-ops",
+    "filename": "SKILL.md"
+  },
+  "sections": {
+    "skill": true,
+    "references": true,
+    "tools": true,
+    "data": true,
+    "examples": true
+  },
+  "frontmatter": {
+    "name": "wp-elementor-ops",
+    "description": "Safely audit and edit WordPress + Elementor sites - verify plugin/media usage before removing anything, edit shared Elementor templates without breaking other pages, and manage cache layers correctly.",
+    "license": "MIT",
+    "author": "moksa (https://moksaweb.com)",
+    "version": "1.0.0"
+  },
+  "loaderBehaviour": "CHANGED as of 2026-07-11: GitHub Copilot added a proper '.github/skills/' Agent Skills directory (December 2025), alongside the older single-file .github/copilot-instructions.md convention. This config targets the new skills-directory form. If your Copilot version predates this (pre Dec 2025), use the instructions-append fallback instead (see fallback below).",
+  "fallback": {
+    "installType": "instructions-append",
+    "projectRoot": ".github",
+    "filename": "copilot-instructions.md",
+    "appendMarker": "<!-- BEGIN: wp-elementor-ops -->",
+    "appendMarkerEnd": "<!-- END: wp-elementor-ops -->",
+    "embedReferences": ["plugin-audit-methodology.md", "elementor-safe-edit.md"],
+    "note": "Use this if your Copilot version does not support .github/skills/ Agent Skills yet."
+  },
+  "verified": true,
+  "verifiedAsOf": "2026-07-11",
+  "verificationNote": "The exact frontmatter/loading contract for .github/skills/ SKILL.md was not independently confirmed byte-for-byte at write time - verify against current GitHub Copilot docs before relying on it for a production install."
+}

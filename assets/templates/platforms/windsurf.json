@@ -1,0 +1,30 @@
+{
+  "platform": "windsurf",
+  "displayName": "Windsurf (now Devin Desktop)",
+  "installType": "rule",
+  "folderStructure": {
+    "projectRoot": ".devin",
+    "globalRoot": null,
+    "skillPath": "rules",
+    "filename": "wp-elementor-ops.md"
+  },
+  "sections": {
+    "skill": true,
+    "references": false,
+    "tools": false,
+    "data": false,
+    "examples": false
+  },
+  "frontmatter": null,
+  "loaderBehaviour": "CHANGED as of 2026-07-11: Cognition rebranded Windsurf to 'Devin Desktop' on 2026-06-02 (windsurf.com now redirects to devin.ai). New installs should target .devin/rules/*.md as plain markdown (no special frontmatter - group related content with XML-style tags like <workflow>...</workflow>). The old .windsurf/rules/*.md path is kept working as a fallback for pre-rebrand setups. Character limits apply: keep each rule file under ~12,000 characters. References must be embedded inline since Windsurf/Devin does not load referenced files automatically.",
+  "fallback": {
+    "projectRoot": ".windsurf",
+    "skillPath": "rules",
+    "filename": "wp-elementor-ops.md",
+    "note": "Use this path instead if your installation predates the Devin Desktop rebrand and .devin/rules/ is not recognised."
+  },
+  "embedReferences": ["plugin-audit-methodology.md", "elementor-safe-edit.md", "wp-cli-safe-scripting.md"],
+  "verified": true,
+  "verifiedAsOf": "2026-07-11",
+  "verificationNote": "Verify which product name/path applies to your install before running - this is the platform most likely to keep shifting given the recent rebrand."
+}

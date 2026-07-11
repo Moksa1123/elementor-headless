@@ -1,0 +1,34 @@
+{
+  "platform": "claude-ai",
+  "displayName": "Claude.ai (web app)",
+  "installType": "zip-upload",
+  "folderStructure": {
+    "projectRoot": null,
+    "globalRoot": null,
+    "skillPath": "wp-elementor-ops.zip",
+    "filename": "SKILL.md"
+  },
+  "sections": {
+    "skill": true,
+    "references": true,
+    "tools": false,
+    "data": true,
+    "examples": true
+  },
+  "frontmatter": {
+    "name": "wp-elementor-ops",
+    "description": "Safely audit and edit WordPress + Elementor sites - verify plugin/media usage before removing anything, edit shared Elementor templates without breaking other pages, and manage cache layers correctly.",
+    "license": "MIT",
+    "author": "moksa (https://moksaweb.com)",
+    "version": "1.0.0"
+  },
+  "loaderBehaviour": "Upload via Settings -> Skills -> Upload. Claude.ai parses SKILL.md frontmatter and surfaces the skill in your library. Tools that need a local Python runtime (audit-plugin-usage.py, audit-orphan-media.py) won't run in the sandbox since they expect SSH/WP-CLI access to a real site; use them from a local terminal instead.",
+  "uploadSteps": [
+    "1. Run: python tools/install-skill.py claude-ai --to ./build (creates wp-elementor-ops.zip)",
+    "2. Open Claude.ai -> Settings -> Skills -> Upload",
+    "3. Pick the generated zip; the skill appears in your library",
+    "4. New chats auto-invoke when you ask to audit/edit a WordPress + Elementor site"
+  ],
+  "verified": true,
+  "verifiedAsOf": "2026-07-11"
+}

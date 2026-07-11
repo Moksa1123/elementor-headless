@@ -1,0 +1,28 @@
+{
+  "platform": "claude-code",
+  "displayName": "Claude Code",
+  "installType": "full",
+  "folderStructure": {
+    "projectRoot": ".claude",
+    "globalRoot": "~/.claude",
+    "skillPath": "skills/wp-elementor-ops",
+    "filename": "SKILL.md"
+  },
+  "sections": {
+    "skill": true,
+    "references": true,
+    "tools": true,
+    "data": true,
+    "examples": true
+  },
+  "frontmatter": {
+    "name": "wp-elementor-ops",
+    "description": "Safely audit and edit WordPress + Elementor sites - verify plugin/media usage before removing anything, edit shared Elementor templates without breaking other pages, and manage cache layers correctly.",
+    "license": "MIT",
+    "author": "moksa (https://moksaweb.com)",
+    "version": "1.0.0"
+  },
+  "loaderBehaviour": "Auto-loads on session start when SKILL.md frontmatter parses successfully.",
+  "verified": true,
+  "verifiedAsOf": "2026-07-11"
+}

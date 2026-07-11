@@ -1,0 +1,9 @@
+platform,project_path,global_path,frontmatter_required,verified_as_of,notes
+claude-code,.claude/skills/wp-elementor-ops/SKILL.md,~/.claude/skills/wp-elementor-ops/SKILL.md,name+description,2026-07-11,Auto-loads on session start
+claude-ai,(zip upload),n/a,name+description,2026-07-11,Settings > Skills > Upload
+cursor,.cursor/rules/wp-elementor-ops.mdc,~/.cursor/rules/wp-elementor-ops.mdc,description+globs+alwaysApply,2026-07-11,Subdirectories supported; 4 activation modes
+codex-cli,.codex/skills/wp-elementor-ops/SKILL.md,~/.codex/skills/wp-elementor-ops/SKILL.md,name+description,2026-07-11,Native SKILL.md support confirmed; .agents/skills/ also exists as a broader cross-tool convention
+gemini-cli,.gemini/skills/wp-elementor-ops/SKILL.md,~/.gemini/skills/wp-elementor-ops/SKILL.md,name+description,2026-07-11,CHANGED from extensions/GEMINI.md approach - now native SKILL.md support
+windsurf,.devin/rules/wp-elementor-ops.md,n/a,none (plain markdown),2026-07-11,CHANGED - Windsurf rebranded to Devin Desktop 2026-06-02; .windsurf/rules/ kept as fallback
+copilot,.github/skills/wp-elementor-ops/SKILL.md,n/a,name+description (likely),2026-07-11,CHANGED - new Agent Skills directory (Dec 2025); .github/copilot-instructions.md append-mode kept as fallback
+continue,.continue/rules/wp-elementor-ops.md,~/.continue/rules/wp-elementor-ops.md,name+globs+alwaysApply+description,2026-07-11,Rules load in lexicographic order
