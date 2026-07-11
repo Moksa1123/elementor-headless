@@ -47,13 +47,23 @@ signature in source before searching for it. See `references/plugin-audit-method
 
 ## Reading Elementor's data model without rediscovering it every session
 
-Before editing any widget or container, see `references/elementor-widgets-and-containers.md` —
-the container/flexbox layout model, common widget setting shapes (dimension
-objects, `typography_typography: "custom"`, responsive `_tablet`/`_mobile`
-suffixes), and the Dynamic Tags system (`__dynamic__`) that lets a shared
-template pull live post data without a custom shortcode. Knowing these
-patterns up front is what makes editing Elementor JSON cheap instead of a
-rediscovery exercise every time.
+Before editing any widget or container, see
+`references/elementor-widgets-and-containers.md` — verified by actually
+querying a live Elementor + Elementor Pro install's registered widgets (164
+widgets, 48,238 controls, one real snapshot), not written from memory:
+the container/flexbox layout model, the 9 universal "Advanced tab" sections
+present in 98% of all widgets (Layout, Motion Effects, Transform, Background
+w/ hover state, Masking, Responsive visibility, Custom Attributes — full
+real control lists for each), control-type frequency across the whole
+dataset, responsive `_tablet`/`_mobile` suffix prevalence (20% of all
+controls), and the Dynamic Tags system (`__dynamic__`) that lets a shared
+template pull live post data without a custom shortcode.
+
+The full per-widget Content/Style control data (135 widgets, Elementor core
++ Pro) ships as `data/elementor-core-pro-controls.json` — query it directly
+instead of re-deriving an unfamiliar widget's settings from scratch. Knowing
+these patterns up front is what makes editing Elementor JSON cheap instead
+of a rediscovery exercise every time.
 
 ## Editing a shared Elementor template safely
 
@@ -120,6 +130,7 @@ before your script runs. Pass the signature as a quoted positional argument.
 | `audit-plugin-usage.php` | `wp eval-file audit-plugin-usage.php '<real-signature>'` | Cross-reference a plugin's real block/shortcode/option signature across posts, `_elementor_data`, and options |
 | `audit-orphan-media.php` | `wp eval-file` | Find genuinely-unreferenced attachments, with a guard against false positives from unrelated numeric postmeta (view counters, analytics IDs) — only trusts bare-integer matches against real ACF image/gallery fields |
 | `ghost-glint-svg.py` | standalone (`python3 tools/ghost-glint-svg.py "TEXT"`) | Generate the dynamic "ghost text" SVG (outline stroke + animated shine clipPath) for arbitrary text, proportionally sized — this one needs no WordPress context, so it's plain Python for previewing/tuning proportions before wiring it into a shortcode |
+| `extract-elementor-controls.php` | `wp eval-file` | Re-run the extraction behind `data/elementor-core-pro-controls.json` against your own site — gets current data for your Elementor version and any third-party addon widgets it has |
 
 ## Multi-platform install
 
