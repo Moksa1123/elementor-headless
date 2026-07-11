@@ -88,12 +88,35 @@ def fmt_control(c: dict, indent: str = "  ") -> str:
         if len(d) > 40:
             d = d[:37] + "..."
         bits.append(f"def:{d}")
+    if c.get("units"):
+        bits.append("units:" + ",".join(c["units"]))
     if c.get("css"):
         bits.append("css:" + ",".join(c["css"]))
     if c.get("condition"):
         cond = json.dumps(c["condition"], ensure_ascii=False, separators=(",", ":"))
         bits.append(f"needs:{cond}")
+    # The advanced condition form. 152 controls are gated ONLY this way, and they
+    # have no `condition` at all - so a reader who only looks for `needs:` above
+    # would conclude they are unconditional and wonder why they do nothing.
+    if c.get("conditions"):
+        bits.append("needs-adv:" + _fmt_conditions(c["conditions"]))
+    # Not a condition: this control's CSS interpolates another control's value,
+    # and Elementor discards the whole declaration if that value is empty.
+    if c.get("needs_value"):
+        bits.append("needs-value-of:" + ",".join(c["needs_value"]))
     return "  ".join(bits)
+
+
+def _fmt_conditions(node: dict) -> str:
+    rel = (node.get("relation") or "and").lower()
+    parts = []
+    for t in node.get("terms") or []:
+        if t.get("terms"):
+            parts.append("(" + _fmt_conditions(t) + ")")
+        else:
+            op = t.get("operator") or "==="
+            parts.append(f"{t['name']}{op}{json.dumps(t.get('value'), ensure_ascii=False)}")
+    return f" {rel} ".join(parts)
 
 
 # ---------------------------------------------------------------------------

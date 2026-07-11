@@ -74,11 +74,32 @@ def split_media(css: str) -> tuple[str, dict[str, str]]:
 
 
 def blocks_for_id(css: str, el_id: str) -> str:
-    """Concatenate every rule whose selector mentions this element's id."""
+    """
+    Every rule whose selector names this element.
+
+    Brace-counting, not `[^{}]*`. Elementor can emit a literal, unexpanded
+    placeholder into the compiled stylesheet (`text-align:{{VALUE}};` — observed
+    on the `counter` widget, 4.1.4), and those stray braces stop a naive parser
+    mid-rule, hiding every declaration after them. That produces a false failure
+    that reads exactly like a schema bug.
+    """
     out = []
-    for m in re.finditer(r"([^{}]+)\{([^{}]*)\}", css):
-        if f"elementor-element-{el_id}" in m.group(1):
-            out.append(m.group(2))
+    i, n = 0, len(css)
+    while i < n:
+        j = css.find("{", i)
+        if j < 0:
+            break
+        selector = css[i:j]
+        depth, k = 1, j + 1
+        while k < n and depth:
+            if css[k] == "{":
+                depth += 1
+            elif css[k] == "}":
+                depth -= 1
+            k += 1
+        if f"elementor-element-{el_id}" in selector and not selector.strip().startswith("@"):
+            out.append(css[j + 1:k - 1])
+        i = k
     return " ".join(out)
 
 

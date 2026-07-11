@@ -137,7 +137,7 @@ once, by reasoning instead of measuring.
 ## Is it accurate? Make it prove it.
 
 The schema came from Elementor 4.1.4 / Pro 4.1.2. Yours may differ. Don't trust it
-— test it. Two verifiers, two different questions.
+— test it. Three verifiers, three different questions.
 
 **1. Does the schema match your install?**
 
@@ -171,10 +171,53 @@ CSS property assertions: 94/94 passed
 PASS
 ```
 
-**3. Look at it.** `examples/demo-page.json` is a real published page, built with
+**3. Does EVERY control in the schema actually work?**
+
+`verify-render.py` only covers the controls a given page happens to use — 94, on the
+demo page. `sweep-controls.py` covers the rest: it synthesises a legal value for
+every control that claims to drive CSS, solves the dependency chain needed to make
+it take effect, renders it, and asserts the value came out. Each control gets a
+value **unique to it** (a distinct hex colour, a distinct pixel size), so a pass
+means *that control* produced *that value* — not that something wrote a similar
+property.
+
+```bash
+python tools/sweep-controls.py plan --out sweep/ --post-id <draft post>
+# apply each batch, capture post-<id>.css
+python tools/sweep-controls.py check sweep/ --out data/control-verification.csv
+```
+
+```
+controls asserted     16,778
+  verified by value   13,586  (81.0%)   the exact value we wrote is in the CSS
+  property only        3,192  (19.0%)   right property, value not literally assertable
+  FAILED                   0  ( 0.0%)
+```
+
+Per-control results ship in `data/control-verification.csv`.
+
+**4. Look at it.** `examples/demo-page.json` is a real published page, built with
 nothing but this skill. The Elementor editor has never been opened on it.
 
 **https://moksaweb.com/elementor-headless-demo/**
+
+## Reuse blocks across pages and sites
+
+Elementor's own JSON interchange format — the file behind the editor's Export /
+Import Template buttons:
+
+```bash
+wp eval-file tools/export-template.php <post_id> > hero-block.json
+wp --user=1 eval-file tools/import-template.php hero-block.json <target_post_id>
+```
+
+**Never move a block between sites by copying `_elementor_data`.** Media controls
+store an attachment id, and that id points at a *different image* on the other site
+— or nothing. Elementor's `on_export` swaps the id for a url and `on_import`
+re-downloads it into the target's media library. Copy the raw meta and the images
+silently break, or silently become the wrong images. These tools call Elementor's
+own import path to get those hooks. Round trip measured: 82 settings authored, 0
+lost, 0 changed.
 
 ## What's in the box
 
@@ -189,6 +232,7 @@ data/
   group-controls.csv       3.7 KB   16 groups, and the flat keys they expand to
   widgets.csv              8.2 KB   135 widgets + 3 elements
   breakpoints.csv          0.2 KB
+  control-verification.csv          per-control: does it actually render?
   token-benchmark.csv               reproducible measurements
 
 tools/
@@ -199,19 +243,23 @@ tools/
   build-indexes.py               dump -> shipped data files
   verify-schema.py               does the schema match your install?
   verify-render.py               does Elementor emit what the schema promised?
+  sweep-controls.py              render EVERY control and assert it works
+  export-template.php            export to Elementor's own JSON format
+  import-template.php            import one, with media, via Elementor's own path
   benchmark-tokens.py            reproduce the token numbers
   install-skill.py               8-platform installer
 
 references/   data-model · control-types · containers-and-layout · responsive
-              templates-and-conditions · extraction-traps · token-efficiency
+              templates-and-conditions · import-export · extraction-traps
+              token-efficiency
 examples/     demo-page.json - the published page above
 ```
 
-## The three traps
+## The four traps
 
-The naive way to extract this data is wrong in three separate ways, each producing
-a schema that looks complete and lies. All three were shipped in this repo before
-being caught. Write-ups in [extraction-traps.md](references/extraction-traps.md):
+The naive way to extract this data is wrong in four separate ways, each producing a
+schema that looks complete and lies. All four were shipped in this repo before being
+caught. Write-ups in [extraction-traps.md](references/extraction-traps.md):
 
 1. **WP-CLI looks like the front end to Elementor**, so it hands back the lean
    control stack: **46% of controls and ~100% of tab/label metadata vanish**, with
@@ -223,6 +271,13 @@ being caught. Write-ups in [extraction-traps.md](references/extraction-traps.md)
    width, font size and gap. (9.8% → 30.1% of controls after the fix.)
 3. **A control's tier is not its widget's tier**, because Pro injects into free
    widgets. Measured, not inherited.
+4. **A control can be gated three different ways**, and `condition` is only one of
+   them. 152 controls are gated *only* by an advanced boolean form with its own
+   operators. And 499 controls interpolate *another* control's value into their CSS
+   — Elementor throws away the whole declaration if that other value is empty, with
+   every documented condition satisfied and no error. Set a gradient angle without a
+   gradient colour and you get nothing, silently. This one only surfaced by
+   rendering all 16,778 controls and looking.
 
 ## Contributing
 

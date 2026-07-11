@@ -136,6 +136,66 @@ function eh_css_props( $ctrl ) {
 	return array_values( array_keys( $props ) );
 }
 
+/**
+ * The OTHER controls whose values this control's CSS interpolates.
+ *
+ * This is a second, hidden dependency layer that `condition` does not describe,
+ * and it fails silently. Elementor's CSS generator
+ * (core/files/css/base.php) expands every {{...}} placeholder in a declaration:
+ *
+ *     if ( '' === $parsed_value ) {
+ *         ...
+ *         throw new \Exception();
+ *     }
+ *     } catch ( \Exception $e ) {
+ *         return;                 // <- the whole rule is abandoned
+ *     }
+ *
+ * So a declaration like the gradient's
+ *
+ *     background-image: linear-gradient({{SIZE}}{{UNIT}},
+ *         {{background_color.VALUE}} {{background_color_stop.SIZE}}...,
+ *         {{background_color_b.VALUE}} ...)
+ *
+ * emits NOTHING unless background_color and background_color_b are also set —
+ * even though every `condition` on it is satisfied. Setting the angle alone, and
+ * being surprised that nothing happened, is one of the easiest ways to lose an
+ * afternoon in headless Elementor.
+ *
+ * A placeholder may carry a fallback (`{{a.VALUE || b.VALUE}}`); those do not
+ * hard-require the referenced control, so only the fallback-less refs are
+ * recorded here.
+ */
+function eh_needs_value( $ctrl ) {
+	if ( empty( $ctrl['selectors'] ) || ! is_array( $ctrl['selectors'] ) ) {
+		return [];
+	}
+	$refs = [];
+	foreach ( $ctrl['selectors'] as $decl ) {
+		if ( ! is_string( $decl ) ) {
+			continue;
+		}
+		if ( ! preg_match_all( '/\{\{([^}]*)\}\}/', $decl, $m ) ) {
+			continue;
+		}
+		foreach ( $m[1] as $inner ) {
+			if ( strpos( $inner, '||' ) !== false ) {
+				continue; // has a fallback, so the reference is not required
+			}
+			$dot = strpos( $inner, '.' );
+			if ( $dot === false ) {
+				continue; // {{VALUE}}, {{SIZE}}, {{TOP}} - this control's own value
+			}
+			$name = trim( substr( $inner, 0, $dot ) );
+			if ( $name === '' || $name === 'WRAPPER' || $name === 'SELECTOR' ) {
+				continue;
+			}
+			$refs[ $name ] = true;
+		}
+	}
+	return array_keys( $refs );
+}
+
 /** Trim option maps to their KEYS — the key is what you write into JSON. */
 function eh_option_keys( $ctrl ) {
 	if ( empty( $ctrl['options'] ) || ! is_array( $ctrl['options'] ) ) {
@@ -183,6 +243,10 @@ function eh_control_record( $name, $ctrl ) {
 	$css = eh_css_props( $ctrl );
 	if ( $css ) {
 		$rec['css'] = $css;
+	}
+	$needs = eh_needs_value( $ctrl );
+	if ( $needs ) {
+		$rec['needs_value'] = $needs;
 	}
 	if ( ! empty( $ctrl['prefix_class'] ) ) {
 		$rec['prefix_class'] = $ctrl['prefix_class'];

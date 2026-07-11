@@ -180,6 +180,81 @@ def eval_condition(dep: str, expected, settings: dict, controls: dict):
     return ok, f"{shown} {op} {expected!r} (you have {got!r})"
 
 
+def compare(left, right, op: str) -> bool:
+    """Elementor's operator table, verbatim (includes/conditions.php::compare)."""
+    if op == "==":
+        return str(left) == str(right)
+    if op == "!=":
+        return str(left) != str(right)
+    if op == "!==":
+        return left != right
+    if op == "in":
+        return left in (right or [])
+    if op == "!in":
+        return left not in (right or [])
+    if op == "contains":
+        return right in (left or [])
+    if op == "!contains":
+        return right not in (left or [])
+    try:
+        if op == "<":
+            return float(left) < float(right)
+        if op == "<=":
+            return float(left) <= float(right)
+        if op == ">":
+            return float(left) > float(right)
+        if op == ">=":
+            return float(left) >= float(right)
+    except (TypeError, ValueError):
+        return False
+    return left == right          # '===' and anything unrecognised
+
+
+def eval_conditions(node: dict, settings: dict, controls: dict):
+    """
+    The advanced condition form: a boolean tree with `relation` (and/or) and
+    nested `terms`. Returns True/False, or None when a term references a control
+    we cannot resolve (in which case we do not guess).
+    """
+    terms = node.get("terms") or []
+    relation = (node.get("relation") or "and").lower()
+    results = []
+    for t in terms:
+        if t.get("terms"):
+            r = eval_conditions(t, settings, controls)
+        else:
+            name = t["name"]
+            base, _, sub = name.partition("[")
+            sub = sub.rstrip("]")
+            if base in settings:
+                val = settings[base]
+            elif base in controls and "default" in controls[base]:
+                val = controls[base]["default"]
+            else:
+                val = None
+            if sub and isinstance(val, dict):
+                val = val.get(sub)
+            r = compare(val, t.get("value"), t.get("operator") or "===")
+        results.append(r)
+    if not results:
+        return None
+    if relation == "or":
+        return any(results)
+    return all(results)
+
+
+def describe_conditions(node: dict) -> str:
+    terms = node.get("terms") or []
+    rel = (node.get("relation") or "and").lower()
+    parts = []
+    for t in terms:
+        if t.get("terms"):
+            parts.append(f"({describe_conditions(t)})")
+        else:
+            parts.append(f"{t['name']} {t.get('operator') or '==='} {t.get('value')!r}")
+    return f" {rel} ".join(parts)
+
+
 def walk(nodes, schema, rep: Report, seen_ids: set, target: str, path="") -> None:
     breakpoints = [b for b, v in schema["breakpoints"].items()
                    if v.get("active") and v.get("suffix")]
@@ -242,6 +317,32 @@ def walk(nodes, schema, rep: Report, seen_ids: set, target: str, path="") -> Non
                     if ok is False:
                         rep.warn(here, f"`{key}` only applies when {detail} - "
                                        f"it will be stored and then ignored at render time")
+
+            # The ADVANCED condition form. A separate mechanism with its own
+            # syntax (and/or relations, nested terms, comparison operators), used
+            # by 152 controls and by nothing else. A control gated only this way
+            # has an empty `condition`, so checking `condition` alone reports it
+            # as unconditional and lets a dead setting through.
+            if ctrl.get("conditions"):
+                ok = eval_conditions(ctrl["conditions"], settings, controls)
+                if ok is False:
+                    rep.warn(here, f"`{key}` is gated by an advanced condition that your "
+                                   f"settings do not satisfy "
+                                   f"({describe_conditions(ctrl['conditions'])}) - "
+                                   f"it will be stored and then ignored at render time")
+
+            # Not a condition at all: this control's CSS interpolates ANOTHER
+            # control's value, and Elementor discards the entire declaration if
+            # that value is empty - however satisfied the conditions are.
+            for ref in ctrl.get("needs_value") or []:
+                if ref in settings and settings[ref] not in ("", None, [], {}):
+                    continue
+                if ref in controls and controls[ref].get("default") not in (None, "", [], {}):
+                    continue      # it has a non-empty default, so it is not empty
+                rep.err(here, f"`{key}` builds its CSS out of `{ref}`, which you have not "
+                              f"set. Elementor drops the whole declaration when an "
+                              f"interpolated value is empty, so `{key}` will do nothing. "
+                              f"Set `{ref}` too.")
 
         walk(el.get("elements") or [], schema, rep, seen_ids, target, path=f"{here}.elements")
 

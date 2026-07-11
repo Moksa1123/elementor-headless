@@ -21,8 +21,33 @@ stores your value, renders what it understands, and silently drops the rest. The
 is no error. A page that is 90% right looks exactly like a page that is 100% right
 until someone notices the padding never applied.
 
-Everything in `data/` was extracted from a live Elementor install and verified
-against it. Your memory of Elementor was not.
+Everything in `data/` was extracted from a live Elementor install and then
+**rendered and checked, one control at a time**: 16,778 controls written into real
+pages, compiled by Elementor, and asserted against the stylesheet that came out.
+0 failures. Per-control results are in `data/control-verification.csv`. Your memory
+of Elementor has not been through that.
+
+## A control can be gated three different ways
+
+Setting a control is not enough to make it do anything, and when it does nothing
+there is no error. Three separate mechanisms, and `el.py` prints all three:
+
+| Shown as | What it means |
+|---|---|
+| `needs:{...}` | the simple `condition` — another setting must have a given value |
+| `needs-adv:...` | the **advanced** `conditions` form — a boolean tree with `and`/`or` and operators (`>`, `!==`, `in`). **152 controls are gated only this way and have no `condition` at all** |
+| `needs-value-of:a,b` | not a condition. This control's CSS interpolates `a` and `b`, and **Elementor throws away the whole declaration if either is empty** — however satisfied the conditions are. 499 controls do this |
+
+The last one is the quiet killer. Set `background_background: "gradient"` plus
+`background_gradient_angle`, satisfy every documented condition, and you still get
+no gradient — because the declaration interpolates `background_color`, which you
+never set.
+
+```bash
+python tools/validate-page.py page.json     # catches all three before you write
+```
+
+Detail: [extraction-traps.md](references/extraction-traps.md).
 
 ## Look it up like this
 
@@ -73,7 +98,32 @@ wp eval-file tools/apply-page.php <post_id> page.json   # writes meta + rebuilds
 
 `validate-page.py` is not optional. It catches what Elementor will not: unknown
 control names, wrong value shapes, illegal units, invalid select options, duplicate
-element ids, unmet conditions, and Pro-only controls on a Free target.
+element ids, all three kinds of unmet dependency, and Pro-only controls on a Free
+target.
+
+## Reuse a block across pages and across sites
+
+Elementor's own JSON interchange format — the same one behind the editor's Export /
+Import Template buttons — so a block built here imports cleanly anywhere.
+
+```bash
+wp eval-file tools/export-template.php <post_id> > hero-block.json
+
+wp --user=1 eval-file tools/import-template.php hero-block.json                  # into the library
+wp --user=1 eval-file tools/import-template.php hero-block.json <target_post_id> # onto a page
+```
+
+**Never move a block between sites by copying `_elementor_data`.** Media controls
+store an attachment `id`, and that id means a *different image* on the other site —
+or nothing. Elementor's `on_export` swaps the id for a url and `on_import`
+re-downloads it into the target site's media library. Copy the raw meta and the
+images silently break or, worse, silently become the wrong images. These tools call
+Elementor's own import path precisely to get those hooks.
+
+Import needs a user (`--user=1`); WP-CLI has none by default and Elementor's
+importer does a capability check.
+
+Detail: [import-export.md](references/import-export.md).
 
 ## Free vs Pro: label it, do not reason about it
 
@@ -132,6 +182,7 @@ Only **active** breakpoints exist (`el.py breakpoints`).
 | [containers-and-layout.md](references/containers-and-layout.md) | container flex + grid, sizing children, section/column legacy |
 | [responsive.md](references/responsive.md) | breakpoints, suffixes, why `padding_tablet` has no control object |
 | [templates-and-conditions.md](references/templates-and-conditions.md) | template CRUD, Display Conditions, priority resolution — **Pro** |
+| [import-export.md](references/import-export.md) | Elementor's JSON interchange format; moving blocks across sites without breaking media |
 | [extraction-traps.md](references/extraction-traps.md) | the three ways a schema goes silently wrong, and how this one is verified |
 | [token-efficiency.md](references/token-efficiency.md) | the 89% figure, measured, with the script that reproduces it |
 
@@ -164,5 +215,8 @@ Live proof, built headlessly and published:
 | `build-indexes.py` | turn a dump into the shipped data files |
 | `verify-schema.py` | does the schema match your install? |
 | `verify-render.py` | does Elementor emit the CSS the schema promised? |
+| `sweep-controls.py` | render EVERY control and assert it works (16,778 asserted, 0 failures) |
+| `export-template.php` | export a page/template to Elementor's own JSON format |
+| `import-template.php` | import one, with media, via Elementor's own import path |
 | `benchmark-tokens.py` | reproduce the token numbers |
 | `install-skill.py` | install into 8 AI platforms |
