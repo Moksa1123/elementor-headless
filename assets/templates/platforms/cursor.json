@@ -6,7 +6,7 @@
     "projectRoot": ".cursor",
     "globalRoot": "~/.cursor",
     "skillPath": "rules",
-    "filename": "wp-elementor-ops.mdc"
+    "filename": "elementor-headless.mdc"
   },
   "sections": {
     "skill": true,
@@ -16,12 +16,12 @@
     "examples": false
   },
   "frontmatter": {
-    "description": "WordPress + Elementor site audit and safe-editing discipline. Triggers on requests to health-check a WP site, remove unused plugins/media, or edit a shared Elementor template/Theme Builder element.",
+    "description": "Build/modify Elementor pages headlessly via JSON and meta data. Triggers on requests to build, design, or restructure an Elementor page/template programmatically, without the visual editor.",
     "globs": ["**/*.php", "**/wp-content/**", "**/*.json"],
     "alwaysApply": false
   },
   "loaderBehaviour": "Cursor reads .cursor/rules/*.mdc as Project Rules. Set alwaysApply: true to auto-attach to every chat, or leave false to attach when filename globs match. Cursor does NOT load referenced files automatically - embed key content inline; keep the rule under ~6KB. Subdirectories are supported (.cursor/rules/wp/x.mdc) if you want to split this up further.",
-  "embedReferences": ["plugin-audit-methodology.md", "elementor-safe-edit.md", "wp-cli-safe-scripting.md"],
+  "embedReferences": ["elementor-style-system.md", "elementor-templates-and-conditions.md"],
   "verified": true,
   "verifiedAsOf": "2026-07-11"
 }

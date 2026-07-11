@@ -6,7 +6,7 @@
     "projectRoot": ".devin",
     "globalRoot": null,
     "skillPath": "rules",
-    "filename": "wp-elementor-ops.md"
+    "filename": "elementor-headless.md"
   },
   "sections": {
     "skill": true,
@@ -20,10 +20,10 @@
   "fallback": {
     "projectRoot": ".windsurf",
     "skillPath": "rules",
-    "filename": "wp-elementor-ops.md",
+    "filename": "elementor-headless.md",
     "note": "Use this path instead if your installation predates the Devin Desktop rebrand and .devin/rules/ is not recognised."
   },
-  "embedReferences": ["plugin-audit-methodology.md", "elementor-safe-edit.md", "wp-cli-safe-scripting.md"],
+  "embedReferences": ["elementor-style-system.md", "elementor-templates-and-conditions.md", "elementor-safe-edit.md"],
   "verified": true,
   "verifiedAsOf": "2026-07-11",
   "verificationNote": "Verify which product name/path applies to your install before running - this is the platform most likely to keep shifting given the recent rebrand."

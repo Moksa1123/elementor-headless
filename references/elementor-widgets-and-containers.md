@@ -17,6 +17,12 @@ remaining 29 came from third-party addon plugins on that specific site and
 were excluded from the shipped dataset since they're not universal to
 Elementor itself.
 
+This file covers the container/widget/dynamic-tag data model. For the
+Style-tab Group Control mechanism (Border, Box Shadow, Typography,
+Background) and Custom CSS injection, see `elementor-style-system.md`. For
+template CRUD and the full Display/Advanced Conditions system, see
+`elementor-templates-and-conditions.md`.
+
 ## How to reproduce this extraction on any site
 
 ```php
@@ -35,18 +41,25 @@ foreach ( $widgets_manager->get_widget_types() as $name => $widget ) {
 }
 ```
 
-Two things this method does **not** capture (verified gap, not guessed):
-Border/Box-Shadow group controls and the Custom CSS feature are injected by
-Elementor Pro via WordPress action hooks tied to specific section IDs
-(`elementor/element/{element_type}/{section_id}/before_section_end` style
-hooks checking for `'section_custom_css_pro'` etc. — confirmed by reading
-`elementor-pro/modules/custom-css/module.php` directly), not registered as
-part of a widget's own `_register_controls()`. A plain `get_controls()` call
-outside the full editor/hook-firing context won't show them. If you need
-those specifically, either inspect a widget's rendered editor config (open
-it in the Elementor editor and read the panel's JS config) or read the
-relevant Pro module's source directly for the exact control names in your
-installed version.
+**One correction made during this skill's own development**: an earlier
+draft of this doc claimed Border and Box Shadow were part of the same gap as
+Custom CSS below. That was wrong — verified by reading
+`elementor/includes/widgets/common-base.php` and
+`elementor/includes/controls/groups/border.php` directly, Border and Box
+Shadow are core Elementor **Group Controls**, registered synchronously
+(free, not Pro, not hook-injected) — see `elementor-style-system.md` for
+the full mechanism and exact field names. **Only Custom CSS** is a genuine
+gap for this extraction method: it's injected by Elementor Pro via a
+WordPress action hook tied to a specific section ID
+(`elementor/element/after_section_end` checking for
+`'section_custom_css_pro'` — confirmed in
+`elementor-pro/modules/custom-css/module.php`), not registered as part of a
+widget's own `_register_controls()`, so a plain `get_controls()` call won't
+show it. See `elementor-style-system.md` for the verified `custom_css`
+control name and how it's applied. This distinction — assuming something is
+Pro-gated instead of checking the actual source — is exactly the mistake
+the "Free vs Pro" verification discipline in `elementor-style-system.md`
+exists to prevent; it happened once during this project's own development.
 
 ## The container model (current Elementor, not legacy Section/Column)
 
@@ -207,8 +220,8 @@ Ken-Burns-zoom settings).
 
 ### `_section_masking`
 Just `_mask_switch` (switcher) at the base-widget level — the fuller mask
-shape/image/size controls appear only when enabled, and (like Border/Custom
-CSS) may be injected via a hook not fully captured by a plain
+shape/image/size controls appear only when enabled, and (like Custom CSS
+below) may be injected via a hook not fully captured by a plain
 `get_controls()` call; verify directly if you need the enabled-state fields.
 
 ### `_section_responsive` (Responsive visibility)
@@ -224,14 +237,22 @@ One `_attributes` textarea — raw `key|value` pairs (one per line, per
 Elementor's own documented syntax) applied as literal HTML attributes on the
 widget's wrapper element.
 
-### `_section_border` and `section_custom_css` — the documented gap
-Both sections exist as section *markers* in every widget (98% presence,
-same as the rest), but their actual field controls (border width/style/
-color/radius; box-shadow; the raw custom-CSS textarea) are injected by
-Elementor Pro's hook-based feature modules at a later stage than a direct
-`get_controls()` call captures — see "How to reproduce this extraction"
-above for why, and how to get them directly from source if you need the
-exact current field names for your installed version.
+### `_section_border` — core Elementor, Free (not a gap)
+Section marker present, but the actual fields (`_border_border`,
+`_border_width` + `_tablet`/`_mobile`, `_border_color`, `_border_radius`)
+come from the core `Group_Control_Border` class and `common-base.php`'s
+`register_border_section()` — full field reference and exact verification
+method in `elementor-style-system.md`. **Free**, not Pro, despite feeling
+like an advanced feature.
+
+### `section_custom_css` — the one genuine Pro-hook gap
+This section marker's real control (`custom_css`, a `Controls_Manager::CODE`
+field) is injected by Elementor Pro via the `elementor/element/after_section_end`
+hook, gated behind a license-feature check — genuinely invisible to a plain
+`get_controls()` call, and genuinely Pro-only (confirmed via
+`API::is_licence_has_feature('custom-css', ...)` in
+`elementor-pro/modules/custom-css/module.php`). Full detail in
+`elementor-style-system.md`.
 
 ## Dynamic tags: pulling live post data into any widget
 
@@ -276,13 +297,19 @@ An `elementor_library` post's `_elementor_template_type` (`header`,
 with `_elementor_conditions` (`include/general`,
 `include/singular/<cpt-slug>`, `include/archive`,
 `exclude/archive/<taxonomy-or-cpt>`, etc.) is what Theme Builder uses to
-decide *where* a shared template renders. Check both together — a template
-can have a plausible type and *no* condition, meaning it never actually
-renders anywhere (see `plugin-audit-methodology.md` Step 3).
+decide *where* a shared template renders — see
+`elementor-templates-and-conditions.md` for the complete condition
+type/name enumeration and the priority-based conflict resolution when
+multiple templates could match the same request. A template can have a
+plausible type and *no* condition, meaning it never actually renders
+anywhere.
 
 The site's active Kit (global colors/fonts/spacing defaults) is a different
-`elementor_library` entry, referenced by the `elementor_active_kit` option —
-see the Kit-specific warning in `plugin-audit-methodology.md`.
+`elementor_library` entry, referenced by the `elementor_active_kit` option.
+Even if its name looks like leftover demo content, if it's the *active* kit,
+changing or deleting it alters site-wide typography/color defaults
+immediately — verify `elementor_active_kit` before touching any
+`elementor_library` entry that looks unused.
 
 ## Widget-specific Content/Style controls: use the data file, not prose
 

@@ -1,11 +1,11 @@
 <div align="center">
 
-# WP Elementor Ops
+# Elementor Headless
 
-### WordPress + Elementor サイトを安全に監査・編集するスキル。実際の本番環境で起きたミスと、その修正法を組み込み済み。
+### JSON とメタデータを直接読み書きしてElementorページを構築・変更する。ビジュアルエディタ不要。Pro限定機能はすべて明示的にラベル付け。
 
 <p>
-  <a href="https://github.com/Moksa1123/wp-elementor-ops"><img src="https://img.shields.io/github/stars/Moksa1123/wp-elementor-ops?style=flat-square&logo=github&logoColor=white&color=181717" alt="GitHub stars"></a>
+  <a href="https://github.com/Moksa1123/elementor-headless"><img src="https://img.shields.io/github/stars/Moksa1123/elementor-headless?style=flat-square&logo=github&logoColor=white&color=181717" alt="GitHub stars"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="MIT"></a>
 </p>
 
@@ -18,7 +18,7 @@
 
 <p>
   <a href="#クイックスタート"><strong>はじめる</strong></a> ·
-  <a href="https://github.com/Moksa1123/wp-elementor-ops"><strong>GitHub</strong></a> ·
+  <a href="https://github.com/Moksa1123/elementor-headless"><strong>GitHub</strong></a> ·
   <a href="https://github.com/Moksa1123/rankmath-seo-wp"><strong>姉妹プロジェクト</strong></a> ·
   <a href="https://moksaweb.com"><strong>moksaweb.com</strong></a>
 </p>
@@ -34,54 +34,71 @@
 
 ---
 
-## こんなときに使う
+## これは何か
 
-- **「このWordPressサイトをヘルスチェックして」「不要なプラグインはどれ？」**
-  ——推測ではなく、プラグインの*本物の*ブロック名・ショートコードタグ・
-  オプションキーをまず突き止める（スラッグからの推測こそ、このスキルが
-  最も防ぎたいミスその1）。実際の使用箇所を照合し、「孤立メディア」の
-  誤検知トラップを回避する。
-- **「共有Elementorテンプレートを編集したい」**——`_elementor_data` の JSON
-  構造をオフバイワンなしで辿り、投稿ごとに変える必要がある内容は静的な
-  ウィジェットではなく動的ショートコードに変換し、キャッシュを正しいレイヤー
-  順でフラッシュする。
-- **「このElementorウィジェットにはどんな設定があるの？」**——実際に稼働中の
-  Elementor + Elementor Pro から抽出したデータ（164ウィジェット、48,238個の
-  コントロール、推測ではなく実測）と、全ウィジェットの98%に共通する
-  「Advancedタブ」セクションの完全な記録。
-- **「変更したのに反映されない」**——実際のインシデントから得たキャッシュ
-  レイヤーと、圧縮/スクリーンショット縮小に関するデバッグの注意点。
+Elementorをヘッドレスに扱うアプローチ: ページはコンテナとウィジェットから
+成るJSONツリーであり、各ウィジェットは型付けされたフィールドの `settings`
+オブジェクトです。このスキルはAIエージェントに、実際に検証済みの
+パラメータ全体像——ウィジェットコントロール、スタイルグループ、
+レスポンシブブレークポイント、テンプレート条件、動的タグ——を提供し、
+ビジュアルエディタを一切開かずにデータだけでページを構築・再構成できる
+ようにします。
+
+サイトのヘルスチェックやプラグイン監査ツール**ではありません**——それは
+明確にスコープ外です。これは「診断」ではなく「構築」についてのスキルです。
+
+## カバー範囲
+
+- **テンプレート**: Theme Builderテンプレートの作成/読み込み/適用
+  （`elementor_library` のCRUD、`_elementor_template_type`）
+- **表示条件（Display Conditions）と高度な条件（Advanced Conditions）**:
+  Include/Exclude 条件のタイプ・名前を完全網羅（general／singular／
+  archive の3大分類と、Elementor Proが提供するすべてのサブ条件）。加えて、
+  競合する複数テンプレート間の実際の解決方法（登録順ではなく、
+  具体性に基づく優先度）
+- **RWD**: ブレークポイントごとのスタイルパラメータ——全Elementor
+  コントロールの20%が `_tablet`/`_mobile` レスポンシブバリアントを
+  持つことを実測で確認済み
+- **カスタム設定**: Border、Box Shadow、Typography、Backgroundの背後にある
+  共通の Group Control メカニズム（コア Elementor、無料）と、
+  Custom CSS注入（本物のPro限定機能、フックで注入——推測ではなくソースから
+  検証済み）
+- **Free vs Pro、推測ではなく検証済み**: すべてのウィジェットと機能の
+  出所を、実際の `elementor` vs `elementor-pro` プラグインディレクトリと
+  ライセンスゲートのコードと照合。このプロジェクトは開発中に一度
+  Border/Box-Shadowの判定を誤り（Pro限定だと思い込んだが実際はFree）、
+  ソースコードと照合して修正した経緯がある——その修正過程と検証方法の
+  両方をドキュメント化している
 
 ## クイックスタート
 
 ```bash
-git clone https://github.com/Moksa1123/wp-elementor-ops.git
-cd wp-elementor-ops
+git clone https://github.com/Moksa1123/elementor-headless.git
+cd elementor-headless
 python tools/install-skill.py --list                 # 対応プラットフォーム一覧
 python tools/install-skill.py claude-code             # このプロジェクトにインストール
 python tools/install-skill.py claude-code --global    # 全プロジェクト共通としてインストール
 ```
 
-契約の全文は `SKILL.md`、背景にある手法は `references/` を参照。
+契約の全文は `SKILL.md`、データモデルの詳細は `references/` を参照。
 
 ## リポジトリ構成
 
 ```
-wp-elementor-ops/
+elementor-headless/
 ├── SKILL.md                        # スキル契約——AIアシスタントが自動読込
 ├── README.md                       # 本ファイル（+ zh-TW／ja／ko 翻訳）
-├── CLAUDE.md                       # AI開発規約とサニタイズ規則
+├── CLAUDE.md                       # AI開発規約 + Free/Pro規則 + サニタイズ規則
 ├── LICENSE                         # MIT
 ├── references/
-│   ├── plugin-audit-methodology.md         # 使用判定の前に「本物の」シグネチャを見つける
-│   ├── elementor-safe-edit.md              # 共有テンプレートの安全な編集手順
-│   ├── elementor-widgets-and-containers.md # コンテナ/ウィジェット/動的タグのデータモデル、実測検証済み
-│   ├── dynamic-ghost-text-pattern.md       # 静的→投稿ごとの動的コンテンツへの変換実例
-│   ├── wp-cli-safe-scripting.md            # クォート/エスケープ/ファイル実行の規律
+│   ├── elementor-widgets-and-containers.md   # コンテナ/ウィジェット/動的タグのデータモデル、実測検証済み
+│   ├── elementor-style-system.md             # Group Control機構、Custom CSS、Free/Pro検証方法
+│   ├── elementor-templates-and-conditions.md # テンプレートCRUD、完全な表示/高度な条件
+│   ├── elementor-safe-edit.md                # 共有テンプレート編集手順、JSONパス規律
+│   ├── dynamic-ghost-text-pattern.md         # 静的→投稿ごとの動的コンテンツへの変換実例
+│   ├── wp-cli-safe-scripting.md              # クォート/エスケープ/ファイル実行の規律
 │   └── multiplatform-install-verification.md # プラットフォームごとのインストール規約と検証日
 ├── tools/
-│   ├── audit-plugin-usage.php         # `wp eval-file` で実行——実際の使用状況を照合
-│   ├── audit-orphan-media.php         # `wp eval-file` で実行——誤検知防止付き孤立メディア検出
 │   ├── extract-elementor-controls.php # `wp eval-file` で実行——自サイトでコントロールデータを再抽出
 │   ├── ghost-glint-svg.py             # スタンドアロン——ゴーストテキストSVGの比率をプレビュー/調整
 │   └── install-skill.py               # マルチプラットフォームインストーラー
@@ -91,42 +108,28 @@ wp-elementor-ops/
 └── assets/templates/platforms/*.json  # プラットフォームごとのインストール設定
 ```
 
-## なぜこのプロジェクトが存在するのか
-
-本番稼働中のWooCommerce + Elementor Proサイトでの実際のデバッグから生まれた:
-あるプラグインは、*推測した*ブロック名で検索して何もヒットしなかったために
-無効化されたが、*本物の*名前（作者独自のネームスペース）は実際に10件の公開
-記事で使われていた。共有Elementorテンプレートの装飾テキストは、それを使う
-すべての投稿で同一の内容にハードコードされていた。「孤立メディア」の一斉
-チェックは、ACF画像フィールド経由で実際に参照されていたファイルを、無関係な
-閲覧数カウンターのメタデータを実際の参照と誤認したことで、危うく誤検知する
-ところだった。ここにあるリファレンスはすべて、そうした実際の出来事の一つに
-遡れる——最初に間違えた部分も含めて、そしてこのプロジェクト自身の監査ツールが
-開発中に見つけた本物のバグ（`wp eval-file` はUnix CLIのような `--` 区切りや
-`--flag=value` 構文をサポートしていない）も含めて。
-
 ## 推測ではなく、検証済み
 
-このリポジトリには「たぶん合ってる」では不十分だという理由だけで存在する
-ものが2つある:
-
-- **Elementorのデータモデル**（`elementor-widgets-and-containers.md`、
-  `data/elementor-core-pro-controls.json`）は、実際に稼働中のインストール
-  のウィジェット登録情報を問い合わせて抽出したものであり、学習データや
-  記憶から書いたものではない。実際の抽出で本物のギャップが見つかった箇所
-  （Border/Box-Shadow/Custom CSSは、単純な `get_controls()` 呼び出しでは
-  発火しないフックを通じてElementor Proが注入するもの）は、そのままギャップ
-  として明記している。
-- **マルチプラットフォームのインストール規約**（`multiplatform-install-verification.md`）
-  には検証日が記載され、独立に再確認されている——対応8プラットフォームの
-  うち3つは、姉妹スキル自身の表が書かれてからわずか約6週間の間にすでに
-  変わっていた。
+- **164ウィジェット、48,238コントロール** を実際に稼働中のElementor +
+  Elementor Proから抽出——学習データから書いたものではない。
+- **全ウィジェットの98%に共通する9つの「Advanced」タブセクション**、
+  それぞれの完全な実際のコントロールリスト。
+- **すべての表示/高度な条件タイプ** を Elementor Pro の
+  `Condition_Base` サブクラスから直接列挙、複数テンプレートが競合した
+  場合の具体性ベースの優先度解決ロジックも含む。
+- **Free vs Pro の境界線はソースコードと照合して検証**（プラグイン
+  ディレクトリ + ライセンスゲートのコード）——機能がどれだけ高度に
+  見えるかで推測したものではない。
+- **マルチプラットフォームのインストール規約** には検証日が記載され、
+  独立に再確認されている——対応8プラットフォームのうち3つは、姉妹
+  スキル自身の表が書かれてからわずか約6週間の間にすでに変わっていた
+  （詳細は `multiplatform-install-verification.md`）。
 
 ## コントリビュート
 
 `CONTRIBUTING.md` を参照。このプロジェクトではサニタイズが他のリポジトリ
-以上に重要——実サイトから派生した内容を含むPRを送る前に、`CLAUDE.md` の
-「サニタイズ規則」セクションを読むこと。
+以上に重要——PRを送る前に `CLAUDE.md` の「サニタイズ規則」セクションを
+読むこと。
 
 ## 作者
 

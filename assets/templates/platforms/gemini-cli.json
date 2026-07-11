@@ -5,7 +5,7 @@
   "folderStructure": {
     "projectRoot": ".gemini",
     "globalRoot": "~/.gemini",
-    "skillPath": "skills/wp-elementor-ops",
+    "skillPath": "skills/elementor-headless",
     "filename": "SKILL.md"
   },
   "sections": {
@@ -16,8 +16,8 @@
     "examples": true
   },
   "frontmatter": {
-    "name": "wp-elementor-ops",
-    "description": "Safely audit and edit WordPress + Elementor sites - verify plugin/media usage before removing anything, edit shared Elementor templates without breaking other pages, and manage cache layers correctly.",
+    "name": "elementor-headless",
+    "description": "Build and modify Elementor pages by directly reading/writing the underlying JSON and meta data - no visual editor required. Covers the full parameter surface, template CRUD, Display/Advanced Conditions, and custom CSS/style injection, with every Elementor Pro-only feature explicitly labeled.",
     "license": "MIT",
     "author": "moksa (https://moksaweb.com)",
     "version": "1.0.0"

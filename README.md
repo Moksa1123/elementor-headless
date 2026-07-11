@@ -1,11 +1,11 @@
 <div align="center">
 
-# WP Elementor Ops
+# Elementor Headless
 
-### Safely audit and edit WordPress + Elementor sites. Real production mistakes, and their fixes, baked in.
+### Build and modify Elementor pages by directly reading/writing JSON and meta data. No visual editor required. Every Pro-only feature explicitly labeled.
 
 <p>
-  <a href="https://github.com/Moksa1123/wp-elementor-ops"><img src="https://img.shields.io/github/stars/Moksa1123/wp-elementor-ops?style=flat-square&logo=github&logoColor=white&color=181717" alt="GitHub stars"></a>
+  <a href="https://github.com/Moksa1123/elementor-headless"><img src="https://img.shields.io/github/stars/Moksa1123/elementor-headless?style=flat-square&logo=github&logoColor=white&color=181717" alt="GitHub stars"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="MIT"></a>
 </p>
 
@@ -18,7 +18,7 @@
 
 <p>
   <a href="#quick-start"><strong>Get started</strong></a> ·
-  <a href="https://github.com/Moksa1123/wp-elementor-ops"><strong>GitHub</strong></a> ·
+  <a href="https://github.com/Moksa1123/elementor-headless"><strong>GitHub</strong></a> ·
   <a href="https://github.com/Moksa1123/rankmath-seo-wp"><strong>Sibling project</strong></a> ·
   <a href="https://moksaweb.com"><strong>moksaweb.com</strong></a>
 </p>
@@ -34,55 +34,70 @@
 
 ---
 
-## What this is for
+## What this is
 
-- **"Health-check this WordPress site" / "which plugins can I remove?"** —
-  find a plugin's *real* block/shortcode/option signature before searching
-  for it (guessing from the slug is the #1 mistake this skill exists to
-  prevent), cross-reference genuine usage, guard against false-positive
-  "orphaned media" matches.
-- **"Edit this shared Elementor template"** — navigate `_elementor_data`
-  JSON without an off-by-one, convert static per-template content into a
-  dynamic per-post shortcode when it needs to vary, flush caches in the
-  correct layered order.
-- **"What settings does this Elementor widget even have?"** — a data file
-  extracted from a live Elementor + Elementor Pro install (164 widgets,
-  48,238 controls, verified not guessed) plus the universal "Advanced tab"
-  sections present in 98% of all widgets, fully documented.
-- **"This isn't showing up after my change"** — cache-layer and
-  compression/screenshot-scaling debugging notes from real incidents.
+A headless approach to Elementor: a page is a JSON tree of containers and
+widgets, each widget a `settings` object of typed fields. This skill gives
+an AI agent the full, source-verified parameter surface — widget controls,
+style groups, responsive breakpoints, template conditions, dynamic tags —
+so it can build or restructure a page entirely through data, without ever
+opening the visual editor.
+
+**Not** a site health-check or plugin-audit tool — that's explicitly out of
+scope. This is about construction, not diagnostics.
+
+## What's covered
+
+- **Templates**: create/read/apply Theme Builder templates
+  (`elementor_library` CRUD, `_elementor_template_type`)
+- **Display Conditions & Advanced Conditions**: the complete
+  Include/Exclude condition type/name enumeration (general / singular /
+  archive, every sub-condition Elementor Pro ships), plus how conflicts
+  between competing templates actually resolve (specificity-based
+  priority, not registration order)
+- **RWD**: per-breakpoint style parameters — verified at scale that 20% of
+  all Elementor controls carry a `_tablet`/`_mobile` responsive variant
+- **Custom Settings**: the Group Control mechanism behind Border, Box
+  Shadow, Typography, and Background (core Elementor, free), and Custom
+  CSS injection (genuinely Pro-only, hook-injected — verified from source,
+  not assumed)
+- **Free vs Pro, verified not guessed**: every widget and feature's source
+  is checked against the actual `elementor` vs `elementor-pro` plugin
+  directory and license-gate code — this project got Border/Box-Shadow
+  wrong once during development (assumed Pro when they're Free) before
+  correcting it against source; the correction and the verification method
+  are both documented
 
 ## Quick start
 
 ```bash
-git clone https://github.com/Moksa1123/wp-elementor-ops.git
-cd wp-elementor-ops
+git clone https://github.com/Moksa1123/elementor-headless.git
+cd elementor-headless
 python tools/install-skill.py --list                 # see supported platforms
 python tools/install-skill.py claude-code             # install into this project
 python tools/install-skill.py claude-code --global    # install for all projects
 ```
 
 See `SKILL.md` for the full contract and `references/` for the underlying
-methodology docs.
+data model.
 
 ## Repository layout
 
 ```
-wp-elementor-ops/
+elementor-headless/
 ├── SKILL.md                        # Skill contract — auto-loaded by AI assistants
 ├── README.md                       # This file (+ zh-TW / ja / ko translations)
-├── CLAUDE.md                       # AI dev conventions + sanitisation rules
+├── CLAUDE.md                       # AI dev conventions + Free/Pro + sanitisation rules
 ├── LICENSE                         # MIT
 ├── references/
-│   ├── plugin-audit-methodology.md         # find the REAL signature before judging usage
-│   ├── elementor-safe-edit.md              # shared-template editing protocol
-│   ├── elementor-widgets-and-containers.md # container/widget/dynamic-tag data model, verified live
-│   ├── dynamic-ghost-text-pattern.md       # static → per-post-dynamic worked example
-│   ├── wp-cli-safe-scripting.md            # quoting/escaping/file-based execution discipline
+│   ├── elementor-widgets-and-containers.md   # container/widget/dynamic-tag data model, verified live
+│   ├── elementor-style-system.md             # Group Controls, Custom CSS, Free vs Pro verification
+│   ├── elementor-templates-and-conditions.md # template CRUD, full Display/Advanced Conditions
+│   ├── elementor-safe-edit.md                # shared-template editing protocol, JSON path discipline
+│   ├── dynamic-ghost-text-pattern.md         # static → per-post-dynamic worked example
+│   ├── wp-cli-safe-scripting.md              # quoting/escaping/file-based execution discipline
 │   └── multiplatform-install-verification.md # dated per-platform install conventions
 ├── tools/
-│   ├── audit-plugin-usage.php         # run via `wp eval-file` — cross-reference real usage
-│   ├── audit-orphan-media.php         # run via `wp eval-file` — orphan detection w/ false-positive guard
 │   ├── extract-elementor-controls.php # run via `wp eval-file` — reproduce the widget-control dataset on your own site
 │   ├── ghost-glint-svg.py             # standalone — preview/tune the ghost-text SVG proportions
 │   └── install-skill.py               # multi-platform installer
@@ -92,41 +107,26 @@ wp-elementor-ops/
 └── assets/templates/platforms/*.json  # per-platform install configs
 ```
 
-## Why this exists
-
-Built from real debugging on a production WooCommerce + Elementor Pro site:
-a plugin was deactivated because a search for its *guessed* block name found
-nothing, when the *real* name (the author's own namespace) was used in 10
-live articles. A shared Elementor template's decorative text was hardcoded
-identically across every post that used it. An "orphan media" sweep almost
-flagged files that were actually referenced through ACF image fields, having
-first mistaken unrelated view-counter metadata for real references. Every
-reference doc here traces back to one of these — including the parts that
-went wrong the first time, and including a real bug found in this project's
-own audit tools during development (`wp eval-file` doesn't support `--`
-separators or `--flag=value` syntax the way a Unix CLI would).
-
 ## Verified, not guessed
 
-Two things in this repo exist specifically because "sounds right" wasn't
-good enough:
-
-- **Elementor's data model** (`elementor-widgets-and-containers.md`,
-  `data/elementor-core-pro-controls.json`) was extracted by actually
-  querying a live install's widget registry, not written from training
-  data or memory. Where the live extraction had a real gap (Border/Box-
-  Shadow/Custom CSS, injected by Elementor Pro via hooks a plain
-  `get_controls()` call doesn't trigger), that gap is documented as a gap.
-- **Multi-platform install conventions** (`multiplatform-install-verification.md`)
-  are dated and independently re-checked — 3 of 8 supported platforms had
-  already drifted from this project's sibling skill's own table in the ~6
-  weeks between the two being written.
+- **164 widgets, 48,238 controls** extracted from a live Elementor +
+  Elementor Pro install — not written from training data.
+- **9 universal Advanced-tab sections found in 98% of all widgets**, full
+  real control lists for each.
+- **Every Display/Advanced Condition type** enumerated directly from
+  Elementor Pro's `Condition_Base` subclasses, including the exact
+  specificity-based priority resolution when multiple templates compete.
+- **Free vs Pro boundaries checked against source** (plugin directory +
+  license-gate code), not inferred from how advanced a feature feels.
+- **Multi-platform install conventions**, dated and independently
+  re-checked — 3 of 8 supported platforms had already drifted from this
+  project's sibling skill's own table in the ~6 weeks between the two
+  being written (see `multiplatform-install-verification.md`).
 
 ## Contributing
 
 See `CONTRIBUTING.md`. Sanitisation matters here more than in most repos —
-read the "Sanitisation rules" section of `CLAUDE.md` before submitting a PR
-that includes anything derived from a real site.
+read the "Sanitisation rules" section of `CLAUDE.md` before submitting a PR.
 
 ## Author
 

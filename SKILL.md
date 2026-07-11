@@ -1,155 +1,114 @@
 ---
-name: wp-elementor-ops
-description: Safely audit and edit WordPress + Elementor sites — verify plugin/media usage before removing anything, edit shared Elementor templates without breaking other pages, and manage cache layers correctly. Use when asked to health-check a WordPress site, clean up unused plugins or media, edit an Elementor template/theme-builder element, or debug why a change "isn't showing up."
+name: elementor-headless
+description: Build and modify Elementor pages by directly reading/writing the underlying JSON and meta data — no visual editor (DOM) required. Covers the full parameter surface (widgets, containers, style groups, RWD, dynamic tags), template CRUD, Display/Advanced Conditions, and custom CSS/style injection, with every Elementor Pro-only feature explicitly labeled. Use when asked to build, design, or restructure an Elementor page/template programmatically.
 ---
 
-# WP Elementor Ops
+# Elementor Headless
 
-Operational discipline for maintaining a live WordPress + Elementor site: proving
-a plugin, media file, or template is actually unused before touching it, and
-editing shared Elementor templates without breaking the other pages that share
-them. Distilled from real production debugging on a WooCommerce + Elementor Pro
-site — including the mistakes, not just the successes.
+**Role**: Headless Elementor development — building and modifying Elementor
+pages entirely through their underlying data structures, without ever
+loading the visual editor. This skill is about *construction*, not
+diagnostics: it does not cover plugin/media auditing or site health checks
+(see `references/wp-cli-safe-scripting.md` for the execution discipline
+those tasks would share, but the audit methodology itself lives outside this
+skill's scope).
 
-## Core rule
+## Objective
 
-**Never judge "is this used?" by guessing a name.** Every one of the incidents
-this skill is built from came from assuming a plugin's shortcode tag, block
-name, or option key matched its slug. It usually doesn't. Always find the real
-signature in source before searching for it. See `references/plugin-audit-methodology.md`.
+Treat Elementor as a headless page-building API: a page is a JSON tree of
+containers and widgets, each widget a `settings` object of typed fields.
+Building or modifying a page means writing that JSON directly and correctly
+— not clicking through panels. Everything below exists to make that
+possible without guessing a field name or a data shape.
 
-## When to use this skill
+## Technical execution
 
-- "Health check this WordPress site" / "which plugins can I remove?"
-- "Clean up unused media" / "find orphaned images"
-- "This Elementor template/section needs to show X instead of Y" (shared templates,
-  Theme Builder conditions, dynamic content)
-- "I changed something and it's not showing up" (cache-layer debugging)
-- "Turn this static decorative element into something dynamic per page"
+**Low-level parsing.** A page's structure lives in the `_elementor_data`
+postmeta as a JSON tree (`elType: container|widget`, nested `elements`).
+Read `references/elementor-widgets-and-containers.md` for the container
+model, widget shape, and the exact JSON-path navigation discipline (path
+arrays are alternating `->elements[idx]` hops — an easy off-by-one).
 
-## Quick checklist before removing anything
+**Parameter mapping.** Every field Elementor exposes — widget-specific
+Content controls, the universal Style/Advanced groups, RWD breakpoint
+variants — is catalogued from a live extraction, not memory:
+`data/elementor-core-pro-controls.json` (135 widgets, verified 2026-07-11)
+plus `references/elementor-style-system.md` for the reusable Group Control
+mechanism (Border, Box Shadow, Typography, Background, CSS Filters) that
+underlies most Style-tab fields across every widget.
 
+## Core features
+
+| Feature | Where it's covered |
+|---|---|
+| **Template management** (create / read / apply) | `references/elementor-templates-and-conditions.md` |
+| **Display Conditions** (Include/Exclude) | `references/elementor-templates-and-conditions.md` |
+| **Advanced Conditions** (complex dynamic display logic) | `references/elementor-templates-and-conditions.md` |
+| **RWD** (per-breakpoint style parameters: Desktop/Tablet/Mobile) | `references/elementor-widgets-and-containers.md` ("Responsive breakpoints") |
+| **Custom Settings** (advanced style controls + custom CSS injection) | `references/elementor-style-system.md` |
+
+## Environment & strict constraints
+
+**Base environment**: Elementor Free + Elementor Pro. No assumption of any
+specific theme or third-party addon plugin — those vary per install; re-run
+`tools/extract-elementor-controls.php` against the target site if a widget
+outside core Elementor/Elementor Pro needs to be built against.
+
+**Mandatory labeling rule**: every architecture decision, data-parsing
+approach, code sample, and comment in this skill — and in anything built
+using it — **must explicitly mark which features/APIs/parameters are
+Elementor Pro-only**. Never let Free and Pro capabilities blur together.
+Concretely:
+
+- A **widget** is Pro-only if it's registered from `elementor-pro/`
+  (confirmed via the widget class's file path — see
+  `data/elementor-core-pro-controls.json`'s `source` field, `elementor-core`
+  vs `elementor-pro`).
+- A **control/feature shared across widgets** is Pro-only only if you've
+  confirmed it in Elementor Pro's own source, gated behind a license check
+  (`API::is_licence_has_feature(...)`) — don't assume; verify. Example:
+  Custom CSS (`custom_css` control) is genuinely Pro-only, gated exactly
+  this way. Border and Box Shadow, by contrast, are **not** Pro — they're
+  core Elementor Group Controls (`Group_Control_Border`,
+  `Group_Control_Box_Shadow`), free in every widget. Getting this
+  distinction wrong (assuming something's Pro when it's Free, or vice
+  versa) previously happened during this skill's own development — see
+  `references/elementor-style-system.md` for exactly how it was corrected
+  and how to verify any new case yourself rather than guessing.
+
+## Reproducing the verified data on your own install
+
+```bash
+cat tools/extract-elementor-controls.php | ssh user@host "cat > /tmp/x.php"
+ssh user@host "cd /path/to/wordpress && wp eval-file /tmp/x.php > controls.json"
 ```
-[ ] Found the plugin's ACTUAL block.json name / add_shortcode() tag / registered
-    widget name in its own source — not guessed from the plugin slug
-[ ] Searched wp_posts.post_content, wp_postmeta (esp. _elementor_data), and
-    wp_options for that real signature — not the slug
-[ ] For Elementor library templates: checked _elementor_conditions (is it
-    actually assigned to a Theme Builder location?) AND checked whether any
-    other page embeds it via [elementor-template id="X"] or a template widget
-[ ] For "orphaned" media: cross-referenced against _thumbnail_id, all postmeta
-    containing the file path/URL, AND genuine ACF image/gallery field values —
-    NOT arbitrary numeric postmeta (view counters, analytics object IDs) that
-    coincidentally share the same integer as an old attachment ID
-[ ] Deactivated (not deleted) first; re-verified live pages return 200 and
-    render correctly; waited before permanent deletion
-```
 
-## Reading Elementor's data model without rediscovering it every session
-
-Before editing any widget or container, see
-`references/elementor-widgets-and-containers.md` — verified by actually
-querying a live Elementor + Elementor Pro install's registered widgets (164
-widgets, 48,238 controls, one real snapshot), not written from memory:
-the container/flexbox layout model, the 9 universal "Advanced tab" sections
-present in 98% of all widgets (Layout, Motion Effects, Transform, Background
-w/ hover state, Masking, Responsive visibility, Custom Attributes — full
-real control lists for each), control-type frequency across the whole
-dataset, responsive `_tablet`/`_mobile` suffix prevalence (20% of all
-controls), and the Dynamic Tags system (`__dynamic__`) that lets a shared
-template pull live post data without a custom shortcode.
-
-The full per-widget Content/Style control data (135 widgets, Elementor core
-+ Pro) ships as `data/elementor-core-pro-controls.json` — query it directly
-instead of re-deriving an unfamiliar widget's settings from scratch. Knowing
-these patterns up front is what makes editing Elementor JSON cheap instead
-of a rediscovery exercise every time.
-
-## Editing a shared Elementor template safely
-
-Shared templates (Header, Footer, Archive, singular-CPT templates, loop-item
-cards) render for *every* post that matches their Theme Builder condition —
-you cannot hardcode per-entity content in them. See
-`references/elementor-safe-edit.md` for the full protocol:
-
-1. Read `_elementor_data` as JSON; a `path` like `[0,0,1,1,0]` means **four**
-   nested `->elements[idx]` hops after the outer list, not three — count them
-   on your fingers before writing array-navigation code, this is the single
-   most common off-by-one in this workflow.
-2. If the change needs to vary per-post (a name, a client, a category), don't
-   edit static widget content — convert it to a `shortcode` widget backed by a
-   PHP function that reads `get_the_ID()` / ACF fields at render time. See
-   `references/dynamic-ghost-text-pattern.md` for a worked example (turning a
-   static decorative label into a per-entity one).
-3. Before touching `functions.php` or any executed PHP: write the full new file
-   locally, upload to a scratch path, run `php -l` against it, and only then
-   overwrite the live file. A syntax error in a theme's `functions.php` takes
-   the entire site down on every request.
-4. Back up the current `_elementor_data` value before writing a new one.
-5. After saving: flush the Elementor CSS cache, then the page-cache plugin
-   (Breeze/WP Rocket/etc.), then the host/CDN layer (Cloudways, Cloudflare) —
-   in that order, layer by layer, inside-out. Reload with cache bypassed and
-   verify visually, not just a 200 status code (a 200 can still be a broken
-   layout or the old cached HTML).
-
-## Cross-checking your own work
-
-Scripted checks and screenshots disagree with reality sometimes:
-
-- Curl output can be gzip/br-compressed garbage if you forget `--compressed` —
-  garbled CJK text in a fetched HTML file is almost always this, not a real
-  encoding bug on the site.
-- A shrunk full-page screenshot cannot be trusted to read small (~11px) text
-  accurately — verify small text against the actual DOM/source, not by eyeballing
-  a scaled-down screenshot.
-- When a user describes on-screen text that doesn't match anything you can find,
-  consider: (a) it's generated by CSS/SVG, not literal HTML text — search
-  `<text>`/`content:` in the raw source, not just plain grep for the word;
-  (b) they may be looking at a different page/section than you assumed — ask
-  "which page, roughly where" before spending cycles guessing.
+Do this whenever the target site's Elementor/Elementor Pro version differs
+meaningfully from what `data/elementor-core-pro-controls.json` was extracted
+from, or when building against a third-party addon widget not covered by
+the shipped dataset.
 
 ## Tools (in `tools/`)
 
-The audit tools need full WordPress context (`get_post_meta()`, ACF field
-introspection, `wp_upload_dir()`) — they're PHP, meant to run via `wp
-eval-file` against the target site, not standalone scripts. Upload once,
-run, done:
-
-```bash
-cat tools/audit-plugin-usage.php | ssh user@host "cat > /tmp/audit.php"
-ssh user@host "cd /path/to/wordpress && wp eval-file /tmp/audit.php '<real-signature>'"
-```
-
-Note: `wp eval-file` takes plain positional arguments only — it does **not**
-support a Unix-style `--` separator, and any `--flag=value` token is
-intercepted by wp-cli itself as an attempted global parameter and errors out
-before your script runs. Pass the signature as a quoted positional argument.
-
 | Tool | Run via | Purpose |
 |------|---------|---------|
-| `audit-plugin-usage.php` | `wp eval-file audit-plugin-usage.php '<real-signature>'` | Cross-reference a plugin's real block/shortcode/option signature across posts, `_elementor_data`, and options |
-| `audit-orphan-media.php` | `wp eval-file` | Find genuinely-unreferenced attachments, with a guard against false positives from unrelated numeric postmeta (view counters, analytics IDs) — only trusts bare-integer matches against real ACF image/gallery fields |
-| `ghost-glint-svg.py` | standalone (`python3 tools/ghost-glint-svg.py "TEXT"`) | Generate the dynamic "ghost text" SVG (outline stroke + animated shine clipPath) for arbitrary text, proportionally sized — this one needs no WordPress context, so it's plain Python for previewing/tuning proportions before wiring it into a shortcode |
-| `extract-elementor-controls.php` | `wp eval-file` | Re-run the extraction behind `data/elementor-core-pro-controls.json` against your own site — gets current data for your Elementor version and any third-party addon widgets it has |
+| `extract-elementor-controls.php` | `wp eval-file` | Reproduce the widget-control dataset on any live site |
+| `ghost-glint-svg.py` | standalone | Generate a dynamic per-entity decorative SVG (worked example of static→dynamic conversion, see `dynamic-ghost-text-pattern.md`) |
+| `install-skill.py` | standalone | Multi-platform installer |
 
 ## Multi-platform install
 
 See `references/multiplatform-install-verification.md` — dated findings for
-8 AI coding platforms' skill/rule conventions, since this space moves fast
-enough that a 6-week-old assumption can already be wrong. **Re-verify before
-trusting**, don't just copy the table.
+8 AI coding platforms' skill/rule conventions. Re-verify before trusting,
+don't just copy the table.
 
 ```bash
 python tools/install-skill.py --list
 python tools/install-skill.py claude-code
-python tools/install-skill.py cursor --to /path/to/proj
 ```
-
-## Data (in `data/`)
-
-- `platform-conventions.csv` — install paths + verified-as-of date per platform
 
 ## Author
 
 Built and maintained by **moksa** at [moksaweb.com](https://moksaweb.com).
-MIT licensed. Issues and PRs welcome.
+MIT licensed. Sibling project:
+[rankmath-seo-wp](https://github.com/moksa1123/rankmath-seo-wp).

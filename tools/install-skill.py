@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Install the wp-elementor-ops skill into any of 8 supported AI platforms.
+"""Install the elementor-headless skill into any of 8 supported AI platforms.
 
 Reads platform configs from assets/templates/platforms/*.json and writes the
 skill content to the right path with the right filename and frontmatter.
@@ -229,8 +229,8 @@ def install_zip_upload(cfg: dict, target_root: Path, *, force: bool, dry_run: bo
         raise SystemExit(f"Refusing to overwrite {out_zip} — pass --force to override.")
 
     with zipfile.ZipFile(out_zip, "w", zipfile.ZIP_DEFLATED) as zf:
-        zf.writestr("wp-elementor-ops/SKILL.md", skill_content)
-        plan["entries"].append("wp-elementor-ops/SKILL.md")
+        zf.writestr("elementor-headless/SKILL.md", skill_content)
+        plan["entries"].append("elementor-headless/SKILL.md")
         for sec in ("references", "data", "examples"):
             if not cfg.get("sections", {}).get(sec):
                 continue
@@ -238,8 +238,8 @@ def install_zip_upload(cfg: dict, target_root: Path, *, force: bool, dry_run: bo
             for p in sec_root.rglob("*"):
                 if p.is_file():
                     rel = p.relative_to(REPO_ROOT)
-                    zf.write(p, arcname=f"wp-elementor-ops/{rel.as_posix()}")
-                    plan["entries"].append(f"wp-elementor-ops/{rel.as_posix()}")
+                    zf.write(p, arcname=f"elementor-headless/{rel.as_posix()}")
+                    plan["entries"].append(f"elementor-headless/{rel.as_posix()}")
     plan["size"] = out_zip.stat().st_size
     return plan
 
@@ -315,7 +315,7 @@ def cmd_install(name: str, *, target: Path | None, use_global: bool, force: bool
         print(f"Unknown install type: {cfg['installType']}", file=sys.stderr)
         return 1
 
-    print(f"Installing wp-elementor-ops -> {cfg['displayName']}{' (DRY RUN)' if dry_run else ''}")
+    print(f"Installing elementor-headless -> {cfg['displayName']}{' (DRY RUN)' if dry_run else ''}")
     print(f"Target root: {target_root}")
     plan = strategy(cfg, target_root, force=force, dry_run=dry_run)
     print(f"  file: {plan['file']}")
@@ -354,7 +354,7 @@ def interactive_pick() -> str:
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Install wp-elementor-ops into an AI platform.")
+    ap = argparse.ArgumentParser(description="Install elementor-headless into an AI platform.")
     ap.add_argument("platform", nargs="?", help="Platform key (run --list for options)")
     ap.add_argument("--list", action="store_true", help="List supported platforms")
     ap.add_argument("--info", metavar="PLATFORM", help="Show platform install details and exit")

@@ -69,5 +69,6 @@ rather than relying on the platform default.
   this, not a real site bug. Re-fetch with compression handled before
   concluding anything about the page's actual content.
 - A "0 matches" from a grep/string search is only meaningful if you've first
-  confirmed you're searching for the *real* signature — see
-  `plugin-audit-methodology.md`.
+  confirmed you're searching for the *real* control/setting/hook name — see
+  `elementor-style-system.md` for a worked example (Border/Box Shadow vs.
+  Custom CSS) of verifying a mechanism from source instead of assuming.

@@ -5,7 +5,7 @@
   "folderStructure": {
     "projectRoot": null,
     "globalRoot": null,
-    "skillPath": "wp-elementor-ops.zip",
+    "skillPath": "elementor-headless.zip",
     "filename": "SKILL.md"
   },
   "sections": {
@@ -16,18 +16,18 @@
     "examples": true
   },
   "frontmatter": {
-    "name": "wp-elementor-ops",
-    "description": "Safely audit and edit WordPress + Elementor sites - verify plugin/media usage before removing anything, edit shared Elementor templates without breaking other pages, and manage cache layers correctly.",
+    "name": "elementor-headless",
+    "description": "Build and modify Elementor pages by directly reading/writing the underlying JSON and meta data - no visual editor required. Covers the full parameter surface, template CRUD, Display/Advanced Conditions, and custom CSS/style injection, with every Elementor Pro-only feature explicitly labeled.",
     "license": "MIT",
     "author": "moksa (https://moksaweb.com)",
     "version": "1.0.0"
   },
-  "loaderBehaviour": "Upload via Settings -> Skills -> Upload. Claude.ai parses SKILL.md frontmatter and surfaces the skill in your library. Tools that need a local Python runtime (audit-plugin-usage.py, audit-orphan-media.py) won't run in the sandbox since they expect SSH/WP-CLI access to a real site; use them from a local terminal instead.",
+  "loaderBehaviour": "Upload via Settings -> Skills -> Upload. Claude.ai parses SKILL.md frontmatter and surfaces the skill in your library. The extraction tool (extract-elementor-controls.php) needs a live WP-CLI connection and won't run in the sandbox; use it from a local terminal against your own site instead.",
   "uploadSteps": [
-    "1. Run: python tools/install-skill.py claude-ai --to ./build (creates wp-elementor-ops.zip)",
+    "1. Run: python tools/install-skill.py claude-ai --to ./build (creates elementor-headless.zip)",
     "2. Open Claude.ai -> Settings -> Skills -> Upload",
     "3. Pick the generated zip; the skill appears in your library",
-    "4. New chats auto-invoke when you ask to audit/edit a WordPress + Elementor site"
+    "4. New chats auto-invoke when you ask to build/modify an Elementor page programmatically"
   ],
   "verified": true,
   "verifiedAsOf": "2026-07-11"
