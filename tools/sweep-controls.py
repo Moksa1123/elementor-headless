@@ -530,21 +530,45 @@ def cmd_plan(a) -> int:
 
     (out / "plan.json").write_text(json.dumps(plan, ensure_ascii=False), encoding="utf-8")
 
+    # The runner, written out rather than described. It deletes the CSS file
+    # before each apply on purpose: a batch that fatals must leave NO css behind,
+    # otherwise the previous batch's stylesheet is still sitting there and every
+    # control in the failed batch gets silently scored against the wrong CSS.
+    run = out / "RUN.sh"
+    run.write_text(f"""#!/bin/bash
+# Apply every sweep batch and capture the CSS Elementor compiles for it.
+# Run this from the WordPress root, with tools/ reachable.
+set -u
+POST={a.post_id}
+SWEEP={out.name}
+CSS=wp-content/uploads/elementor/css/post-$POST.css
+
+ok=0; fail=0
+for f in "$SWEEP"/batch-*.json; do
+  b=$(basename "$f" .json)
+  rm -f "$CSS"
+  if wp eval-file tools/apply-page.php "$POST" "$f" > /dev/null 2>&1 && [ -f "$CSS" ]; then
+    cp "$CSS" "$SWEEP/css/$b.css"; ok=$((ok+1))
+  else
+    echo "FAILED: $b"; fail=$((fail+1))
+  fi
+done
+echo "applied $ok, failed $fail"
+echo "now: python tools/sweep-controls.py check $SWEEP --out data/control-verification.csv"
+""", encoding="utf-8")
+
     print(f"owners        {len(owners)}")
-    print(f"variants      {len(nodes)}  (controls whose conditions contradict "
+    print(f"variants      {len(nodes)}  (controls whose dependencies contradict "
           f"cannot share an element)")
     print(f"targets       {n_targets:,} controls to assert")
     print(f"batches       {len(batches)}  ({a.batch_size} variants per page)")
-    print(f"written       {out}/")
+    print(f"written       {out}/  (+ RUN.sh)")
     print()
-    print("Now apply each batch and capture the CSS Elementor compiles:")
-    print()
-    print(f"  for f in {out}/batch-*.json; do")
-    print(f"    wp eval-file tools/apply-page.php {a.post_id} \"$f\"")
-    print(f"    cp wp-content/uploads/elementor/css/post-{a.post_id}.css \\")
-    print(f"       {out}/css/$(basename \"$f\" .json).css")
-    print(f"  done")
-    print()
+    if not a.post_id:
+        print("NOTE: no --post-id given, so RUN.sh has POST=0. Point it at a DRAFT post;")
+        print("      the sweep overwrites that post's content 1 batch at a time.")
+        print()
+    print(f"  bash {run}                                    # apply + capture CSS")
     print(f"  python tools/sweep-controls.py check {out} --out data/control-verification.csv")
     return 0
 
@@ -591,6 +615,34 @@ def blocks_for_id(css: str, el_id: str) -> str:
     return " ".join(out)
 
 
+def declarations(block: str) -> list[tuple[str, str]]:
+    """
+    (property, value) pairs from a declaration block.
+
+    Splitting on ';' is not enough: a value can legitimately contain one, inside
+    url(...) or a data: URI. Track parenthesis depth.
+    """
+    out, buf, depth = [], [], 0
+    for ch in block:
+        if ch == "(":
+            depth += 1
+        elif ch == ")":
+            depth = max(0, depth - 1)
+        if ch == ";" and depth == 0:
+            decl = "".join(buf)
+            buf = []
+            if ":" in decl:
+                p, _, v = decl.partition(":")
+                out.append((p.strip(), v.strip()))
+            continue
+        buf.append(ch)
+    decl = "".join(buf)
+    if ":" in decl:
+        p, _, v = decl.partition(":")
+        out.append((p.strip(), v.strip()))
+    return out
+
+
 def cmd_check(a) -> int:
     sweep = Path(a.sweep)
     plan = json.loads((sweep / "plan.json").read_text(encoding="utf-8"))
@@ -607,16 +659,30 @@ def cmd_check(a) -> int:
         for key in batch["keys"]:
             entry = plan["targets"][key]
             block = blocks_for_id(css, entry["element_id"])
+            decls = declarations(block)
             for t in entry["targets"]:
-                prop_hit = any(
-                    re.search(rf"(^|[;{{\s]){re.escape(p)}\s*:", block)
-                    for p in t["css"]
-                )
+                # The values of just this control's own declarations. Asserting
+                # inside them - rather than anywhere in the element's CSS - is what
+                # makes a pass mean "THIS control wrote THIS value" instead of
+                # "someone wrote something that looks similar".
+                mine = [v for p, v in decls if p in t["css"]]
+                prop_hit = bool(mine)
+
                 if t["expect"] is None:
                     status = "property" if prop_hit else "FAIL"
                     detail = "" if prop_hit else "no CSS emitted for this control"
                 else:
-                    val_hit = t["expect"].lower() in block.lower()
+                    hay = " ".join(mine).lower()
+                    want = t["expect"].lower()
+                    val_hit = want in hay
+                    if not val_hit:
+                        # A selector may interpolate {{SIZE}} without {{UNIT}}
+                        # (`opacity: {{SIZE}}`), so the unit we wrote never reaches
+                        # the CSS. Fall back to the bare magnitude, which is still
+                        # unique to this control.
+                        m = re.match(r"^(\d+)[a-z%]*$", want)
+                        if m and re.search(rf"(^|[^\d.]){m.group(1)}([^\d]|$)", hay):
+                            val_hit = True
                     if val_hit:
                         status = "verified"
                         detail = ""

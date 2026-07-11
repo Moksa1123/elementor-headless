@@ -2,7 +2,7 @@
 
 **エディタを操作するのではなく、JSON を書いて Elementor ページを構築する。**
 
-AI コーディングエージェントに Elementor のオーサリング面すべて —
+AI コーディングエージェントに、Elementor のオーサリング面すべて —
 **135 ウィジェットと 3 エレメントにまたがる 37,964 コントロール** — を、
 到底読み切れない 583,555 トークンのドキュメントとしてではなく、
 クエリ可能なデータベースとして渡す
@@ -136,7 +136,7 @@ Border を Pro と誤ってラベル付けしたまま出荷しました。
 ## 本当に正確なのか。証明させてください。
 
 スキーマは Elementor 4.1.4 / Pro 4.1.2 から取得したものです。あなたの環境は違うかもしれません。
-信用せず、テストしてください。検証ツールは 2 つ、問いも 2 つです。
+信用せず、テストしてください。検証ツールは 3 つ、問いも 3 つとも違います。
 
 **1. スキーマはあなたのインストールと一致するか。**
 
@@ -170,10 +170,52 @@ CSS property assertions: 94/94 passed
 PASS
 ```
 
-**3. 実物を見る。** `examples/demo-page.json` は、このスキルだけで構築された実在の公開ページです。
+**3. スキーマ内のすべてのコントロールは、本当に動作するのか。**
+
+`verify-render.py` がカバーするのは、そのページがたまたま使っているコントロールだけです — デモページ
+では 94 個。`sweep-controls.py` が残りをカバーします。CSS を制御すると主張するすべてのコントロールに
+ついて正当な値を合成し、それを効かせるために必要な依存の連鎖を解き、レンダリングし、その値が実際に
+出力されたことをアサートします。各コントロールには**そのコントロール固有の**値（それぞれ異なる 16 進
+カラー、それぞれ異なるピクセルサイズ）が与えられるので、パスしたということは*そのコントロール*が
+*その値*を生み出したという意味になります。何か別のものが似たプロパティを書いた、ではなく。
+
+```bash
+python tools/sweep-controls.py plan --out sweep/ --post-id <draft post>
+# apply each batch, capture post-<id>.css
+python tools/sweep-controls.py check sweep/ --out data/control-verification.csv
+```
+
+```
+controls asserted     16,778
+  verified by value   15,508  (92.4%)   the exact value we wrote is in the CSS
+  property only        1,270  ( 7.6%)   right property, value not literally assertable
+  FAILED                   0  ( 0.0%)
+```
+
+コントロール単位の結果は `data/control-verification.csv` に同梱しています。
+
+**4. 実物を見る。** `examples/demo-page.json` は、このスキルだけで構築された実在の公開ページです。
 Elementor エディタは一度も開かれていません。
 
 **https://moksaweb.com/elementor-headless-demo/**
+
+## ページ間・サイト間でブロックを再利用する
+
+Elementor 自身の JSON 交換フォーマット — エディタの Export / Import Template ボタンの裏側にある
+ファイルです。
+
+```bash
+wp eval-file tools/export-template.php <post_id> > hero-block.json
+wp --user=1 eval-file tools/import-template.php hero-block.json <target_post_id>
+```
+
+**`_elementor_data` をコピーしてサイト間でブロックを移動させては絶対にいけません。** メディア系の
+コントロールは添付ファイルの id を保存しており、その id は移動先のサイトでは*別の画像*を指します —
+あるいは何も指しません。Elementor の `on_export` は id を url に置き換え、`on_import` はそれを
+移動先のメディアライブラリへ再ダウンロードします。生の meta をコピーすれば、画像は黙って壊れるか、
+黙って別の画像に化けます。ここで提供するツールは Elementor 自身のインポート経路を呼び出し、これらの
+フックを確実に通します。ラウンドトリップの計測結果は、記述した設定 82 件、失われたもの 0、
+変化したもの 0。
 
 ## 同梱物
 
@@ -188,6 +230,7 @@ data/
   group-controls.csv       3.7 KB   16 グループと、それが展開されるフラットキー
   widgets.csv              8.2 KB   135 ウィジェット + 3 エレメント
   breakpoints.csv          0.2 KB
+  control-verification.csv          コントロール単位: 実際にレンダリングされるか?
   token-benchmark.csv               再現可能な計測結果
 
 tools/
@@ -198,18 +241,22 @@ tools/
   build-indexes.py               ダンプ -> 同梱データファイル
   verify-schema.py               スキーマはあなたのインストールと一致するか?
   verify-render.py               Elementor はスキーマが約束したものを出力するか?
+  sweep-controls.py              すべてのコントロールをレンダリングして動作をアサートする
+  export-template.php            Elementor 自身の JSON 形式でエクスポートする
+  import-template.php            Elementor 自身の経路で、メディアごとインポートする
   benchmark-tokens.py            トークン数値を再現する
   install-skill.py               8 プラットフォーム対応インストーラ
 
 references/   data-model · control-types · containers-and-layout · responsive
-              templates-and-conditions · extraction-traps · token-efficiency
+              templates-and-conditions · import-export · extraction-traps
+              token-efficiency
 examples/     demo-page.json - 上記の公開ページ
 ```
 
-## 3 つの罠
+## 4 つの罠
 
-このデータを素朴に抽出すると、3 つの別々のかたちで間違えます。どれも、完全に見えて嘘をついている
-スキーマを生みます。3 つとも、発覚する前にこのリポジトリで実際に出荷されました。詳細は
+このデータを素朴に抽出すると、4 つの別々のかたちで間違えます。どれも、完全に見えて嘘をついている
+スキーマを生みます。4 つとも、発覚する前にこのリポジトリで実際に出荷されました。詳細は
 [extraction-traps.md](references/extraction-traps.md) に。
 
 1. **WP-CLI は Elementor からはフロントエンドに見える**ため、痩せたコントロールスタックが返ってきます。
@@ -221,6 +268,12 @@ examples/     demo-page.json - 上記の公開ページ
    gap を取りこぼしていました。（修正後、コントロールの 9.8% → 30.1%。）
 3. **コントロールのティアは、そのウィジェットのティアではありません。** Pro が無料ウィジェットに
    注入するからです。継承ではなく、計測。
+4. **コントロールのゲートのかかり方は 3 通りあり**、`condition` はそのうちの 1 つにすぎません。
+   152 個のコントロールは、独自の演算子を持つ高度なブール形式によって*のみ*ゲートされています。
+   さらに 499 個のコントロールは、*別の*コントロールの値を自分の CSS に補間します — その別の値が
+   空だと、Elementor は宣言全体を捨てます。文書化された条件はすべて満たされていて、エラーも出ないのに、
+   です。グラデーションの色を指定せずにグラデーションの角度だけ設定すれば、何も出てきません。黙って。
+   これは 16,778 個すべてのコントロールをレンダリングして目で確かめて、初めて表に出ました。
 
 ## コントリビュート
 

@@ -334,8 +334,8 @@ Result on Elementor 4.1.4 / Pro 4.1.2 — 550 element variants across 55 pages:
 
 ```
 controls asserted     16,778
-  verified by value   13,586  (81.0%)   the exact value we wrote is in the CSS
-  property only        3,192  (19.0%)   right property, value not literally assertable
+  verified by value   15,508  (92.4%)   the exact value we wrote is in the CSS
+  property only        1,270  ( 7.6%)   right property, value not literally assertable
   FAILED                   0  ( 0.0%)
 ```
 
@@ -425,7 +425,7 @@ python tools/sweep-controls.py check sweep/ --out data/control-verification.csv
 
 ```
 controls asserted     16,778
-  verified by value   13,586  (81.0%)
+  verified by value   15,508  (92.4%)
   FAILED                   0
 ```
 
