@@ -1,136 +1,235 @@
-<div align="center">
+# elementor-headless
 
-# Elementor Headless
+**エディタを操作するのではなく、JSON を書いて Elementor ページを構築する。**
 
-### JSON とメタデータを直接読み書きしてElementorページを構築・変更する。ビジュアルエディタ不要。Pro限定機能はすべて明示的にラベル付け。
+AI コーディングエージェントに Elementor のオーサリング面すべて —
+**135 ウィジェットと 3 エレメントにまたがる 37,964 コントロール** — を、
+到底読み切れない 583,555 トークンのドキュメントとしてではなく、
+クエリ可能なデータベースとして渡す
+[Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) です。
 
-<p>
-  <a href="https://github.com/Moksa1123/elementor-headless"><img src="https://img.shields.io/github/stars/Moksa1123/elementor-headless?style=flat-square&logo=github&logoColor=white&color=181717" alt="GitHub stars"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="MIT"></a>
-</p>
-
-<p>
-  <img src="https://img.shields.io/badge/format-Agent%20Skill-blue?style=flat-square" alt="Agent Skill">
-  <img src="https://img.shields.io/badge/python-3.9%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python 3.9+">
-  <img src="https://img.shields.io/badge/php-7.4%2B-777BB4?style=flat-square&logo=php&logoColor=white" alt="PHP 7.4+">
-  <img src="https://img.shields.io/badge/AI%20platforms-8-blueviolet?style=flat-square" alt="8 AI platforms">
-</p>
-
-<p>
-  <a href="#クイックスタート"><strong>はじめる</strong></a> ·
-  <a href="https://github.com/Moksa1123/elementor-headless"><strong>GitHub</strong></a> ·
-  <a href="https://github.com/Moksa1123/rankmath-seo-wp"><strong>姉妹プロジェクト</strong></a> ·
-  <a href="https://moksaweb.com"><strong>moksaweb.com</strong></a>
-</p>
-
-<p>
-  <a href="README.md">English</a> ·
-  <a href="README.zh-TW.md">繁體中文</a> ·
-  <strong>日本語</strong> ·
-  <a href="README.ko.md">한국어</a>
-</p>
-
-</div>
+[English](README.md) · [繁體中文](README.zh-TW.md) · 日本語 · [한국어](README.ko.md)
 
 ---
 
-## これは何か
+## なぜ
 
-Elementorをヘッドレスに扱うアプローチ: ページはコンテナとウィジェットから
-成るJSONツリーであり、各ウィジェットは型付けされたフィールドの `settings`
-オブジェクトです。このスキルはAIエージェントに、実際に検証済みの
-パラメータ全体像——ウィジェットコントロール、スタイルグループ、
-レスポンシブブレークポイント、テンプレート条件、動的タグ——を提供し、
-ビジュアルエディタを一切開かずにデータだけでページを構築・再構成できる
-ようにします。
+Elementor はページを post meta 内の JSON ツリーとして保存します。ツリーを書けば、ページは存在します。
+しかし Elementor は **書いた内容を検証しません**。値をそのまま保存し、理解できるものだけをレンダリングし、
+残りは黙って捨てます。
 
-サイトのヘルスチェックやプラグイン監査ツール**ではありません**——それは
-明確にスコープ外です。これは「診断」ではなく「構築」についてのスキルです。
+エラーは出ません。スペルを間違えたコントロール、オブジェクトが入るべき場所の文字列、Free サイト上の
+Pro 専用コントロール。どれも問題なく保存され、手元のマシンではきれいに描画され、そして肝心なところで
+静かに何もしません。
 
-## カバー範囲
-
-- **テンプレート**: Theme Builderテンプレートの作成/読み込み/適用
-  （`elementor_library` のCRUD、`_elementor_template_type`）
-- **表示条件（Display Conditions）と高度な条件（Advanced Conditions）**:
-  Include/Exclude 条件のタイプ・名前を完全網羅（general／singular／
-  archive の3大分類と、Elementor Proが提供するすべてのサブ条件）。加えて、
-  競合する複数テンプレート間の実際の解決方法（登録順ではなく、
-  具体性に基づく優先度）
-- **RWD**: ブレークポイントごとのスタイルパラメータ——全Elementor
-  コントロールの20%が `_tablet`/`_mobile` レスポンシブバリアントを
-  持つことを実測で確認済み
-- **カスタム設定**: Border、Box Shadow、Typography、Backgroundの背後にある
-  共通の Group Control メカニズム（コア Elementor、無料）と、
-  Custom CSS注入（本物のPro限定機能、フックで注入——推測ではなくソースから
-  検証済み）
-- **Free vs Pro、推測ではなく検証済み**: すべてのウィジェットと機能の
-  出所を、実際の `elementor` vs `elementor-pro` プラグインディレクトリと
-  ライセンスゲートのコードと照合。このプロジェクトは開発中に一度
-  Border/Box-Shadowの判定を誤り（Pro限定だと思い込んだが実際はFree）、
-  ソースコードと照合して修正した経緯がある——その修正過程と検証方法の
-  両方をドキュメント化している
-
-## クイックスタート
+つまり Elementor ページを構築するエージェントの選択肢は 2 つです。毎回 Elementor の PHP ソースを読む
+（高コスト — しかもそれでも JSON の形は分からない）か、推測する（黙って間違える）か。このスキルは
+3 つめの選択肢です。
 
 ```bash
-git clone https://github.com/Moksa1123/elementor-headless.git
+$ python tools/el.py type slider
+control type: slider   [FREE]  (elementor-core)
+
+JSON value shape (what you write into _elementor_data settings):
+  {"unit": "px", "size": "", "sizes": []}
+```
+
+## 仕組み
+
+![architecture](assets/diagrams/architecture.svg)
+
+3 つのフェーズ。抽出は Elementor のバージョンごとに 1 回、**あなたの**サイトに対して実行します。
+それ以降はすべてクエリです。
+
+## インストール
+
+```bash
+git clone https://github.com/Moksa1123/elementor-headless
 cd elementor-headless
-python tools/install-skill.py --list                 # 対応プラットフォーム一覧
-python tools/install-skill.py claude-code             # このプロジェクトにインストール
-python tools/install-skill.py claude-code --global    # 全プロジェクト共通としてインストール
+python tools/install-skill.py claude-code --global     # or: cursor, codex-cli, gemini-cli, ...
+python tools/install-skill.py --list
 ```
 
-契約の全文は `SKILL.md`、データモデルの詳細は `references/` を参照。
+8 プラットフォーム対応: Claude Code、Claude.ai、Cursor、Codex CLI、Gemini CLI、Devin
+（旧 Windsurf）、GitHub Copilot、Continue。規約は 2026-07-11 に再検証済み —
+[8 つのうち 3 つが 6 週間でずれていた](references/multiplatform-install-verification.md)ので、
+仮定せず実際に確認しています。
 
-## リポジトリ構成
+## 使い方
 
-```
-elementor-headless/
-├── SKILL.md                        # スキル契約——AIアシスタントが自動読込
-├── README.md                       # 本ファイル（+ zh-TW／ja／ko 翻訳）
-├── CLAUDE.md                       # AI開発規約 + Free/Pro規則 + サニタイズ規則
-├── LICENSE                         # MIT
-├── references/
-│   ├── elementor-widgets-and-containers.md   # コンテナ/ウィジェット/動的タグのデータモデル、実測検証済み
-│   ├── elementor-style-system.md             # Group Control機構、Custom CSS、Free/Pro検証方法
-│   ├── elementor-templates-and-conditions.md # テンプレートCRUD、完全な表示/高度な条件
-│   ├── elementor-safe-edit.md                # 共有テンプレート編集手順、JSONパス規律
-│   ├── dynamic-ghost-text-pattern.md         # 静的→投稿ごとの動的コンテンツへの変換実例
-│   ├── wp-cli-safe-scripting.md              # クォート/エスケープ/ファイル実行の規律
-│   └── multiplatform-install-verification.md # プラットフォームごとのインストール規約と検証日
-├── tools/
-│   ├── extract-elementor-controls.php # `wp eval-file` で実行——自サイトでコントロールデータを再抽出
-│   ├── ghost-glint-svg.py             # スタンドアロン——ゴーストテキストSVGの比率をプレビュー/調整
-│   └── install-skill.py               # マルチプラットフォームインストーラー
-├── data/
-│   ├── platform-conventions.csv          # プラットフォームごとのインストールパスと検証日
-│   └── elementor-core-pro-controls.json  # 135ウィジェット分の完全なコントロールスキーマ（実稼働環境から抽出）
-└── assets/templates/platforms/*.json  # プラットフォームごとのインストール設定
+```bash
+python tools/el.py widgets --tier free --grep box   # find a widget
+python tools/el.py widget heading --tab style       # its style controls
+python tools/el.py container --tab layout           # flex + grid, with conditions
+python tools/el.py css border-radius                # reverse lookup by CSS property
+python tools/el.py group typography                 # what a group control expands into
+python tools/el.py breakpoints                      # the responsive suffixes
+python tools/el.py pro --check custom_css align     # exits 1 if any of these needs Pro
 ```
 
-## 推測ではなく、検証済み
+そして構築し、チェックし、出荷する。
 
-- **164ウィジェット、48,238コントロール** を実際に稼働中のElementor +
-  Elementor Proから抽出——学習データから書いたものではない。
-- **全ウィジェットの98%に共通する9つの「Advanced」タブセクション**、
-  それぞれの完全な実際のコントロールリスト。
-- **すべての表示/高度な条件タイプ** を Elementor Pro の
-  `Condition_Base` サブクラスから直接列挙、複数テンプレートが競合した
-  場合の具体性ベースの優先度解決ロジックも含む。
-- **Free vs Pro の境界線はソースコードと照合して検証**（プラグイン
-  ディレクトリ + ライセンスゲートのコード）——機能がどれだけ高度に
-  見えるかで推測したものではない。
-- **マルチプラットフォームのインストール規約** には検証日が記載され、
-  独立に再確認されている——対応8プラットフォームのうち3つは、姉妹
-  スキル自身の表が書かれてからわずか約6週間の間にすでに変わっていた
-  （詳細は `multiplatform-install-verification.md`）。
+```bash
+python tools/el.py skeleton > page.json
+python tools/validate-page.py page.json --target free
+wp eval-file tools/apply-page.php 123 page.json
+```
+
+`validate-page.py` は Elementor が捕まえないものを捕まえます。未知のコントロール名、誤った値の形、
+不正な単位、無効なオプション、重複した id、満たされていない条件、そして Free ターゲット上の
+Pro 専用コントロール。
+
+## トークンコスト
+
+**Elementor のソースを読む場合よりトークン 89.1% 削減。スキーマを読み込む場合より 99.1% 削減。**
+再現できます — スクリプトが `data/token-benchmark.csv` を書き出します。
+
+```bash
+pip install tiktoken
+python tools/benchmark-tokens.py --elementor-src /path/to/plugins/elementor
+```
+
+| タスク | ソースを読む | スキーマを読み込む | **クエリ** |
+|---|---|---|---|
+| ヒーローコンテナのレイアウト（flex、boxed、レスポンシブな padding） | 20,182 | 583,555 | **964** |
+| 見出しのスタイリング（色、タイポグラフィ、配置） | 8,329 | 583,555 | **730** |
+| ボタンのスタイリング（色、padding、radius、hover） | 7,803 | 583,555 | **2,935** |
+| 任意のウィジェットの余白をレスポンシブにする | 11,800 | 583,555 | **243** |
+| ある CSS プロパティを制御しているコントロールを探す | — | 583,555 | **363** |
+| **合計** | **48,114** | **583,555** | **5,235** |
+
+効く理由は 2 つあります。データは**クエリするだけで、決して読み込まない**こと。そして、すべての
+ウィジェットが共有する 211 個の Advanced タブのコントロールを、**135 回ではなく 1 回だけ格納**して
+いること。これらは全行の 75.6% を占めるため、括り出すだけでスキーマは 73.2% 縮みます。
+
+計測は tiktoken の `cl100k_base` によるもの — Claude ではなく OpenAI のトークナイザーなので、
+絶対値はおおよそ ±10% ずれます。同一トークナイザー下での 2 つのテキスト間の比率は安定しており、
+主張しているのはその比率です。手法と留意点は
+[token-efficiency.md](references/token-efficiency.md) に。
+
+## Free と Pro は推測ではなく計測
+
+Elementor Pro は**無料ウィジェットにコントロールを注入します**。Pro が入ったサイトで無料の Heading
+ウィジェットを開けば、Advanced タブに Motion Effects、Sticky、Custom CSS、Display Conditions、
+Custom Attributes が並んでいます。ウィジェットのティアをそのまま継承すると、これらすべてが「free」と
+ラベル付けされ — そうして作ったページは自分の環境では完璧に描画され、Free 環境ではスタイルを失います。
+
+だからティアは計測します。2 回抽出し — 1 回は Pro を読み込んだ状態、もう 1 回は
+`wp --skip-plugins=elementor-pro`（影響するのはその CLI プロセスだけで、プラグインが無効化される
+わけではないため本番環境でも安全）で — 差分を取ります。
+
+| | Free 4.1.4 | + Pro 4.1.2 |
+|---|---|---|
+| ウィジェット | 64 | **135** |
+| すべてのウィジェットに載るコントロール | 165 | **211** (+46) |
+| `container` のコントロール | 277 | **356** (+79) |
+| コントロールタイプ | 52 | **59** |
+| グループコントロール | 11 | **16** |
+
+Pro が**すべての**ウィジェットに注入する 46 個: すべての `motion_fx_*`（37）、`sticky*`（6）、
+`custom_css`、`_attributes`、`e_display_conditions`。
+
+ティアを推論で決めないでください。**Border と Box Shadow は高機能に見えますが無料です。
+`_attributes` は基本的に見えますが Pro です。** このリポジトリも一度、計測せず推論した結果、
+Border を Pro と誤ってラベル付けしたまま出荷しました。
+
+## 本当に正確なのか。証明させてください。
+
+スキーマは Elementor 4.1.4 / Pro 4.1.2 から取得したものです。あなたの環境は違うかもしれません。
+信用せず、テストしてください。検証ツールは 2 つ、問いも 2 つです。
+
+**1. スキーマはあなたのインストールと一致するか。**
+
+```bash
+wp eval-file tools/extract-elementor-schema.php core+pro > mine.json
+wp --skip-plugins=elementor-pro eval-file tools/extract-elementor-schema.php core+pro > mine-free.json
+python tools/verify-schema.py mine.json --free-dump mine-free.json
+```
+
+```
+checked 37,964 (owner, control) pairs from the shipped schema
+Free/Pro claims checked on free widgets/elements: 15,969
+FAILURES: 0
+PASS
+```
+
+ずれがあれば非ゼロで終了するので、デプロイのゲートに使えます。
+
+**2. スキーマから構築したページは、スキーマが約束した CSS を実際にレンダリングするか。**
+
+スキーマは、各コントロールがどの CSS プロパティを制御するかを示します。これはページを実際に構築し、
+Elementor がコンパイルしたスタイルシートを読み戻して、そのすべてを検証します — 各レスポンシブキーが
+*そのブレークポイントの*メディアクエリの中に入っているかどうかまで含めて。
+
+```bash
+python tools/verify-render.py examples/demo-page.json rendered.css --post-id 9176
+```
+
+```
+CSS property assertions: 94/94 passed
+PASS
+```
+
+**3. 実物を見る。** `examples/demo-page.json` は、このスキルだけで構築された実在の公開ページです。
+Elementor エディタは一度も開かれていません。
+
+**https://moksaweb.com/elementor-headless-demo/**
+
+## 同梱物
+
+```
+data/
+  elementor-schema.json    2.7 MB   オーサリング面の全体 - クエリするもので、読み込むものではない
+  controls.csv             2.0 MB   ウィジェット/エレメント固有のコントロール全件
+  common-controls.csv       39 KB   全ウィジェットが共有する 211 個
+  pro-only-controls.csv     33 KB   安全確認用テーブル
+  pro-only-widgets.csv     3.0 KB
+  control-types.csv        4.6 KB   59 種類すべての JSON 値の形
+  group-controls.csv       3.7 KB   16 グループと、それが展開されるフラットキー
+  widgets.csv              8.2 KB   135 ウィジェット + 3 エレメント
+  breakpoints.csv          0.2 KB
+  token-benchmark.csv               再現可能な計測結果
+
+tools/
+  el.py                          スキーマにクエリする - 正面入口
+  validate-page.py               ページツリーの事前チェック
+  apply-page.php                 書き込む: meta + CSS 再構築 + バックアップ
+  extract-elementor-schema.php   稼働中のインストールをダンプする
+  build-indexes.py               ダンプ -> 同梱データファイル
+  verify-schema.py               スキーマはあなたのインストールと一致するか?
+  verify-render.py               Elementor はスキーマが約束したものを出力するか?
+  benchmark-tokens.py            トークン数値を再現する
+  install-skill.py               8 プラットフォーム対応インストーラ
+
+references/   data-model · control-types · containers-and-layout · responsive
+              templates-and-conditions · extraction-traps · token-efficiency
+examples/     demo-page.json - 上記の公開ページ
+```
+
+## 3 つの罠
+
+このデータを素朴に抽出すると、3 つの別々のかたちで間違えます。どれも、完全に見えて嘘をついている
+スキーマを生みます。3 つとも、発覚する前にこのリポジトリで実際に出荷されました。詳細は
+[extraction-traps.md](references/extraction-traps.md) に。
+
+1. **WP-CLI は Elementor からはフロントエンドに見える**ため、痩せたコントロールスタックが返ってきます。
+   **コントロールの 46%、そしてタブ/ラベルのメタデータのほぼ 100% が消え**、しかもエラーは出ません。
+   抽出ツールはこの経路を無効化し、劣化したデータを出力するくらいなら中断する 2 つのカナリアを備えています。
+2. **レスポンシブは 2 つの機構**であり、素直なテストでは片方しか見つかりません。`padding_tablet` という
+   コントロールオブジェクトは*どこにも存在しません* — それでも `padding_tablet` は動きます。
+   サフィックス付きの兄弟を探してレスポンシブを検出する方法では、padding、margin、width、font size、
+   gap を取りこぼしていました。（修正後、コントロールの 9.8% → 30.1%。）
+3. **コントロールのティアは、そのウィジェットのティアではありません。** Pro が無料ウィジェットに
+   注入するからです。継承ではなく、計測。
 
 ## コントリビュート
 
-`CONTRIBUTING.md` を参照。このプロジェクトではサニタイズが他のリポジトリ
-以上に重要——PRを送る前に `CLAUDE.md` の「サニタイズ規則」セクションを
-読むこと。
+より新しい Elementor に対して再抽出し、再生成した `data/` を添えて PR を送ってください —
+`verify-schema.py` が、何が変わったかを正確に教えてくれます。
+[CONTRIBUTING.md](CONTRIBUTING.md) を参照。
 
-## 作者
+## ライセンス
 
-**moksa**（[moksaweb.com](https://moksaweb.com)）が開発・保守。MITライセンス。
+MIT。制作・保守: **moksa** · [moksaweb.com](https://moksaweb.com)
+
+姉妹スキル: [rankmath-seo-wp](https://github.com/moksa1123/rankmath-seo-wp)

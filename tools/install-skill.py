@@ -93,12 +93,26 @@ def read_skill_body() -> str:
 
 
 def embed_references(names: list[str]) -> str:
-    """Concatenate selected reference files (Markdown) for inline embedding."""
+    """
+    Concatenate selected reference files for platforms that can only take one flat
+    document.
+
+    A missing file is a hard error, not a skip. Silently shipping a rule file that
+    is quietly missing a reference the platform config asked for is exactly the
+    class of failure this whole skill exists to stamp out: it installs fine, it
+    looks fine, and the agent is short one document it was supposed to have.
+    """
     parts: list[str] = []
     for n in names:
         p = REPO_ROOT / "references" / n
         if not p.exists():
-            continue
+            available = ", ".join(sorted(q.name for q in (REPO_ROOT / "references").glob("*.md")))
+            raise SystemExit(
+                f"Platform config asks to embed references/{n}, which does not exist.\n"
+                f"Available: {available}\n"
+                f"Fix the platform config in assets/templates/platforms/ rather than "
+                f"shipping an install that is silently missing it."
+            )
         parts.append(f"\n\n---\n\n## Reference: {n}\n\n{p.read_text(encoding='utf-8', errors='replace')}\n")
     return "".join(parts)
 

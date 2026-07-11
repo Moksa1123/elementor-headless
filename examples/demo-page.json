@@ -1,0 +1,266 @@
+[
+  {
+    "id": "1a2b3c4",
+    "elType": "container",
+    "settings": {
+      "container_type": "flex",
+      "content_width": "boxed",
+      "boxed_width": {
+        "unit": "px",
+        "size": 960,
+        "sizes": []
+      },
+      "flex_direction": "column",
+      "flex_align_items": "center",
+      "flex_gap": {
+        "column": "24",
+        "row": "24",
+        "isLinked": true,
+        "unit": "px"
+      },
+      "padding": {
+        "unit": "px",
+        "top": "80",
+        "right": "24",
+        "bottom": "80",
+        "left": "24",
+        "isLinked": false
+      },
+      "padding_tablet": {
+        "unit": "px",
+        "top": "56",
+        "right": "20",
+        "bottom": "56",
+        "left": "20",
+        "isLinked": false
+      },
+      "padding_mobile": {
+        "unit": "px",
+        "top": "40",
+        "right": "16",
+        "bottom": "40",
+        "left": "16",
+        "isLinked": false
+      },
+      "background_background": "classic",
+      "background_color": "#0F172A"
+    },
+    "elements": [
+      {
+        "id": "2b3c4d5",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+          "title": "Built entirely from data",
+          "header_size": "h1",
+          "align": "center",
+          "title_color": "#F8FAFC",
+          "typography_typography": "custom",
+          "typography_font_size": {
+            "unit": "px",
+            "size": 46,
+            "sizes": []
+          },
+          "typography_font_size_mobile": {
+            "unit": "px",
+            "size": 30,
+            "sizes": []
+          },
+          "typography_font_weight": "700",
+          "typography_line_height": {
+            "unit": "em",
+            "size": 1.2,
+            "sizes": []
+          }
+        },
+        "elements": []
+      },
+      {
+        "id": "3c4d5e6",
+        "elType": "widget",
+        "widgetType": "text-editor",
+        "settings": {
+          "editor": "<p>This page has never been opened in the Elementor editor. Every element, every colour, every breakpoint below was written straight into <code>_elementor_data</code> from the schema in this skill.</p>",
+          "align": "center",
+          "text_color": "#94A3B8",
+          "typography_typography": "custom",
+          "typography_font_size": {
+            "unit": "px",
+            "size": 17,
+            "sizes": []
+          },
+          "typography_line_height": {
+            "unit": "em",
+            "size": 1.7,
+            "sizes": []
+          }
+        },
+        "elements": []
+      },
+      {
+        "id": "4d5e6f7",
+        "elType": "container",
+        "settings": {
+          "container_type": "flex",
+          "content_width": "full",
+          "flex_direction": "row",
+          "flex_gap": {
+            "column": "20",
+            "row": "20",
+            "isLinked": true,
+            "unit": "px"
+          },
+          "flex_wrap": "wrap",
+          "padding": {
+            "unit": "px",
+            "top": "24",
+            "right": "0",
+            "bottom": "8",
+            "left": "0",
+            "isLinked": false
+          }
+        },
+        "elements": [
+          {
+            "id": "5e6f708",
+            "elType": "widget",
+            "widgetType": "icon-box",
+            "settings": {
+              "selected_icon": {
+                "value": "fas fa-database",
+                "library": "fa-solid"
+              },
+              "view": "stacked",
+              "shape": "circle",
+              "title_text": "37,964 controls",
+              "description_text": "Every control of every widget, extracted from a live install, not from memory.",
+              "title_size": "h4",
+              "position": "block-start",
+              "primary_color": "#38BDF8",
+              "title_color": "#E2E8F0",
+              "description_color": "#94A3B8",
+              "_element_width": "initial",
+              "_element_custom_width": {
+                "unit": "%",
+                "size": 31,
+                "sizes": []
+              },
+              "_element_custom_width_mobile": {
+                "unit": "%",
+                "size": 100,
+                "sizes": []
+              }
+            },
+            "elements": []
+          },
+          {
+            "id": "6f70819",
+            "elType": "widget",
+            "widgetType": "icon-box",
+            "settings": {
+              "selected_icon": {
+                "value": "fas fa-shield-alt",
+                "library": "fa-solid"
+              },
+              "view": "stacked",
+              "shape": "circle",
+              "title_text": "Free vs Pro, measured",
+              "description_text": "Pro injects 46 controls into every free widget. They are labelled, not guessed.",
+              "title_size": "h4",
+              "position": "block-start",
+              "primary_color": "#38BDF8",
+              "title_color": "#E2E8F0",
+              "description_color": "#94A3B8",
+              "_element_width": "initial",
+              "_element_custom_width": {
+                "unit": "%",
+                "size": 31,
+                "sizes": []
+              },
+              "_element_custom_width_mobile": {
+                "unit": "%",
+                "size": 100,
+                "sizes": []
+              }
+            },
+            "elements": []
+          },
+          {
+            "id": "708192a",
+            "elType": "widget",
+            "widgetType": "icon-box",
+            "settings": {
+              "selected_icon": {
+                "value": "fas fa-bolt",
+                "library": "fa-solid"
+              },
+              "view": "stacked",
+              "shape": "circle",
+              "title_text": "89% fewer tokens",
+              "description_text": "Query the schema instead of reading Elementor's PHP source. Measured, reproducible.",
+              "title_size": "h4",
+              "position": "block-start",
+              "primary_color": "#38BDF8",
+              "title_color": "#E2E8F0",
+              "description_color": "#94A3B8",
+              "_element_width": "initial",
+              "_element_custom_width": {
+                "unit": "%",
+                "size": 31,
+                "sizes": []
+              },
+              "_element_custom_width_mobile": {
+                "unit": "%",
+                "size": 100,
+                "sizes": []
+              }
+            },
+            "elements": []
+          }
+        ]
+      },
+      {
+        "id": "8192a3b",
+        "elType": "widget",
+        "widgetType": "button",
+        "settings": {
+          "text": "See how it was verified",
+          "link": {
+            "url": "https://github.com/Moksa1123/elementor-headless",
+            "is_external": "yes",
+            "nofollow": "",
+            "custom_attributes": ""
+          },
+          "align": "center",
+          "size": "md",
+          "background_color": "#38BDF8",
+          "button_text_color": "#0F172A",
+          "border_radius": {
+            "unit": "px",
+            "top": "999",
+            "right": "999",
+            "bottom": "999",
+            "left": "999",
+            "isLinked": true
+          },
+          "text_padding": {
+            "unit": "px",
+            "top": "16",
+            "right": "34",
+            "bottom": "16",
+            "left": "34",
+            "isLinked": false
+          },
+          "typography_typography": "custom",
+          "typography_font_size": {
+            "unit": "px",
+            "size": 16,
+            "sizes": []
+          },
+          "typography_font_weight": "600"
+        },
+        "elements": []
+      }
+    ]
+  }
+]

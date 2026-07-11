@@ -17,11 +17,15 @@
   },
   "frontmatter": {
     "name": "elementor-headless",
-    "description": "Build/modify Elementor pages headlessly via JSON and meta data, no visual editor required. Full parameter surface, template conditions, Free vs Pro verified from source.",
+    "description": "Build and modify Elementor pages by writing the underlying JSON directly - no visual editor, no DOM. Query the full control surface (37,964 controls across 135 widgets and 3 elements) instead of reading Elementor's source, with every Elementor Pro-only control explicitly labeled from a measured Free-vs-Pro diff.",
     "alwaysApply": false
   },
   "loaderBehaviour": "Continue reads .continue/rules/*.md as Rules. Set alwaysApply: true to attach to every chat, or leave false and rely on the description for relevance matching. Rule files load in lexicographic order if you split this into several numbered files. References must be embedded inline; the installer concatenates key reference files into the rule body.",
-  "embedReferences": ["elementor-style-system.md", "elementor-templates-and-conditions.md"],
+  "embedReferences": [
+    "data-model.md",
+    "control-types.md",
+    "responsive.md"
+  ],
   "verified": true,
   "verifiedAsOf": "2026-07-11"
 }

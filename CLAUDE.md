@@ -1,180 +1,146 @@
 # Project instructions for AI assistants
 
-This file is read by Claude Code, Cursor, and other AI coding assistants when
-they open this repository. It supplements `SKILL.md` (the user-facing skill
-contract) with development conventions for editing the skill itself.
+Read by Claude Code, Cursor and other agents when they open this repository. It
+supplements `SKILL.md` (the user-facing contract) with conventions for editing the
+skill itself.
 
 ## Identity
 
 - Project: `elementor-headless`
-- Author / maintainer: **moksa** ([moksaweb.com](https://moksaweb.com))
-- License: MIT
-- Purpose: build and modify Elementor pages entirely through their
-  underlying JSON/meta data — headless, no visual editor required.
-  **Not** a site health-check or plugin/media audit tool — that's
-  explicitly out of scope; keep it that way.
-- Sibling project: [rankmath-seo-wp](https://github.com/moksa1123/rankmath-seo-wp) — same author, same multi-platform install architecture
+- Maintainer: **moksa** ([moksaweb.com](https://moksaweb.com)) · MIT
+- Purpose: build and modify Elementor pages entirely through `_elementor_data` —
+  headless, no visual editor.
+- **Not** a site health-check, plugin-audit or media-cleanup tool. That was tried
+  once in this project's history and deliberately removed. Keep it out.
+- Sibling: [rankmath-seo-wp](https://github.com/moksa1123/rankmath-seo-wp) — same
+  multi-platform install architecture.
 
-## Repository layout
+## Layout
 
 ```
-elementor-headless/
-├── SKILL.md                # Skill contract — auto-loaded by AI assistants
-├── README.md               # Entry point (+ zh-TW / ja / ko translations)
-├── CLAUDE.md               # This file — AI dev conventions
-├── CONTRIBUTING.md         # Human contributor guide
-├── LICENSE                 # MIT
-├── data/                   # CSV/JSON — verified structured facts, with dates
-├── references/             # Long-form methodology docs
-├── tools/                  # extraction/build scripts (PHP + Python) + installer
-└── assets/templates/platforms/*.json  # per-platform install configs
+SKILL.md                     the contract, auto-loaded by agents
+README.md (+ zh-TW/ja/ko)    entry point
+data/                        generated. NEVER hand-edit.
+references/                  long-form docs
+tools/                       extract -> build -> query -> validate -> apply -> verify
+examples/demo-page.json      the published proof page
+assets/diagrams/             architecture.svg
+assets/templates/platforms/  per-platform install configs
 ```
 
-## When editing the skill
+## The rule this whole project exists to enforce
 
-1. **`SKILL.md` is the contract.** Keep its YAML frontmatter (`name`,
-   `description`) intact — `name` must match the parent folder name
-   (`elementor-headless`), and both fields are required by the Agent Skills
-   spec.
-2. **Stay in scope.** This skill is about *constructing* Elementor pages
-   through data, not diagnosing a site's health. Don't add plugin-usage
-   auditing, orphaned-media detection, or general WordPress health-check
-   content here — that was tried once during this project's history and
-   deliberately removed. If a future task genuinely needs that, it belongs
-   in a separate project.
-3. **Extraction tools are PHP, not Python** —
-   `extract-elementor-controls.php` needs full WordPress + Elementor
-   context (`\Elementor\Plugin::$instance`) and is meant to run via `wp
-   eval-file` against a real site. `ghost-glint-svg.py` is the one
-   genuinely standalone tool (no WordPress context needed) — keep it that
-   way.
-4. **`wp eval-file` takes plain positional args only.** No `--` separator,
-   no `--flag=value` syntax (wp-cli intercepts any `--foo=bar` token as an
-   attempted *global* parameter and errors before your script runs).
-5. **Every Pro-only claim must be source-verified, not assumed.** See the
-   "Free vs Pro" section below — this project got Border/Box-Shadow wrong
-   once (assumed Pro-hook-injected when they're actually core Free Group
-   Controls) before correcting it against source. Don't repeat that
-   mistake with a new feature; verify the same way every time.
-6. **Use `data/*.csv` / `data/*.json` for structured, dated facts.** Widget
-   control schemas and platform conventions belong in machine-readable data
-   files with a verification date, with the prose rationale in the matching
-   `references/*.md`.
+**Nothing about Elementor gets written from memory. It gets measured.**
 
-## Free vs Pro: the standing rule
+Elementor does not validate `_elementor_data`. It stores whatever you give it and
+renders what it understands. Every mistake is therefore silent, which means a
+confident guess and a correct answer are indistinguishable until a human notices
+the padding never applied. So: no claim about a control name, a value shape, an
+option, a unit, or a Free/Pro boundary goes into this repo unless it came out of
+an extraction or a verifier.
 
-Every architecture decision, code sample, and comment — in this repo and in
-anything built using this skill — must explicitly mark which
-features/APIs/parameters are Elementor Pro-only. Never let Free and Pro
-blur together. Concretely, before labeling anything Pro-only:
+This is not a stylistic preference. This repo has shipped wrong data three times,
+each time by reasoning instead of measuring:
 
-1. **Widget-level**: check which plugin's directory registers the widget
-   class (`elementor-pro/` vs `elementor/`) — reflect on the class, don't
-   guess from the widget's name or apparent sophistication.
-2. **Feature-level, hook-injected**: grep the relevant
-   `elementor-pro/modules/*/module.php` for `API::is_licence_has_feature`
-   — the literal string passed as its first argument is the actual
-   license-gated feature name. Custom CSS is the confirmed example.
-3. **Feature-level, everything else**: if it's defined under
-   `elementor/includes/` rather than `elementor-pro/`, it's core/Free — full
-   stop, regardless of how advanced it looks. Border and Box Shadow are the
-   confirmed example of a "feels Pro, isn't" trap.
+- Border and Box Shadow were labelled **Pro** because they "feel" premium. They
+  are core, free, and always have been.
+- The schema was extracted through WP-CLI without disabling Elementor's frontend
+  control optimisation, silently losing **46% of all controls**.
+- Responsive controls were detected by looking for `_tablet` siblings in the
+  control stack. The common mechanism does not create any, so `padding_tablet` —
+  which works fine — was being rejected as an unknown control.
 
-Full detail and the exact verified field names for both in
-`references/elementor-style-system.md`.
+All three are written up in `references/extraction-traps.md`. Read it before
+touching the extractor.
 
-## Sanitisation rules (open-source release)
+## Regenerating data/
 
-This skill is published publicly, and its whole premise is "distilled from
-real production work" — which means the raw material is a real client's
-site. Never commit:
-
-- Real SSH hosts, IPs, usernames, key filenames
-- Real Cloudways / managed-WP paths (`/home/<account>.cloudwaysapps.com/...`)
-- Personal Windows / macOS paths (`C:\Users\<name>\...`, `~/Library/...`)
-- Real plugin/theme slugs, template IDs, ACF field keys, or post IDs tied to
-  an identifiable site — generalize the pattern, don't paste the specific
-  numbers (an `_elementor_conditions` value like `include/singular/team` as
-  an *example* of the format is fine; a real site's actual template ID `3411`
-  used as if it were universal is not)
-- Real client names, emails, phone numbers, social media handles, or company
-  names that appeared in any source material used to derive a pattern
-- Cloud project IDs, account numbers, FileBird/media-folder IDs
-
-Always use placeholders: `user@your-wp-host.example.com`, `~/.ssh/id_rsa`,
-`/path/to/wordpress`, `<template_id>`, `<cpt-slug>`.
-
-Every example in `references/` should read as a *generalizable pattern*, not
-a transcript of one specific site's data. If a worked example needs concrete
-numbers to be legible (like the proportional ratios in
-`dynamic-ghost-text-pattern.md`), keep the numbers but strip anything that
-would let a reader identify *whose* site they came from.
-
-`data/elementor-core-pro-controls.json` is safe by construction — it's
-extracted from Elementor's own class *definitions* (control names/types/
-labels), not from any site's actual content, so it carries no client data
-regardless of which site it was extracted from. Verify this stays true if
-the extraction script changes (don't start capturing live `settings` values
-or defaults that could echo real content).
-
-If you find a leak, sanitise it before committing and grep the entire repo
-for related strings before considering it done.
-
-## Local verification before commit
-
-There's no local test suite (the extraction tool needs a live WordPress +
-Elementor target, which isn't something to fake with fixtures). Instead:
+`data/` is generated output. Do not hand-edit it. Two dumps are required, not one:
 
 ```bash
-# Lint the PHP tool for syntax errors
-php -l tools/extract-elementor-controls.php
-
-# Exercise the standalone tool end-to-end
-python tools/ghost-glint-svg.py "TEST" --out /tmp/preview.html
-
-# Exercise the installer against a scratch directory for every platform
-for p in claude-code claude-ai cursor codex-cli gemini-cli windsurf copilot continue; do
-  python tools/install-skill.py "$p" --to ./_test_install --dry-run
-done
+wp eval-file tools/extract-elementor-schema.php core+pro > raw.json
+wp --skip-plugins=elementor-pro eval-file tools/extract-elementor-schema.php core+pro > free.json
+python tools/build-indexes.py raw.json --free-dump free.json --out data/
+python tools/verify-schema.py raw.json --free-dump free.json     # must exit 0
 ```
 
-Before merging a change to the PHP extraction tool, actually run it against
-a real WordPress + Elementor site via `wp eval-file` at least once — a
-`php -l` pass only proves it parses, not that it returns anything useful.
+The second dump is what makes the Free/Pro split real. `--skip-plugins` affects
+only that one CLI process — nothing is deactivated, so this is safe against a
+production site. Without `--free-dump`, `build-indexes.py` marks every control
+`tier: unknown` rather than guessing, and that is the correct behaviour: leave it
+that way.
 
-## Adding a new platform config
+`build-indexes.py` refuses a dump taken with control optimisation on. Do not
+"fix" that by loosening the check.
 
-1. **Verify the current convention independently** — don't copy an assumption
-   from memory or from another skill's older config. See
-   `references/multiplatform-install-verification.md` for why this matters
-   (3 of 8 platforms drifted in ~6 weeks the last time this was checked).
-2. Add `assets/templates/platforms/<name>.json` following the existing shape
-   (`installType` one of `full`/`rule`/`instructions-append`/`zip-upload`).
-3. Set `verifiedAsOf` to today's date and write a `verificationNote` if
-   there's any residual uncertainty — don't mark `verified: true` with no
-   caveat unless you're actually confident, and don't mark `verified: false`
-   for something you've confirmed just to be extra-cautious.
-4. Add a row to `data/platform-conventions.csv`.
-5. Update the table in `README.md` (and its translations) if the platform
-   list changed.
+## Free vs Pro
+
+Every architecture note, code sample and comment must state explicitly which
+features, APIs and parameters are **Elementor Pro only**. Never let Free and Pro
+blur together — that is the skill's headline promise.
+
+Never infer a tier from how advanced a feature looks. The tier comes from the
+Free-vs-Pro diff, full stop. Note the semantics: a *control's* tier answers
+"assuming I can use this widget at all, does this control additionally need Pro?"
+On a widget that is itself Pro that question is circular, so per-control tier there
+carries no information and is not checked.
+
+## wp eval-file takes positional args only
+
+No `--` separator, no `--flag=value`. WP-CLI intercepts any `--foo=bar` token as
+one of its own global parameters and errors out before your script runs.
+
+```bash
+wp eval-file tools/apply-page.php 123 page.json        # yes
+wp eval-file tools/apply-page.php --post-id=123        # no - WP-CLI eats the flag
+wp --skip-plugins=elementor-pro eval-file tools/…      # fine: a real WP-CLI global
+```
+
+## Local checks before committing
+
+```bash
+php -l tools/extract-elementor-schema.php
+php -l tools/apply-page.php
+python tools/el.py stats
+python tools/validate-page.py examples/demo-page.json --target free   # must be clean
+python tools/benchmark-tokens.py --elementor-src /path/to/plugins/elementor
+```
+
+Any change to the extractor must be run against a live WordPress + Elementor at
+least once. `php -l` only proves it parses.
+
+If you change `examples/demo-page.json`, re-verify it end to end — apply it, read
+back the compiled CSS, and run `verify-render.py`. It is the repo's proof that the
+data is real; a demo that renders wrong is worse than no demo.
+
+## Sanitisation
+
+This is published publicly and distilled from a real client's site. Never commit
+real SSH hosts, IPs, usernames, key filenames, managed-WP paths, personal Windows
+paths, client names, or template/post IDs presented as if universal. Use
+placeholders: `user@your-wp-host.example.com`, `/path/to/wordpress`,
+`<template_id>`.
+
+`data/elementor-schema.json` is safe by construction: it is extracted from
+Elementor's own *class definitions* (control names, types, defaults), never from a
+site's content. Keep it that way — if the extractor ever starts capturing live
+`settings` values, that changes.
+
+The one deliberate exception is the demo page URL. It is the maintainer's own site,
+published on purpose as the skill's proof, and it stays.
+
+## Adding a platform config
+
+Verify the current convention independently — do not copy it from another skill or
+from memory. 3 of 8 platforms drifted in six weeks the last time this was checked
+(`references/multiplatform-install-verification.md`). Set `verifiedAsOf`, and write
+a `verificationNote` if any doubt remains.
 
 ## Style
 
-- English in code comments and identifiers.
-- Chinese is fine in commit messages / issue discussion if that's the
-  contributor's natural language — this project has a bilingual audience.
-- Markdown: ATX headings (`##`), no trailing whitespace, LF endings.
-- PHP: match WordPress core coding conventions (tabs for indentation, space
-  after control-structure keywords) since these scripts run inside WP-CLI's
-  WordPress bootstrap.
-- Python: PEP 8, type hints where the signature is non-obvious, stdlib only
-  (no dependencies to install before running the installer).
-
----
-
-If you're an AI assistant reading this in the middle of a task: prefer
-editing existing files over creating new ones, verify a claim against
-Elementor's actual source or a live site before writing it into a reference
-doc as fact, don't mark something `verified: true` without actually having
-checked it this session, and don't reintroduce health-check/audit content
-into this skill's scope.
+- English in code, comments and identifiers.
+- Markdown: ATX headings, LF endings, no trailing whitespace.
+- PHP: WordPress core conventions (tabs) — these run inside WP-CLI's bootstrap.
+- Python: PEP 8, stdlib only. `tiktoken` is the single exception and it is needed
+  only by `benchmark-tokens.py`.
+- No emoji.

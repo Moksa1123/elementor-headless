@@ -1,0 +1,158 @@
+# The Elementor data model
+
+An Elementor page is not stored in `post_content`. It is a JSON tree in post meta,
+and the renderer walks that tree. Write the tree, and you have built the page —
+no editor, no browser, no DOM.
+
+## The meta keys, all four of them
+
+Writing `_elementor_data` alone is the classic first mistake. The post saves, the
+page loads, and it renders as though Elementor were not installed — because the
+theme fell back to `post_content`.
+
+| Meta key | Value | Why it matters |
+|---|---|---|
+| `_elementor_data` | the tree, JSON-encoded | the page itself |
+| `_elementor_edit_mode` | `builder` | without it the theme renders `post_content` instead |
+| `_elementor_template_type` | `wp-page` / `wp-post` | the editor mishandles the post without it |
+| `_elementor_version` | e.g. `4.1.4` | tells Elementor which data upgrades to run |
+
+Then the CSS. Elementor compiles each post's styling into its own file
+(`uploads/elementor/css/post-<id>.css`). Until that is rebuilt the page ships the
+**old** stylesheet, so a perfectly correct tree still renders wrong:
+
+```bash
+wp elementor flush-css --post-id=<id>
+```
+
+`tools/apply-page.php` does all of this — meta, slashing, CSS rebuild — and backs
+up the previous tree first.
+
+## The tree
+
+```jsonc
+[                                  // top level is a LIST of containers
+  {
+    "id": "1a2b3c4",               // unique 7-char lowercase hex
+    "elType": "container",         // container | section | column | widget
+    "settings": { ... },           // the control values
+    "elements": [                  // children; [] on leaves
+      {
+        "id": "2b3c4d5",
+        "elType": "widget",
+        "widgetType": "heading",   // widgets need BOTH elType AND widgetType
+        "settings": { "title": "Hello" },
+        "elements": []             // yes, widgets need this too
+      }
+    ]
+  }
+]
+```
+
+Four rules that bite:
+
+1. **`id` must be unique across the whole tree.** Duplicates break the editor in
+   ways that look like data corruption rather than a duplicate id.
+2. **`id` is 7 lowercase hex characters.** `eh10a01` looks fine and is not hex.
+3. **Every node needs `elements`**, including widgets. Use `[]`.
+4. **Widgets need `elType: "widget"` *and* `widgetType`.** One without the other
+   renders nothing.
+
+`tools/validate-page.py` checks all four, plus every control name and value shape,
+before you write anything.
+
+## elType: what actually exists
+
+```
+container   the modern layout primitive — flex or grid   356 controls
+section     legacy, pre-3.6                              292 controls
+column      legacy, only valid inside a section          262 controls
+widget      a leaf; 135 kinds (64 free, 71 Pro)
+```
+
+Build new pages with **containers**. Section/column still render (Elementor keeps
+them for backwards compatibility) but they are not where the platform is going,
+and they cannot do flex or grid. You will still meet them when reading existing
+pages, which is why they are in the schema.
+
+## settings: the control values
+
+`settings` is a flat map of control name to value. Not nested by section, not
+nested by tab — flat.
+
+```json
+"settings": {
+  "container_type": "flex",
+  "flex_direction": "column",
+  "padding":        { "unit": "px", "top": "80", "right": "24", "bottom": "80", "left": "24", "isLinked": false },
+  "padding_mobile": { "unit": "px", "top": "40", "right": "16", "bottom": "40", "left": "16", "isLinked": false },
+  "background_background": "classic",
+  "background_color": "#0F172A"
+}
+```
+
+Three things are going on in those six lines, and each has its own page:
+
+- the **value shape** depends on the control's *type* — `padding` is a
+  `dimensions` control, so it takes an object, not `"80px"`. See
+  [control-types.md](control-types.md).
+- `padding_mobile` is the **responsive suffix** mechanism. See
+  [responsive.md](responsive.md).
+- `background_color` only applies when `background_background` is set — controls
+  have **conditions**, and an unmet condition means the value is stored and then
+  ignored. `el.py` prints them as `needs:{...}`.
+
+Anything you write that Elementor does not recognise is kept in the database and
+ignored. There is no error. This is the single most important fact about the
+format, and the reason this skill ships a validator.
+
+## Two side-channels that are not controls
+
+`settings` has two reserved keys that are not control values.
+
+**`__globals__`** points a control at a Global Colour or Global Font instead of a
+literal value. The referenced value lives in the active Kit, so changing it in
+Site Settings updates every element that points at it:
+
+```json
+"settings": {
+  "__globals__": {
+    "title_color": "globals/colors?id=primary",
+    "typography_typography": "globals/typography?id=text"
+  }
+}
+```
+
+**`__dynamic__`** binds a control to a dynamic tag — a post field, an ACF field,
+a shortcode — resolved at render time:
+
+```json
+"settings": {
+  "__dynamic__": {
+    "title": "[elementor-tag id=\"a1b2c3d\" name=\"post-title\" settings=\"%7B%7D\"]"
+  }
+}
+```
+
+The `settings` attribute is a **URL-encoded JSON object**. `%7B%7D` is `{}`.
+
+Both keys sit alongside the normal controls, and both override whatever literal
+value the control also has. `validate-page.py` skips them rather than treating
+them as unknown controls.
+
+## The active Kit
+
+`get_option('elementor_active_kit')` is the post ID of the template that supplies
+the site's global colours, fonts and layout defaults. It looks like leftover demo
+content and it is not: **delete it and every global reference on the site breaks.**
+Nothing else in Elementor will warn you about this.
+
+## Caches, flushed inside-out
+
+Getting the tree right and still seeing the old page almost always means a cache:
+
+```bash
+wp elementor flush-css --post-id=<id>   # Elementor's compiled CSS
+wp breeze purge --cache=all             # or your page cache
+                                        # then the CDN / Varnish layer
+```

@@ -1,134 +1,237 @@
-<div align="center">
+# elementor-headless
 
-# Elementor Headless
+**Build Elementor pages by writing the JSON, not by driving the editor.**
 
-### Build and modify Elementor pages by directly reading/writing JSON and meta data. No visual editor required. Every Pro-only feature explicitly labeled.
+An [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
+that gives an AI coding agent the complete Elementor authoring surface —
+**37,964 controls across 135 widgets and 3 elements** — as a queryable database
+instead of a 583,555-token document it can never afford to read.
 
-<p>
-  <a href="https://github.com/Moksa1123/elementor-headless"><img src="https://img.shields.io/github/stars/Moksa1123/elementor-headless?style=flat-square&logo=github&logoColor=white&color=181717" alt="GitHub stars"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="MIT"></a>
-</p>
-
-<p>
-  <img src="https://img.shields.io/badge/format-Agent%20Skill-blue?style=flat-square" alt="Agent Skill">
-  <img src="https://img.shields.io/badge/python-3.9%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python 3.9+">
-  <img src="https://img.shields.io/badge/php-7.4%2B-777BB4?style=flat-square&logo=php&logoColor=white" alt="PHP 7.4+">
-  <img src="https://img.shields.io/badge/AI%20platforms-8-blueviolet?style=flat-square" alt="8 AI platforms">
-</p>
-
-<p>
-  <a href="#quick-start"><strong>Get started</strong></a> ·
-  <a href="https://github.com/Moksa1123/elementor-headless"><strong>GitHub</strong></a> ·
-  <a href="https://github.com/Moksa1123/rankmath-seo-wp"><strong>Sibling project</strong></a> ·
-  <a href="https://moksaweb.com"><strong>moksaweb.com</strong></a>
-</p>
-
-<p>
-  <strong>English</strong> ·
-  <a href="README.zh-TW.md">繁體中文</a> ·
-  <a href="README.ja.md">日本語</a> ·
-  <a href="README.ko.md">한국어</a>
-</p>
-
-</div>
+English · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md)
 
 ---
 
-## What this is
+## Why
 
-A headless approach to Elementor: a page is a JSON tree of containers and
-widgets, each widget a `settings` object of typed fields. This skill gives
-an AI agent the full, source-verified parameter surface — widget controls,
-style groups, responsive breakpoints, template conditions, dynamic tags —
-so it can build or restructure a page entirely through data, without ever
-opening the visual editor.
+Elementor stores a page as a JSON tree in post meta. Write the tree and the page
+exists. But Elementor **does not validate what you write** — it stores your value,
+renders what it understands, and silently drops the rest.
 
-**Not** a site health-check or plugin-audit tool — that's explicitly out of
-scope. This is about construction, not diagnostics.
+There is no error. A misspelled control, a string where an object belongs, a
+Pro-only control on a Free site: all of them save cleanly, render fine on your
+machine, and quietly do nothing where it matters.
 
-## What's covered
-
-- **Templates**: create/read/apply Theme Builder templates
-  (`elementor_library` CRUD, `_elementor_template_type`)
-- **Display Conditions & Advanced Conditions**: the complete
-  Include/Exclude condition type/name enumeration (general / singular /
-  archive, every sub-condition Elementor Pro ships), plus how conflicts
-  between competing templates actually resolve (specificity-based
-  priority, not registration order)
-- **RWD**: per-breakpoint style parameters — verified at scale that 20% of
-  all Elementor controls carry a `_tablet`/`_mobile` responsive variant
-- **Custom Settings**: the Group Control mechanism behind Border, Box
-  Shadow, Typography, and Background (core Elementor, free), and Custom
-  CSS injection (genuinely Pro-only, hook-injected — verified from source,
-  not assumed)
-- **Free vs Pro, verified not guessed**: every widget and feature's source
-  is checked against the actual `elementor` vs `elementor-pro` plugin
-  directory and license-gate code — this project got Border/Box-Shadow
-  wrong once during development (assumed Pro when they're Free) before
-  correcting it against source; the correction and the verification method
-  are both documented
-
-## Quick start
+So an agent building Elementor pages has two options: read Elementor's PHP source
+every time (expensive — and it still doesn't tell you the JSON shape), or guess
+(silently wrong). This skill is the third one.
 
 ```bash
-git clone https://github.com/Moksa1123/elementor-headless.git
+$ python tools/el.py type slider
+control type: slider   [FREE]  (elementor-core)
+
+JSON value shape (what you write into _elementor_data settings):
+  {"unit": "px", "size": "", "sizes": []}
+```
+
+## How it works
+
+![architecture](assets/diagrams/architecture.svg)
+
+Three phases. Extraction runs once per Elementor version, against **your** site.
+Everything after that is a query.
+
+## Install
+
+```bash
+git clone https://github.com/Moksa1123/elementor-headless
 cd elementor-headless
-python tools/install-skill.py --list                 # see supported platforms
-python tools/install-skill.py claude-code             # install into this project
-python tools/install-skill.py claude-code --global    # install for all projects
+python tools/install-skill.py claude-code --global     # or: cursor, codex-cli, gemini-cli, ...
+python tools/install-skill.py --list
 ```
 
-See `SKILL.md` for the full contract and `references/` for the underlying
-data model.
+8 platforms: Claude Code, Claude.ai, Cursor, Codex CLI, Gemini CLI, Devin
+(ex-Windsurf), GitHub Copilot, Continue. Conventions re-verified 2026-07-11 —
+[3 of the 8 had drifted in six weeks](references/multiplatform-install-verification.md),
+so they are checked, not assumed.
 
-## Repository layout
+## Use
 
-```
-elementor-headless/
-├── SKILL.md                        # Skill contract — auto-loaded by AI assistants
-├── README.md                       # This file (+ zh-TW / ja / ko translations)
-├── CLAUDE.md                       # AI dev conventions + Free/Pro + sanitisation rules
-├── LICENSE                         # MIT
-├── references/
-│   ├── elementor-widgets-and-containers.md   # container/widget/dynamic-tag data model, verified live
-│   ├── elementor-style-system.md             # Group Controls, Custom CSS, Free vs Pro verification
-│   ├── elementor-templates-and-conditions.md # template CRUD, full Display/Advanced Conditions
-│   ├── elementor-safe-edit.md                # shared-template editing protocol, JSON path discipline
-│   ├── dynamic-ghost-text-pattern.md         # static → per-post-dynamic worked example
-│   ├── wp-cli-safe-scripting.md              # quoting/escaping/file-based execution discipline
-│   └── multiplatform-install-verification.md # dated per-platform install conventions
-├── tools/
-│   ├── extract-elementor-controls.php # run via `wp eval-file` — reproduce the widget-control dataset on your own site
-│   ├── ghost-glint-svg.py             # standalone — preview/tune the ghost-text SVG proportions
-│   └── install-skill.py               # multi-platform installer
-├── data/
-│   ├── platform-conventions.csv          # dated install paths per platform
-│   └── elementor-core-pro-controls.json  # 135 widgets' full control schemas, extracted from a live install
-└── assets/templates/platforms/*.json  # per-platform install configs
+```bash
+python tools/el.py widgets --tier free --grep box   # find a widget
+python tools/el.py widget heading --tab style       # its style controls
+python tools/el.py container --tab layout           # flex + grid, with conditions
+python tools/el.py css border-radius                # reverse lookup by CSS property
+python tools/el.py group typography                 # what a group control expands into
+python tools/el.py breakpoints                      # the responsive suffixes
+python tools/el.py pro --check custom_css align     # exits 1 if any of these needs Pro
 ```
 
-## Verified, not guessed
+Then build, check, ship:
 
-- **164 widgets, 48,238 controls** extracted from a live Elementor +
-  Elementor Pro install — not written from training data.
-- **9 universal Advanced-tab sections found in 98% of all widgets**, full
-  real control lists for each.
-- **Every Display/Advanced Condition type** enumerated directly from
-  Elementor Pro's `Condition_Base` subclasses, including the exact
-  specificity-based priority resolution when multiple templates compete.
-- **Free vs Pro boundaries checked against source** (plugin directory +
-  license-gate code), not inferred from how advanced a feature feels.
-- **Multi-platform install conventions**, dated and independently
-  re-checked — 3 of 8 supported platforms had already drifted from this
-  project's sibling skill's own table in the ~6 weeks between the two
-  being written (see `multiplatform-install-verification.md`).
+```bash
+python tools/el.py skeleton > page.json
+python tools/validate-page.py page.json --target free
+wp eval-file tools/apply-page.php 123 page.json
+```
+
+`validate-page.py` catches what Elementor won't: unknown control names, wrong value
+shapes, illegal units, invalid options, duplicate ids, unmet conditions, and
+Pro-only controls on a Free target.
+
+## Token cost
+
+**89.1% fewer tokens than reading Elementor's source. 99.1% fewer than loading the
+schema.** Reproduce it — the script writes `data/token-benchmark.csv`:
+
+```bash
+pip install tiktoken
+python tools/benchmark-tokens.py --elementor-src /path/to/plugins/elementor
+```
+
+| Task | read source | load schema | **query** |
+|---|---|---|---|
+| Lay out a hero container (flex, boxed, responsive padding) | 20,182 | 583,555 | **964** |
+| Style a heading (colour, typography, alignment) | 8,329 | 583,555 | **730** |
+| Style a button (colour, padding, radius, hover) | 7,803 | 583,555 | **2,935** |
+| Make any widget's spacing responsive | 11,800 | 583,555 | **243** |
+| Find which control drives a CSS property | — | 583,555 | **363** |
+| **Total** | **48,114** | **583,555** | **5,235** |
+
+Two things make it work: the data is **queried, never loaded**, and the 211
+Advanced-tab controls that every widget shares are **stored once instead of 135
+times** — they are 75.6% of all rows, so factoring them out shrinks the schema by
+73.2%.
+
+Measured with tiktoken `cl100k_base` — OpenAI's tokenizer, not Claude's, so
+absolute counts shift by roughly ±10%. Ratios between two texts under the same
+tokenizer are stable, and the ratio is the claim. Method and caveats:
+[token-efficiency.md](references/token-efficiency.md).
+
+## Free vs Pro is measured, not guessed
+
+Elementor Pro **injects controls into free widgets**. Open the free Heading widget
+on a site with Pro and you'll find Motion Effects, Sticky, Custom CSS, Display
+Conditions and Custom Attributes sitting in its Advanced tab. Inherit the widget's
+tier and every one of them gets labelled "free" — and the page you build renders
+perfectly for you, then loses its styling on a Free install.
+
+So the tier is measured. Extract twice — once with Pro loaded, once with
+`wp --skip-plugins=elementor-pro` (which affects only that one CLI process; nothing
+is deactivated, so it is safe on production) — and diff:
+
+| | Free 4.1.4 | + Pro 4.1.2 |
+|---|---|---|
+| widgets | 64 | **135** |
+| controls on every widget | 165 | **211** (+46) |
+| controls on `container` | 277 | **356** (+79) |
+| control types | 52 | **59** |
+| group controls | 11 | **16** |
+
+The 46 that Pro injects into **every** widget: all `motion_fx_*` (37), `sticky*`
+(6), `custom_css`, `_attributes`, `e_display_conditions`.
+
+Do not reason about tiers. **Border and Box Shadow look premium and are free.
+`_attributes` looks basic and is Pro.** This repo shipped Border mislabelled as Pro
+once, by reasoning instead of measuring.
+
+## Is it accurate? Make it prove it.
+
+The schema came from Elementor 4.1.4 / Pro 4.1.2. Yours may differ. Don't trust it
+— test it. Two verifiers, two different questions.
+
+**1. Does the schema match your install?**
+
+```bash
+wp eval-file tools/extract-elementor-schema.php core+pro > mine.json
+wp --skip-plugins=elementor-pro eval-file tools/extract-elementor-schema.php core+pro > mine-free.json
+python tools/verify-schema.py mine.json --free-dump mine-free.json
+```
+
+```
+checked 37,964 (owner, control) pairs from the shipped schema
+Free/Pro claims checked on free widgets/elements: 15,969
+FAILURES: 0
+PASS
+```
+
+Exits non-zero on drift, so it can gate a deploy.
+
+**2. Does a page built from the schema render the CSS the schema promised?**
+
+The schema says which CSS properties each control drives. This builds the page for
+real, reads back the stylesheet Elementor compiled, and checks every one — including
+that each responsive key landed inside *that breakpoint's* media query.
+
+```bash
+python tools/verify-render.py examples/demo-page.json rendered.css --post-id 9176
+```
+
+```
+CSS property assertions: 94/94 passed
+PASS
+```
+
+**3. Look at it.** `examples/demo-page.json` is a real published page, built with
+nothing but this skill. The Elementor editor has never been opened on it.
+
+**https://moksaweb.com/elementor-headless-demo/**
+
+## What's in the box
+
+```
+data/
+  elementor-schema.json    2.7 MB   the full surface - queried, never loaded
+  controls.csv             2.0 MB   every widget/element-specific control
+  common-controls.csv       39 KB   the 211 shared by every widget
+  pro-only-controls.csv     33 KB   the safety table
+  pro-only-widgets.csv     3.0 KB
+  control-types.csv        4.6 KB   all 59 JSON value shapes
+  group-controls.csv       3.7 KB   16 groups, and the flat keys they expand to
+  widgets.csv              8.2 KB   135 widgets + 3 elements
+  breakpoints.csv          0.2 KB
+  token-benchmark.csv               reproducible measurements
+
+tools/
+  el.py                          query the schema - the front door
+  validate-page.py               pre-flight a page tree
+  apply-page.php                 write it: meta + CSS rebuild + backup
+  extract-elementor-schema.php   dump a live install
+  build-indexes.py               dump -> shipped data files
+  verify-schema.py               does the schema match your install?
+  verify-render.py               does Elementor emit what the schema promised?
+  benchmark-tokens.py            reproduce the token numbers
+  install-skill.py               8-platform installer
+
+references/   data-model · control-types · containers-and-layout · responsive
+              templates-and-conditions · extraction-traps · token-efficiency
+examples/     demo-page.json - the published page above
+```
+
+## The three traps
+
+The naive way to extract this data is wrong in three separate ways, each producing
+a schema that looks complete and lies. All three were shipped in this repo before
+being caught. Write-ups in [extraction-traps.md](references/extraction-traps.md):
+
+1. **WP-CLI looks like the front end to Elementor**, so it hands back the lean
+   control stack: **46% of controls and ~100% of tab/label metadata vanish**, with
+   no error. The extractor disables that path, and has two canaries that abort
+   rather than emit degraded data.
+2. **Responsive is two mechanisms**, and the obvious test finds only one. There is
+   no `padding_tablet` control object *anywhere* — and `padding_tablet` works.
+   Detecting responsive by looking for suffixed siblings missed padding, margin,
+   width, font size and gap. (9.8% → 30.1% of controls after the fix.)
+3. **A control's tier is not its widget's tier**, because Pro injects into free
+   widgets. Measured, not inherited.
 
 ## Contributing
 
-See `CONTRIBUTING.md`. Sanitisation matters here more than in most repos —
-read the "Sanitisation rules" section of `CLAUDE.md` before submitting a PR.
+Re-extract against a newer Elementor and open a PR with the regenerated `data/` —
+`verify-schema.py` will tell you exactly what changed. See
+[CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Author
+## License
 
-Built and maintained by **moksa** at [moksaweb.com](https://moksaweb.com).
-MIT licensed.
+MIT. Built and maintained by **moksa** · [moksaweb.com](https://moksaweb.com)
+
+Sibling skill: [rankmath-seo-wp](https://github.com/moksa1123/rankmath-seo-wp)

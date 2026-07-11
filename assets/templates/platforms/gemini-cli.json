@@ -17,7 +17,7 @@
   },
   "frontmatter": {
     "name": "elementor-headless",
-    "description": "Build and modify Elementor pages by directly reading/writing the underlying JSON and meta data - no visual editor required. Covers the full parameter surface, template CRUD, Display/Advanced Conditions, and custom CSS/style injection, with every Elementor Pro-only feature explicitly labeled.",
+    "description": "Build and modify Elementor pages by writing the underlying JSON directly - no visual editor, no DOM. Query the full control surface (37,964 controls across 135 widgets and 3 elements) instead of reading Elementor's source, with every Elementor Pro-only control explicitly labeled from a measured Free-vs-Pro diff.",
     "license": "MIT",
     "author": "moksa (https://moksaweb.com)",
     "version": "1.0.0"

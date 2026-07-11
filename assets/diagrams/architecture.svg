@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 660" width="1120" height="660" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <style>
+    .bg    { fill: #ffffff; }
+    .band  { fill: none; stroke: #9ca3af; stroke-width: 1; stroke-dasharray: 4 3; }
+    .box   { fill: #f9fafb; stroke: #1f2937; stroke-width: 1.4; }
+    .t     { fill: #111827; font-size: 12px; }
+    .tb    { fill: #111827; font-size: 12px; font-weight: 700; }
+    .ts    { fill: #6b7280; font-size: 10.5px; }
+    .tn    { fill: #b91c1c; font-size: 10.5px; }
+    .lbl   { fill: #374151; font-size: 10.5px; }
+    .arrow { fill: none; stroke: #1f2937; stroke-width: 1.4; marker-end: url(#a); }
+    .arrowg{ fill: none; stroke: #9ca3af; stroke-width: 1.1; marker-end: url(#ag); stroke-dasharray: 4 3; }
+    @media (prefers-color-scheme: dark) {
+      .bg    { fill: #0b0f16; }
+      .box   { fill: #111827; stroke: #e5e7eb; }
+      .t, .tb{ fill: #f3f4f6; }
+      .ts    { fill: #9ca3af; }
+      .tn    { fill: #fca5a5; }
+      .lbl   { fill: #d1d5db; }
+      .arrow { stroke: #e5e7eb; marker-end: url(#ad); }
+    }
+  </style>
+  <defs>
+    <marker id="a"  markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#1f2937"/></marker>
+    <marker id="ad" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#e5e7eb"/></marker>
+    <marker id="ag" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#9ca3af"/></marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1120" height="660"/>
+
+  <!-- ================= BUILD TIME ================= -->
+  <rect class="band" x="16" y="16" width="1088" height="192" rx="4"/>
+  <text class="ts" x="30" y="34">BUILD TIME  ·  once per Elementor version, against your own site</text>
+
+  <rect class="box" x="32" y="48" width="176" height="72" rx="3"/>
+  <text class="tb" x="44" y="70">Live Elementor</text>
+  <text class="ts" x="44" y="88">4.1.4 + Pro 4.1.2</text>
+  <text class="ts" x="44" y="104">the only source</text>
+  <text class="ts" x="44" y="116">of truth</text>
+
+  <path class="arrow" d="M210,80 L246,80"/>
+  <text class="lbl" x="212" y="72">wp</text>
+
+  <rect class="box" x="248" y="40" width="248" height="96" rx="3"/>
+  <text class="tb" x="260" y="60">extract-schema.php</text>
+  <text class="tn" x="260" y="82">disables control optimisation</text>
+  <text class="tn" x="260" y="97">(else 46% of controls vanish)</text>
+  <text class="tn" x="260" y="112">2 canaries abort if degraded</text>
+  <text class="ts" x="260" y="128">forces en_US labels</text>
+
+  <path class="arrow" d="M498,88 L530,88"/>
+  <text class="lbl" x="502" y="80">x2</text>
+
+  <rect class="box" x="532" y="40" width="196" height="96" rx="3"/>
+  <text class="tb" x="544" y="60">two dumps</text>
+  <text class="t"  x="544" y="80">pro.json</text>
+  <text class="t"  x="544" y="97">free.json</text>
+  <text class="ts" x="544" y="115">--skip-plugins</text>
+  <text class="ts" x="544" y="128">=elementor-pro</text>
+
+  <path class="arrow" d="M730,88 L762,88"/>
+  <text class="lbl" x="734" y="80">diff</text>
+
+  <rect class="box" x="764" y="40" width="292" height="96" rx="3"/>
+  <text class="tb" x="776" y="60">build-indexes.py</text>
+  <text class="t"  x="776" y="80">factors 211 shared controls</text>
+  <text class="t"  x="776" y="97">measures Free/Pro per control</text>
+  <text class="ts" x="776" y="116">37,964 rows -&gt; 10,157  (-73%)</text>
+  <text class="ts" x="776" y="129">tier is measured, never guessed</text>
+
+  <path class="arrow" d="M910,138 L910,164"/>
+
+  <rect class="box" x="764" y="166" width="292" height="30" rx="3"/>
+  <text class="tb" x="776" y="186">data/  schema.json + 7 CSVs</text>
+
+  <!-- ================= RUN TIME ================= -->
+  <rect class="band" x="16" y="224" width="1088" height="248" rx="4"/>
+  <text class="ts" x="30" y="242">RUN TIME  ·  every page you build</text>
+
+  <rect class="box" x="32" y="258" width="160" height="72" rx="3"/>
+  <text class="tb" x="44" y="280">AI agent</text>
+  <text class="ts" x="44" y="300">needs 3 control</text>
+  <text class="ts" x="44" y="314">names, not</text>
+  <text class="ts" x="44" y="326">583k tokens</text>
+
+  <path class="arrow"  d="M194,286 L226,286"/>
+  <path class="arrowg" d="M226,306 L194,306"/>
+
+  <rect class="box" x="228" y="248" width="266" height="118" rx="3"/>
+  <text class="tb" x="240" y="268">el.py  ·  the query</text>
+  <text class="t"  x="240" y="290">el.py container --tab layout</text>
+  <text class="t"  x="240" y="307">el.py widget heading --tab style</text>
+  <text class="t"  x="240" y="324">el.py type slider</text>
+  <text class="t"  x="240" y="341">el.py pro --check custom_css</text>
+  <text class="ts" x="240" y="359">~700 tokens per answer</text>
+
+  <path class="arrowg" d="M900,200 L900,214 L496,214 L496,246"/>
+  <text class="lbl" x="510" y="210">queried, never loaded into context</text>
+
+  <rect class="box" x="532" y="248" width="524" height="118" rx="3"/>
+  <text class="tb" x="544" y="268">why a validator exists at all</text>
+  <text class="t"  x="544" y="292">Elementor does not validate _elementor_data. It stores it,</text>
+  <text class="t"  x="544" y="309">then renders whatever it can make sense of.</text>
+  <text class="tn" x="544" y="333">Wrong control name. String where an object belongs. A Pro</text>
+  <text class="tn" x="544" y="350">control on a Free site. All save fine, then do nothing.</text>
+
+  <path class="arrow" d="M360,368 L360,392"/>
+
+  <rect class="box" x="228" y="394" width="266" height="36" rx="3"/>
+  <text class="tb" x="240" y="417">page.json   (_elementor_data)</text>
+
+  <path class="arrow" d="M496,412 L528,412"/>
+
+  <rect class="box" x="530" y="386" width="248" height="56" rx="3"/>
+  <text class="tb" x="542" y="406">validate-page.py</text>
+  <text class="tn" x="542" y="423">unknown control · bad shape</text>
+  <text class="tn" x="542" y="436">Pro-on-Free · duplicate id</text>
+
+  <path class="arrow" d="M780,412 L812,412"/>
+  <text class="lbl" x="784" y="404">ok</text>
+
+  <rect class="box" x="814" y="386" width="242" height="56" rx="3"/>
+  <text class="tb" x="826" y="406">apply-page.php</text>
+  <text class="ts" x="826" y="423">4 meta keys + flush-css</text>
+  <text class="ts" x="826" y="436">backs up the old tree</text>
+
+  <!-- ================= VERIFY ================= -->
+  <rect class="band" x="16" y="488" width="1088" height="156" rx="4"/>
+  <text class="ts" x="30" y="506">VERIFY  ·  how you know any of this is true</text>
+
+  <rect class="box" x="32" y="522" width="332" height="100" rx="3"/>
+  <text class="tb" x="44" y="544">verify-schema.py</text>
+  <text class="t"  x="44" y="566">does the schema match</text>
+  <text class="t"  x="44" y="583">YOUR install?</text>
+  <text class="ts" x="44" y="602">37,964 (owner, control) pairs</text>
+  <text class="ts" x="44" y="615">15,969 Free/Pro claims -&gt; 0 fail</text>
+
+  <rect class="box" x="380" y="522" width="332" height="100" rx="3"/>
+  <text class="tb" x="392" y="544">verify-render.py</text>
+  <text class="t"  x="392" y="566">does Elementor emit the</text>
+  <text class="t"  x="392" y="583">CSS the schema promised?</text>
+  <text class="ts" x="392" y="602">reads back post-&lt;id&gt;.css</text>
+  <text class="ts" x="392" y="615">94/94 CSS assertions -&gt; 0 fail</text>
+
+  <rect class="box" x="728" y="522" width="328" height="100" rx="3"/>
+  <text class="tb" x="740" y="544">the live page</text>
+  <text class="t"  x="740" y="566">built headlessly, published,</text>
+  <text class="t"  x="740" y="583">screenshotted on 2 breakpoints</text>
+  <text class="ts" x="740" y="602">moksaweb.com</text>
+  <text class="ts" x="740" y="615">/elementor-headless-demo/</text>
+
+  <path class="arrowg" d="M935,444 L935,518"/>
+</svg>

@@ -17,12 +17,12 @@
   },
   "frontmatter": {
     "name": "elementor-headless",
-    "description": "Build and modify Elementor pages by directly reading/writing the underlying JSON and meta data - no visual editor required. Covers the full parameter surface, template CRUD, Display/Advanced Conditions, and custom CSS/style injection, with every Elementor Pro-only feature explicitly labeled.",
+    "description": "Build and modify Elementor pages by writing the underlying JSON directly - no visual editor, no DOM. Query the full control surface (37,964 controls across 135 widgets and 3 elements) instead of reading Elementor's source, with every Elementor Pro-only control explicitly labeled from a measured Free-vs-Pro diff.",
     "license": "MIT",
     "author": "moksa (https://moksaweb.com)",
     "version": "1.0.0"
   },
-  "loaderBehaviour": "Upload via Settings -> Skills -> Upload. Claude.ai parses SKILL.md frontmatter and surfaces the skill in your library. The extraction tool (extract-elementor-controls.php) needs a live WP-CLI connection and won't run in the sandbox; use it from a local terminal against your own site instead.",
+  "loaderBehaviour": "Upload via Settings -> Skills -> Upload. Claude.ai parses SKILL.md frontmatter and surfaces the skill in your library. The extraction tool (extract-elementor-schema.php) needs a live WP-CLI connection and won't run in the sandbox; use it from a local terminal against your own site instead.",
   "uploadSteps": [
     "1. Run: python tools/install-skill.py claude-ai --to ./build (creates elementor-headless.zip)",
     "2. Open Claude.ai -> Settings -> Skills -> Upload",

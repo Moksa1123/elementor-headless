@@ -1,114 +1,168 @@
 ---
 name: elementor-headless
-description: Build and modify Elementor pages by directly reading/writing the underlying JSON and meta data — no visual editor (DOM) required. Covers the full parameter surface (widgets, containers, style groups, RWD, dynamic tags), template CRUD, Display/Advanced Conditions, and custom CSS/style injection, with every Elementor Pro-only feature explicitly labeled. Use when asked to build, design, or restructure an Elementor page/template programmatically.
+description: Build and modify Elementor pages by writing the underlying JSON directly - no visual editor, no DOM. Use when creating or editing Elementor pages, containers, widgets, templates, display conditions, responsive breakpoints, or custom CSS; when you need a control's exact name, its JSON value shape, its allowed options/units, or the CSS it drives; or when you need to know whether something requires Elementor Pro. Triggers on - elementor, _elementor_data, container, flex container, grid container, elementor widget, elementor control, elementor template, display conditions, theme builder, responsive breakpoint, tablet, mobile, motion effects, sticky, custom css, dynamic tags, global colors, elementor pro.
+license: MIT
 ---
 
-# Elementor Headless
+# Headless Elementor
 
-**Role**: Headless Elementor development — building and modifying Elementor
-pages entirely through their underlying data structures, without ever
-loading the visual editor. This skill is about *construction*, not
-diagnostics: it does not cover plugin/media auditing or site health checks
-(see `references/wp-cli-safe-scripting.md` for the execution discipline
-those tasks would share, but the audit methodology itself lives outside this
-skill's scope).
+Build Elementor pages by writing the data model directly. The editor is one client
+of that data model; it is not the format, and you do not need it.
 
-## Objective
+**Scope: page construction.** Not site health checks, not plugin audits, not media
+cleanup. If a task is not "make this page exist / look like this", it is out of
+scope.
 
-Treat Elementor as a headless page-building API: a page is a JSON tree of
-containers and widgets, each widget a `settings` object of typed fields.
-Building or modifying a page means writing that JSON directly and correctly
-— not clicking through panels. Everything below exists to make that
-possible without guessing a field name or a data shape.
+## The one rule that overrides everything
 
-## Technical execution
+**Never write a control name, value shape, option, unit or Free/Pro claim from
+memory. Look it up.** Elementor accepts anything you put in `_elementor_data` — it
+stores your value, renders what it understands, and silently drops the rest. There
+is no error. A page that is 90% right looks exactly like a page that is 100% right
+until someone notices the padding never applied.
 
-**Low-level parsing.** A page's structure lives in the `_elementor_data`
-postmeta as a JSON tree (`elType: container|widget`, nested `elements`).
-Read `references/elementor-widgets-and-containers.md` for the container
-model, widget shape, and the exact JSON-path navigation discipline (path
-arrays are alternating `->elements[idx]` hops — an easy off-by-one).
+Everything in `data/` was extracted from a live Elementor install and verified
+against it. Your memory of Elementor was not.
 
-**Parameter mapping.** Every field Elementor exposes — widget-specific
-Content controls, the universal Style/Advanced groups, RWD breakpoint
-variants — is catalogued from a live extraction, not memory:
-`data/elementor-core-pro-controls.json` (135 widgets, verified 2026-07-11)
-plus `references/elementor-style-system.md` for the reusable Group Control
-mechanism (Border, Box Shadow, Typography, Background, CSS Filters) that
-underlies most Style-tab fields across every widget.
+## Look it up like this
 
-## Core features
+```bash
+python tools/el.py stats                          # what version, what's in here
+python tools/el.py widgets --tier free --grep box # find a widget
+python tools/el.py widget heading --tab style     # one widget's style controls
+python tools/el.py container --tab layout         # the container's layout surface
+python tools/el.py common --grep padding          # the 211 controls every widget shares
+python tools/el.py type slider                    # the JSON value shape of a control type
+python tools/el.py group typography               # what a group control expands into
+python tools/el.py css border-radius              # which control drives this CSS property
+python tools/el.py breakpoints                    # the responsive suffixes
+python tools/el.py skeleton                       # a minimal valid page tree
+python tools/el.py pro                            # everything that needs Elementor Pro
+python tools/el.py pro --check custom_css align   # exits 1 if any of these needs Pro
+```
 
-| Feature | Where it's covered |
+Add `--json` to any of them for machine-readable output.
+
+**Never read `data/elementor-schema.json` into context.** It is 583,555 tokens. It
+is a database; `el.py` is the query. One query is ~700 tokens and answers the
+question completely. `data/*.csv` are there for `grep` when you want to scan.
+
+## Which lookup answers which question
+
+| You need to know | Ask |
 |---|---|
-| **Template management** (create / read / apply) | `references/elementor-templates-and-conditions.md` |
-| **Display Conditions** (Include/Exclude) | `references/elementor-templates-and-conditions.md` |
-| **Advanced Conditions** (complex dynamic display logic) | `references/elementor-templates-and-conditions.md` |
-| **RWD** (per-breakpoint style parameters: Desktop/Tablet/Mobile) | `references/elementor-widgets-and-containers.md` ("Responsive breakpoints") |
-| **Custom Settings** (advanced style controls + custom CSS injection) | `references/elementor-style-system.md` |
+| what widgets exist | `el.py widgets` · `data/widgets.csv` |
+| a widget's control names | `el.py widget <name> [--tab style]` |
+| the container's flex/grid settings | `el.py container --tab layout` |
+| what shape a value takes in JSON | `el.py type <control_type>` · `data/control-types.csv` |
+| what a group control expands to | `el.py group <name>` · `data/group-controls.csv` |
+| padding / margin / motion FX / custom CSS | `el.py common` — they're on every widget |
+| whether `X_tablet` is legal | `el.py widget <name> --grep X` → look for `rwd:` |
+| which control changes a CSS property | `el.py css <property>` |
+| **whether something needs Pro** | `el.py pro --check <controls>` · `data/pro-only-controls.csv` |
 
-## Environment & strict constraints
-
-**Base environment**: Elementor Free + Elementor Pro. No assumption of any
-specific theme or third-party addon plugin — those vary per install; re-run
-`tools/extract-elementor-controls.php` against the target site if a widget
-outside core Elementor/Elementor Pro needs to be built against.
-
-**Mandatory labeling rule**: every architecture decision, data-parsing
-approach, code sample, and comment in this skill — and in anything built
-using it — **must explicitly mark which features/APIs/parameters are
-Elementor Pro-only**. Never let Free and Pro capabilities blur together.
-Concretely:
-
-- A **widget** is Pro-only if it's registered from `elementor-pro/`
-  (confirmed via the widget class's file path — see
-  `data/elementor-core-pro-controls.json`'s `source` field, `elementor-core`
-  vs `elementor-pro`).
-- A **control/feature shared across widgets** is Pro-only only if you've
-  confirmed it in Elementor Pro's own source, gated behind a license check
-  (`API::is_licence_has_feature(...)`) — don't assume; verify. Example:
-  Custom CSS (`custom_css` control) is genuinely Pro-only, gated exactly
-  this way. Border and Box Shadow, by contrast, are **not** Pro — they're
-  core Elementor Group Controls (`Group_Control_Border`,
-  `Group_Control_Box_Shadow`), free in every widget. Getting this
-  distinction wrong (assuming something's Pro when it's Free, or vice
-  versa) previously happened during this skill's own development — see
-  `references/elementor-style-system.md` for exactly how it was corrected
-  and how to verify any new case yourself rather than guessing.
-
-## Reproducing the verified data on your own install
+## Build a page
 
 ```bash
-cat tools/extract-elementor-controls.php | ssh user@host "cat > /tmp/x.php"
-ssh user@host "cd /path/to/wordpress && wp eval-file /tmp/x.php > controls.json"
+python tools/el.py skeleton > page.json         # start from something valid
+# ...edit it, looking every control up as you go...
+
+python tools/validate-page.py page.json --target free   # BEFORE writing anything
+wp eval-file tools/apply-page.php <post_id> page.json   # writes meta + rebuilds CSS
 ```
 
-Do this whenever the target site's Elementor/Elementor Pro version differs
-meaningfully from what `data/elementor-core-pro-controls.json` was extracted
-from, or when building against a third-party addon widget not covered by
-the shipped dataset.
+`validate-page.py` is not optional. It catches what Elementor will not: unknown
+control names, wrong value shapes, illegal units, invalid select options, duplicate
+element ids, unmet conditions, and Pro-only controls on a Free target.
 
-## Tools (in `tools/`)
+## Free vs Pro: label it, do not reason about it
 
-| Tool | Run via | Purpose |
-|------|---------|---------|
-| `extract-elementor-controls.php` | `wp eval-file` | Reproduce the widget-control dataset on any live site |
-| `ghost-glint-svg.py` | standalone | Generate a dynamic per-entity decorative SVG (worked example of static→dynamic conversion, see `dynamic-ghost-text-pattern.md`) |
-| `install-skill.py` | standalone | Multi-platform installer |
+**Mandatory:** every architecture note, code sample and comment must state
+explicitly which features, APIs and parameters are **Elementor Pro only**. Never
+let Free and Pro blur together.
 
-## Multi-platform install
+And never infer a tier from how advanced something looks. Border and Box Shadow
+feel premium and are **free**. `_attributes` (custom HTML attributes) feels basic
+and is **Pro**. This repo shipped Border mislabelled as Pro once, by reasoning
+instead of measuring.
 
-See `references/multiplatform-install-verification.md` — dated findings for
-8 AI coding platforms' skill/rule conventions. Re-verify before trusting,
-don't just copy the table.
+The tier in `data/` is **measured**: extract once normally, once with
+`wp --skip-plugins=elementor-pro`, then diff. On 4.1.4 + Pro 4.1.2:
+
+- **71 of 135 widgets are Pro.**
+- **Pro injects 46 controls into *every* widget, free ones included:** all
+  `motion_fx_*` (37), `sticky*` (6), `custom_css`, `_attributes`,
+  `e_display_conditions`.
+- Pro adds **79 controls to the container**, 78 to section, 73 to column.
+- Pro-only group controls: `motion_fx`, `posts`, `query-group`, `related-query`,
+  `taxonomy-query`.
+
+A Pro-only control on a free widget is the classic silent failure: it saves, it
+renders for you, and it does nothing on a site without Pro. Run
+`el.py pro --check` before shipping to a site you do not control.
+
+## The data model, briefly
+
+`_elementor_data` is a JSON list of top-level elements. Each node:
+
+```json
+{ "id": "1a2b3c4", "elType": "container", "settings": {}, "elements": [] }
+```
+
+- `id` — unique 7-char lowercase **hex**; duplicates break the editor
+- `elType` — `container` | `section` | `column` | `widget`
+- widgets need **both** `elType: "widget"` and `widgetType`
+- **every** node needs `elements` (use `[]` on leaves, widgets included)
+- `settings` is **flat** — `padding`, not `advanced.layout.padding`
+
+Three more meta keys are required or the page renders as if Elementor were not
+installed: `_elementor_edit_mode = builder`, `_elementor_template_type`,
+`_elementor_version`. Then the compiled CSS must be rebuilt or the page ships the
+old stylesheet. `apply-page.php` does all of it.
+
+Responsive is a naming convention: `padding` → `padding_tablet` → `padding_mobile`.
+Only **active** breakpoints exist (`el.py breakpoints`).
+
+## Reference
+
+| Doc | What's in it |
+|---|---|
+| [data-model.md](references/data-model.md) | the tree, the 4 meta keys, `__globals__`, `__dynamic__`, the active Kit, caches |
+| [control-types.md](references/control-types.md) | all 59 value shapes, group controls, conditions, units, the icon-name trap |
+| [containers-and-layout.md](references/containers-and-layout.md) | container flex + grid, sizing children, section/column legacy |
+| [responsive.md](references/responsive.md) | breakpoints, suffixes, why `padding_tablet` has no control object |
+| [templates-and-conditions.md](references/templates-and-conditions.md) | template CRUD, Display Conditions, priority resolution — **Pro** |
+| [extraction-traps.md](references/extraction-traps.md) | the three ways a schema goes silently wrong, and how this one is verified |
+| [token-efficiency.md](references/token-efficiency.md) | the 89% figure, measured, with the script that reproduces it |
+
+## Verify it rather than trusting it
+
+The schema was extracted from Elementor 4.1.4 / Pro 4.1.2. Yours may differ. Make
+it prove itself against your install:
 
 ```bash
-python tools/install-skill.py --list
-python tools/install-skill.py claude-code
+wp eval-file tools/extract-elementor-schema.php core+pro > mine.json
+wp --skip-plugins=elementor-pro eval-file tools/extract-elementor-schema.php core+pro > mine-free.json
+python tools/verify-schema.py mine.json --free-dump mine-free.json    # exits 1 on drift
 ```
 
-## Author
+If it fails, re-extract: `build-indexes.py` regenerates every data file and the
+skill then describes *your* Elementor.
 
-Built and maintained by **moksa** at [moksaweb.com](https://moksaweb.com).
-MIT licensed. Sibling project:
-[rankmath-seo-wp](https://github.com/moksa1123/rankmath-seo-wp).
+Live proof, built headlessly and published:
+**https://moksaweb.com/elementor-headless-demo/** — `examples/demo-page.json`,
+94/94 CSS assertions passed under `verify-render.py`.
+
+## Tools
+
+| Tool | Does |
+|---|---|
+| `el.py` | query the schema — **the front door** |
+| `validate-page.py` | pre-flight a page tree before writing it |
+| `apply-page.php` | write the tree + meta, rebuild CSS, back up the old one |
+| `extract-elementor-schema.php` | dump a live install's full control surface |
+| `build-indexes.py` | turn a dump into the shipped data files |
+| `verify-schema.py` | does the schema match your install? |
+| `verify-render.py` | does Elementor emit the CSS the schema promised? |
+| `benchmark-tokens.py` | reproduce the token numbers |
+| `install-skill.py` | install into 8 AI platforms |

@@ -13,7 +13,7 @@ define one:
 
 | Meta key | Purpose |
 |---|---|
-| `_elementor_data` | The JSON widget/container tree (see `elementor-widgets-and-containers.md`) |
+| `_elementor_data` | The JSON widget/container tree (see `data-model.md`) |
 | `_elementor_template_type` | `header`, `footer`, `single`, `archive`, `section`, `page`, `popup`, `kit`, … — which Theme Builder slot this template is built for |
 | `_elementor_conditions` | Array of condition strings controlling *where* it applies (see below) — a template can have a plausible type and **no** conditions, meaning Theme Builder never actually assigns it anywhere |
 

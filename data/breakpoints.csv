@@ -1,0 +1,8 @@
+breakpoint,active,direction,value_px,control_suffix
+mobile,yes,max,767,_mobile
+tablet,yes,max,1024,_tablet
+mobile_extra,no,,,_mobile_extra
+tablet_extra,no,,,_tablet_extra
+laptop,no,,,_laptop
+widescreen,no,,,_widescreen
+desktop,yes,base,,

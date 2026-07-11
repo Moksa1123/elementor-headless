@@ -1,0 +1,277 @@
+scope,control,type,tab,section,note
+*ALL_WIDGETS*,_attributes,textarea,advanced,_section_attributes,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,custom_css,code,advanced,section_custom_css,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,e_display_conditions,hidden,advanced,_section_style,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,handle_motion_fx_asset_loading,hidden,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_blur_direction,select,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_blur_effect,popover_toggle,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_blur_level,slider,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_blur_range,slider,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_devices,select2,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_motion_fx_mouse,switcher,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_motion_fx_scrolling,switcher,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_mouseTrack_direction,select,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_mouseTrack_effect,popover_toggle,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_mouseTrack_speed,slider,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_opacity_direction,select,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_opacity_effect,popover_toggle,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_opacity_level,slider,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_opacity_range,slider,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_range,select,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_rotateZ_affectedRange,slider,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_rotateZ_direction,select,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_rotateZ_effect,popover_toggle,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_rotateZ_speed,slider,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_scale_direction,select,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_scale_effect,popover_toggle,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_scale_range,slider,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_scale_speed,slider,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_tilt_direction,select,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_tilt_effect,popover_toggle,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_tilt_speed,slider,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_transform_origin_x,choose,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_transform_origin_y,choose,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_translateX_affectedRange,slider,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_translateX_direction,select,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_translateX_effect,popover_toggle,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_translateX_speed,slider,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_translateY_affectedRange,slider,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_translateY_direction,select,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_translateY_effect,popover_toggle,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,motion_fx_translateY_speed,slider,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,sticky,select,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,sticky_anchor_link_offset,number,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,sticky_effects_offset,number,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,sticky_offset,number,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,sticky_on,select2,advanced,section_effects,"Pro injects this into every widget, free ones included"
+*ALL_WIDGETS*,sticky_parent,switcher,advanced,section_effects,"Pro injects this into every widget, free ones included"
+section,background_motion_fx_motion_fx_scrolling,switcher,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_translateY_effect,popover_toggle,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_translateY_direction,select,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_translateY_speed,slider,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_translateY_affectedRange,slider,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_translateX_effect,popover_toggle,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_translateX_direction,select,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_translateX_speed,slider,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_translateX_affectedRange,slider,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_opacity_effect,popover_toggle,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_opacity_direction,select,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_opacity_level,slider,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_opacity_range,slider,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_blur_effect,popover_toggle,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_blur_direction,select,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_blur_level,slider,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_blur_range,slider,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_rotateZ_direction,select,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_rotateZ_speed,slider,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_rotateZ_affectedRange,slider,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_scale_effect,popover_toggle,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_scale_direction,select,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_scale_speed,slider,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_scale_range,slider,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_devices,select2,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_range,select,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_motion_fx_mouse,switcher,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_mouseTrack_effect,popover_toggle,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_mouseTrack_direction,select,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_mouseTrack_speed,slider,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_tilt_direction,select,style,section_background,Pro injects this into the free section element
+section,background_motion_fx_tilt_speed,slider,style,section_background,Pro injects this into the free section element
+section,background_handle_motion_fx_asset_loading,hidden,style,section_background,Pro injects this into the free section element
+section,e_display_conditions,hidden,advanced,section_advanced,Pro injects this into the free section element
+section,motion_fx_motion_fx_scrolling,switcher,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_translateY_effect,popover_toggle,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_translateY_direction,select,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_translateY_speed,slider,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_translateY_affectedRange,slider,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_translateX_effect,popover_toggle,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_translateX_direction,select,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_translateX_speed,slider,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_translateX_affectedRange,slider,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_opacity_effect,popover_toggle,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_opacity_direction,select,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_opacity_level,slider,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_opacity_range,slider,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_blur_effect,popover_toggle,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_blur_direction,select,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_blur_level,slider,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_blur_range,slider,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_rotateZ_effect,popover_toggle,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_rotateZ_direction,select,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_rotateZ_speed,slider,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_rotateZ_affectedRange,slider,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_scale_effect,popover_toggle,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_scale_direction,select,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_scale_speed,slider,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_scale_range,slider,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_transform_origin_x,choose,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_transform_origin_y,choose,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_devices,select2,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_range,select,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_mouseTrack_effect,popover_toggle,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_mouseTrack_direction,select,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_mouseTrack_speed,slider,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_tilt_effect,popover_toggle,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_tilt_direction,select,advanced,section_effects,Pro injects this into the free section element
+section,motion_fx_tilt_speed,slider,advanced,section_effects,Pro injects this into the free section element
+section,handle_motion_fx_asset_loading,hidden,advanced,section_effects,Pro injects this into the free section element
+section,sticky,select,advanced,section_effects,Pro injects this into the free section element
+section,sticky_on,select2,advanced,section_effects,Pro injects this into the free section element
+section,sticky_offset,number,advanced,section_effects,Pro injects this into the free section element
+section,sticky_effects_offset,number,advanced,section_effects,Pro injects this into the free section element
+section,sticky_anchor_link_offset,number,advanced,section_effects,Pro injects this into the free section element
+section,sticky_parent,switcher,advanced,section_effects,Pro injects this into the free section element
+section,_attributes,textarea,advanced,_section_attributes,Pro injects this into the free section element
+section,custom_css,code,advanced,section_custom_css,Pro injects this into the free section element
+column,background_motion_fx_motion_fx_scrolling,switcher,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_translateY_effect,popover_toggle,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_translateY_direction,select,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_translateY_speed,slider,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_translateY_affectedRange,slider,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_translateX_effect,popover_toggle,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_translateX_direction,select,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_translateX_speed,slider,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_translateX_affectedRange,slider,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_opacity_effect,popover_toggle,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_opacity_direction,select,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_opacity_level,slider,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_opacity_range,slider,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_blur_effect,popover_toggle,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_blur_direction,select,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_blur_level,slider,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_blur_range,slider,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_rotateZ_direction,select,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_rotateZ_speed,slider,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_rotateZ_affectedRange,slider,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_scale_effect,popover_toggle,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_scale_direction,select,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_scale_speed,slider,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_scale_range,slider,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_devices,select2,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_range,select,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_motion_fx_mouse,switcher,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_mouseTrack_effect,popover_toggle,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_mouseTrack_direction,select,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_mouseTrack_speed,slider,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_tilt_direction,select,style,section_style,Pro injects this into the free column element
+column,background_motion_fx_tilt_speed,slider,style,section_style,Pro injects this into the free column element
+column,background_handle_motion_fx_asset_loading,hidden,style,section_style,Pro injects this into the free column element
+column,e_display_conditions,hidden,advanced,section_advanced,Pro injects this into the free column element
+column,motion_fx_motion_fx_scrolling,switcher,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_translateY_effect,popover_toggle,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_translateY_direction,select,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_translateY_speed,slider,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_translateY_affectedRange,slider,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_translateX_effect,popover_toggle,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_translateX_direction,select,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_translateX_speed,slider,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_translateX_affectedRange,slider,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_opacity_effect,popover_toggle,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_opacity_direction,select,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_opacity_level,slider,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_opacity_range,slider,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_blur_effect,popover_toggle,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_blur_direction,select,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_blur_level,slider,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_blur_range,slider,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_rotateZ_effect,popover_toggle,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_rotateZ_direction,select,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_rotateZ_speed,slider,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_rotateZ_affectedRange,slider,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_scale_effect,popover_toggle,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_scale_direction,select,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_scale_speed,slider,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_scale_range,slider,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_transform_origin_x,choose,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_transform_origin_y,choose,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_devices,select2,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_range,select,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_motion_fx_mouse,switcher,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_mouseTrack_effect,popover_toggle,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_mouseTrack_direction,select,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_mouseTrack_speed,slider,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_tilt_effect,popover_toggle,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_tilt_direction,select,advanced,section_effects,Pro injects this into the free column element
+column,motion_fx_tilt_speed,slider,advanced,section_effects,Pro injects this into the free column element
+column,handle_motion_fx_asset_loading,hidden,advanced,section_effects,Pro injects this into the free column element
+column,_attributes,textarea,advanced,_section_attributes,Pro injects this into the free column element
+column,custom_css,code,advanced,section_custom_css,Pro injects this into the free column element
+container,background_motion_fx_motion_fx_scrolling,switcher,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_translateY_effect,popover_toggle,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_translateY_direction,select,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_translateY_speed,slider,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_translateY_affectedRange,slider,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_translateX_effect,popover_toggle,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_translateX_direction,select,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_translateX_speed,slider,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_translateX_affectedRange,slider,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_opacity_effect,popover_toggle,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_opacity_direction,select,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_opacity_level,slider,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_opacity_range,slider,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_blur_effect,popover_toggle,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_blur_direction,select,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_blur_level,slider,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_blur_range,slider,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_rotateZ_direction,select,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_rotateZ_speed,slider,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_rotateZ_affectedRange,slider,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_scale_effect,popover_toggle,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_scale_direction,select,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_scale_speed,slider,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_scale_range,slider,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_devices,select2,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_range,select,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_motion_fx_mouse,switcher,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_mouseTrack_effect,popover_toggle,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_mouseTrack_direction,select,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_mouseTrack_speed,slider,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_tilt_direction,select,style,section_background,Pro injects this into the free container element
+container,background_motion_fx_tilt_speed,slider,style,section_background,Pro injects this into the free container element
+container,background_handle_motion_fx_asset_loading,hidden,style,section_background,Pro injects this into the free container element
+container,e_display_conditions,hidden,advanced,section_layout,Pro injects this into the free container element
+container,motion_fx_motion_fx_scrolling,switcher,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_translateY_effect,popover_toggle,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_translateY_direction,select,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_translateY_speed,slider,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_translateY_affectedRange,slider,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_translateX_effect,popover_toggle,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_translateX_direction,select,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_translateX_speed,slider,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_translateX_affectedRange,slider,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_opacity_effect,popover_toggle,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_opacity_direction,select,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_opacity_level,slider,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_opacity_range,slider,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_blur_effect,popover_toggle,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_blur_direction,select,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_blur_level,slider,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_blur_range,slider,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_rotateZ_effect,popover_toggle,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_rotateZ_direction,select,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_rotateZ_speed,slider,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_rotateZ_affectedRange,slider,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_scale_effect,popover_toggle,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_scale_direction,select,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_scale_speed,slider,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_scale_range,slider,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_transform_origin_x,choose,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_transform_origin_y,choose,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_devices,select2,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_range,select,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_motion_fx_mouse,switcher,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_mouseTrack_effect,popover_toggle,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_mouseTrack_direction,select,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_mouseTrack_speed,slider,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_tilt_effect,popover_toggle,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_tilt_direction,select,advanced,section_effects,Pro injects this into the free container element
+container,motion_fx_tilt_speed,slider,advanced,section_effects,Pro injects this into the free container element
+container,handle_motion_fx_asset_loading,hidden,advanced,section_effects,Pro injects this into the free container element
+container,sticky,select,advanced,section_effects,Pro injects this into the free container element
+container,sticky_on,select2,advanced,section_effects,Pro injects this into the free container element
+container,sticky_offset,number,advanced,section_effects,Pro injects this into the free container element
+container,sticky_effects_offset,number,advanced,section_effects,Pro injects this into the free container element
+container,sticky_anchor_link_offset,number,advanced,section_effects,Pro injects this into the free container element
+container,sticky_parent,switcher,advanced,section_effects,Pro injects this into the free container element
+container,_attributes,textarea,advanced,_section_attributes,Pro injects this into the free container element
+container,custom_css,code,advanced,section_custom_css,Pro injects this into the free container element

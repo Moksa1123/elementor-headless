@@ -1,0 +1,6 @@
+task,commands,tokens_read_source,tokens_load_schema,tokens_query,saving_vs_source_pct,saving_vs_schema_pct
+"Lay out a hero container (flex, boxed, responsive padding)",el.py container --tab layout ; el.py type dimensions,20182,583555,964,95.2,99.83
+"Style a heading (colour, typography, alignment)",el.py widget heading --tab style ; el.py group typography,8329,583555,730,91.2,99.87
+"Style a button (colour, padding, border radius, hover)",el.py widget button --tab style ; el.py type dimensions,7803,583555,2935,62.4,99.50
+Make any widget's spacing responsive,el.py breakpoints ; el.py common --grep padding,11800,583555,243,97.9,99.96
+Find which control drives a given CSS property,el.py css border-radius,,583555,363,,99.94

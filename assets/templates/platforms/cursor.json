@@ -16,12 +16,20 @@
     "examples": false
   },
   "frontmatter": {
-    "description": "Build/modify Elementor pages headlessly via JSON and meta data. Triggers on requests to build, design, or restructure an Elementor page/template programmatically, without the visual editor.",
-    "globs": ["**/*.php", "**/wp-content/**", "**/*.json"],
+    "description": "Build and modify Elementor pages by writing the underlying JSON directly - no visual editor, no DOM. Query the full control surface (37,964 controls across 135 widgets and 3 elements) instead of reading Elementor's source, with every Elementor Pro-only control explicitly labeled from a measured Free-vs-Pro diff.",
+    "globs": [
+      "**/*.php",
+      "**/wp-content/**",
+      "**/*.json"
+    ],
     "alwaysApply": false
   },
   "loaderBehaviour": "Cursor reads .cursor/rules/*.mdc as Project Rules. Set alwaysApply: true to auto-attach to every chat, or leave false to attach when filename globs match. Cursor does NOT load referenced files automatically - embed key content inline; keep the rule under ~6KB. Subdirectories are supported (.cursor/rules/wp/x.mdc) if you want to split this up further.",
-  "embedReferences": ["elementor-style-system.md", "elementor-templates-and-conditions.md"],
+  "embedReferences": [
+    "data-model.md",
+    "control-types.md",
+    "responsive.md"
+  ],
   "verified": true,
   "verifiedAsOf": "2026-07-11"
 }

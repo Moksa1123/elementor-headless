@@ -23,7 +23,11 @@
     "filename": "elementor-headless.md",
     "note": "Use this path instead if your installation predates the Devin Desktop rebrand and .devin/rules/ is not recognised."
   },
-  "embedReferences": ["elementor-style-system.md", "elementor-templates-and-conditions.md", "elementor-safe-edit.md"],
+  "embedReferences": [
+    "data-model.md",
+    "control-types.md",
+    "responsive.md"
+  ],
   "verified": true,
   "verifiedAsOf": "2026-07-11",
   "verificationNote": "Verify which product name/path applies to your install before running - this is the platform most likely to keep shifting given the recent rebrand."

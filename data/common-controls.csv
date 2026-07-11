@@ -1,0 +1,212 @@
+owner,control,type,tab,section,responsive,control_tier,owner_tier,default,options,condition,css,label
+*ALL_WIDGETS*,_animation,animation,advanced,section_effects,mobile|tablet,free,free,,,,,Entrance Animation
+*ALL_WIDGETS*,_animation_delay,number,advanced,section_effects,,free,free,,,"{""_animation!"":""""}",,Animation Delay (ms)
+*ALL_WIDGETS*,_attributes,textarea,advanced,_section_attributes,,pro,free,,,,,Custom Attributes
+*ALL_WIDGETS*,_background_attachment,select,advanced,_section_background,,free,free,,"["""",""scroll"",""fixed""]","{""_background_background"":[""classic""],""_background_image[url]!"":""""}",background-attachment,Attachment
+*ALL_WIDGETS*,_background_background,choose,advanced,_section_background,,free,free,,"[""classic"",""gradient""]",,,Background Type
+*ALL_WIDGETS*,_background_bg_width,slider,advanced,_section_background,mobile|tablet,free,free,"{""unit"":""%"",""size"":100,""sizes"":[]}",,"{""_background_background"":[""classic""],""_background_size"":[""initial""],""_background_image[url]!"":""""}",background-size,Width
+*ALL_WIDGETS*,_background_color,color,advanced,_section_background,,free,free,,,"{""_background_background"":[""classic"",""gradient"",""video""]}",background-color,Color
+*ALL_WIDGETS*,_background_color_b,color,advanced,_section_background,,free,free,#f2295b,,"{""_background_background"":[""gradient""]}",,Second Color
+*ALL_WIDGETS*,_background_color_b_stop,slider,advanced,_section_background,mobile|tablet,free,free,"{""unit"":""%"",""size"":100,""sizes"":[]}",,"{""_background_background"":[""gradient""]}",,Location
+*ALL_WIDGETS*,_background_color_stop,slider,advanced,_section_background,mobile|tablet,free,free,"{""unit"":""%"",""size"":0,""sizes"":[]}",,"{""_background_background"":[""gradient""]}",,Location
+*ALL_WIDGETS*,_background_gradient_angle,slider,advanced,_section_background,mobile|tablet,free,free,"{""unit"":""deg"",""size"":180,""sizes"":[]}",,"{""_background_background"":[""gradient""],""_background_gradient_type"":""linear""}",background-color|background-image,Angle
+*ALL_WIDGETS*,_background_gradient_position,select,advanced,_section_background,mobile|tablet,free,free,center center,"[""center center"",""center left"",""center right"",""top center"",""top left"",""top right"",""bottom center"",""bottom left"",""bottom right""]","{""_background_background"":[""gradient""],""_background_gradient_type"":""radial""}",background-color|background-image,Position
+*ALL_WIDGETS*,_background_gradient_type,select,advanced,_section_background,,free,free,linear,"[""linear"",""radial""]","{""_background_background"":[""gradient""]}",,Type
+*ALL_WIDGETS*,_background_hover_attachment,select,advanced,_section_background,,free,free,,"["""",""scroll"",""fixed""]","{""_background_hover_background"":[""classic""],""_background_hover_image[url]!"":""""}",background-attachment,Attachment
+*ALL_WIDGETS*,_background_hover_background,choose,advanced,_section_background,,free,free,,"[""classic"",""gradient""]",,,Background Type
+*ALL_WIDGETS*,_background_hover_bg_width,slider,advanced,_section_background,mobile|tablet,free,free,"{""unit"":""%"",""size"":100,""sizes"":[]}",,"{""_background_hover_background"":[""classic""],""_background_hover_size"":[""initial""],""_background_hover_image[url]!"":""""}",background-size,Width
+*ALL_WIDGETS*,_background_hover_color,color,advanced,_section_background,,free,free,,,"{""_background_hover_background"":[""classic"",""gradient"",""video""]}",background-color,Color
+*ALL_WIDGETS*,_background_hover_color_b,color,advanced,_section_background,,free,free,#f2295b,,"{""_background_hover_background"":[""gradient""]}",,Second Color
+*ALL_WIDGETS*,_background_hover_color_b_stop,slider,advanced,_section_background,mobile|tablet,free,free,"{""unit"":""%"",""size"":100,""sizes"":[]}",,"{""_background_hover_background"":[""gradient""]}",,Location
+*ALL_WIDGETS*,_background_hover_color_stop,slider,advanced,_section_background,mobile|tablet,free,free,"{""unit"":""%"",""size"":0,""sizes"":[]}",,"{""_background_hover_background"":[""gradient""]}",,Location
+*ALL_WIDGETS*,_background_hover_gradient_angle,slider,advanced,_section_background,mobile|tablet,free,free,"{""unit"":""deg"",""size"":180,""sizes"":[]}",,"{""_background_hover_background"":[""gradient""],""_background_hover_gradient_type"":""linear""}",background-color|background-image,Angle
+*ALL_WIDGETS*,_background_hover_gradient_position,select,advanced,_section_background,mobile|tablet,free,free,center center,"[""center center"",""center left"",""center right"",""top center"",""top left"",""top right"",""bottom center"",""bottom left"",""bottom right""]","{""_background_hover_background"":[""gradient""],""_background_hover_gradient_type"":""radial""}",background-color|background-image,Position
+*ALL_WIDGETS*,_background_hover_gradient_type,select,advanced,_section_background,,free,free,linear,"[""linear"",""radial""]","{""_background_hover_background"":[""gradient""]}",,Type
+*ALL_WIDGETS*,_background_hover_image,media,advanced,_section_background,mobile|tablet,free,free,"{""url"":"""",""id"":"""",""size"":""""}",,"{""_background_hover_background"":[""classic""]}",background-image,Image
+*ALL_WIDGETS*,_background_hover_play_on_mobile,switcher,advanced,_section_background,,free,free,,,"{""_background_hover_background"":[""video""]}",,Play On Mobile
+*ALL_WIDGETS*,_background_hover_play_once,switcher,advanced,_section_background,,free,free,,,"{""_background_hover_background"":[""video""]}",,Play Once
+*ALL_WIDGETS*,_background_hover_position,select,advanced,_section_background,mobile|tablet,free,free,,"["""",""center center"",""center left"",""center right"",""top center"",""top left"",""top right"",""bottom center"",""bottom left"",""bottom right"",""initial""]","{""_background_hover_background"":[""classic""],""_background_hover_image[url]!"":""""}",background-position,Position
+*ALL_WIDGETS*,_background_hover_privacy_mode,switcher,advanced,_section_background,,free,free,,,"{""_background_hover_background"":[""video""]}",,Privacy Mode
+*ALL_WIDGETS*,_background_hover_repeat,select,advanced,_section_background,mobile|tablet,free,free,,"["""",""no-repeat"",""repeat"",""repeat-x"",""repeat-y""]","{""_background_hover_background"":[""classic""],""_background_hover_image[url]!"":""""}",background-repeat,Repeat
+*ALL_WIDGETS*,_background_hover_size,select,advanced,_section_background,mobile|tablet,free,free,,"["""",""auto"",""cover"",""contain"",""initial""]","{""_background_hover_background"":[""classic""],""_background_hover_image[url]!"":""""}",background-size,Display Size
+*ALL_WIDGETS*,_background_hover_slideshow_background_position,select,advanced,_section_background,mobile|tablet,free,free,,"["""",""center center"",""center left"",""center right"",""top center"",""top left"",""top right"",""bottom center"",""bottom left"",""bottom right""]","{""_background_hover_background"":[""slideshow""]}",background-position,Background Position
+*ALL_WIDGETS*,_background_hover_slideshow_background_size,select,advanced,_section_background,mobile|tablet,free,free,,"["""",""auto"",""cover"",""contain""]","{""_background_hover_background"":[""slideshow""]}",background-size,Background Size
+*ALL_WIDGETS*,_background_hover_slideshow_gallery,gallery,advanced,_section_background,,free,free,,,"{""_background_hover_background"":[""slideshow""]}",,Images
+*ALL_WIDGETS*,_background_hover_slideshow_ken_burns,switcher,advanced,_section_background,,free,free,,,"{""_background_hover_background"":[""slideshow""]}",,Ken Burns Effect
+*ALL_WIDGETS*,_background_hover_slideshow_ken_burns_zoom_direction,select,advanced,_section_background,,free,free,in,"[""in"",""out""]","{""_background_hover_background"":[""slideshow""],""_background_hover_slideshow_ken_burns!"":""""}",,Direction
+*ALL_WIDGETS*,_background_hover_slideshow_lazyload,switcher,advanced,_section_background,,free,free,,,"{""_background_hover_background"":[""slideshow""]}",,Lazyload
+*ALL_WIDGETS*,_background_hover_slideshow_loop,switcher,advanced,_section_background,,free,free,yes,,"{""_background_hover_background"":[""slideshow""]}",,Infinite Loop
+*ALL_WIDGETS*,_background_hover_slideshow_slide_duration,number,advanced,_section_background,,free,free,5000,,"{""_background_hover_background"":[""slideshow""]}",,Duration (ms)
+*ALL_WIDGETS*,_background_hover_slideshow_slide_transition,select,advanced,_section_background,,free,free,fade,"[""fade"",""slide_right"",""slide_left"",""slide_up"",""slide_down""]","{""_background_hover_background"":[""slideshow""]}",,Transition
+*ALL_WIDGETS*,_background_hover_slideshow_transition_duration,number,advanced,_section_background,,free,free,500,,"{""_background_hover_background"":[""slideshow""]}",,Transition Duration (ms)
+*ALL_WIDGETS*,_background_hover_transition,slider,advanced,_section_background,,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,transition,Transition Duration (s)
+*ALL_WIDGETS*,_background_hover_video_end,number,advanced,_section_background,,free,free,,,"{""_background_hover_background"":[""video""]}",,End Time
+*ALL_WIDGETS*,_background_hover_video_fallback,media,advanced,_section_background,,free,free,"{""url"":"""",""id"":"""",""size"":""""}",,"{""_background_hover_background"":[""video""]}",background|background-size,Background Fallback
+*ALL_WIDGETS*,_background_hover_video_link,text,advanced,_section_background,,free,free,,,"{""_background_hover_background"":[""video""]}",,Video Link
+*ALL_WIDGETS*,_background_hover_video_start,number,advanced,_section_background,,free,free,,,"{""_background_hover_background"":[""video""]}",,Start Time
+*ALL_WIDGETS*,_background_hover_xpos,slider,advanced,_section_background,mobile|tablet,free,free,"{""unit"":""px"",""size"":0,""sizes"":[]}",,"{""_background_hover_background"":[""classic""],""_background_hover_position"":[""initial""],""_background_hover_image[url]!"":""""}",background-position,X Position
+*ALL_WIDGETS*,_background_hover_ypos,slider,advanced,_section_background,mobile|tablet,free,free,"{""unit"":""px"",""size"":0,""sizes"":[]}",,"{""_background_hover_background"":[""classic""],""_background_hover_position"":[""initial""],""_background_hover_image[url]!"":""""}",background-position,Y Position
+*ALL_WIDGETS*,_background_image,media,advanced,_section_background,mobile|tablet,free,free,"{""url"":"""",""id"":"""",""size"":""""}",,"{""_background_background"":[""classic""]}",background-image,Image
+*ALL_WIDGETS*,_background_play_on_mobile,switcher,advanced,_section_background,,free,free,,,"{""_background_background"":[""video""]}",,Play On Mobile
+*ALL_WIDGETS*,_background_play_once,switcher,advanced,_section_background,,free,free,,,"{""_background_background"":[""video""]}",,Play Once
+*ALL_WIDGETS*,_background_position,select,advanced,_section_background,mobile|tablet,free,free,,"["""",""center center"",""center left"",""center right"",""top center"",""top left"",""top right"",""bottom center"",""bottom left"",""bottom right"",""initial""]","{""_background_background"":[""classic""],""_background_image[url]!"":""""}",background-position,Position
+*ALL_WIDGETS*,_background_privacy_mode,switcher,advanced,_section_background,,free,free,,,"{""_background_background"":[""video""]}",,Privacy Mode
+*ALL_WIDGETS*,_background_repeat,select,advanced,_section_background,mobile|tablet,free,free,,"["""",""no-repeat"",""repeat"",""repeat-x"",""repeat-y""]","{""_background_background"":[""classic""],""_background_image[url]!"":""""}",background-repeat,Repeat
+*ALL_WIDGETS*,_background_size,select,advanced,_section_background,mobile|tablet,free,free,,"["""",""auto"",""cover"",""contain"",""initial""]","{""_background_background"":[""classic""],""_background_image[url]!"":""""}",background-size,Display Size
+*ALL_WIDGETS*,_background_slideshow_background_position,select,advanced,_section_background,mobile|tablet,free,free,,"["""",""center center"",""center left"",""center right"",""top center"",""top left"",""top right"",""bottom center"",""bottom left"",""bottom right""]","{""_background_background"":[""slideshow""]}",background-position,Background Position
+*ALL_WIDGETS*,_background_slideshow_background_size,select,advanced,_section_background,mobile|tablet,free,free,,"["""",""auto"",""cover"",""contain""]","{""_background_background"":[""slideshow""]}",background-size,Background Size
+*ALL_WIDGETS*,_background_slideshow_gallery,gallery,advanced,_section_background,,free,free,,,"{""_background_background"":[""slideshow""]}",,Images
+*ALL_WIDGETS*,_background_slideshow_ken_burns,switcher,advanced,_section_background,,free,free,,,"{""_background_background"":[""slideshow""]}",,Ken Burns Effect
+*ALL_WIDGETS*,_background_slideshow_ken_burns_zoom_direction,select,advanced,_section_background,,free,free,in,"[""in"",""out""]","{""_background_background"":[""slideshow""],""_background_slideshow_ken_burns!"":""""}",,Direction
+*ALL_WIDGETS*,_background_slideshow_lazyload,switcher,advanced,_section_background,,free,free,,,"{""_background_background"":[""slideshow""]}",,Lazyload
+*ALL_WIDGETS*,_background_slideshow_loop,switcher,advanced,_section_background,,free,free,yes,,"{""_background_background"":[""slideshow""]}",,Infinite Loop
+*ALL_WIDGETS*,_background_slideshow_slide_duration,number,advanced,_section_background,,free,free,5000,,"{""_background_background"":[""slideshow""]}",,Duration (ms)
+*ALL_WIDGETS*,_background_slideshow_slide_transition,select,advanced,_section_background,,free,free,fade,"[""fade"",""slide_right"",""slide_left"",""slide_up"",""slide_down""]","{""_background_background"":[""slideshow""]}",,Transition
+*ALL_WIDGETS*,_background_slideshow_transition_duration,number,advanced,_section_background,,free,free,500,,"{""_background_background"":[""slideshow""]}",,Transition Duration (ms)
+*ALL_WIDGETS*,_background_video_end,number,advanced,_section_background,,free,free,,,"{""_background_background"":[""video""]}",,End Time
+*ALL_WIDGETS*,_background_video_fallback,media,advanced,_section_background,,free,free,"{""url"":"""",""id"":"""",""size"":""""}",,"{""_background_background"":[""video""]}",background|background-size,Background Fallback
+*ALL_WIDGETS*,_background_video_link,text,advanced,_section_background,,free,free,,,"{""_background_background"":[""video""]}",,Video Link
+*ALL_WIDGETS*,_background_video_start,number,advanced,_section_background,,free,free,,,"{""_background_background"":[""video""]}",,Start Time
+*ALL_WIDGETS*,_background_xpos,slider,advanced,_section_background,mobile|tablet,free,free,"{""unit"":""px"",""size"":0,""sizes"":[]}",,"{""_background_background"":[""classic""],""_background_position"":[""initial""],""_background_image[url]!"":""""}",background-position,X Position
+*ALL_WIDGETS*,_background_ypos,slider,advanced,_section_background,mobile|tablet,free,free,"{""unit"":""px"",""size"":0,""sizes"":[]}",,"{""_background_background"":[""classic""],""_background_position"":[""initial""],""_background_image[url]!"":""""}",background-position,Y Position
+*ALL_WIDGETS*,_border_border,select,advanced,_section_border,,free,free,,"["""",""none"",""solid"",""double"",""dotted"",""dashed"",""groove""]",,border-style,Border Type
+*ALL_WIDGETS*,_border_color,color,advanced,_section_border,,free,free,,,"{""_border_border!"":["""",""none""]}",border-color,Border Color
+*ALL_WIDGETS*,_border_hover_border,select,advanced,_section_border,,free,free,,"["""",""none"",""solid"",""double"",""dotted"",""dashed"",""groove""]",,border-style,Border Type
+*ALL_WIDGETS*,_border_hover_color,color,advanced,_section_border,,free,free,,,"{""_border_hover_border!"":["""",""none""]}",border-color,Border Color
+*ALL_WIDGETS*,_border_hover_transition,slider,advanced,_section_border,,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,transition,Transition Duration (s)
+*ALL_WIDGETS*,_border_hover_width,dimensions,advanced,_section_border,mobile|tablet,free,free,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,"{""_border_hover_border!"":["""",""none""]}",border-width,Border Width
+*ALL_WIDGETS*,_border_radius,dimensions,advanced,_section_border,mobile|tablet,free,free,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,,border-radius,Border Radius
+*ALL_WIDGETS*,_border_radius_hover,dimensions,advanced,_section_border,mobile|tablet,free,free,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,,border-radius,Border Radius
+*ALL_WIDGETS*,_border_width,dimensions,advanced,_section_border,mobile|tablet,free,free,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,"{""_border_border!"":["""",""none""]}",border-width,Border Width
+*ALL_WIDGETS*,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
+*ALL_WIDGETS*,_box_shadow_box_shadow_position,select,advanced,_section_border,,free,free, ,"["" "",""inset""]","{""_box_shadow_box_shadow_type!"":""""}",,Position
+*ALL_WIDGETS*,_box_shadow_box_shadow_type,popover_toggle,advanced,_section_border,,free,free,,,,,Box Shadow
+*ALL_WIDGETS*,_box_shadow_hover_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_hover_box_shadow_type!"":""""}",box-shadow,Box Shadow
+*ALL_WIDGETS*,_box_shadow_hover_box_shadow_position,select,advanced,_section_border,,free,free, ,"["" "",""inset""]","{""_box_shadow_hover_box_shadow_type!"":""""}",,Position
+*ALL_WIDGETS*,_box_shadow_hover_box_shadow_type,popover_toggle,advanced,_section_border,,free,free,,,,,Box Shadow
+*ALL_WIDGETS*,_css_classes,text,advanced,_section_style,,free,free,,,,,CSS Classes
+*ALL_WIDGETS*,_element_cache,select,advanced,_section_style,,free,free,,"["""",""yes"",""no""]",,,Cache Settings
+*ALL_WIDGETS*,_element_custom_width,slider,advanced,_section_style,mobile|tablet,free,free,"{""unit"":""%"",""size"":"""",""sizes"":[]}",,"{""_element_width"":""initial""}",--container-widget-width|--container-widget-flex-grow|width|max-width,Custom Width
+*ALL_WIDGETS*,_element_id,text,advanced,_section_style,,free,free,,,,,CSS ID
+*ALL_WIDGETS*,_element_vertical_align,choose,advanced,_section_style,mobile|tablet,free,free,,"[""flex-start"",""center"",""flex-end""]","{""_element_width!"":"""",""_position"":"""",""_element_vertical_align!"":""""}",align-self,Vertical Align
+*ALL_WIDGETS*,_element_width,select,advanced,_section_style,mobile|tablet,free,free,,"["""",""inherit"",""auto"",""initial""]",,width|max-width,Width
+*ALL_WIDGETS*,_flex_align_self,choose,advanced,_section_style,mobile|tablet,free,free,,"[""flex-start"",""center"",""flex-end"",""stretch""]",,--align-self,Align Self
+*ALL_WIDGETS*,_flex_grow,number,advanced,_section_style,mobile|tablet,free,free,1,,"{""_flex_size"":""custom""}",--flex-grow,Flex Grow
+*ALL_WIDGETS*,_flex_order,choose,advanced,_section_style,mobile|tablet,free,free,,"[""start"",""end"",""custom""]",,--order,Order
+*ALL_WIDGETS*,_flex_order_custom,number,advanced,_section_style,mobile|tablet,free,free,,,"{""_flex_order"":""custom""}",--order,Custom Order
+*ALL_WIDGETS*,_flex_shrink,number,advanced,_section_style,mobile|tablet,free,free,1,,"{""_flex_size"":""custom""}",--flex-shrink,Flex Shrink
+*ALL_WIDGETS*,_flex_size,choose,advanced,_section_style,mobile|tablet,free,free,,"[""none"",""grow"",""shrink"",""custom""]",,,Size
+*ALL_WIDGETS*,_grid_column,select,advanced,_section_style,mobile|tablet,free,free,,"["""",1,2,3,4,5,6,7,8,9,10,11,12,""custom""]",,grid-column,Column Span
+*ALL_WIDGETS*,_grid_column_custom,text,advanced,_section_style,mobile|tablet,free,free,,,"{""_grid_column"":""custom""}",grid-column,Custom
+*ALL_WIDGETS*,_grid_row,select,advanced,_section_style,mobile|tablet,free,free,,"["""",1,2,3,4,5,6,7,8,9,10,11,12,""custom""]",,grid-row,Row Span
+*ALL_WIDGETS*,_grid_row_custom,text,advanced,_section_style,mobile|tablet,free,free,,,"{""_grid_row"":""custom""}",grid-row,Custom
+*ALL_WIDGETS*,_margin,dimensions,advanced,_section_style,mobile|tablet,free,free,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,,margin,Margin
+*ALL_WIDGETS*,_mask_image,media,advanced,_section_masking,mobile|tablet,free,free,"{""url"":"""",""id"":"""",""size"":""""}",,"{""_mask_switch!"":"""",""_mask_shape"":""custom""}",-webkit-mask-image,Image
+*ALL_WIDGETS*,_mask_position,select,advanced,_section_masking,mobile|tablet,free,free,center center,"[""center center"",""center left"",""center right"",""top center"",""top left"",""top right"",""bottom center"",""bottom left"",""bottom right"",""custom""]","{""_mask_switch!"":""""}",-webkit-mask-position,Position
+*ALL_WIDGETS*,_mask_position_x,slider,advanced,_section_masking,mobile|tablet,free,free,"{""unit"":""%"",""size"":0,""sizes"":[]}",,"{""_mask_switch!"":"""",""_mask_position"":""custom""}",-webkit-mask-position-x,X Position
+*ALL_WIDGETS*,_mask_position_y,slider,advanced,_section_masking,mobile|tablet,free,free,"{""unit"":""%"",""size"":0,""sizes"":[]}",,"{""_mask_switch!"":"""",""_mask_position"":""custom""}",-webkit-mask-position-y,Y Position
+*ALL_WIDGETS*,_mask_repeat,select,advanced,_section_masking,mobile|tablet,free,free,no-repeat,"[""no-repeat"",""repeat"",""repeat-x"",""repeat-Y"",""round"",""space""]","{""_mask_switch!"":"""",""_mask_size!"":""cover""}",-webkit-mask-repeat,Repeat
+*ALL_WIDGETS*,_mask_shape,visual_choice,advanced,_section_masking,,free,free,circle,"[""circle"",""oval-vertical"",""oval-horizontal"",""pill-vertical"",""pill-horizontal"",""triangle"",""diamond"",""pentagon"",""hexagon-vertical"",""hexagon-horizontal"",""heptagon"",""octagon"",""parallelogram-right"",""parallelogram-left"",""trapezoid-up"",""trapezoid-down"",""flower"",""sketch"",""hexagon"",""blob"",""custom""]","{""_mask_switch!"":""""}",-webkit-mask-image,Shape
+*ALL_WIDGETS*,_mask_size,select,advanced,_section_masking,mobile|tablet,free,free,contain,"[""contain"",""cover"",""custom""]","{""_mask_switch!"":""""}",-webkit-mask-size,Size
+*ALL_WIDGETS*,_mask_size_scale,slider,advanced,_section_masking,mobile|tablet,free,free,"{""unit"":""%"",""size"":100,""sizes"":[]}",,"{""_mask_switch!"":"""",""_mask_size"":""custom""}",-webkit-mask-size,Scale
+*ALL_WIDGETS*,_mask_switch,switcher,advanced,_section_masking,,free,free,,,,,Mask
+*ALL_WIDGETS*,_offset_orientation_h,choose,advanced,_section_style,,free,free,start,"[""start"",""end""]","{""_position!"":""""}",,Horizontal Orientation
+*ALL_WIDGETS*,_offset_orientation_v,choose,advanced,_section_style,,free,free,start,"[""start"",""end""]","{""_position!"":""""}",,Vertical Orientation
+*ALL_WIDGETS*,_offset_x,slider,advanced,_section_style,mobile|tablet,free,free,"{""unit"":""px"",""size"":0,""sizes"":[]}",,"{""_offset_orientation_h!"":""end"",""_position!"":""""}",left|right,Offset
+*ALL_WIDGETS*,_offset_x_end,slider,advanced,_section_style,mobile|tablet,free,free,"{""unit"":""px"",""size"":0,""sizes"":[]}",,"{""_offset_orientation_h"":""end"",""_position!"":""""}",right|left,Offset
+*ALL_WIDGETS*,_offset_y,slider,advanced,_section_style,mobile|tablet,free,free,"{""unit"":""px"",""size"":0,""sizes"":[]}",,"{""_offset_orientation_v!"":""end"",""_position!"":""""}",top,Offset
+*ALL_WIDGETS*,_offset_y_end,slider,advanced,_section_style,mobile|tablet,free,free,"{""unit"":""px"",""size"":0,""sizes"":[]}",,"{""_offset_orientation_v"":""end"",""_position!"":""""}",bottom,Offset
+*ALL_WIDGETS*,_padding,dimensions,advanced,_section_style,mobile|tablet,free,free,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,,padding,Padding
+*ALL_WIDGETS*,_position,select,advanced,_section_style,,free,free,,"["""",""absolute"",""fixed""]",,,Position
+*ALL_WIDGETS*,_title,hidden,advanced,_section_style,,free,free,,,,,Title
+*ALL_WIDGETS*,_transform_flipX_effect,choose,advanced,_section_transform,,free,free,,"[""transform""]",,--e-transform-flipX,Flip Horizontal
+*ALL_WIDGETS*,_transform_flipX_effect_hover,choose,advanced,_section_transform,,free,free,,"[""transform""]",,--e-transform-flipX,Flip Horizontal
+*ALL_WIDGETS*,_transform_flipY_effect,choose,advanced,_section_transform,,free,free,,"[""transform""]",,--e-transform-flipY,Flip Vertical
+*ALL_WIDGETS*,_transform_flipY_effect_hover,choose,advanced,_section_transform,,free,free,,"[""transform""]",,--e-transform-flipY,Flip Vertical
+*ALL_WIDGETS*,_transform_keep_proportions,switcher,advanced,_section_transform,,free,free,yes,,,,Keep Proportions
+*ALL_WIDGETS*,_transform_keep_proportions_hover,switcher,advanced,_section_transform,,free,free,yes,,,,Keep Proportions
+*ALL_WIDGETS*,_transform_perspective_effect,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_rotate_popover!"":"""",""_transform_rotate_3d!"":""""}",--e-transform-perspective,Perspective (px)
+*ALL_WIDGETS*,_transform_perspective_effect_hover,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_rotate_popover_hover!"":"""",""_transform_rotate_3d_hover!"":""""}",--e-transform-perspective,Perspective (px)
+*ALL_WIDGETS*,_transform_rotateX_effect,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_rotate_3d!"":"""",""_transform_rotate_popover!"":""""}",--e-transform-rotateX,Rotate X (deg)
+*ALL_WIDGETS*,_transform_rotateX_effect_hover,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_rotate_3d_hover!"":"""",""_transform_rotate_popover_hover!"":""""}",--e-transform-rotateX,Rotate X (deg)
+*ALL_WIDGETS*,_transform_rotateY_effect,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_rotate_3d!"":"""",""_transform_rotate_popover!"":""""}",--e-transform-rotateY,Rotate Y (deg)
+*ALL_WIDGETS*,_transform_rotateY_effect_hover,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_rotate_3d_hover!"":"""",""_transform_rotate_popover_hover!"":""""}",--e-transform-rotateY,Rotate Y (deg)
+*ALL_WIDGETS*,_transform_rotateZ_effect,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_rotate_popover!"":""""}",--e-transform-rotateZ,Rotate (deg)
+*ALL_WIDGETS*,_transform_rotateZ_effect_hover,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_rotate_popover_hover!"":""""}",--e-transform-rotateZ,Rotate (deg)
+*ALL_WIDGETS*,_transform_rotate_3d,switcher,advanced,_section_transform,,free,free,,,"{""_transform_rotate_popover!"":""""}",--e-transform-rotateX|--e-transform-perspective,3D Rotate
+*ALL_WIDGETS*,_transform_rotate_3d_hover,switcher,advanced,_section_transform,,free,free,,,"{""_transform_rotate_popover_hover!"":""""}",--e-transform-rotateX|--e-transform-perspective,3D Rotate
+*ALL_WIDGETS*,_transform_rotate_popover,popover_toggle,advanced,_section_transform,,free,free,,,,,Rotate
+*ALL_WIDGETS*,_transform_rotate_popover_hover,popover_toggle,advanced,_section_transform,,free,free,,,,,Rotate
+*ALL_WIDGETS*,_transform_scaleX_effect,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_scale_popover!"":"""",""_transform_keep_proportions"":""""}",--e-transform-scaleX,Scale X
+*ALL_WIDGETS*,_transform_scaleX_effect_hover,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_scale_popover_hover!"":"""",""_transform_keep_proportions_hover"":""""}",--e-transform-scaleX,Scale X
+*ALL_WIDGETS*,_transform_scaleY_effect,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_scale_popover!"":"""",""_transform_keep_proportions"":""""}",--e-transform-scaleY,Scale Y
+*ALL_WIDGETS*,_transform_scaleY_effect_hover,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_scale_popover_hover!"":"""",""_transform_keep_proportions_hover"":""""}",--e-transform-scaleY,Scale Y
+*ALL_WIDGETS*,_transform_scale_effect,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_scale_popover!"":"""",""_transform_keep_proportions!"":""""}",--e-transform-scale,Scale
+*ALL_WIDGETS*,_transform_scale_effect_hover,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_scale_popover_hover!"":"""",""_transform_keep_proportions_hover!"":""""}",--e-transform-scale,Scale
+*ALL_WIDGETS*,_transform_scale_popover,popover_toggle,advanced,_section_transform,,free,free,,,,,Scale
+*ALL_WIDGETS*,_transform_scale_popover_hover,popover_toggle,advanced,_section_transform,,free,free,,,,,Scale
+*ALL_WIDGETS*,_transform_skewX_effect,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_skew_popover!"":""""}",--e-transform-skewX,Skew X (deg)
+*ALL_WIDGETS*,_transform_skewX_effect_hover,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_skew_popover_hover!"":""""}",--e-transform-skewX,Skew X (deg)
+*ALL_WIDGETS*,_transform_skewY_effect,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_skew_popover!"":""""}",--e-transform-skewY,Skew Y (deg)
+*ALL_WIDGETS*,_transform_skewY_effect_hover,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_skew_popover_hover!"":""""}",--e-transform-skewY,Skew Y (deg)
+*ALL_WIDGETS*,_transform_skew_popover,popover_toggle,advanced,_section_transform,,free,free,,,,,Skew
+*ALL_WIDGETS*,_transform_skew_popover_hover,popover_toggle,advanced,_section_transform,,free,free,,,,,Skew
+*ALL_WIDGETS*,_transform_transition_hover,slider,advanced,_section_transform,,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,--e-transform-transition-duration,Transition Duration (ms)
+*ALL_WIDGETS*,_transform_translateX_effect,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_translate_popover!"":""""}",--e-transform-translateX,Offset X
+*ALL_WIDGETS*,_transform_translateX_effect_hover,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_translate_popover_hover!"":""""}",--e-transform-translateX,Offset X
+*ALL_WIDGETS*,_transform_translateY_effect,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_translate_popover!"":""""}",--e-transform-translateY,Offset Y
+*ALL_WIDGETS*,_transform_translateY_effect_hover,slider,advanced,_section_transform,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""_transform_translate_popover_hover!"":""""}",--e-transform-translateY,Offset Y
+*ALL_WIDGETS*,_transform_translate_popover,popover_toggle,advanced,_section_transform,,free,free,,,,,Offset
+*ALL_WIDGETS*,_transform_translate_popover_hover,popover_toggle,advanced,_section_transform,,free,free,,,,,Offset
+*ALL_WIDGETS*,_z_index,number,advanced,_section_style,mobile|tablet,free,free,,,,z-index,Z-Index
+*ALL_WIDGETS*,animation_duration,select,advanced,section_effects,,free,free,,"[""slow"","""",""fast""]","{""_animation!"":""""}",,Animation Duration
+*ALL_WIDGETS*,custom_css,code,advanced,section_custom_css,,pro,free,,,,,Add your own custom CSS
+*ALL_WIDGETS*,e_display_conditions,hidden,advanced,_section_style,,pro,free,,,,,
+*ALL_WIDGETS*,handle_motion_fx_asset_loading,hidden,advanced,section_effects,,pro,free,,,,,
+*ALL_WIDGETS*,hide_desktop,switcher,advanced,_section_responsive,,free,free,,,,,Hide On Desktop
+*ALL_WIDGETS*,hide_mobile,switcher,advanced,_section_responsive,,free,free,,,,,Hide On Mobile Portrait
+*ALL_WIDGETS*,hide_tablet,switcher,advanced,_section_responsive,,free,free,,,,,Hide On Tablet Portrait
+*ALL_WIDGETS*,motion_fx_blur_direction,select,advanced,section_effects,,pro,free,out-in,"[""out-in"",""in-out"",""in-out-in"",""out-in-out""]","{""motion_fx_motion_fx_scrolling"":""yes"",""motion_fx_blur_effect"":""yes""}",,Direction
+*ALL_WIDGETS*,motion_fx_blur_effect,popover_toggle,advanced,section_effects,,pro,free,,,"{""motion_fx_motion_fx_scrolling"":""yes""}",,Blur
+*ALL_WIDGETS*,motion_fx_blur_level,slider,advanced,section_effects,,pro,free,"{""unit"":""px"",""size"":7,""sizes"":[]}",,"{""motion_fx_motion_fx_scrolling"":""yes"",""motion_fx_blur_effect"":""yes""}",,Level
+*ALL_WIDGETS*,motion_fx_blur_range,slider,advanced,section_effects,,pro,free,"{""unit"":""%"",""size"":"""",""sizes"":{""start"":20,""end"":80}}",,"{""motion_fx_motion_fx_scrolling"":""yes"",""motion_fx_blur_effect"":""yes""}",,Viewport
+*ALL_WIDGETS*,motion_fx_devices,select2,advanced,section_effects,,pro,free,"[""desktop"",""tablet"",""mobile""]","[""desktop"",""tablet"",""mobile""]","{""motion_fx_motion_fx_scrolling"":""yes""}",,Apply Effects On
+*ALL_WIDGETS*,motion_fx_motion_fx_mouse,switcher,advanced,section_effects,,pro,free,,,,,Mouse Effects
+*ALL_WIDGETS*,motion_fx_motion_fx_scrolling,switcher,advanced,section_effects,,pro,free,,,,,Scrolling Effects
+*ALL_WIDGETS*,motion_fx_mouseTrack_direction,select,advanced,section_effects,,pro,free,,"["""",""negative""]","{""motion_fx_motion_fx_mouse"":""yes"",""motion_fx_mouseTrack_effect"":""yes""}",,Direction
+*ALL_WIDGETS*,motion_fx_mouseTrack_effect,popover_toggle,advanced,section_effects,,pro,free,,,"{""motion_fx_motion_fx_mouse"":""yes""}",,Mouse Track
+*ALL_WIDGETS*,motion_fx_mouseTrack_speed,slider,advanced,section_effects,,pro,free,"{""unit"":""px"",""size"":1,""sizes"":[]}",,"{""motion_fx_motion_fx_mouse"":""yes"",""motion_fx_mouseTrack_effect"":""yes""}",,Speed
+*ALL_WIDGETS*,motion_fx_opacity_direction,select,advanced,section_effects,,pro,free,out-in,"[""out-in"",""in-out"",""in-out-in"",""out-in-out""]","{""motion_fx_motion_fx_scrolling"":""yes"",""motion_fx_opacity_effect"":""yes""}",,Direction
+*ALL_WIDGETS*,motion_fx_opacity_effect,popover_toggle,advanced,section_effects,,pro,free,,,"{""motion_fx_motion_fx_scrolling"":""yes""}",,Transparency
+*ALL_WIDGETS*,motion_fx_opacity_level,slider,advanced,section_effects,,pro,free,"{""unit"":""px"",""size"":10,""sizes"":[]}",,"{""motion_fx_motion_fx_scrolling"":""yes"",""motion_fx_opacity_effect"":""yes""}",,Level
+*ALL_WIDGETS*,motion_fx_opacity_range,slider,advanced,section_effects,,pro,free,"{""unit"":""%"",""size"":"""",""sizes"":{""start"":20,""end"":80}}",,"{""motion_fx_motion_fx_scrolling"":""yes"",""motion_fx_opacity_effect"":""yes""}",,Viewport
+*ALL_WIDGETS*,motion_fx_range,select,advanced,section_effects,,pro,free,,"["""",""viewport"",""page""]","{""motion_fx_motion_fx_scrolling"":""yes""}",,Effects Relative To
+*ALL_WIDGETS*,motion_fx_rotateZ_affectedRange,slider,advanced,section_effects,,pro,free,"{""unit"":""%"",""size"":"""",""sizes"":{""start"":0,""end"":100}}",,"{""motion_fx_motion_fx_scrolling"":""yes"",""motion_fx_rotateZ_effect"":""yes""}",,Viewport
+*ALL_WIDGETS*,motion_fx_rotateZ_direction,select,advanced,section_effects,,pro,free,,"["""",""negative""]","{""motion_fx_motion_fx_scrolling"":""yes"",""motion_fx_rotateZ_effect"":""yes""}",,Direction
+*ALL_WIDGETS*,motion_fx_rotateZ_effect,popover_toggle,advanced,section_effects,,pro,free,,,"{""motion_fx_motion_fx_scrolling"":""yes""}",,Rotate
+*ALL_WIDGETS*,motion_fx_rotateZ_speed,slider,advanced,section_effects,,pro,free,"{""unit"":""px"",""size"":1,""sizes"":[]}",,"{""motion_fx_motion_fx_scrolling"":""yes"",""motion_fx_rotateZ_effect"":""yes""}",,Speed
+*ALL_WIDGETS*,motion_fx_scale_direction,select,advanced,section_effects,,pro,free,out-in,"[""out-in"",""in-out"",""in-out-in"",""out-in-out""]","{""motion_fx_motion_fx_scrolling"":""yes"",""motion_fx_scale_effect"":""yes""}",,Direction
+*ALL_WIDGETS*,motion_fx_scale_effect,popover_toggle,advanced,section_effects,,pro,free,,,"{""motion_fx_motion_fx_scrolling"":""yes""}",,Scale
+*ALL_WIDGETS*,motion_fx_scale_range,slider,advanced,section_effects,,pro,free,"{""unit"":""%"",""size"":"""",""sizes"":{""start"":20,""end"":80}}",,"{""motion_fx_motion_fx_scrolling"":""yes"",""motion_fx_scale_effect"":""yes""}",,Viewport
+*ALL_WIDGETS*,motion_fx_scale_speed,slider,advanced,section_effects,,pro,free,"{""unit"":""px"",""size"":4,""sizes"":[]}",,"{""motion_fx_motion_fx_scrolling"":""yes"",""motion_fx_scale_effect"":""yes""}",,Speed
+*ALL_WIDGETS*,motion_fx_tilt_direction,select,advanced,section_effects,,pro,free,,"["""",""negative""]","{""motion_fx_motion_fx_mouse"":""yes"",""motion_fx_tilt_effect"":""yes""}",,Direction
+*ALL_WIDGETS*,motion_fx_tilt_effect,popover_toggle,advanced,section_effects,,pro,free,,,"{""motion_fx_motion_fx_mouse"":""yes""}",,3D Tilt
+*ALL_WIDGETS*,motion_fx_tilt_speed,slider,advanced,section_effects,,pro,free,"{""unit"":""px"",""size"":4,""sizes"":[]}",,"{""motion_fx_motion_fx_mouse"":""yes"",""motion_fx_tilt_effect"":""yes""}",,Speed
+*ALL_WIDGETS*,motion_fx_transform_origin_x,choose,advanced,section_effects,,pro,free,center,"[""left"",""center"",""right""]",,--e-transform-origin-x,X Anchor Point
+*ALL_WIDGETS*,motion_fx_transform_origin_y,choose,advanced,section_effects,,pro,free,center,"[""top"",""center"",""bottom""]",,--e-transform-origin-y,Y Anchor Point
+*ALL_WIDGETS*,motion_fx_transform_x_anchor_point,choose,advanced,_section_transform,mobile|tablet,free,free,,"[""left"",""center"",""right""]",,--e-transform-origin-x,X Anchor Point
+*ALL_WIDGETS*,motion_fx_transform_y_anchor_point,choose,advanced,_section_transform,mobile|tablet,free,free,,"[""top"",""center"",""bottom""]",,--e-transform-origin-y,Y Anchor Point
+*ALL_WIDGETS*,motion_fx_translateX_affectedRange,slider,advanced,section_effects,,pro,free,"{""unit"":""%"",""size"":"""",""sizes"":{""start"":0,""end"":100}}",,"{""motion_fx_motion_fx_scrolling"":""yes"",""motion_fx_translateX_effect"":""yes""}",,Viewport
+*ALL_WIDGETS*,motion_fx_translateX_direction,select,advanced,section_effects,,pro,free,,"["""",""negative""]","{""motion_fx_motion_fx_scrolling"":""yes"",""motion_fx_translateX_effect"":""yes""}",,Direction
+*ALL_WIDGETS*,motion_fx_translateX_effect,popover_toggle,advanced,section_effects,,pro,free,,,"{""motion_fx_motion_fx_scrolling"":""yes""}",,Horizontal Scroll
+*ALL_WIDGETS*,motion_fx_translateX_speed,slider,advanced,section_effects,,pro,free,"{""unit"":""px"",""size"":4,""sizes"":[]}",,"{""motion_fx_motion_fx_scrolling"":""yes"",""motion_fx_translateX_effect"":""yes""}",,Speed
+*ALL_WIDGETS*,motion_fx_translateY_affectedRange,slider,advanced,section_effects,,pro,free,"{""unit"":""%"",""size"":"""",""sizes"":{""start"":0,""end"":100}}",,"{""motion_fx_motion_fx_scrolling"":""yes"",""motion_fx_translateY_effect"":""yes""}",,Viewport
+*ALL_WIDGETS*,motion_fx_translateY_direction,select,advanced,section_effects,,pro,free,,"["""",""negative""]","{""motion_fx_motion_fx_scrolling"":""yes"",""motion_fx_translateY_effect"":""yes""}",,Direction
+*ALL_WIDGETS*,motion_fx_translateY_effect,popover_toggle,advanced,section_effects,,pro,free,,,"{""motion_fx_motion_fx_scrolling"":""yes""}",,Vertical Scroll
+*ALL_WIDGETS*,motion_fx_translateY_speed,slider,advanced,section_effects,,pro,free,"{""unit"":""px"",""size"":4,""sizes"":[]}",,"{""motion_fx_motion_fx_scrolling"":""yes"",""motion_fx_translateY_effect"":""yes""}",,Speed
+*ALL_WIDGETS*,sticky,select,advanced,section_effects,,pro,free,,"["""",""top"",""bottom""]",,,Sticky
+*ALL_WIDGETS*,sticky_anchor_link_offset,number,advanced,section_effects,mobile|tablet,pro,free,0,,"{""sticky!"":""""}",,Anchor Offset
+*ALL_WIDGETS*,sticky_effects_offset,number,advanced,section_effects,mobile|tablet,pro,free,0,,"{""sticky!"":""""}",,Effects Offset
+*ALL_WIDGETS*,sticky_offset,number,advanced,section_effects,mobile|tablet,pro,free,0,,"{""sticky!"":""""}",,Sticky Offset
+*ALL_WIDGETS*,sticky_on,select2,advanced,section_effects,,pro,free,"[""desktop"",""tablet"",""mobile""]","[""desktop"",""tablet"",""mobile""]","{""sticky!"":""""}",,Sticky On
+*ALL_WIDGETS*,sticky_parent,switcher,advanced,section_effects,,pro,free,,,"{""sticky!"":""""}",,Stay In Column

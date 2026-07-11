@@ -1,0 +1,281 @@
+#!/usr/bin/env python3
+"""
+validate-page.py — check an Elementor page tree BEFORE you write it to the database.
+
+    python tools/validate-page.py my-page.json
+    python tools/validate-page.py my-page.json --target free   # fail on Pro-only controls
+
+Elementor does not validate what you put in `_elementor_data`. It stores it, and
+then it renders whatever it can make sense of. A misspelled control name, a
+string where a dimensions object belongs, a Pro-only control on a Free site:
+none of these raise an error. They just quietly do nothing, and you find out by
+looking at the page and wondering why the padding did not apply.
+
+This is the pre-flight that turns those silent no-ops into loud failures.
+
+CHECKS
+  ERROR   unknown elType / widgetType
+  ERROR   duplicate element id (breaks the editor in ways that look like corruption)
+  ERROR   missing `elements` array
+  ERROR   control that does not exist on that widget
+  ERROR   value whose JSON shape does not match the control's type
+  ERROR   Pro-only control, when --target free
+  WARN    Pro-only control, otherwise
+  WARN    control whose `condition` is not satisfied by its siblings, so it will
+          be ignored at render time even though it is spelled correctly
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+SCHEMA = ROOT / "data" / "elementor-schema.json"
+
+ID_RE = re.compile(r"^[0-9a-f]{6,8}$")
+
+# What a value of each control type must look like. Only the types whose shape
+# is a dict/list are worth checking - a `text` control accepts any string.
+SHAPE_KEYS = {
+    "dimensions": {"unit", "top", "right", "bottom", "left", "isLinked"},
+    "slider": {"unit", "size", "sizes"},
+    "box_shadow": {"horizontal", "vertical", "blur", "spread", "color"},
+    "text_shadow": {"horizontal", "vertical", "blur", "color"},
+    "url": {"url", "is_external", "nofollow", "custom_attributes"},
+    "media": {"url", "id", "size"},
+    "icons": {"value", "library"},
+    "gaps": {"column", "row", "isLinked", "unit"},
+    "image_dimensions": {"width", "height"},
+}
+LIST_TYPES = {"repeater", "gallery", "conditions_repeater", "form-fields-repeater",
+              "nested-elements-repeater", "global-style-repeater", "fields_map", "wp_widget"}
+
+
+class Report:
+    def __init__(self) -> None:
+        self.errors: list[str] = []
+        self.warnings: list[str] = []
+
+    def err(self, where: str, msg: str) -> None:
+        self.errors.append(f"{where}: {msg}")
+
+    def warn(self, where: str, msg: str) -> None:
+        self.warnings.append(f"{where}: {msg}")
+
+
+def controls_for(schema: dict, el: dict) -> dict[str, dict] | None:
+    """Every control legal on this node, common set included."""
+    el_type = el.get("elType")
+    if el_type == "widget":
+        name = el.get("widgetType")
+        w = schema["widgets"].get(name)
+    else:
+        name = el_type
+        w = schema["elements"].get(name)
+    if w is None:
+        return None
+    out = {c["name"]: c for c in w["controls"]}
+    if w.get("has_common"):
+        missing = set(w.get("common_missing", []))
+        for c in schema["common_controls"]["controls"]:
+            if c["name"] not in missing:
+                out.setdefault(c["name"], c)
+    return out
+
+
+def base_control(name: str, controls: dict, breakpoints: list[str]) -> tuple[str, dict] | None:
+    """Resolve `padding_tablet` back to `padding` so responsive keys validate."""
+    if name in controls:
+        return name, controls[name]
+    for bp in breakpoints:
+        suffix = f"_{bp}"
+        if name.endswith(suffix):
+            base = name[: -len(suffix)]
+            if base in controls and bp in (controls[base].get("responsive") or []):
+                return base, controls[base]
+    return None
+
+
+def check_shape(value, ctrl: dict, where: str, key: str, rep: Report) -> None:
+    t = ctrl.get("type")
+    if t in SHAPE_KEYS:
+        if not isinstance(value, dict):
+            rep.err(where, f"`{key}` is a `{t}` control: expected an object like "
+                           f"{json.dumps({k: '' for k in sorted(SHAPE_KEYS[t])})}, got {type(value).__name__} "
+                           f"{json.dumps(value, ensure_ascii=False)[:40]}")
+            return
+        unknown = set(value) - SHAPE_KEYS[t]
+        if unknown:
+            rep.warn(where, f"`{key}` has key(s) Elementor does not read: {sorted(unknown)}")
+    elif t in LIST_TYPES:
+        if not isinstance(value, list):
+            rep.err(where, f"`{key}` is a `{t}` control: expected a list, got {type(value).__name__}")
+    elif t == "switcher":
+        rv = ctrl.get("return_value", "yes")
+        if value not in (rv, "", None):
+            rep.warn(where, f"`{key}` is a switcher: Elementor reads {rv!r} as on and '' as off, got {value!r}")
+    elif t in ("select", "choose", "select2"):
+        opts = ctrl.get("options")
+        # PHP turns array keys that look like integers into ints, so a font-weight
+        # option map comes out of json_encode as [100, 200, ...] while Elementor
+        # itself stores the chosen value as the string "700". Compare as strings
+        # or every numeric select produces a false error.
+        if isinstance(opts, list) and opts and value not in (None, ""):
+            allowed = {str(o) for o in opts}
+            if str(value) not in allowed:
+                rep.err(where, f"`{key}` = {value!r} is not one of its options: "
+                               f"{sorted(allowed)}")
+
+    units = ctrl.get("units")
+    if units and isinstance(value, dict) and value.get("unit"):
+        if value["unit"] not in units:
+            rep.err(where, f"`{key}` unit {value['unit']!r} is not accepted by this control. "
+                           f"Allowed: {units}")
+
+
+COND_RE = re.compile(r"^(?P<key>[^\[!]+)(?:\[(?P<sub>[^\]]+)\])?(?P<neg>!)?$")
+
+
+def eval_condition(dep: str, expected, settings: dict, controls: dict):
+    """
+    Elementor's condition syntax, as it actually is:
+
+        "background_background": ["classic", "gradient"]   plain equality / membership
+        "typography_typography!": ""                       trailing ! means NOT equal
+        "selected_icon[value]!": ""                        index into the value object
+
+    Returns (True | False | None, human-readable detail). None means "cannot
+    judge" - the dependency is not set in this element, so Elementor will fall
+    back to the control's default and we would only be guessing.
+    """
+    m = COND_RE.match(dep)
+    if not m:
+        return None, dep
+    key, sub, neg = m.group("key"), m.group("sub"), bool(m.group("neg"))
+
+    if key in settings:
+        got = settings[key]
+    elif key in controls and "default" in controls[key]:
+        got = controls[key]["default"]
+    else:
+        return None, dep
+
+    if sub is not None:
+        if not isinstance(got, dict):
+            return None, dep
+        got = got.get(sub, "")
+
+    if isinstance(expected, list):
+        hit = any(str(got) == str(e) for e in expected)
+    else:
+        hit = str(got) == str(expected)
+
+    ok = (not hit) if neg else hit
+    op = "!=" if neg else "=="
+    shown = f"{key}[{sub}]" if sub else key
+    return ok, f"{shown} {op} {expected!r} (you have {got!r})"
+
+
+def walk(nodes, schema, rep: Report, seen_ids: set, target: str, path="") -> None:
+    breakpoints = [b for b, v in schema["breakpoints"].items()
+                   if v.get("active") and v.get("suffix")]
+    for i, el in enumerate(nodes):
+        here = f"{path}[{i}]"
+        el_id = el.get("id")
+        if not el_id:
+            rep.err(here, "no `id`")
+        else:
+            if el_id in seen_ids:
+                rep.err(here, f"duplicate id {el_id!r} - the editor breaks on this in ways that look like data corruption")
+            seen_ids.add(el_id)
+            if not ID_RE.match(str(el_id)):
+                rep.warn(here, f"id {el_id!r} is not the 7-char lowercase hex Elementor generates")
+
+        if "elements" not in el:
+            rep.err(here, "no `elements` array (use [] on leaf nodes - widgets need it too)")
+
+        el_type = el.get("elType")
+        if el_type not in ("container", "section", "column", "widget"):
+            rep.err(here, f"elType {el_type!r} is not one of container/section/column/widget")
+            continue
+        if el_type == "widget" and not el.get("widgetType"):
+            rep.err(here, "elType is 'widget' but there is no `widgetType`")
+            continue
+
+        label = el.get("widgetType") or el_type
+        here = f"{here} {label}"
+
+        controls = controls_for(schema, el)
+        if controls is None:
+            rep.err(here, f"no such {'widget' if el_type == 'widget' else 'element'} "
+                          f"in the schema. `el.py widgets --grep {label}` to find the right name.")
+            continue
+
+        owner = (schema["widgets"] if el_type == "widget" else schema["elements"]).get(label, {})
+        if owner.get("tier") == "pro":
+            msg = f"widget `{label}` requires Elementor Pro"
+            (rep.err if target == "free" else rep.warn)(here, msg)
+
+        settings = el.get("settings") or {}
+        for key, value in settings.items():
+            if key in ("__globals__", "__dynamic__"):
+                continue  # global-value and dynamic-tag side-channels, not controls
+            resolved = base_control(key, controls, breakpoints)
+            if resolved is None:
+                rep.err(here, f"`{key}` is not a control on {label}. "
+                              f"Check: el.py widget {label} --grep {key.split('_')[0]}")
+                continue
+            base, ctrl = resolved
+            if ctrl.get("tier") == "pro" and owner.get("tier") != "pro":
+                msg = f"`{key}` is an Elementor PRO control on the free `{label}` widget"
+                (rep.err if target == "free" else rep.warn)(here, msg)
+            check_shape(value, ctrl, here, key, rep)
+
+            cond = ctrl.get("condition")
+            if cond:
+                for dep, expected in cond.items():
+                    ok, detail = eval_condition(dep, expected, settings, controls)
+                    if ok is False:
+                        rep.warn(here, f"`{key}` only applies when {detail} - "
+                                       f"it will be stored and then ignored at render time")
+
+        walk(el.get("elements") or [], schema, rep, seen_ids, target, path=f"{here}.elements")
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("page", type=Path, help="JSON file holding the _elementor_data tree")
+    ap.add_argument("--target", choices=["free", "pro"], default="pro",
+                    help="'free' turns every Pro-only usage into an error (default: pro)")
+    a = ap.parse_args()
+
+    schema = json.loads(SCHEMA.read_text(encoding="utf-8"))
+    tree = json.loads(a.page.read_text(encoding="utf-8"))
+    if not isinstance(tree, list):
+        sys.exit("The page must be a JSON list of top-level elements.")
+
+    rep = Report()
+    walk(tree, schema, rep, set(), a.target)
+
+    m = schema["meta"]
+    print(f"validating against Elementor {m['elementor_version']} / Pro {m['elementor_pro_version']}"
+          f"   target={a.target}")
+    print()
+    for e in rep.errors:
+        print(f"  ERROR  {e}")
+    for w in rep.warnings:
+        print(f"  WARN   {w}")
+    if not rep.errors and not rep.warnings:
+        print("  clean")
+    print()
+    print(f"{len(rep.errors)} error(s), {len(rep.warnings)} warning(s)")
+    return 1 if rep.errors else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -1,0 +1,72 @@
+widget,title,categories
+animated-headline,Animated Headline,pro-elements
+archive-posts,Archive Posts,theme-elements-archive
+author-box,Author Box,theme-elements-single|theme-elements-archive
+blockquote,Blockquote,pro-elements
+call-to-action,Call to Action,pro-elements
+code-highlight,Code Highlight,pro-elements
+contact-buttons-var-1,Multi Chat,general
+contact-buttons-var-10,Interactive,general
+contact-buttons-var-3,Info Button Box,general
+contact-buttons-var-4,Vertical Links,general
+contact-buttons-var-5,Classic,general
+contact-buttons-var-6,Quick Access Bar,general
+contact-buttons-var-7,Mobile Bar,general
+contact-buttons-var-8,Resource Box,general
+contact-buttons-var-9,Animated Classic,general
+countdown,Countdown,pro-elements
+facebook-button,Facebook Button,pro-elements
+facebook-comments,Facebook Comments,pro-elements
+facebook-embed,Facebook Embed,pro-elements
+facebook-page,Facebook Page,pro-elements
+flip-box,Flip Box,pro-elements
+floating-bars-var-2,Ticker,general
+floating-bars-var-3,Coupon,general
+form,Form,pro-elements
+gallery,Gallery,pro-elements
+global,Global,pro-elements
+hotspot,Hotspot,pro-elements
+link-in-bio-var-2,Classic,link-in-bio
+link-in-bio-var-3,Showcase,link-in-bio
+link-in-bio-var-4,Links,link-in-bio
+link-in-bio-var-5,Services,link-in-bio
+link-in-bio-var-6,Portfolio Bio,link-in-bio
+link-in-bio-var-7,Business Card,link-in-bio
+login,Login,pro-elements
+loop-carousel,Loop Carousel,pro-elements
+loop-grid,Loop Grid,pro-elements
+lottie,Lottie,pro-elements
+media-carousel,Media Carousel,pro-elements
+mega-menu,Menu,pro-elements|theme-elements
+nav-menu,WordPress Menu,pro-elements|theme-elements
+nested-carousel,Carousel,pro-elements
+off-canvas,Off-Canvas,pro-elements
+paypal-button,PayPal Button,pro-elements
+portfolio,Portfolio,pro-elements
+post-comments,Post Comments,theme-elements-single
+post-info,Post Info,theme-elements-single
+post-navigation,Post Navigation,theme-elements-single
+posts,Posts,pro-elements
+price-list,Price List,pro-elements
+price-table,Price Table,pro-elements
+progress-tracker,Progress Tracker,pro-elements|theme-elements-single
+reviews,Reviews,pro-elements
+search,Search,pro-elements
+search-form,Search Form,theme-elements
+share-buttons,Share Buttons,pro-elements
+sitemap,Sitemap,theme-elements
+slides,Slides,pro-elements
+stripe-button,Stripe Button,pro-elements
+table-of-contents,Table of Contents,pro-elements|theme-elements-single
+taxonomy-filter,Taxonomy Filter,pro-elements
+template,Template,pro-elements
+testimonial-carousel,Testimonial Carousel,pro-elements
+theme-archive-title,Archive Title,theme-elements-archive
+theme-page-title,Page Title,theme-elements
+theme-post-content,Post Content,theme-elements-single
+theme-post-excerpt,Post Excerpt,theme-elements-single
+theme-post-featured-image,Featured Image,theme-elements-single
+theme-post-title,Post Title,theme-elements-single
+theme-site-logo,Site Logo,theme-elements
+theme-site-title,Site Title,theme-elements
+video-playlist,Video Playlist,pro-elements
