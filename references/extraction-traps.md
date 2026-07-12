@@ -800,6 +800,15 @@ fighting over the same node when the sweep sets both at once) - an artefact of
 testing many controls per element, disclosed in `data/browser-verification.csv`
 rather than averaged away.
 
+**And the browser sweep has now run on a SECOND site** (different child theme,
+different plugin set, no WooCommerce - 16,612 probes over 56 live pages,
+`data/browser-verification-moksaweb.csv`). The result is the strongest evidence the
+model holds: **25 of the 26 override patterns are identical on both sites** - they
+are Elementor being Elementor, not the theme - and exactly ONE is site-specific
+(`nav-menu.dropdown_divider_width`, zeroed by that theme). A rendering claim that
+survives two environments unchanged is a fact about Elementor; one that appears on
+one site only is a fact about that site, and now the data can tell them apart.
+
 And three false-failure modes the browser itself taught this tool, each shipped and
 then caught by a negative control: `background-size: 950px auto` serialises back as
 `950px`; `width`/`height` compute to USED layout values (an 885px image in a 777px
