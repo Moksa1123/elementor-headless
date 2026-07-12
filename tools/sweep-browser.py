@@ -111,6 +111,20 @@ def comparable(prop: str, declared: str, computed: str) -> tuple[bool, bool]:
     if not d or "{{" in d or "var(" in d:
         return False, False
     base = prop.lstrip("-")
+    # Three places the browser is right and naive equality is wrong, all found by
+    # running this against 32k real probes:
+    #   - `background-size: 950px auto` serialises back as `950px` (auto is the
+    #     default second component)
+    #   - `width`/`height`/`min-height` compute to USED layout values - an image
+    #     declared 885px wide computes 777px inside a 777px column, correctly
+    #   - `border-width: 67px` computes per side, and a side whose border-style is
+    #     none computes 0 - `67px 0px 67px 67px` is the browser doing its job
+    if base == "background-size":
+        d = d.removesuffix(" auto"); c = c.removesuffix(" auto")
+    if base in ("width", "height", "min-height", "min-width", "max-height"):
+        return False, False
+    if base.startswith("border") and base.endswith("width") and " " in c and " " not in d:
+        return False, False
     if base in COLOR_PROPS or prop.startswith("--") and norm_color(d):
         nd, nc = norm_color(d), norm_color(c)
         if nd and nc:
@@ -169,6 +183,14 @@ def declared_map(css: str) -> dict[str, dict[str, str]]:
                 decls[k.strip()] = v.strip()
             for s in SEL_SPLIT.split(sel_text):
                 s = re.sub(r"\s+", " ", s.strip())
+                # Normalise to the probe's form. In the compiled file, {{WRAPPER}}
+                # is NOT `.elementor-element-<id>` - it expands to
+                # `.elementor-<post> .elementor-element.elementor-element-<id>`.
+                # Look up with the raw key and 32,261 probes all come back
+                # "not-declared", which is exactly what happened on the first
+                # full run: zero verified, and the number was the tell.
+                s = re.sub(r"\.elementor-\d+\s+\.elementor-element\.elementor-element-",
+                           ".elementor-element-", s)
                 if s:
                     out.setdefault(s, {}).update(decls)
         i = j

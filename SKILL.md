@@ -29,9 +29,19 @@ it, so a pass means *that* control produced *that* value.
 A control can act two ways, and they are verified against two different artefacts:
 
 ```
-CSS     25,259 CSS-driving controls    89.0% swept, 0 failures   (the stylesheet)
-CLASS    3,308 wrapper-class controls  98.2% swept, 0 failures   (the rendered HTML)
+CSS      25,259 CSS-driving controls   99.4% swept, 0 failures   (the delivered stylesheet)
+CLASS     3,308 wrapper-class controls 98.2% swept, 0 failures   (the delivered HTML)
+BROWSER  32,261 computed-style probes  6,177 verified in Chromium (getComputedStyle on
+                                       the node each rule targets, on the public URL)
 ```
+
+The browser pass is the only one that catches a rule that is IN the stylesheet and
+LOSES - and it found one that is systemic: **`_element_width` / `_element_custom_width`
+compile a `max-width` that Elementor's own frontend.css overrides on every widget
+directly inside a container** (`.elementor.elementor .e-con > .elementor-widget
+{ max-width: 100% }` is specificity (0,4,0); the post CSS rule is (0,3,0)). The
+width still applies through `--container-widget-width`; the max-width is dead. 242
+of 292 browser-detected overrides are this one fact.
 
 The 2,766 unswept CSS controls are on the WooCommerce and Elementor V4 widgets,
 which were added to the schema after the sweep ran. **They are labelled unverified
@@ -274,7 +284,7 @@ Only **active** breakpoints exist (`el.py breakpoints`).
 | [responsive.md](references/responsive.md) | breakpoints, suffixes, why `padding_tablet` has no control object |
 | [templates-and-conditions.md](references/templates-and-conditions.md) | template CRUD, Display Conditions, priority resolution — **Pro** |
 | [import-export.md](references/import-export.md) | Elementor's JSON interchange format; moving blocks across sites without breaking media |
-| [extraction-traps.md](references/extraction-traps.md) | the ten ways a schema goes silently wrong, and how this one is verified |
+| [extraction-traps.md](references/extraction-traps.md) | the eleven ways a schema goes silently wrong, and how this one is verified |
 | [token-efficiency.md](references/token-efficiency.md) | the 89% figure, measured, with the script that reproduces it |
 
 ## Verify it rather than trusting it
