@@ -157,6 +157,9 @@ python tools/el.py skeleton                       # a minimal valid page tree
 python tools/el.py pro                            # everything that needs Elementor Pro
 python tools/el.py pro --check custom_css align   # exits 1 if any of these needs Pro
 python tools/el.py tags --group post              # dynamic tags (__dynamic__) - post title, ACF, ...
+python tools/el.py doctypes                       # legal _elementor_template_type values (29)
+python tools/el.py page-settings                  # _elementor_page_settings: hide_title, CANVAS, page bg
+python tools/el.py kit --section section_global_colors   # Site Settings: global colors/fonts
 ```
 
 Add `--json` to any of them for machine-readable output.
@@ -181,6 +184,9 @@ question completely. `data/*.csv` are there for `grep` when you want to scan.
 | the legal values of an animation | `el.py type animation` — they are camelCase (`fadeInUp`), not kebab |
 | whether a widget renders on a bare page | `el.py widget <name>` — it says so if not |
 | what a control can be dynamically BOUND to | `el.py tags [--group woocommerce]` · `data/dynamic-tags.csv` — all Pro |
+| how to switch a page to Canvas / hide its title | `el.py page-settings` — it is `_elementor_page_settings`, not the tree |
+| global colors / fonts / theme style (Site Settings) | `el.py kit` — lives on the Kit post; `__globals__` resolves into it |
+| the legal `_elementor_template_type` values | `el.py doctypes` — 29, install-dependent |
 | where a Theme Builder template applies | schema key `theme_builder_conditions` — 39 types, install-dependent |
 | **whether something needs Pro** | `el.py pro --check <controls>` · `data/pro-only-controls.csv` |
 | **whether a widget exists on the target site at all** | `el.py widget <name>` → `requires:` · `data/widgets.csv` |

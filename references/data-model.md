@@ -147,6 +147,40 @@ the site's global colours, fonts and layout defaults. It looks like leftover dem
 content and it is not: **delete it and every global reference on the site breaks.**
 Nothing else in Elementor will warn you about this.
 
+## `_elementor_page_settings` — the page's own settings, beside the tree
+
+`_elementor_data` styles what is INSIDE the page. The page itself - its template,
+its title, its background - is a separate meta, one serialized array:
+
+```php
+update_post_meta( $id, '_elementor_page_settings', wp_slash( [
+    'template'   => 'elementor_canvas',   // no theme header/footer at all
+    'hide_title' => 'yes',
+    'padding'    => [ 'unit' => 'px', 'top' => '0', ... ],
+] ) );
+```
+
+`template` is the one everyone needs: `default` / `elementor_canvas` /
+`elementor_header_footer` / `elementor_theme`. A landing page built headlessly
+keeps the site chrome until this is set, and nothing in the tree can change that.
+
+**And `template` is the exception to the mechanism.** It appears in the page
+settings panel, but Elementor does not act on it from there - it is a WordPress
+page template, stored in `_wp_page_template`, and WordPress is what applies it.
+Write it only into `_elementor_page_settings` and nothing changes; verified on a
+live site (settings saved, body class absent, header still rendered). Write both
+- `apply-page.php` does - and the theme chrome disappears.
+`el.py page-settings` lists all 48 keys (page background, per-page margin/padding,
+custom CSS...); `apply-page.php` takes the object as an optional third argument.
+
+**The Kit is the same mechanism, site-wide.** `get_option('elementor_active_kit')`
+is a post id, and ITS `_elementor_page_settings` is the entire Site Settings panel
+- 773 controls: global colors (`system_colors` / `custom_colors` repeaters),
+global fonts, theme style, layout defaults, lightbox. A `__globals__` reference
+like `globals/colors?id=primary` resolves to the repeater item whose `_id`
+matches. After editing the kit, regenerate CSS for the whole site
+(`wp elementor flush-css`), not one post. `el.py kit` queries the surface.
+
 ## Caches, flushed inside-out
 
 Getting the tree right and still seeing the old page almost always means a cache.

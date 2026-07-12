@@ -585,6 +585,70 @@ def cmd_skeleton(a) -> None:
     emit(tree, a.json, lines)
 
 
+def cmd_doctypes(a) -> None:
+    """The legal values of `_elementor_template_type` - install-dependent, like widgets."""
+    docs = schema().get("documents") or {}
+    lines = [f"{len(docs)} document types  (the legal `_elementor_template_type` values)", ""]
+    for t, d in sorted(docs.items()):
+        mod = f"  module:{d['module']}" if d.get("module") else ""
+        lines.append(f"  [{tier_tag(d['tier'])}] {t:<24}{mod}")
+    lines += ["", "wp-page / wp-post are ordinary content. The rest are elementor_library",
+              "posts (header, footer, single, archive, popup, loop-item...) - create them",
+              "as that CPT with `_elementor_template_type` set, then Display Conditions",
+              "decide where they apply (references/templates-and-conditions.md)."]
+    emit(docs, a.json, lines)
+
+
+def cmd_page_settings(a) -> None:
+    """
+    `_elementor_page_settings` - the page's OWN settings, beside `_elementor_data`.
+
+    This is where Canvas lives. `template: "elementor_canvas"` renders the page
+    with no theme header/footer at all; miss this surface and a landing page keeps
+    the site chrome no matter what you put in the tree.
+    """
+    ps = (schema().get("page_settings") or {}).get(a.doc or "wp-page")
+    if not ps:
+        sys.exit(f"no page settings for document type {a.doc!r}")
+    ctrls = ps["controls"]
+    if a.grep:
+        ctrls = [c for c in ctrls if a.grep.lower() in json.dumps(c).lower()]
+    lines = [f"_elementor_page_settings on a {a.doc or 'wp-page'}  ({len(ctrls)} settings)",
+             "written as ONE meta value: update_post_meta(id, '_elementor_page_settings', array)", ""]
+    for c in ctrls:
+        lines.append(fmt_control(c))
+    emit(ctrls, a.json, lines)
+
+
+def cmd_kit(a) -> None:
+    """
+    Site Settings. Saved as `_elementor_page_settings` ON THE KIT POST
+    (`get_option('elementor_active_kit')` is its id). Global colors and fonts are
+    repeaters here, and `__globals__` references resolve to their items' `_id`.
+    """
+    ks = schema().get("kit_settings")
+    if not ks or "controls" not in ks:
+        sys.exit("no kit settings in this schema - re-extract")
+    ctrls = ks["controls"]
+    if a.section:
+        secs = {x["name"] for x in ks.get("sections", [])}
+        ctrls = [c for c in ctrls if c.get("section") == a.section]
+        if not ctrls:
+            sys.exit(f"no such section. Sections: {', '.join(sorted(secs))}")
+    if a.grep:
+        ctrls = [c for c in ctrls if a.grep.lower() in json.dumps(c).lower()]
+    lines = [f"Site Settings (the Kit)  ({len(ctrls)} shown / {len(ks['controls'])} total)",
+             ks.get("note", ""), ""]
+    if not a.section and not a.grep:
+        lines += ["sections (use --section):"]
+        for x in ks.get("sections", []):
+            lines.append(f"  {x['name']:<40} {x.get('label') or ''}")
+    else:
+        for c in ctrls[:120]:
+            lines.append(fmt_control(c))
+    emit(ctrls, a.json, lines)
+
+
 def cmd_tags(a) -> None:
     """
     The `__dynamic__` surface. A control with dynamic support does not take a tag
@@ -732,6 +796,19 @@ def main() -> int:
 
     s = sub.add_parser("skeleton", help="a minimal valid page tree")
     s.set_defaults(fn=cmd_skeleton)
+
+    s = sub.add_parser("doctypes", help="legal _elementor_template_type values")
+    s.set_defaults(fn=cmd_doctypes)
+
+    s = sub.add_parser("page-settings", help="_elementor_page_settings surface (hide_title, Canvas, page background)")
+    s.add_argument("--doc", choices=["wp-page", "wp-post"], default="wp-page")
+    s.add_argument("--grep")
+    s.set_defaults(fn=cmd_page_settings)
+
+    s = sub.add_parser("kit", help="Site Settings: global colors/fonts, theme style, layout defaults")
+    s.add_argument("--section")
+    s.add_argument("--grep")
+    s.set_defaults(fn=cmd_kit)
 
     s = sub.add_parser("tags", help="the dynamic tags a control can be bound to (__dynamic__)")
     s.add_argument("--group", help="post / site / archive / author / woocommerce / media / action / comments")

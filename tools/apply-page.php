@@ -2,7 +2,16 @@
 /**
  * apply-page.php — write an Elementor page tree into a post, headlessly.
  *
- *   wp eval-file apply-page.php <post_id> <page.json>
+ *   wp eval-file apply-page.php <post_id> <page.json> [page-settings.json]
+ *
+ * The optional third file is written to `_elementor_page_settings` - the page's
+ * OWN settings, beside the tree: `hide_title`, per-page background, and above all
+ * `template`, which is how a landing page drops the theme header/footer:
+ *
+ *   { "template": "elementor_canvas", "hide_title": "yes" }
+ *
+ * `el.py page-settings` lists the legal keys; `el.py kit` is the same surface on
+ * the site-wide Kit post.
  *
  * wp eval-file takes plain positional args ONLY. Never `--flag=value`: WP-CLI
  * grabs any `--foo=bar` token as one of its own global parameters and errors out
@@ -107,6 +116,34 @@ update_post_meta( $post_id, '_elementor_edit_mode', 'builder' );
 update_post_meta( $post_id, '_elementor_template_type', $post->post_type === 'page' ? 'wp-page' : 'wp-post' );
 update_post_meta( $post_id, '_elementor_version', ELEMENTOR_VERSION );
 
+$page_settings_applied = false;
+if ( isset( $args[2] ) ) {
+	if ( ! is_readable( $args[2] ) ) {
+		fwrite( STDERR, "Cannot read page settings file {$args[2]}.
+" );
+		exit( 1 );
+	}
+	$ps = json_decode( file_get_contents( $args[2] ), true );
+	if ( json_last_error() !== JSON_ERROR_NONE || ! is_array( $ps ) ) {
+		fwrite( STDERR, "Page settings must be a JSON object.
+" );
+		exit( 1 );
+	}
+	update_post_meta( $post_id, '_elementor_page_settings', wp_slash( $ps ) );
+
+	// `template` is the exception: Elementor's editor does NOT keep it in page
+	// settings. It is a WordPress page template, stored in `_wp_page_template`
+	// (page-base.php reads it back from there), and WordPress is what acts on it.
+	// Leave it only in `_elementor_page_settings` and the page keeps the theme
+	// header/footer - verified on a live site: settings applied, body class absent.
+	if ( ! empty( $ps['template'] ) && $ps['template'] !== 'default' ) {
+		update_post_meta( $post_id, '_wp_page_template', $ps['template'] );
+	} elseif ( isset( $ps['template'] ) ) {
+		delete_post_meta( $post_id, '_wp_page_template' );
+	}
+	$page_settings_applied = true;
+}
+
 // Rebuild this post's compiled CSS, or the page renders with the previous styling.
 $css = \Elementor\Core\Files\CSS\Post::create( $post_id );
 $css->delete();
@@ -147,6 +184,7 @@ echo json_encode( [
 	'unique_ids'     => count( $ids ),
 	'backed_up'      => (bool) $previous,
 	'html_cache_cleared' => $had_cache,
+	'page_settings_applied' => $page_settings_applied,
 	'css_file'       => $css->get_url(),
 	'permalink'      => get_permalink( $post_id ),
 	'post_status'    => get_post_status( $post_id ),

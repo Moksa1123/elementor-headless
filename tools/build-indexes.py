@@ -610,6 +610,14 @@ def main() -> int:
         # CATEGORIES it can bind to, its own settings, and its tier. All 51 are Pro
         # on 4.1.2 - dynamic content IS the Pro feature - and 13 need WooCommerce.
         "dynamic_tags": raw.get("dynamic_tags") or {},
+        # The legal values of `_elementor_template_type`, with what each needs.
+        "documents": raw.get("documents") or {},
+        # `_elementor_page_settings` per document type: hide_title, the Canvas /
+        # header-footer template switch, per-page margin/padding/background.
+        "page_settings": raw.get("page_settings") or {},
+        # The Site Settings panel, saved on the KIT post. `__globals__` references
+        # (globals/colors?id=primary) resolve into its repeaters.
+        "kit_settings": raw.get("kit_settings"),
         # Theme Builder display conditions (Pro): the registry the condition strings
         # ('include/singular/post/123') are built from.
         "theme_builder_conditions": raw.get("theme_builder_conditions"),

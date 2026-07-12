@@ -1001,7 +1001,95 @@ if ( class_exists( '\ElementorPro\Modules\ThemeBuilder\Module' ) ) {
 }
 
 // ---------------------------------------------------------------------------
-// 5c. Emit.
+// 5c. Documents — the page IS a settable surface too.
+//
+// Everything above describes what goes INSIDE `_elementor_data`. Three more
+// surfaces sit beside it, and a headless builder that cannot reach them cannot
+// even switch a page to the Canvas template:
+//
+//   document types    the legal values of `_elementor_template_type` (29 of them,
+//                     install-dependent: popup/header/single need Pro, product
+//                     needs WooCommerce)
+//   page settings     `_elementor_page_settings` - hide_title, template (canvas /
+//                     header-footer), per-page margin/padding/background/custom CSS
+//   the Kit           `_elementor_page_settings` ON THE KIT POST - the entire Site
+//                     Settings panel: global colors, global fonts, theme style,
+//                     layout defaults, lightbox. `__globals__` references resolve
+//                     into the repeaters registered here.
+// ---------------------------------------------------------------------------
+$documents = [];
+foreach ( $plugin->documents->get_document_types() as $dtype => $dclass ) {
+	$file = ( new ReflectionClass( $dclass ) )->getFileName();
+	$file = str_replace( '\\', '/', (string) $file );
+	$tier = strpos( $file, '/elementor-pro/' ) !== false ? 'pro' : 'free';
+	$rec  = [ 'type' => $dtype, 'class' => $dclass, 'tier' => $tier ];
+	if ( preg_match( '#/modules/([^/]+)/#', $file, $m ) ) {
+		$rec['module'] = $m[1];
+	}
+	$documents[ $dtype ] = $rec;
+}
+
+/** Describe a document's SETTINGS stack with the same record shape as widgets. */
+function eh_document_settings( $doc, $device_suffixes, &$anomalies, $label ) {
+	$raw = [];
+	$sections = [];
+	foreach ( $doc->get_controls() as $cname => $ctrl ) {
+		if ( ( $ctrl['type'] ?? '' ) === \Elementor\Controls_Manager::SECTION ) {
+			$sections[] = [
+				'name'  => $cname,
+				'label' => is_string( $ctrl['label'] ?? null ) ? $ctrl['label'] : null,
+				'tab'   => $ctrl['tab'] ?? null,
+			];
+			continue;
+		}
+		if ( in_array( $ctrl['type'] ?? '', [ 'tab', 'tabs', 'divider', 'heading', 'raw_html', 'notice', 'alert', 'deprecated_notice' ], true ) ) {
+			continue;
+		}
+		$raw[] = eh_control_record( $cname, $ctrl );
+	}
+	return [
+		'controls' => eh_collapse_responsive( $raw, $device_suffixes, $anomalies, $label ),
+		'sections' => $sections,
+	];
+}
+
+$page_settings = [];
+// Any published page/post does: the settings stack is a property of the document
+// TYPE, not of the particular post.
+$any_page = get_posts( [ 'post_type' => 'page', 'post_status' => 'publish', 'numberposts' => 1, 'fields' => 'ids' ] );
+if ( $any_page ) {
+	$doc = $plugin->documents->get( $any_page[0] );
+	if ( $doc ) {
+		$page_settings['wp-page'] = eh_document_settings( $doc, $device_suffixes, $anomalies, 'doc:wp-page' );
+	}
+}
+$any_post = get_posts( [ 'post_type' => 'post', 'post_status' => 'publish', 'numberposts' => 1, 'fields' => 'ids' ] );
+if ( $any_post ) {
+	$doc = $plugin->documents->get( $any_post[0] );
+	if ( $doc ) {
+		$page_settings['wp-post'] = eh_document_settings( $doc, $device_suffixes, $anomalies, 'doc:wp-post' );
+	}
+}
+
+$kit_settings = null;
+try {
+	$kit = $plugin->kits_manager->get_active_kit();
+	if ( $kit && $kit->get_id() ) {
+		$kit_settings = eh_document_settings( $kit, $device_suffixes, $anomalies, 'doc:kit' );
+		$kit_settings['note'] =
+			'The Site Settings panel. Saved as _elementor_page_settings on the KIT post '
+			. '(option elementor_active_kit holds its id). Global colors live in the '
+			. 'system_colors / custom_colors repeaters, global fonts in system_typography / '
+			. 'custom_typography; a __globals__ reference like globals/colors?id=primary '
+			. 'resolves to the repeater item whose _id matches. After editing the kit, '
+			. 'regenerate CSS for the SITE, not one post: wp elementor flush-css.';
+	}
+} catch ( \Throwable $e ) {
+	$kit_settings = [ 'error' => $e->getMessage() ];
+}
+
+// ---------------------------------------------------------------------------
+// 5d. Emit.
 // ---------------------------------------------------------------------------
 // THE SURFACE IS A PROPERTY OF THE INSTALL, NOT OF ELEMENTOR. Record what was true
 // of the machine this ran on, so a consumer can tell "Elementor has no such widget"
@@ -1049,6 +1137,9 @@ $out = [
 	'group_controls' => $group_controls,
 	'dynamic_tags'   => $dynamic_tags,
 	'theme_builder_conditions' => $tb_conditions,
+	'documents'      => $documents,
+	'page_settings'  => $page_settings,
+	'kit_settings'   => $kit_settings,
 	'elements'       => $elements,
 	'widgets'        => $widgets,
 ];
