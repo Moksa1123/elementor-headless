@@ -4,8 +4,13 @@
 
 An [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
 that gives an AI coding agent the complete Elementor authoring surface —
-**37,964 controls across 135 widgets and 3 elements** — as a queryable database
-instead of a 583,555-token document it can never afford to read.
+**49,857 controls across 192 widgets and 13 elements** — as a queryable database
+instead of a document it can never afford to read.
+
+Every widget also carries **what a site must have for it to exist at all**: 29 need
+the WooCommerce plugin, 36 need an Elementor experiment. A schema that omits that is
+not incomplete, it is wrong — ask it for `woocommerce-product-price` and it tells you,
+with total confidence, that Elementor has no such widget.
 
 English · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [한국어](README.ko.md)
 
