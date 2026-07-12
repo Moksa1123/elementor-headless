@@ -5,6 +5,40 @@ Everything here is verified against Elementor Pro's Theme Builder source
 usage — the condition type/name enumeration below is the *complete* list
 Elementor Pro ships, not just the handful a given site happens to use.
 
+## Creating a library template headlessly: THREE writes, not one
+
+A template built through the editor gets three things. Write only the metas and
+the template is a ghost - it exists, it opens, and **Theme Builder, popups and the
+conditions system cannot see it**:
+
+| # | What | Why it is load-bearing |
+|---|---|---|
+| 1 | `_elementor_template_type` meta + the usual data/edit_mode/version | what the document IS |
+| 2 | the **`elementor_library_type` TAXONOMY term** (`wp_set_object_terms( $id, 'header', 'elementor_library_type' )`) | every query that finds templates filters on the taxonomy, not the meta. Verified live: a header with conditions meta and no term never renders |
+| 3 | conditions via **`Conditions_Manager::save_conditions( $id, [ [ 'include', 'singular', 'page', '9178' ] ] )`** | it writes `_elementor_conditions` AND regenerates the conditions CACHE (`option: elementor_pro_theme_builder_conditions`). A raw meta write leaves the cache stale and the template never applies - and deleting the post does not purge it either, so tear down through the same manager |
+
+All three verified end-to-end on a live site in one pass: a header scoped to a
+single page rendered on that page (and nowhere else), and a popup with
+`_elementor_popup_display_settings = { "triggers": { "page_load": "yes",
+"page_load_delay": 0 }, "timing": [] }` opened in an anonymous browser.
+
+**Loop Builder, same session:** a `loop-item` template + `loop-grid` with
+`template_id` + `posts_per_page` rendered three real posts. One trap inside:
+`theme-post-title` (and its siblings) get their dynamic binding **from the editor
+at insert time** - created headlessly with plain settings, it renders its static
+placeholder on every loop item. Write the `__dynamic__` binding yourself:
+
+```json
+"__dynamic__": { "title": "[elementor-tag id=\"a1b2c3d\" name=\"post-title\" settings=\"%7B%7D\"]" }
+```
+
+**Forms, same session:** fields render from `form_fields` (the repeater fields in
+the schema), an anonymous submission passes the nonce, `save-to-database` stores
+it, and the custom `success_message` shows - but ONLY with `custom_messages:
+"yes"` alongside it, which is trap 4 doing exactly what trap 4 does.
+`validate-page.py` now warns on it: an unset condition dependency is evaluated
+against the control's DEFAULT, not skipped.
+
 ## Template management (create / read / apply)
 
 A Theme Builder template is a `elementor_library` post, same post type used

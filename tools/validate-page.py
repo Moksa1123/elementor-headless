@@ -126,6 +126,17 @@ def check_shape(value, ctrl: dict, where: str, key: str, rep: Report) -> None:
         # or every numeric select produces a false error.
         if isinstance(opts, list) and opts and value not in (None, ""):
             allowed = {str(o) for o in opts}
+            # A `select2` can be MULTIPLE, and then its value is a LIST of option
+            # keys (form.submit_actions = ["email", "save-to-database"]). Compare
+            # the list itself against the option set and every legal multi-select
+            # reads as an error - which is exactly what this validator did until
+            # its own E2E tripped over it.
+            if isinstance(value, list):
+                bad = [v for v in value if str(v) not in allowed]
+                if bad:
+                    rep.err(where, f"`{key}` contains option(s) that do not exist: "
+                                   f"{bad}. Allowed: {sorted(allowed)}")
+                return
             # `classes_dictionary` keys are legal values that are NOT in the option
             # list. They are the names this control used before Elementor moved to
             # logical properties, and the render path still maps them
@@ -185,8 +196,16 @@ def eval_condition(dep: str, expected, settings: dict, controls: dict):
 
     if key in settings:
         got = settings[key]
-    elif key in controls and "default" in controls[key]:
-        got = controls[key]["default"]
+    elif key in controls:
+        # No stored default IS a default: the extractor drops empty ones, and
+        # Elementor's universal fallback is ''. Treating it as unknowable made the
+        # validator silent on the most common miss there is - setting
+        # `success_message` without switching `custom_messages` on. The message is
+        # stored, the condition is definitively unmet (default '' fails
+        # custom_messages!=''), and the server quietly uses its default text. This
+        # exact mistake shipped in this repo's own E2E before the validator learned
+        # to catch it.
+        got = controls[key].get("default", "")
     else:
         return None, dep
 
