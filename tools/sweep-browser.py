@@ -212,6 +212,27 @@ def _load(name: str, fname: str):
 VB = _load("verify_browser", "verify-browser.py")   # selectors, probe, JS, folding
 SC = _load("sweep_controls", "sweep-controls.py")   # schema loader, controls_of
 
+# The DECLARED side, read out of the browser's own CSSOM rather than off any disk.
+# The first moksaweb run scored "0 verified" for 20 straight batches because it
+# looked for css/<batch>.css files that only the provisionlab text-sweep had ever
+# created - a dependency on another tool's leftovers, silently defaulting to
+# "nothing was declared". The browser already parsed every stylesheet the page
+# links; serialising the Elementor ones back out is both simpler and closer to
+# the truth (it is literally the cascade Chromium is applying).
+CSSOM_JS = r"""
+() => {
+  const parts = [];
+  for (const sheet of document.styleSheets) {
+    const href = sheet.href || "";
+    if (!href.includes("/uploads/elementor/css/")) continue;
+    let rules;
+    try { rules = sheet.cssRules; } catch (e) { continue; }
+    for (const r of rules) parts.push(r.cssText);
+  }
+  return parts.join(String.fromCharCode(10));
+}
+"""
+
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
@@ -298,10 +319,13 @@ def main() -> int:
                 continue
             pg.wait_for_timeout(400)
 
-            # What Elementor DECLARED, out of the stylesheet the public downloaded.
-            css_file = a.sweep / "css" / batch["file"].replace(".json", ".css")
-            decl = declared_map(css_file.read_text(encoding="utf-8", errors="replace")) \
-                if css_file.exists() else {}
+            # What Elementor DECLARED, serialised from the CSSOM of the page the
+            # browser is actually rendering. Not read off any disk: the first
+            # moksaweb run scored "0 verified" for 20 straight batches because this
+            # used to look for css/<batch>.css files that only the provisionlab
+            # text-sweep had ever produced, and silently treated their absence as
+            # "nothing was declared".
+            decl = declared_map(pg.evaluate(CSSOM_JS))
 
             results, dead = VB.fold_branches(pg.evaluate(VB.JS, probe))
             for res in results:

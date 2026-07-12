@@ -75,6 +75,44 @@ them for backwards compatibility) but they are not where the platform is going,
 and they cannot do flex or grid. You will still meet them when reading existing
 pages, which is why they are in the schema.
 
+## Global widgets (Pro): a node that points at a template
+
+A "global widget" is a widget saved to the library and reused by reference. In the
+tree it is a normal widget node PLUS a `templateID` key at the node level - not in
+`settings`:
+
+```jsonc
+{ "id": "3f4a5b6", "elType": "widget", "widgetType": "global",
+  "templateID": 123,          // the elementor_library post (type `widget`)
+  "settings": {}, "elements": [] }
+```
+
+Read from the source (`global-widget/module.php` reads `$element_data['templateID']`),
+not yet render-verified here. Editing the library post updates every reference;
+`el.py doctypes` lists `widget` as the library document type it points at.
+
+## Element-level Display Conditions (Pro): `e_display_conditions`
+
+Not the Theme Builder conditions (those decide where a TEMPLATE applies) - this is
+the per-element "render this only if..." on every widget's Advanced tab. The
+control is `hidden`; a dedicated editor UI writes it, which means headlessly you
+write it yourself. The value is an OR-list of AND-groups:
+
+```jsonc
+"e_display_conditions": [
+  [ { "condition": "login_status", "comparator": "is", "status": "logged_in" } ]
+]
+```
+
+23 condition types ship in `elementor-pro/modules/display-conditions/conditions/`
+(login_status, user_role, current_date, day_of_the_week, time_of_the_day,
+in_categories, post_title, from_url, dynamic tags...). Each type's extra keys are
+its own - read its `check()` in that directory before writing one. Two warnings,
+both from the source: an unrecognised condition name passes as TRUE (the element
+renders), and a conditioned element makes the page dynamic - Elementor's own cache
+layer flags it (`cache-notice.php`), but external page caches will happily serve
+the wrong variant.
+
 ## Nested widgets: the one place a widget has children
 
 `nested-tabs`, `nested-accordion`, `mega-menu` (all gated on the `nested-elements`

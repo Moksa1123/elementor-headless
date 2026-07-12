@@ -116,3 +116,24 @@ do not mistake them for a diff.
   travels with it.
 - **Hand a block to a non-technical colleague.** They import it through the editor's
   own Import Templates button; they never need WP-CLI.
+
+## The CLI path, for bulk work
+
+Elementor ships WP-CLI commands that cover the same ground as the tools here, in
+bulk form:
+
+```bash
+wp elementor library import <file.json>       # import a template file to the library
+wp elementor library import-dir <path>        # every template in a directory
+wp elementor library sync                     # re-sync the remote template library
+wp elementor replace_urls <old> <new>         # after moving a site: rewrites URLs
+                                              #   INSIDE _elementor_data, which a
+                                              #   plain search-replace on wp_posts
+                                              #   never touches
+wp elementor flush_css                        # site-wide CSS regeneration
+```
+
+`replace_urls` is the one people learn about after a migration breaks: Elementor
+stores absolute URLs inside the JSON meta, `wp search-replace` handles serialized
+PHP but `_elementor_data` is a JSON STRING whose slashes are escaped (`https:\/\/`),
+so the standard tool misses them. Elementor's own command knows the encoding.

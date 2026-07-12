@@ -659,6 +659,22 @@ def cmd_plan(a) -> int:
     owners = list(schema["elements"]) + list(schema["widgets"])
     if a.only:
         owners = [o for o in owners if o in a.only]
+    if a.have is not None:
+        have = {h.lower() for h in a.have}
+
+        def available(o: str) -> bool:
+            w = schema["widgets"].get(o) or schema["elements"].get(o) or {}
+            r = w.get("requires")
+            if not r:
+                return True
+            need = (r.get("plugin") or r.get("experiment") or "").lower()
+            # a wp-widget bridge is another plugin's widget; never assume it
+            return bool(need) and need in have
+
+        before = len(owners)
+        owners = [o for o in owners if available(o)]
+        print(f"--have: planning {len(owners)} of {before} owners "
+              f"(the rest need something the target site does not have)")
 
     plan = {"batches": [], "targets": {}}
     nodes: list[tuple[str, int, dict]] = []
@@ -1044,6 +1060,12 @@ def main() -> int:
     s.add_argument("--batch-size", type=int, default=10)
     s.add_argument("--post-id", type=int, default=0, help="the draft post to write batches into")
     s.add_argument("--only", nargs="+", help="restrict to these owners")
+    s.add_argument("--have", nargs="+", default=None, metavar="X",
+                   help="plan only for widgets the TARGET site can have. Pass its "
+                        "plugins/experiments (woocommerce, nested-elements, container, "
+                        "e_atomic_elements). Widgets needing something not listed are "
+                        "excluded UP FRONT - applying a widgetType the site cannot "
+                        "resolve renders nothing and wastes a page per batch.")
     s.set_defaults(fn=cmd_plan)
 
     s = sub.add_parser("check", help="assert every control emitted its CSS")
