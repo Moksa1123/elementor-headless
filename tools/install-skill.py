@@ -117,23 +117,50 @@ def embed_references(names: list[str]) -> str:
     return "".join(parts)
 
 
-def copy_section(src: str, dst: Path, *, force: bool) -> int:
-    """Copy a directory section. Returns the number of files copied."""
+def copy_section(src: str, dst: Path, *, force: bool) -> tuple[int, int]:
+    """
+    Copy a directory section. Returns (files copied, stale files removed).
+
+    An upgrade MUST delete what the previous version left behind. This skill has
+    been restructured more than once, and a plain copy-over left the old files
+    sitting in the installed directory next to the new ones - including
+    `data/elementor-core-pro-controls.json`, the dataset extracted before the
+    control-optimisation trap was understood, which is missing 46% of all controls.
+
+    An agent reading the installed skill has no way to know which of two files is
+    the current one. Shipping a stale, WRONG dataset alongside the right one is
+    worse than shipping nothing: it is the exact silent-failure mode this whole
+    project exists to prevent, reintroduced by the installer.
+
+    Only ever prunes inside the section directories this installer owns.
+    """
     src_path = REPO_ROOT / src
     if not src_path.exists():
-        return 0
+        return 0, 0
     n = 0
+    keep: set[Path] = set()
     for p in src_path.rglob("*"):
-        if p.is_dir():
+        if p.is_dir() or "__pycache__" in p.parts:
             continue
         rel = p.relative_to(src_path)
         target = dst / src / rel
+        keep.add(target.resolve())
         target.parent.mkdir(parents=True, exist_ok=True)
         if target.exists() and not force:
             continue
         shutil.copy2(p, target)
         n += 1
-    return n
+
+    pruned = 0
+    sec_dir = dst / src
+    if sec_dir.exists():
+        for p in sec_dir.rglob("*"):
+            if p.is_dir():
+                continue
+            if "__pycache__" in p.parts or p.resolve() not in keep:
+                p.unlink()
+                pruned += 1
+    return n, pruned
 
 
 # ---------- Install strategies -------------------------------------------
@@ -162,8 +189,11 @@ def install_full(cfg: dict, target_root: Path, *, force: bool, dry_run: bool) ->
 
     for sec in ("references", "tools", "data", "examples"):
         if cfg.get("sections", {}).get(sec):
-            n = copy_section(sec, skill_dir, force=force)
-            plan["sections"].append(f"{sec} ({n} files)")
+            n, pruned = copy_section(sec, skill_dir, force=force)
+            note = f"{sec} ({n} files"
+            if pruned:
+                note += f", {pruned} stale removed"
+            plan["sections"].append(note + ")")
     return plan
 
 
