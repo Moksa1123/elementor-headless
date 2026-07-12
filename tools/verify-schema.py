@@ -101,7 +101,32 @@ def main() -> int:
     print()
 
     s_flat, m_flat = flatten(shipped), flatten_raw(mine)
-    failures, drift = [], []
+    failures, drift, unavailable = [], [], []
+
+    # WHAT THIS INSTALL CAN EVEN HAVE.
+    #
+    # A widget the schema describes and your site does not have is only a failure if
+    # your site was SUPPOSED to have it. WooCommerce contributes 29 widgets and
+    # injects controls into two more; three Elementor experiments contribute another
+    # 36 widgets. On a site without them, their absence is correct, and reporting it
+    # as "the schema is wrong" would train people to ignore this tool.
+    #
+    # So the schema states each widget's requirement, and this checks it against the
+    # install rather than assuming every install is the same one it came from.
+    m_meta = mine.get("meta", {})
+    have_plugins = {"woocommerce"} if m_meta.get("woocommerce_active") else set()
+    have_exp = {k for k, v in (m_meta.get("experiments") or {}).items() if v}
+
+    def satisfied(req: dict | None) -> bool:
+        if not req:
+            return True
+        if req.get("plugin"):
+            return req["plugin"].lower() in {p.lower() for p in have_plugins}
+        if req.get("experiment"):
+            return req["experiment"] in have_exp
+        return False        # a WP legacy widget: never assume another plugin's widget
+
+    s_all = {**shipped["elements"], **shipped["widgets"]}
 
     # 1. Widgets the schema promises that you do not have.
     s_owners = set(shipped["elements"]) | set(shipped["widgets"])
@@ -109,7 +134,16 @@ def main() -> int:
     gone = sorted(s_owners - m_owners)
     added = sorted(m_owners - s_owners)
     for w in gone:
-        failures.append(("widget-missing", w, "schema claims this widget exists; your site has no such widget"))
+        req = s_all[w].get("requires")
+        if not satisfied(req):
+            need = (req.get("plugin") or req.get("experiment") or "a WP widget from some plugin"
+                    ) if req else "?"
+            unavailable.append(("widget-unavailable", w,
+                                f"absent because this install does not have `{need}` - "
+                                f"which is exactly what the schema says it needs"))
+        else:
+            failures.append(("widget-missing", w,
+                             "schema claims this widget exists; your site has no such widget"))
     for w in added:
         drift.append(("widget-new", w, "your site has a widget the schema does not describe"))
 
@@ -119,6 +153,13 @@ def main() -> int:
             continue  # already reported as a missing widget
         mc = m_flat.get((owner, ctrl))
         if mc is None:
+            # A control a gated plugin injects into a widget everyone has.
+            rp = c.get("requires_plugin")
+            if rp and rp.lower() not in {p.lower() for p in have_plugins}:
+                unavailable.append(("control-unavailable", f"{owner}.{ctrl}",
+                                    f"absent because `{rp}` is not active here - "
+                                    f"the schema says it needs it"))
+                continue
             failures.append(("control-missing", f"{owner}.{ctrl}",
                              "schema claims this control exists; it does not"))
         elif mc.get("type") != c.get("type"):
@@ -186,6 +227,7 @@ def main() -> int:
         print()
 
     report("FAILURES  (the schema would mislead you)", failures, a.max_list)
+    report("NOT ON THIS INSTALL  (the schema says so, and it is right)", unavailable, a.max_list)
     report("DRIFT     (your install is ahead of the schema)", drift, a.max_list)
 
     checked = len(s_flat)

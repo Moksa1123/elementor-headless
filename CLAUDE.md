@@ -68,20 +68,46 @@ out of, and what an identical bug in a different artefact would look like.
 
 `data/` is generated output. Do not hand-edit it. Two dumps are required, not one:
 
+**Three dumps, and every other plugin switched off.** Not two, and not on a site with
+its plugins running:
+
 ```bash
-wp eval-file tools/extract-elementor-schema.php core+pro > raw.json
-wp --skip-plugins=elementor-pro eval-file tools/extract-elementor-schema.php core+pro > free.json
-python tools/build-indexes.py raw.json --free-dump free.json \
+# build the skip-list: everything active EXCEPT the ones whose surface you want
+ALL=$(wp plugin list --field=name --status=active)
+
+wp --skip-plugins="<all but elementor>"                    eval-file tools/extract-elementor-schema.php core+pro > iso-core.json
+wp --skip-plugins="<all but elementor,elementor-pro>"      eval-file tools/extract-elementor-schema.php core+pro > iso-pro.json
+wp --skip-plugins="<all but elementor,elementor-pro,woocommerce>" eval-file tools/extract-elementor-schema.php core+pro > iso-woo.json
+
+python tools/build-indexes.py iso-woo.json \
+    --free-dump   iso-core.json \
+    --gated-dump  woocommerce=iso-pro.json \
     --verification data/control-verification.csv \
     --class-verification data/class-verification.csv --out data/
-python tools/verify-schema.py raw.json --free-dump free.json     # must exit 0
+python tools/verify-schema.py iso-woo.json --free-dump iso-core.json   # must exit 0
 ```
 
-The second dump is what makes the Free/Pro split real. `--skip-plugins` affects
-only that one CLI process — nothing is deactivated, so this is safe against a
+Each dump answers a different question:
+
+| dump | plugins | answers |
+|---|---|---|
+| `iso-core` | elementor | what is FREE |
+| `iso-pro` | + elementor-pro | what Pro adds — the per-control tier |
+| `iso-woo` | + woocommerce | what WooCommerce adds — the `requires` |
+
+`--skip-plugins` affects only that one CLI process, so all three are safe against a
 production site. Without `--free-dump`, `build-indexes.py` marks every control
 `tier: unknown` rather than guessing, and that is the correct behaviour: leave it
 that way.
+
+**Extracting on a site with its other plugins loaded pollutes the schema.** Rank Math
+injects `rank_math_add_faq_schema` into `accordion`; Unlimited Elements injects
+`uc_background_*` into the container. The schema shipped both, as if they were
+Elementor's. Isolate the plugins or the data is about your site, not about Elementor.
+
+**And extract from a site that has WooCommerce.** Without it, Elementor Pro's
+`woocommerce` module does not load, its 29 widgets do not exist, and the schema will
+confidently tell people Elementor has no `woocommerce-product-price`. Trap 10.
 
 The two `--*-verification` files are what let the RENDERED result override
 Elementor's own metadata (`responsive_broken`, `class_verified`, `renders_bare`).

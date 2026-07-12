@@ -78,6 +78,7 @@ owner,control,type,tab,section,responsive,control_tier,owner_tier,default,option
 *ALL_WIDGETS*,_border_radius,dimensions,advanced,_section_border,mobile|tablet,free,free,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,,border-radius,Border Radius
 *ALL_WIDGETS*,_border_radius_hover,dimensions,advanced,_section_border,mobile|tablet,free,free,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,,border-radius,Border Radius
 *ALL_WIDGETS*,_border_width,dimensions,advanced,_section_border,mobile|tablet,free,free,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,"{""_border_border!"":["""",""none""]}",border-width,Border Width
+*ALL_WIDGETS*,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 *ALL_WIDGETS*,_box_shadow_box_shadow_position,select,advanced,_section_border,,free,free, ,"["" "",""inset""]","{""_box_shadow_box_shadow_type!"":""""}",,Position
 *ALL_WIDGETS*,_box_shadow_box_shadow_type,popover_toggle,advanced,_section_border,,free,free,,,,,Box Shadow
 *ALL_WIDGETS*,_box_shadow_hover_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_hover_box_shadow_type!"":""""}",box-shadow,Box Shadow

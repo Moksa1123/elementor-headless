@@ -29,16 +29,62 @@ it, so a pass means *that* control produced *that* value.
 A control can act two ways, and they are verified against two different artefacts:
 
 ```
-CSS         18,853 CSS-driving controls    99.1% covered   0 failures  (the stylesheet)
-RESPONSIVE  25,404 _tablet/_mobile keys    96.7% verified by value
-CLASS        2,573 wrapper-class controls  79.4% verified   0 failures  (the rendered HTML)
+CSS     25,259 CSS-driving controls    89.0% swept, 0 failures   (the stylesheet)
+CLASS    3,308 wrapper-class controls  98.2% swept, 0 failures   (the rendered HTML)
 ```
+
+The 2,766 unswept CSS controls are on the WooCommerce and Elementor V4 widgets,
+which were added to the schema after the sweep ran. **They are labelled unverified
+rather than counted as passes** - `data/control-verification.csv` and
+`data/class-verification.csv` are per-control, so the gap is visible, not averaged
+away.
 
 Where Elementor's own metadata turned out to be wrong, **the rendered result wins**:
 9 controls advertise a responsive breakpoint they never emit, 29 widgets render no
-markup at all on a bare page, and the schema now says both. Per-control results ship
-in `data/control-verification.csv` and `data/class-verification.csv`. Your memory of
-Elementor has not been through any of this.
+markup at all on a bare page, and the schema now says both.
+
+## Not every widget exists on every install
+
+**The widget surface is a property of the SITE, not of Elementor.** The same
+Elementor 4.1.4 / Pro 4.1.2 registers 148 widgets on one machine and 192 on another,
+and nothing is broken - the extra ones need something the first machine does not
+have. A schema that just lists "148 widgets" is not incomplete, it is **wrong**: ask
+it for `woocommerce-product-price` and it says, with total confidence, that Elementor
+has no such widget.
+
+So every widget carries what it needs, read off its module's own `is_active()` gate
+in Elementor's source:
+
+| Needs | Widgets |
+|---|---|
+| `plugin:woocommerce` — `class_exists('woocommerce')` | **29** |
+| `experiment:container` | 13 |
+| `experiment:e_atomic_elements` (Elementor V4) | 18 |
+| `experiment:nested-elements` | 5 |
+| a WP legacy widget some plugin registers | 33 |
+| nothing — always there | 104 |
+
+```bash
+python tools/el.py widgets --requires woocommerce
+python tools/validate-page.py page.json --have woocommerce   # else it errors
+```
+
+Without `--have`, `validate-page.py` **errors** on a widget the target site cannot
+have. That is the point: on that site the `widgetType` does not resolve, the element
+vanishes, and nothing warns you.
+
+**Elementor V4 atomic elements (`e-heading`, `e-button`, `e-flexbox`, `e-form-*`) are
+a different data model.** They have no controls at all - they take a prop schema with
+type-tagged values and a separate `styles` array:
+
+```
+classic:  "header_size": "h2"
+atomic:   "tag": { "$$type": "string", "value": "h2" }
+```
+
+`el.py widget e-heading` prints the prop schema. `validate-page.py` refuses them:
+this skill models the classic tree, and pretending otherwise would be the exact
+silent failure it exists to prevent.
 
 ## A control can be gated four different ways
 
@@ -91,7 +137,8 @@ python tools/el.py stats                          # what version, what's in here
 python tools/el.py widgets --tier free --grep box # find a widget
 python tools/el.py widget heading --tab style     # one widget's style controls
 python tools/el.py container --tab layout         # the container's layout surface
-python tools/el.py common --grep padding          # the 211 controls every widget shares
+python tools/el.py common --grep padding          # the 211 controls every classic widget shares
+python tools/el.py widgets --requires woocommerce  # what this site must have for these to exist
 python tools/el.py type slider                    # the JSON value shape of a control type
 python tools/el.py group typography               # what a group control expands into
 python tools/el.py css border-radius              # which control drives this CSS property
@@ -123,6 +170,7 @@ question completely. `data/*.csv` are there for `grep` when you want to scan.
 | the legal values of an animation | `el.py type animation` — they are camelCase (`fadeInUp`), not kebab |
 | whether a widget renders on a bare page | `el.py widget <name>` — it says so if not |
 | **whether something needs Pro** | `el.py pro --check <controls>` · `data/pro-only-controls.csv` |
+| **whether a widget exists on the target site at all** | `el.py widget <name>` → `requires:` · `data/widgets.csv` |
 
 ## Build a page
 
@@ -182,7 +230,7 @@ instead of measuring.
 The tier in `data/` is **measured**: extract once normally, once with
 `wp --skip-plugins=elementor-pro`, then diff. On 4.1.4 + Pro 4.1.2:
 
-- **71 of 135 widgets are Pro.**
+- **110 of 192 widgets are Pro.**
 - **Pro injects 46 controls into *every* widget, free ones included:** all
   `motion_fx_*` (37), `sticky*` (6), `custom_css`, `_attributes`,
   `e_display_conditions`.
@@ -226,7 +274,7 @@ Only **active** breakpoints exist (`el.py breakpoints`).
 | [responsive.md](references/responsive.md) | breakpoints, suffixes, why `padding_tablet` has no control object |
 | [templates-and-conditions.md](references/templates-and-conditions.md) | template CRUD, Display Conditions, priority resolution — **Pro** |
 | [import-export.md](references/import-export.md) | Elementor's JSON interchange format; moving blocks across sites without breaking media |
-| [extraction-traps.md](references/extraction-traps.md) | the nine ways a schema goes silently wrong, and how this one is verified |
+| [extraction-traps.md](references/extraction-traps.md) | the ten ways a schema goes silently wrong, and how this one is verified |
 | [token-efficiency.md](references/token-efficiency.md) | the 89% figure, measured, with the script that reproduces it |
 
 ## Verify it rather than trusting it

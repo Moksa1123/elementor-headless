@@ -275,7 +275,3 @@ container,sticky_anchor_link_offset,number,advanced,section_effects,Pro injects 
 container,sticky_parent,switcher,advanced,section_effects,Pro injects this into the free container element
 container,_attributes,textarea,advanced,_section_attributes,Pro injects this into the free container element
 container,custom_css,code,advanced,section_custom_css,Pro injects this into the free container element
-common,_box_shadow_box_shadow,box_shadow,advanced,_section_border,Pro-only control on the FREE common widget
-common-base,_box_shadow_box_shadow,box_shadow,advanced,_section_border,Pro-only control on the FREE common-base widget
-common-optimized,_box_shadow_box_shadow,box_shadow,advanced,_section_border,Pro-only control on the FREE common-optimized widget
-inner-section,_box_shadow_box_shadow,box_shadow,advanced,_section_border,Pro-only control on the FREE inner-section widget

@@ -15,6 +15,16 @@ contact-buttons-var-7,Mobile Bar,general
 contact-buttons-var-8,Resource Box,general
 contact-buttons-var-9,Animated Classic,general
 countdown,Countdown,pro-elements
+e-form-checkbox,Checkbox,atomic-form
+e-form-date-picker,Date picker,atomic-form
+e-form-file-upload,File Upload,atomic-form
+e-form-input,Input,atomic-form
+e-form-label,Label,atomic-form
+e-form-radio-button,Radio button,atomic-form
+e-form-select,Select,atomic-form
+e-form-submit-button,Submit button,atomic-form
+e-form-textarea,Text area,atomic-form
+e-form-time-picker,Time picker,atomic-form
 facebook-button,Facebook Button,pro-elements
 facebook-comments,Facebook Comments,pro-elements
 facebook-embed,Facebook Embed,pro-elements
@@ -70,3 +80,32 @@ theme-post-title,Post Title,theme-elements-single
 theme-site-logo,Site Logo,theme-elements
 theme-site-title,Site Title,theme-elements
 video-playlist,Video Playlist,pro-elements
+wc-add-to-cart,Custom Add To Cart,woocommerce-elements
+wc-archive-products,Archive Products,woocommerce-elements-archive
+wc-categories,Product Categories,woocommerce-elements
+wc-elements,WooCommerce Pages,woocommerce-elements
+wc-products,Woo - Products-,woocommerce-elements
+wc-single-elements,Woo - Single Elements,woocommerce-elements-single
+woocommerce-archive-description,Archive Description,woocommerce-elements-archive
+woocommerce-archive-products,Archive Products (deprecated),woocommerce-elements-archive
+woocommerce-breadcrumb,WooCommerce Breadcrumbs,woocommerce-elements|woocommerce-elements-single
+woocommerce-cart,Cart,woocommerce-elements
+woocommerce-checkout-page,Checkout,woocommerce-elements
+woocommerce-menu-cart,Menu Cart,theme-elements|woocommerce-elements
+woocommerce-my-account,My Account,woocommerce-elements
+woocommerce-notices,WooCommerce Notices,woocommerce-elements
+woocommerce-product-add-to-cart,Add To Cart,woocommerce-elements-single
+woocommerce-product-additional-information,Additional Information,woocommerce-elements-single
+woocommerce-product-content,Product Content,woocommerce-elements-single
+woocommerce-product-data-tabs,Product Data Tabs,woocommerce-elements-single
+woocommerce-product-images,Product Images,woocommerce-elements-single
+woocommerce-product-meta,Product Meta,woocommerce-elements-single
+woocommerce-product-price,Product Price,woocommerce-elements-single
+woocommerce-product-rating,Product Rating,woocommerce-elements-single
+woocommerce-product-related,Product Related,woocommerce-elements-single
+woocommerce-product-short-description,Short Description,woocommerce-elements-single
+woocommerce-product-stock,Product Stock,woocommerce-elements-single
+woocommerce-product-title,Product Title,woocommerce-elements-single
+woocommerce-product-upsell,Upsells,woocommerce-elements-single
+woocommerce-products,Products,woocommerce-elements
+woocommerce-purchase-summary,Purchase Summary,woocommerce-elements

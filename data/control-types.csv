@@ -49,9 +49,6 @@ template_query,pro,elementor-pro,,ElementorPro\Modules\QueryControl\Controls\Tem
 text,free,elementor-core,,Elementor\Control_Text
 text_shadow,free,elementor-core,"{""horizontal"":0,""vertical"":0,""blur"":10,""color"":""rgba(0,0,0,0.3)""}",Elementor\Control_Text_Shadow
 textarea,free,elementor-core,,Elementor\Control_Textarea
-uc_hr,free,unlimited-elements-for-elementor-premium,,Elementor\Control_UC_HR
-uc_mp3,free,unlimited-elements-for-elementor-premium,,Elementor\Control_UC_AUDIO
-uc_select_special,free,unlimited-elements-for-elementor-premium,,Elementor\Control_UC_SelectSpecial
 url,free,elementor-core,"{""url"":"""",""is_external"":"""",""nofollow"":"""",""custom_attributes"":""""}",Elementor\Control_URL
 v4_color_variable_list,free,elementor-core,,Elementor\Modules\DesignSystemSync\Controls\V4_Color_Variable_List
 v4_typography_list,free,elementor-core,,Elementor\Modules\DesignSystemSync\Controls\V4_Typography_List

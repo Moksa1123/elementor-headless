@@ -1,139 +1,206 @@
-name,elType,tier,title,categories,controls_own,controls_total,has_common
-section,section,free,Section,,292,292,no
-column,column,free,Column,,262,262,no
-container,container,free,Container,,356,356,no
-accordion,widget,free,Accordion,general,47,257,yes
-alert,widget,free,Alert,general,41,251,yes
-animated-headline,widget,pro,Animated Headline,pro-elements,52,262,yes
-archive-posts,widget,pro,Archive Posts,theme-elements-archive,439,649,yes
-audio,widget,free,SoundCloud,general,13,223,yes
-author-box,widget,pro,Author Box,theme-elements-single|theme-elements-archive,70,280,yes
-blockquote,widget,pro,Blockquote,pro-elements,80,290,yes
-button,widget,free,Button,basic,103,313,yes
-call-to-action,widget,pro,Call to Action,pro-elements,138,348,yes
-code-highlight,widget,pro,Code Highlight,pro-elements,10,220,yes
-common,widget,free,common,general,1,211,yes
-common-base,widget,free,common-base,general,1,166,yes
-common-optimized,widget,free,common-optimized,general,1,211,yes
-contact-buttons,widget,free,Single Chat,general,131,341,yes
-contact-buttons-var-1,widget,pro,Multi Chat,general,116,326,yes
-contact-buttons-var-10,widget,pro,Interactive,general,29,239,yes
-contact-buttons-var-3,widget,pro,Info Button Box,general,83,293,yes
-contact-buttons-var-4,widget,pro,Vertical Links,general,47,257,yes
-contact-buttons-var-5,widget,pro,Classic,general,32,242,yes
-contact-buttons-var-6,widget,pro,Quick Access Bar,general,16,226,yes
-contact-buttons-var-7,widget,pro,Mobile Bar,general,40,250,yes
-contact-buttons-var-8,widget,pro,Resource Box,general,86,296,yes
-contact-buttons-var-9,widget,pro,Animated Classic,general,37,247,yes
-countdown,widget,pro,Countdown,pro-elements,75,285,yes
-counter,widget,free,Counter,general,49,259,yes
-divider,widget,free,Divider,basic,42,252,yes
-e-component,widget,free,Component,v4-elements,0,0,no
-facebook-button,widget,pro,Facebook Button,pro-elements,10,220,yes
-facebook-comments,widget,pro,Facebook Comments,pro-elements,6,216,yes
-facebook-embed,widget,pro,Facebook Embed,pro-elements,10,220,yes
-facebook-page,widget,pro,Facebook Page,pro-elements,8,218,yes
-flip-box,widget,pro,Flip Box,pro-elements,272,482,yes
-floating-bars-var-1,widget,free,Floating Bar CTA,general,126,336,yes
-floating-bars-var-2,widget,pro,Ticker,general,107,317,yes
-floating-bars-var-3,widget,pro,Coupon,general,123,333,yes
-form,widget,pro,Form,pro-elements,226,436,yes
-gallery,widget,pro,Gallery,pro-elements,161,371,yes
-global,widget,pro,Global,pro-elements,0,0,no
-google_maps,widget,free,Google Maps,basic,17,227,yes
-heading,widget,free,Heading,basic,25,235,yes
-hotspot,widget,pro,Hotspot,pro-elements,91,301,yes
-html,widget,free,HTML,general,2,212,yes
-icon,widget,free,Icon,basic,17,227,yes
-icon-box,widget,free,Icon Box,general,55,265,yes
-icon-list,widget,free,Icon List,general,35,245,yes
-image,widget,free,Image,basic,53,263,yes
-image-box,widget,free,Image Box,general,71,281,yes
-image-carousel,widget,free,Image Carousel,general,54,264,yes
-image-gallery,widget,free,Basic Gallery,general,29,239,yes
-inner-section,widget,free,Inner Section,basic,1,211,yes
-link-in-bio,widget,free,Minimalist,link-in-bio,148,358,yes
-link-in-bio-var-2,widget,pro,Classic,link-in-bio,148,358,yes
-link-in-bio-var-3,widget,pro,Showcase,link-in-bio,145,355,yes
-link-in-bio-var-4,widget,pro,Links,link-in-bio,142,352,yes
-link-in-bio-var-5,widget,pro,Services,link-in-bio,145,355,yes
-link-in-bio-var-6,widget,pro,Portfolio Bio,link-in-bio,135,345,yes
-link-in-bio-var-7,widget,pro,Business Card,link-in-bio,190,400,yes
-login,widget,pro,Login,pro-elements,143,353,yes
-loop-carousel,widget,pro,Loop Carousel,pro-elements,184,394,yes
-loop-grid,widget,pro,Loop Grid,pro-elements,215,425,yes
-lottie,widget,pro,Lottie,pro-elements,53,263,yes
-media-carousel,widget,pro,Media Carousel,pro-elements,63,273,yes
-mega-menu,widget,pro,Menu,pro-elements|theme-elements,417,627,yes
-menu-anchor,widget,free,Menu Anchor,general,2,212,yes
-nav-menu,widget,pro,WordPress Menu,pro-elements|theme-elements,79,289,yes
-nested-accordion,widget,free,Accordion,general,191,401,yes
-nested-carousel,widget,pro,Carousel,pro-elements,179,389,yes
-nested-tabs,widget,free,Tabs,general,203,413,yes
-off-canvas,widget,pro,Off-Canvas,pro-elements,88,298,yes
-paypal-button,widget,pro,PayPal Button,pro-elements,135,345,yes
-portfolio,widget,pro,Portfolio,pro-elements,61,271,yes
-post-comments,widget,pro,Post Comments,theme-elements-single,5,215,yes
-post-info,widget,pro,Post Info,theme-elements-single,25,235,yes
-post-navigation,widget,pro,Post Navigation,theme-elements-single,44,254,yes
-posts,widget,pro,Posts,pro-elements,465,675,yes
-price-list,widget,pro,Price List,pro-elements,51,261,yes
-price-table,widget,pro,Price Table,pro-elements,219,429,yes
-progress,widget,free,Progress Bar,general,37,247,yes
-progress-tracker,widget,pro,Progress Tracker,pro-elements|theme-elements-single,103,313,yes
-rating,widget,free,Rating,general,9,219,yes
-read-more,widget,free,Read More,general,2,212,yes
-reviews,widget,pro,Reviews,pro-elements,79,289,yes
-search,widget,pro,Search,pro-elements,324,534,yes
-search-form,widget,pro,Search Form,theme-elements,58,268,yes
-share-buttons,widget,pro,Share Buttons,pro-elements,31,241,yes
-shortcode,widget,free,Shortcode,general,2,212,yes
-sidebar,widget,free,Sidebar,general,2,212,yes
-sitemap,widget,pro,Sitemap,theme-elements,34,244,yes
-slides,widget,pro,Slides,pro-elements,136,346,yes
-social-icons,widget,free,Social Icons,general,20,230,yes
-spacer,widget,free,Spacer,basic,2,212,yes
-star-rating,widget,free,Star Rating,general,25,235,yes
-stripe-button,widget,pro,Stripe Button,pro-elements,129,339,yes
-table-of-contents,widget,pro,Table of Contents,pro-elements|theme-elements-single,64,274,yes
-tabs,widget,free,Tabs,general,40,250,yes
-taxonomy-filter,widget,pro,Taxonomy Filter,pro-elements,153,363,yes
-template,widget,pro,Template,pro-elements,2,212,yes
-testimonial,widget,free,Testimonial,general,54,264,yes
-testimonial-carousel,widget,pro,Testimonial Carousel,pro-elements,83,293,yes
-text-editor,widget,free,Text Editor,basic,41,251,yes
-text-path,widget,free,Text Path,general,36,246,yes
-theme-archive-title,widget,pro,Archive Title,theme-elements-archive,25,235,yes
-theme-page-title,widget,pro,Page Title,theme-elements,25,235,yes
-theme-post-content,widget,pro,Post Content,theme-elements-single,13,223,yes
-theme-post-excerpt,widget,pro,Post Excerpt,theme-elements-single,20,230,yes
-theme-post-featured-image,widget,pro,Featured Image,theme-elements-single,53,263,yes
-theme-post-title,widget,pro,Post Title,theme-elements-single,25,235,yes
-theme-site-logo,widget,pro,Site Logo,theme-elements,53,263,yes
-theme-site-title,widget,pro,Site Title,theme-elements,25,235,yes
-toggle,widget,free,Toggle,general,47,257,yes
-video,widget,free,Video,basic,53,263,yes
-video-playlist,widget,pro,Video Playlist,pro-elements,165,375,yes
-wp-widget-archives,widget,free,彙整,wordpress,2,212,yes
-wp-widget-block,widget,free,區塊,wordpress,2,212,yes
-wp-widget-blog_subscription,widget,free,網誌訂閱 (Jetpack),wordpress,2,212,yes
-wp-widget-calendar,widget,free,月曆,wordpress,2,212,yes
-wp-widget-categories,widget,free,分類,wordpress,2,212,yes
-wp-widget-custom_html,widget,free,自訂 HTML,wordpress,2,212,yes
-wp-widget-ez_toc_widget_sticky,widget,free,資訊欄固定位置內容目錄,wordpress,2,212,yes
-wp-widget-ezw_tco,widget,free,內容目錄,wordpress,2,212,yes
-wp-widget-fluentform_widget,widget,free,Fluent Forms 小工具,wordpress,2,212,yes
-wp-widget-media_audio,widget,free,音訊,wordpress,2,212,yes
-wp-widget-media_gallery,widget,free,圖庫,wordpress,2,212,yes
-wp-widget-media_image,widget,free,圖片,wordpress,2,212,yes
-wp-widget-media_video,widget,free,視訊,wordpress,2,212,yes
-wp-widget-meta,widget,free,其他操作,wordpress,2,212,yes
-wp-widget-nav_menu,widget,free,導覽選單,wordpress,2,212,yes
-wp-widget-pages,widget,free,頁面,wordpress,2,212,yes
-wp-widget-recent-comments,widget,free,近期留言,wordpress,2,212,yes
-wp-widget-recent-posts,widget,free,近期文章,wordpress,2,212,yes
-wp-widget-rss,widget,free,RSS,wordpress,2,212,yes
-wp-widget-search,widget,free,搜尋,wordpress,2,212,yes
-wp-widget-tag_cloud,widget,free,標籤雲,wordpress,2,212,yes
-wp-widget-text,widget,free,文字,wordpress,2,212,yes
-wp-widget-wpp,widget,free,WP Popular Posts,wordpress,2,212,yes
+name,elType,tier,requires,title,categories,controls_own,controls_total,has_common
+section,section,free,,Section,,290,290,no
+column,column,free,,Column,,262,262,no
+container,container,free,,Container,,354,354,no
+e-div-block,e-div-block,free,experiment:e_atomic_elements,Div block,,0,0,no
+e-flexbox,e-flexbox,free,experiment:e_atomic_elements,Flexbox,,0,0,no
+e-tabs,e-tabs,free,experiment:e_atomic_elements,Tabs,,0,0,no
+e-tabs-menu,e-tabs-menu,free,experiment:e_atomic_elements,Tabs menu,,0,0,no
+e-tab,e-tab,free,experiment:e_atomic_elements,Tab trigger,,0,0,no
+e-tabs-content-area,e-tabs-content-area,free,experiment:e_atomic_elements,Tabs content area,,0,0,no
+e-tab-content,e-tab-content,free,experiment:e_atomic_elements,Tab content,,0,0,no
+e-form,e-form,free,experiment:e_atomic_elements,Atomic form,,0,0,no
+e-form-success-message,e-form-success-message,free,experiment:e_atomic_elements,Success message,,0,0,no
+e-form-error-message,e-form-error-message,free,experiment:e_atomic_elements,Error message,,0,0,no
+accordion,widget,free,,Accordion,general,45,256,yes
+alert,widget,free,,Alert,general,40,251,yes
+animated-headline,widget,pro,,Animated Headline,pro-elements,51,262,yes
+archive-posts,widget,pro,,Archive Posts,theme-elements-archive,438,649,yes
+audio,widget,free,,SoundCloud,general,12,223,yes
+author-box,widget,pro,,Author Box,theme-elements-single|theme-elements-archive,69,280,yes
+blockquote,widget,pro,,Blockquote,pro-elements,79,290,yes
+button,widget,free,,Button,basic,102,313,yes
+call-to-action,widget,pro,,Call to Action,pro-elements,137,348,yes
+code-highlight,widget,pro,,Code Highlight,pro-elements,9,220,yes
+common,widget,free,,common,general,0,211,yes
+common-base,widget,free,,common-base,general,0,166,no
+common-optimized,widget,free,,common-optimized,general,0,211,yes
+contact-buttons,widget,free,experiment:floating-buttons,Single Chat,general,130,341,yes
+contact-buttons-var-1,widget,pro,experiment:floating-buttons,Multi Chat,general,115,326,yes
+contact-buttons-var-10,widget,pro,experiment:floating-buttons,Interactive,general,28,239,yes
+contact-buttons-var-3,widget,pro,experiment:floating-buttons,Info Button Box,general,82,293,yes
+contact-buttons-var-4,widget,pro,experiment:floating-buttons,Vertical Links,general,46,257,yes
+contact-buttons-var-5,widget,pro,experiment:floating-buttons,Classic,general,31,242,yes
+contact-buttons-var-6,widget,pro,experiment:floating-buttons,Quick Access Bar,general,15,226,yes
+contact-buttons-var-7,widget,pro,experiment:floating-buttons,Mobile Bar,general,39,250,yes
+contact-buttons-var-8,widget,pro,experiment:floating-buttons,Resource Box,general,85,296,yes
+contact-buttons-var-9,widget,pro,experiment:floating-buttons,Animated Classic,general,36,247,yes
+countdown,widget,pro,,Countdown,pro-elements,74,285,yes
+counter,widget,free,,Counter,general,48,259,yes
+divider,widget,free,,Divider,basic,41,252,yes
+e-button,widget,free,experiment:e_atomic_elements,Button,v4-elements,0,0,no
+e-component,widget,free,experiment:e_components,Component,v4-elements,0,0,no
+e-divider,widget,free,experiment:e_atomic_elements,Divider,v4-elements,0,0,no
+e-form-checkbox,widget,pro,experiment:e_pro_atomic_form,Checkbox,atomic-form,0,0,no
+e-form-date-picker,widget,pro,experiment:e_pro_atomic_form,Date picker,atomic-form,0,0,no
+e-form-file-upload,widget,pro,experiment:e_pro_atomic_form,File Upload,atomic-form,0,0,no
+e-form-input,widget,pro,experiment:e_pro_atomic_form,Input,atomic-form,0,0,no
+e-form-label,widget,pro,experiment:e_pro_atomic_form,Label,atomic-form,0,0,no
+e-form-radio-button,widget,pro,experiment:e_pro_atomic_form,Radio button,atomic-form,0,0,no
+e-form-select,widget,pro,experiment:e_pro_atomic_form,Select,atomic-form,0,0,no
+e-form-submit-button,widget,pro,experiment:e_pro_atomic_form,Submit button,atomic-form,0,0,no
+e-form-textarea,widget,pro,experiment:e_pro_atomic_form,Text area,atomic-form,0,0,no
+e-form-time-picker,widget,pro,experiment:e_pro_atomic_form,Time picker,atomic-form,0,0,no
+e-heading,widget,free,experiment:e_atomic_elements,Heading,v4-elements,0,0,no
+e-image,widget,free,experiment:e_atomic_elements,Image,v4-elements,0,0,no
+e-paragraph,widget,free,experiment:e_atomic_elements,Paragraph,v4-elements,0,0,no
+e-self-hosted-video,widget,free,experiment:e_atomic_elements,Video,v4-elements,0,0,no
+e-svg,widget,free,experiment:e_atomic_elements,SVG,v4-elements,0,0,no
+e-youtube,widget,free,experiment:e_atomic_elements,YouTube,v4-elements,0,0,no
+facebook-button,widget,pro,,Facebook Button,pro-elements,9,220,yes
+facebook-comments,widget,pro,,Facebook Comments,pro-elements,5,216,yes
+facebook-embed,widget,pro,,Facebook Embed,pro-elements,9,220,yes
+facebook-page,widget,pro,,Facebook Page,pro-elements,7,218,yes
+flip-box,widget,pro,,Flip Box,pro-elements,271,482,yes
+floating-bars-var-1,widget,free,experiment:floating-buttons,Floating Bar CTA,general,125,336,yes
+floating-bars-var-2,widget,pro,experiment:floating-buttons,Ticker,general,106,317,yes
+floating-bars-var-3,widget,pro,experiment:floating-buttons,Coupon,general,122,333,yes
+form,widget,pro,,Form,pro-elements,225,436,yes
+gallery,widget,pro,,Gallery,pro-elements,160,371,yes
+global,widget,pro,,Global,pro-elements,0,0,no
+google_maps,widget,free,,Google Maps,basic,16,227,yes
+heading,widget,free,,Heading,basic,24,235,yes
+hotspot,widget,pro,,Hotspot,pro-elements,90,301,yes
+html,widget,free,,HTML,general,1,212,yes
+icon,widget,free,,Icon,basic,16,227,yes
+icon-box,widget,free,,Icon Box,general,54,265,yes
+icon-list,widget,free,,Icon List,general,34,245,yes
+image,widget,free,,Image,basic,52,263,yes
+image-box,widget,free,,Image Box,general,70,281,yes
+image-carousel,widget,free,,Image Carousel,general,53,264,yes
+image-gallery,widget,free,,Basic Gallery,general,28,239,yes
+inner-section,widget,free,,Inner Section,basic,0,211,yes
+link-in-bio,widget,free,experiment:link-in-bio,Minimalist,link-in-bio,147,358,yes
+link-in-bio-var-2,widget,pro,experiment:link-in-bio,Classic,link-in-bio,147,358,yes
+link-in-bio-var-3,widget,pro,experiment:link-in-bio,Showcase,link-in-bio,144,355,yes
+link-in-bio-var-4,widget,pro,experiment:link-in-bio,Links,link-in-bio,141,352,yes
+link-in-bio-var-5,widget,pro,experiment:link-in-bio,Services,link-in-bio,144,355,yes
+link-in-bio-var-6,widget,pro,experiment:link-in-bio,Portfolio Bio,link-in-bio,134,345,yes
+link-in-bio-var-7,widget,pro,experiment:link-in-bio,Business Card,link-in-bio,189,400,yes
+login,widget,pro,,Login,pro-elements,142,353,yes
+loop-carousel,widget,pro,,Loop Carousel,pro-elements,212,423,yes
+loop-grid,widget,pro,,Loop Grid,pro-elements,243,454,yes
+lottie,widget,pro,,Lottie,pro-elements,52,263,yes
+media-carousel,widget,pro,,Media Carousel,pro-elements,62,273,yes
+mega-menu,widget,pro,experiment:mega-menu,Menu,pro-elements|theme-elements,416,627,yes
+menu-anchor,widget,free,,Menu Anchor,general,1,212,yes
+nav-menu,widget,pro,,WordPress Menu,pro-elements|theme-elements,78,289,yes
+nested-accordion,widget,free,experiment:nested-elements,Accordion,general,189,400,yes
+nested-carousel,widget,pro,experiment:nested-elements,Carousel,pro-elements,178,389,yes
+nested-tabs,widget,free,experiment:nested-elements,Tabs,general,202,413,yes
+off-canvas,widget,pro,experiment:nested-elements,Off-Canvas,pro-elements,87,298,yes
+paypal-button,widget,pro,,PayPal Button,pro-elements,134,345,yes
+portfolio,widget,pro,,Portfolio,pro-elements,60,271,yes
+post-comments,widget,pro,,Post Comments,theme-elements-single,4,215,yes
+post-info,widget,pro,,Post Info,theme-elements-single,24,235,yes
+post-navigation,widget,pro,,Post Navigation,theme-elements-single,43,254,yes
+posts,widget,pro,,Posts,pro-elements,464,675,yes
+price-list,widget,pro,,Price List,pro-elements,50,261,yes
+price-table,widget,pro,,Price Table,pro-elements,218,429,yes
+progress,widget,free,,Progress Bar,general,36,247,yes
+progress-tracker,widget,pro,,Progress Tracker,pro-elements|theme-elements-single,102,313,yes
+rating,widget,free,,Rating,general,8,219,yes
+read-more,widget,free,,Read More,general,1,212,yes
+reviews,widget,pro,,Reviews,pro-elements,78,289,yes
+search,widget,pro,,Search,pro-elements,323,534,yes
+search-form,widget,pro,,Search Form,theme-elements,57,268,yes
+share-buttons,widget,pro,,Share Buttons,pro-elements,30,241,yes
+shortcode,widget,free,,Shortcode,general,1,212,yes
+sidebar,widget,free,,Sidebar,general,1,212,yes
+sitemap,widget,pro,,Sitemap,theme-elements,33,244,yes
+slides,widget,pro,,Slides,pro-elements,135,346,yes
+social-icons,widget,free,,Social Icons,general,19,230,yes
+spacer,widget,free,,Spacer,basic,1,212,yes
+star-rating,widget,free,,Star Rating,general,24,235,yes
+stripe-button,widget,pro,,Stripe Button,pro-elements,128,339,yes
+table-of-contents,widget,pro,,Table of Contents,pro-elements|theme-elements-single,63,274,yes
+tabs,widget,free,,Tabs,general,39,250,yes
+taxonomy-filter,widget,pro,,Taxonomy Filter,pro-elements,152,363,yes
+template,widget,pro,,Template,pro-elements,1,212,yes
+testimonial,widget,free,,Testimonial,general,53,264,yes
+testimonial-carousel,widget,pro,,Testimonial Carousel,pro-elements,82,293,yes
+text-editor,widget,free,,Text Editor,basic,40,251,yes
+text-path,widget,free,,Text Path,general,35,246,yes
+theme-archive-title,widget,pro,,Archive Title,theme-elements-archive,24,235,yes
+theme-page-title,widget,pro,,Page Title,theme-elements,24,235,yes
+theme-post-content,widget,pro,,Post Content,theme-elements-single,12,223,yes
+theme-post-excerpt,widget,pro,,Post Excerpt,theme-elements-single,19,230,yes
+theme-post-featured-image,widget,pro,,Featured Image,theme-elements-single,52,263,yes
+theme-post-title,widget,pro,,Post Title,theme-elements-single,24,235,yes
+theme-site-logo,widget,pro,,Site Logo,theme-elements,52,263,yes
+theme-site-title,widget,pro,,Site Title,theme-elements,24,235,yes
+toggle,widget,free,,Toggle,general,46,257,yes
+video,widget,free,,Video,basic,52,263,yes
+video-playlist,widget,pro,,Video Playlist,pro-elements,164,375,yes
+wc-add-to-cart,widget,pro,plugin:woocommerce,Custom Add To Cart,woocommerce-elements,106,317,yes
+wc-archive-products,widget,pro,plugin:woocommerce,Archive Products,woocommerce-elements-archive,175,386,yes
+wc-categories,widget,pro,plugin:woocommerce,Product Categories,woocommerce-elements,39,250,yes
+wc-elements,widget,pro,plugin:woocommerce,WooCommerce Pages,woocommerce-elements,2,213,yes
+wc-products,widget,pro,plugin:woocommerce,Woo - Products-,woocommerce-elements,147,358,yes
+wc-single-elements,widget,pro,plugin:woocommerce,Woo - Single Elements,woocommerce-elements-single,1,212,yes
+woocommerce-archive-description,widget,pro,plugin:woocommerce,Archive Description,woocommerce-elements-archive,12,223,yes
+woocommerce-archive-products,widget,pro,plugin:woocommerce,Archive Products (deprecated),woocommerce-elements-archive,177,388,yes
+woocommerce-breadcrumb,widget,pro,plugin:woocommerce,WooCommerce Breadcrumbs,woocommerce-elements|woocommerce-elements-single,13,224,yes
+woocommerce-cart,widget,pro,plugin:woocommerce,Cart,woocommerce-elements,459,670,yes
+woocommerce-checkout-page,widget,pro,plugin:woocommerce,Checkout,woocommerce-elements,687,898,yes
+woocommerce-menu-cart,widget,pro,plugin:woocommerce,Menu Cart,theme-elements|woocommerce-elements,209,420,yes
+woocommerce-my-account,widget,pro,plugin:woocommerce,My Account,woocommerce-elements,541,752,yes
+woocommerce-notices,widget,pro,plugin:woocommerce,WooCommerce Notices,woocommerce-elements,0,211,yes
+woocommerce-product-add-to-cart,widget,pro,plugin:woocommerce,Add To Cart,woocommerce-elements-single,86,297,yes
+woocommerce-product-additional-information,widget,pro,plugin:woocommerce,Additional Information,woocommerce-elements-single,23,234,yes
+woocommerce-product-content,widget,pro,plugin:woocommerce,Product Content,woocommerce-elements-single,12,223,yes
+woocommerce-product-data-tabs,widget,pro,plugin:woocommerce,Product Data Tabs,woocommerce-elements-single,44,255,yes
+woocommerce-product-images,widget,pro,plugin:woocommerce,Product Images,woocommerce-elements-single,11,222,yes
+woocommerce-product-meta,widget,pro,plugin:woocommerce,Product Meta,woocommerce-elements-single,36,247,yes
+woocommerce-product-price,widget,pro,plugin:woocommerce,Product Price,woocommerce-elements-single,25,236,yes
+woocommerce-product-rating,widget,pro,plugin:woocommerce,Product Rating,woocommerce-elements-single,16,227,yes
+woocommerce-product-related,widget,pro,plugin:woocommerce,Product Related,woocommerce-elements-single,150,361,yes
+woocommerce-product-short-description,widget,pro,plugin:woocommerce,Short Description,woocommerce-elements-single,12,223,yes
+woocommerce-product-stock,widget,pro,plugin:woocommerce,Product Stock,woocommerce-elements-single,11,222,yes
+woocommerce-product-title,widget,pro,plugin:woocommerce,Product Title,woocommerce-elements-single,24,235,yes
+woocommerce-product-upsell,widget,pro,plugin:woocommerce,Upsells,woocommerce-elements-single,149,360,yes
+woocommerce-products,widget,pro,plugin:woocommerce,Products,woocommerce-elements,164,375,yes
+woocommerce-purchase-summary,widget,pro,plugin:woocommerce,Purchase Summary,woocommerce-elements,271,482,yes
+wp-widget-archives,widget,free,wp-widget,彙整,wordpress,1,212,yes
+wp-widget-block,widget,free,wp-widget,區塊,wordpress,1,212,yes
+wp-widget-calendar,widget,free,wp-widget,月曆,wordpress,1,212,yes
+wp-widget-categories,widget,free,wp-widget,分類,wordpress,1,212,yes
+wp-widget-custom_html,widget,free,wp-widget,自訂 HTML,wordpress,1,212,yes
+wp-widget-media_audio,widget,free,wp-widget,音訊,wordpress,1,212,yes
+wp-widget-media_gallery,widget,free,wp-widget,圖庫,wordpress,1,212,yes
+wp-widget-media_image,widget,free,wp-widget,圖片,wordpress,1,212,yes
+wp-widget-media_video,widget,free,wp-widget,視訊,wordpress,1,212,yes
+wp-widget-meta,widget,free,wp-widget,其他操作,wordpress,1,212,yes
+wp-widget-nav_menu,widget,free,wp-widget,導覽選單,wordpress,1,212,yes
+wp-widget-pages,widget,free,wp-widget,頁面,wordpress,1,212,yes
+wp-widget-recent-comments,widget,free,wp-widget,近期留言,wordpress,1,212,yes
+wp-widget-recent-posts,widget,free,wp-widget,近期文章,wordpress,1,212,yes
+wp-widget-rss,widget,free,wp-widget,RSS,wordpress,1,212,yes
+wp-widget-search,widget,free,wp-widget,搜尋,wordpress,1,212,yes
+wp-widget-tag_cloud,widget,free,wp-widget,標籤雲,wordpress,1,212,yes
+wp-widget-text,widget,free,wp-widget,文字,wordpress,1,212,yes
+wp-widget-wc_brands_brand_description,widget,free,wp-widget,WooCommerce 品牌描述,wordpress,1,212,yes
+wp-widget-wc_brands_brand_thumbnails,widget,free,wp-widget,WooCommerce 品牌縮圖,wordpress,1,212,yes
+wp-widget-woocommerce_brand_nav,widget,free,wp-widget,WooCommerce 品牌分層式導覽,wordpress,1,212,yes
+wp-widget-woocommerce_layered_nav,widget,free,wp-widget,依屬性篩選商品,wordpress,1,212,yes
+wp-widget-woocommerce_layered_nav_filters,widget,free,wp-widget,啟用商品篩選,wordpress,1,212,yes
+wp-widget-woocommerce_price_filter,widget,free,wp-widget,依價格篩選商品,wordpress,1,212,yes
+wp-widget-woocommerce_product_categories,widget,free,wp-widget,商品分類,wordpress,1,212,yes
+wp-widget-woocommerce_product_search,widget,free,wp-widget,商品搜尋,wordpress,1,212,yes
+wp-widget-woocommerce_product_tag_cloud,widget,free,wp-widget,商品標籤雲,wordpress,1,212,yes
+wp-widget-woocommerce_products,widget,free,wp-widget,商品列表,wordpress,1,212,yes
+wp-widget-woocommerce_rating_filter,widget,free,wp-widget,依評價篩選商品,wordpress,1,212,yes
+wp-widget-woocommerce_recent_reviews,widget,free,wp-widget,近期商品評價,wordpress,1,212,yes
+wp-widget-woocommerce_recently_viewed_products,widget,free,wp-widget,近期瀏覽商品清單,wordpress,1,212,yes
+wp-widget-woocommerce_top_rated_products,widget,free,wp-widget,好評商品清單,wordpress,1,212,yes
+wp-widget-woocommerce_widget_cart,widget,free,wp-widget,購物車,wordpress,1,212,yes

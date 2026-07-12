@@ -281,7 +281,8 @@ def describe_conditions(node: dict) -> str:
     return f" {rel} ".join(parts)
 
 
-def walk(nodes, schema, rep: Report, seen_ids: set, target: str, path="") -> None:
+def walk(nodes, schema, rep: Report, seen_ids: set, target: str,
+         have: set, path="") -> None:
     breakpoints = [b for b, v in schema["breakpoints"].items()
                    if v.get("active") and v.get("suffix")]
     for i, el in enumerate(nodes):
@@ -320,6 +321,36 @@ def walk(nodes, schema, rep: Report, seen_ids: set, target: str, path="") -> Non
         if owner.get("tier") == "pro":
             msg = f"widget `{label}` requires Elementor Pro"
             (rep.err if target == "free" else rep.warn)(here, msg)
+
+        # Elementor Pro is not the only thing a widget can need. The surface is a
+        # property of the INSTALL: WooCommerce contributes 29 widgets, and three
+        # Elementor experiments contribute another 36. On a site without them the
+        # widgetType simply does not resolve - the element vanishes, with no error.
+        req = owner.get("requires")
+        if req:
+            if req.get("plugin"):
+                need, kind = req["plugin"], "plugin"
+            elif req.get("experiment"):
+                need, kind = req["experiment"], "experiment"
+            else:
+                need, kind = None, "wp-widget"
+            if kind == "wp-widget":
+                rep.warn(here, f"`{label}` is a legacy WordPress widget that Elementor wraps. "
+                               f"It exists only while some plugin registers it - it is not "
+                               f"part of Elementor and may not be on the target site.")
+            elif need.lower() in {h.lower() for h in have}:
+                pass       # the caller told us the target site has it
+            else:
+                rep.err(here, f"`{label}` DOES NOT EXIST unless the {kind} `{need}` is active "
+                              f"on the target site. Gate: {req.get('gate')}. "
+                              f"Pass --have {need} if it is.")
+
+        if owner.get("control_system") == "v4-atomic":
+            rep.err(here, f"`{label}` is an Elementor V4 atomic element. It does not use "
+                          f"`settings` + controls at all - it takes type-tagged props and a "
+                          f"separate `styles` array. This validator models the classic tree "
+                          f"and cannot check it. `el.py widget {label}` shows its prop schema.")
+            continue
 
         settings = el.get("settings") or {}
         for key, value in settings.items():
@@ -380,13 +411,19 @@ def walk(nodes, schema, rep: Report, seen_ids: set, target: str, path="") -> Non
                               f"interpolated value is empty, so `{key}` will do nothing. "
                               f"Set `{ref}` too.")
 
-        walk(el.get("elements") or [], schema, rep, seen_ids, target, path=f"{here}.elements")
+        walk(el.get("elements") or [], schema, rep, seen_ids, target, have,
+             path=f"{here}.elements")
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("page", type=Path, help="JSON file holding the _elementor_data tree")
+    ap.add_argument("--have", nargs="+", metavar="X", default=[],
+                    help="things the TARGET site has that not every site does: a plugin "
+                         "(woocommerce) or an Elementor experiment (nested-elements, "
+                         "e_atomic_elements, container). Widgets that need something not "
+                         "listed here are errors, because on that site they will not exist.")
     ap.add_argument("--target", choices=["free", "pro"], default="pro",
                     help="'free' turns every Pro-only usage into an error (default: pro)")
     a = ap.parse_args()
@@ -397,7 +434,7 @@ def main() -> int:
         sys.exit("The page must be a JSON list of top-level elements.")
 
     rep = Report()
-    walk(tree, schema, rep, set(), a.target)
+    walk(tree, schema, rep, set(), a.target, set(a.have or []))
 
     m = schema["meta"]
     print(f"validating against Elementor {m['elementor_version']} / Pro {m['elementor_pro_version']}"

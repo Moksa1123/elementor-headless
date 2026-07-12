@@ -111,6 +111,159 @@ function eh_tier_of( $object ) {
 }
 
 /**
+ * Which Elementor MODULE registered this widget.
+ *
+ * It is in the class's own file path — `modules/woocommerce/widgets/products.php`
+ * — so there is nothing to guess. This matters because a module is not
+ * unconditional: several of them refuse to load unless something else is true, and
+ * when they do not load, their widgets DO NOT EXIST. See eh_module_gates().
+ */
+function eh_module_of( $object ) {
+	$file = str_replace( '\\', '/', (string) ( new ReflectionClass( $object ) )->getFileName() );
+	if ( preg_match( '#/modules/([^/]+)/#', $file, $m ) ) {
+		return $m[1];
+	}
+	return null;
+}
+
+/**
+ * The gate on every Elementor Pro module, and whether it is currently open.
+ *
+ * THE WIDGET SURFACE IS NOT A PROPERTY OF ELEMENTOR. It is a property of the
+ * INSTALL. On Elementor Pro 4.1.2:
+ *
+ *   woocommerce      class_exists( 'woocommerce' )        36 widgets, gone without WooCommerce
+ *   mega-menu        experiment 'nested-elements'
+ *   nested-carousel  experiment 'nested-elements'
+ *   off-canvas       experiment 'nested-elements'
+ *
+ * A schema extracted on a site without WooCommerce says "135 widgets" and contains
+ * no `woocommerce-product-price`. Ask it and it will tell you, with total
+ * confidence, that no such widget exists. That is not a missing feature; it is the
+ * schema asserting something false about Elementor.
+ *
+ * So the extraction records what was true of the machine it ran on, and every
+ * widget records the module it came from. Then a consumer can tell the difference
+ * between "Elementor has no such widget" and "this schema was taken somewhere that
+ * could not see it".
+ */
+function eh_module_gates() {
+	$out   = [];
+	$roots = [];
+	if ( defined( 'ELEMENTOR_PATH' ) ) {
+		$roots['Elementor\\Modules\\'] = ELEMENTOR_PATH . 'modules/';
+	}
+	if ( defined( 'ELEMENTOR_PRO_PATH' ) ) {
+		$roots['ElementorPro\\Modules\\'] = ELEMENTOR_PRO_PATH . 'modules/';
+	}
+	foreach ( $roots as $ns => $root ) {
+		foreach ( glob( $root . '*', GLOB_ONLYDIR ) as $dir ) {
+			$slug = basename( $dir );
+			$src  = $dir . '/module.php';
+			if ( ! is_readable( $src ) ) {
+				continue;
+			}
+			$body = file_get_contents( $src );
+
+			// A module that DECLARES ITS OWN EXPERIMENT is gated on it, full stop.
+			// This is the strongest signal there is and it does not depend on what
+			// the gate method happens to be called - Elementor Pro's atomic-form
+			// gates in `is_experiment_active()`, not `is_active()`, and matching on
+			// the method name alone silently misses its 10 widgets.
+			$own_exp = null;
+			if ( preg_match( "#const\s+EXPERIMENT_NAME\s*=\s*'([^']+)'#", $body, $ce ) ) {
+				$own_exp = $ce[1];
+			}
+
+			// The gate as written, straight out of the source. Not paraphrased: if
+			// Elementor changes what a module depends on, this changes with it.
+			$gate = null;
+			if ( preg_match( '#function\s+is_(?:experiment_)?active\s*\([^)]*\)\s*(?::\s*\w+\s*)?\{\s*return\s+(.+?);#s',
+				$body, $m ) ) {
+				$gate = trim( preg_replace( '/\s+/', ' ', $m[1] ) );
+			}
+			if ( $gate === null && $own_exp === null ) {
+				continue;
+			}
+			if ( $gate === 'true' && $own_exp === null ) {
+				continue;   // unconditional — nothing to disclose
+			}
+			$gate = $gate ?? "experiment {$own_exp}";
+			// Most gates read an EXPERIMENT. The experiment's name is usually a
+			// class constant (`self::EXPERIMENT_NAME`), so resolve it - "requires
+			// the experiment self::EXPERIMENT_NAME" helps nobody.
+			$experiment = $own_exp;
+			if ( $experiment !== null ) {
+				// already known from the module's own constant
+			} elseif ( preg_match( "#is_feature_active\(\s*'([^']+)'#", $gate, $e ) ) {
+				$experiment = $e[1];
+			} elseif ( preg_match( '#is_feature_active\(\s*(?:self::)?([A-Z_]+)#', $gate, $e )
+				&& preg_match( "#const\s+{$e[1]}\s*=\s*'([^']+)'#", $body, $c ) ) {
+				$experiment = $c[1];
+			} elseif ( preg_match( '#is_feature_active\(\s*\\\\?([\w\\\\]+)::([A-Z_]+)#', $gate, $e ) ) {
+				// The constant lives on ANOTHER module's class, and it is reached
+				// two different ways:
+				//
+				//   \Elementor\Modules\NestedElements\Module::EXPERIMENT_NAME   (fqn)
+				//   NestedElementsModule::EXPERIMENT_NAME                        (aliased import)
+				//
+				// so resolve the alias through the file's own `use` statements
+				// first. Then note the class path ends in `Module` - the module
+				// name is the segment BEFORE that; taking the last one just gives
+				// you the string "Module".
+				$ref = $e[1];
+				if ( strpos( $ref, '\\' ) === false
+					&& preg_match( '#use\s+([\w\\\\]+)\s+as\s+' . preg_quote( $ref, '#' ) . '\s*;#', $body, $u ) ) {
+					$ref = $u[1];
+				}
+				$parts = explode( '\\', trim( $ref, '\\' ) );
+				array_pop( $parts );                       // drop the trailing "Module"
+				$dir_name = strtolower( preg_replace( '/(?<!^)[A-Z]/', '-$0', (string) array_pop( $parts ) ) );
+				foreach ( $roots as $r ) {
+					$other = $r . $dir_name . '/module.php';
+					if ( is_readable( $other )
+						&& preg_match( "#const\s+{$e[2]}\s*=\s*'([^']+)'#", file_get_contents( $other ), $c ) ) {
+						$experiment = $c[1];
+						break;
+					}
+				}
+			}
+			// An EXTERNAL plugin requirement, e.g. `class_exists( 'woocommerce' )`.
+			// Several modules also class_exists() their way to an Elementor class
+			// (`class_exists( 'Elementor\Modules\FloatingButtons\Module' )`) — that
+			// is an internal availability check, not a dependency on anything the
+			// user has to install, and reporting it as "requires
+			// Elementor\Modules\FloatingButtons\Module" would be noise dressed up
+			// as a fact.
+			$plugin = null;
+			if ( preg_match( "#class_exists\(\s*'([^']+)'#", $gate, $p )
+				&& stripos( $p[1], 'Elementor' ) !== 0 ) {
+				$plugin = $p[1];
+			}
+
+			$cls    = $ns . str_replace( ' ', '', ucwords( str_replace( '-', ' ', $slug ) ) ) . '\\Module';
+			$active = null;
+			if ( class_exists( $cls ) && method_exists( $cls, 'is_active' ) ) {
+				try {
+					$active = (bool) $cls::is_active();
+				} catch ( \Throwable $e ) {
+					$active = null;
+				}
+			}
+			$rec = [ 'gate' => $gate, 'active' => $active ];
+			if ( $experiment ) {
+				$rec['experiment'] = $experiment;
+			}
+			if ( $plugin ) {
+				$rec['plugin_class'] = $plugin;
+			}
+			$out[ $slug ] = $rec;
+		}
+	}
+	return $out;
+}
+
+/**
  * Pull the CSS property names a control drives, out of its `selectors` map.
  * Elementor selector values look like:
  *   '{{WRAPPER}} .elementor-heading-title' => 'color: {{VALUE}};'
@@ -435,6 +588,56 @@ function eh_describe( $name, $obj, $el_type, $device_suffixes, &$anomalies ) {
 		'sections'        => array_values( $sections ),
 		'controls'        => $collapsed,
 	];
+	// The module that registered it. Some modules are gated (see eh_module_gates),
+	// and a widget from a gated module does not exist on an install where the gate
+	// is shut. Recording the module is what lets a consumer say "this needs
+	// WooCommerce" instead of "this widget works everywhere".
+	$module = eh_module_of( $obj );
+	if ( $module ) {
+		$rec['module'] = $module;
+	}
+	// Elementor's bridge for legacy WP widgets. These exist ONLY because some
+	// plugin (or WP core) registered a WP widget of that name — they are not part
+	// of Elementor's own surface at all, and they differ from site to site.
+	// Detected by class, not by the `wp-widget-` name prefix, which would be a
+	// guess about a naming convention rather than a fact about the object.
+	if ( class_exists( '\Elementor\Widget_WordPress' ) && $obj instanceof \Elementor\Widget_WordPress ) {
+		$rec['wp_widget'] = true;
+	}
+
+	// ELEMENTOR V4 ATOMIC ELEMENTS ARE A SECOND DATA MODEL, NOT A THIRD KIND OF
+	// WIDGET. `e-heading`, `e-button`, `e-flexbox`, the `e-form-*` set: they do not
+	// use `get_controls()` at all — they declare a PROP SCHEMA, and their values are
+	// type-tagged rather than plain:
+	//
+	//     classic:  "header_size": "h2"
+	//     atomic:   "tag": { "$$type": "string", "value": "h2" }
+	//
+	// and their styling lives in a separate `styles` array, not in `settings`.
+	//
+	// So get_controls() returns an EMPTY array for them, and a schema that just
+	// records that ships 21 widgets which appear to exist and appear to have no
+	// settings. Both halves of that are false. Capture the real prop schema and say
+	// plainly which system the widget belongs to.
+	if ( method_exists( $obj, 'get_props_schema' ) ) {
+		$rec['control_system'] = 'v4-atomic';
+		$props = [];
+		try {
+			foreach ( $obj::get_props_schema() as $pname => $prop ) {
+				$p = [ 'name' => $pname ];
+				if ( method_exists( $prop, 'get_type' ) ) {
+					$p['type'] = $prop->get_type();
+				}
+				if ( method_exists( $prop, 'get_default' ) ) {
+					$p['default'] = $prop->get_default();
+				}
+				$props[] = $p;
+			}
+		} catch ( \Throwable $e ) {
+			$rec['props_error'] = $e->getMessage();
+		}
+		$rec['props'] = $props;
+	}
 	if ( method_exists( $obj, 'get_title' ) ) {
 		$rec['title'] = $obj->get_title();
 	}
@@ -643,6 +846,20 @@ if ( ! $cls_ok ) {
 // ---------------------------------------------------------------------------
 // 5. Emit.
 // ---------------------------------------------------------------------------
+// THE SURFACE IS A PROPERTY OF THE INSTALL, NOT OF ELEMENTOR. Record what was true
+// of the machine this ran on, so a consumer can tell "Elementor has no such widget"
+// apart from "this schema was taken somewhere that could not see it".
+$gates = eh_module_gates();
+$shut  = array_keys( array_filter( $gates, function ( $g ) { return $g['active'] === false; } ) );
+
+$experiments = [];
+if ( isset( \Elementor\Plugin::$instance->experiments ) ) {
+	foreach ( \Elementor\Plugin::$instance->experiments->get_features() as $fname => $f ) {
+		$experiments[ $fname ] =
+			\Elementor\Plugin::$instance->experiments->is_feature_active( $fname );
+	}
+}
+
 $out = [
 	'meta' => [
 		'elementor_version'     => defined( 'ELEMENTOR_VERSION' ) ? ELEMENTOR_VERSION : null,
@@ -652,6 +869,14 @@ $out = [
 		'extracted_at'          => gmdate( 'Y-m-d' ),
 		'control_optimisation_disabled' => true,
 		'third_party_skipped'   => $skipped,
+		// Every Elementor Pro module whose loading is CONDITIONAL, its gate as
+		// written in Elementor's source, and whether that gate was open here. A
+		// module that did not load registered no widgets, and its widgets are
+		// therefore absent from this file - not from Elementor.
+		'module_gates'          => $gates,
+		'modules_shut'          => $shut,
+		'woocommerce_active'    => class_exists( 'woocommerce' ),
+		'experiments'           => $experiments,
 		'counts'                => [
 			'elements'      => count( $elements ),
 			'widgets'       => count( $widgets ),

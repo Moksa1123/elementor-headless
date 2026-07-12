@@ -74,36 +74,76 @@ def jdump(v) -> str:
     return json.dumps(v, ensure_ascii=False, separators=(",", ":"))
 
 
-def compute_common(widgets: dict) -> tuple[list, dict]:
-    """The controls every widget shares, identical wherever they appear."""
+def compute_common(widgets: dict) -> tuple[list, dict, set]:
+    """
+    The controls that every widget IN THE CLASSIC SYSTEM shares, byte-identical.
+
+    Returns (common, missing, participants).
+
+    Not every widget is in that system. Elementor V4's atomic widgets (`e-heading`,
+    `e-button`, the `e-form-*` set) have their own style model and register NONE of
+    the Advanced-tab controls - no `_margin`, no `_animation`, nothing. There are 20
+    of them, out of 192.
+
+    A fixed "appears on >= 90% of widgets" threshold cannot survive that, and it
+    did not: `_margin` appears on 172 of 192 = 89.58%, and the whole shared set -
+    all 210 controls - silently evaluated to EMPTY. The schema went from 3.2 MB to
+    14 MB and every widget carried its own copy of controls it shares with 171
+    others. Nothing errored.
+
+    So who participates is MEASURED, not thresholded:
+
+      1. candidates  = controls on more than half the widgets, byte-identical
+      2. participants = widgets carrying at least 90% of the candidates
+                        (a widget either speaks this control system or it does not;
+                         there is nothing in between, so this split is sharp)
+      3. common      = candidates present on EVERY participant
+
+    A widget outside the participant set gets `has_common: false` and keeps its own
+    controls - which is the truth about it, not a rounding error.
+    """
+    def scan(subset):
+        appears: Counter = Counter()
+        variants: dict[str, set] = {}
+        canonical: dict[str, dict] = {}
+        for w in subset.values():
+            for c in w["controls"]:
+                appears[c["name"]] += 1
+                variants.setdefault(c["name"], set()).add(
+                    json.dumps(c, sort_keys=True, ensure_ascii=False))
+                canonical[c["name"]] = c
+        return appears, variants, canonical
+
+    appears, variants, canonical = scan(widgets)
     n = len(widgets)
-    appears: Counter = Counter()
-    variants: dict[str, set] = {}
-    canonical: dict[str, dict] = {}
+    candidates = {name for name, cnt in appears.items()
+                  if cnt > n * 0.5 and len(variants[name]) == 1}
+    if not candidates:
+        return [], {}, set(widgets)
 
-    for w in widgets.values():
-        for c in w["controls"]:
-            name = c["name"]
-            appears[name] += 1
-            key = json.dumps(c, sort_keys=True, ensure_ascii=False)
-            variants.setdefault(name, set()).add(key)
-            canonical[name] = c
+    participants = {
+        name for name, w in widgets.items()
+        if len(candidates & {c["name"] for c in w["controls"]}) >= len(candidates) * COMMON_THRESHOLD
+    }
+    if not participants:
+        return [], {}, set(widgets)
 
+    sub = {k: widgets[k] for k in participants}
+    appears, variants, canonical = scan(sub)
+    np = len(participants)
     common_names = sorted(
-        name
-        for name, count in appears.items()
-        if count >= n * COMMON_THRESHOLD and len(variants[name]) == 1
+        name for name in candidates
+        if appears.get(name, 0) >= np * COMMON_THRESHOLD and len(variants.get(name, ())) == 1
     )
     common = [canonical[name] for name in common_names]
 
     cset = set(common_names)
     missing = {}
-    for wname, w in widgets.items():
-        have = {c["name"] for c in w["controls"]}
-        gap = sorted(cset - have)
+    for wname in participants:
+        gap = sorted(cset - {c["name"] for c in widgets[wname]["controls"]})
         if gap:
             missing[wname] = gap
-    return common, missing
+    return common, missing, participants
 
 
 def tier_map(raw: dict, free: dict | None) -> dict:
@@ -122,13 +162,21 @@ def tier_map(raw: dict, free: dict | None) -> dict:
 
     free_owners = {**free.get("elements", {}), **free.get("widgets", {})}
 
-    # Identify promo stubs: a widget whose entire control set is the shared
-    # common set has no functionality of its own and is an upsell placeholder.
-    free_common, _ = compute_common(free["widgets"])
+    # Identify promo stubs. Elementor core registers a placeholder for every Pro
+    # widget when Pro is off, purely to show an upsell in the editor - and they are
+    # named EXACTLY like the real thing (`woocommerce-product-price`). Take their
+    # presence in the Pro-less dump at face value and 26 Pro widgets get labelled
+    # free, which is the single worst mistake this schema can make.
+    #
+    # The `promotions` module is the exact signal (its own gate is `! has_pro()`).
+    # The control-set heuristic is kept as a fallback for dumps taken before the
+    # extractor recorded modules.
+    free_common, _, _ = compute_common(free["widgets"])
     free_common_names = {c["name"] for c in free_common}
     stubs = {
         name for name, w in free.get("widgets", {}).items()
-        if not [c for c in w["controls"] if c["name"] not in free_common_names]
+        if w.get("module") == "promotions"
+        or not [c for c in w["controls"] if c["name"] not in free_common_names]
     }
 
     tiers: dict[str, dict[str, str]] = {}
@@ -143,6 +191,40 @@ def tier_map(raw: dict, free: dict | None) -> dict:
             for c in w["controls"]
         }
     return tiers
+
+
+def requires_of(owner: dict, gates: dict) -> dict | None:
+    """
+    What must be true of an install for this widget to EXIST at all.
+
+    The widget surface is not a property of Elementor. It is a property of the
+    install. On one site the same Elementor 4.1.4 / Pro 4.1.2 registers 148
+    widgets; on another it registers 192. Nothing is broken - the extra 44 are
+    WooCommerce's, and they appear only when WooCommerce is active.
+
+    A schema that just says "148 widgets" is not incomplete, it is WRONG: ask it
+    for `woocommerce-product-price` and it will tell you, with total confidence,
+    that Elementor has no such widget.
+
+    So every widget carries what it needs. It is read off the module's own
+    `is_active()` gate, in Elementor's source - not inferred from its name:
+
+        module woocommerce      class_exists( 'woocommerce' )
+        module atomic-widgets   experiment e_atomic_elements
+        module nested-carousel  experiment nested-elements
+    """
+    if owner.get("wp_widget"):
+        # Not Elementor's at all - a legacy WP widget that Elementor wraps. It
+        # exists only while some plugin keeps registering it.
+        return {"wp_widget": True}
+    g = gates.get(owner.get("module") or "")
+    if not g:
+        return None
+    if g.get("plugin_class"):
+        return {"plugin": g["plugin_class"], "gate": g["gate"]}
+    if g.get("experiment"):
+        return {"experiment": g["experiment"], "gate": g["gate"]}
+    return None
 
 
 def load_verification(path: Path | None) -> dict:
@@ -205,6 +287,13 @@ def main() -> int:
                     help="control-verification.csv from sweep-controls.py. Folds the "
                          "RENDERED result back in, so the schema stops claiming a control "
                          "or a breakpoint works when it demonstrably does not.")
+    ap.add_argument("--gated-dump", action="append", default=[], metavar="NAME=PATH",
+                    help="a dump taken with NAME switched OFF (e.g. "
+                         "woocommerce=iso-pro.json). Anything in the main dump but "
+                         "not in this one needs NAME to exist - measured the same way "
+                         "the Free/Pro split is. Repeatable. WooCommerce does not just "
+                         "add widgets: it injects controls into Pro's loop widgets too, "
+                         "and a control-level diff is the only thing that finds those.")
     ap.add_argument("--class-verification",
                     help="class-verification.csv from sweep-classes.py. The same, for the "
                          "controls that emit a wrapper CLASS instead of CSS - which the "
@@ -231,36 +320,32 @@ def main() -> int:
         )
         return 1
 
-    # ORDER MATTERS. The common set must be computed on the untouched controls:
-    # a control joins it only if it is byte-identical across widgets, and
-    # stamping `tier` first would break that — every control on a Pro-only
-    # widget is trivially "pro" (the widget itself needs Pro), so `_margin`
-    # would read as pro on the Posts widget and free on Heading, and the shared
-    # set would shatter into per-widget copies.
+    # ORDER MATTERS, AND IT IS THE SAME RULE EVERY TIME.
     #
-    # The verification results ARE stamped before it, deliberately: a control that
-    # renders on one widget and not another is not the same control, and the shared
-    # set should not pretend otherwise.
+    #   ANYTHING MEASURED PER WIDGET IS STAMPED AFTER compute_common(), NEVER BEFORE.
+    #
+    # The common set is the controls that are byte-identical on every widget. Stamp
+    # a per-widget measurement onto them first and they stop being identical, the
+    # set shatters, and all 210 shared controls get copied into all 192 widgets.
+    #
+    # This file has now broken that rule three separate times:
+    #
+    #   tier            trivially "pro" on a Pro widget -> `_margin` pro on Posts,
+    #                   free on Heading. (210 -> 46 shared controls)
+    #   class_verified  unobservable on the 29 widgets that render no markup.
+    #                   (210 -> 192)
+    #   verified        THIS ONE SURVIVED FOR MONTHS because the sweep happened to
+    #                   cover every widget uniformly, so the stamp was the same
+    #                   everywhere and nothing shattered. The moment WooCommerce's
+    #                   29 widgets entered the schema unswept, `_margin` carried
+    #                   `verified` on Heading and nothing on Product Price - and the
+    #                   common set collapsed to ZERO.
+    #
+    # A rule that only holds while your data happens to be uniform is not a rule.
+    # All three are now stamped after.
     verif = load_verification(Path(args.verification) if args.verification else None)
     classv = load_class_verification(
         Path(args.class_verification) if args.class_verification else None)
-    n_broken_rwd = 0
-    for owner, w in {**elements, **widgets}.items():
-        for c in w["controls"]:
-            v = verif.get((owner, c["name"]))
-            if not v:
-                continue
-            if v.get("status"):
-                c["verified"] = v["status"]
-            claimed = set(c.get("responsive") or [])
-            if claimed and (v["rwd_ok"] or v["rwd_bad"]):
-                broken = sorted(claimed & v["rwd_bad"])
-                if broken:
-                    # Elementor's `is_responsive` says the suffix is legal.
-                    # Rendering says it emits nothing. Rendering wins.
-                    c["responsive_broken"] = broken
-                    n_broken_rwd += 1
-                c["responsive_verified"] = sorted(claimed & v["rwd_ok"])
 
     # A widget that renders no markup at all has no wrapper, so none of its class
     # controls can do anything - `_position`, `hide_tablet`, the transforms, all
@@ -274,7 +359,36 @@ def main() -> int:
         if owner in widgets:
             widgets[owner]["renders_bare"] = False
 
-    common, common_missing = compute_common(widgets)
+    # What each widget's module demanded of the install it was extracted from.
+    gates = raw["meta"].get("module_gates") or {}
+    for _, e in elements.items():
+        r = requires_of(e, gates)
+        if r:
+            e["requires"] = r
+
+    # CONTROL-level requirements, measured by diff. A gated plugin does not only
+    # bring its own widgets: WooCommerce reaches into Elementor Pro's `loop-grid`
+    # and `loop-carousel` and adds `product_query_exclude*` to them. Those controls
+    # sit on a widget that exists everywhere, so nothing about the widget discloses
+    # them - only a dump taken with WooCommerce off does.
+    for spec in args.gated_dump:
+        if "=" not in spec:
+            print(f"--gated-dump needs NAME=PATH, got {spec!r}", file=sys.stderr)
+            return 1
+        gname, gpath = spec.split("=", 1)
+        gd = json.loads(Path(gpath).read_text(encoding="utf-8"))
+        gowners = {**gd.get("elements", {}), **gd.get("widgets", {})}
+        for owner, w in {**elements, **widgets}.items():
+            if owner not in gowners:
+                continue        # the whole widget is gated; the module gate says so
+            without = {c["name"] for c in gowners[owner]["controls"]}
+            for c in w["controls"]:
+                if c["name"] not in without:
+                    c["requires_plugin"] = gname
+    n_v4 = sum(1 for o in list(widgets.values()) + list(elements.values())
+               if o.get("control_system") == "v4-atomic")
+
+    common, common_missing, participants = compute_common(widgets)
     common_names = {c["name"] for c in common}
 
     # DEAD CONDITIONS. A control whose `condition` names a control that this widget
@@ -318,19 +432,51 @@ def main() -> int:
     #
     # "no-element" is dropped entirely — it is a fact about the widget (recorded as
     # `renders_bare: false`), not about the control.
+    n_broken_rwd = 0
     for owner, w in {**elements, **widgets}.items():
         for c in w["controls"]:
             if classv.get((owner, c["name"])) in ("verified", "FAILED"):
                 c["class_verified"] = classv[(owner, c["name"])]
+            v = verif.get((owner, c["name"]))
+            if not v:
+                continue
+            if v.get("status"):
+                c["verified"] = v["status"]
+            claimed = set(c.get("responsive") or [])
+            if claimed and (v["rwd_ok"] or v["rwd_bad"]):
+                broken = sorted(claimed & v["rwd_bad"])
+                if broken:
+                    # Elementor's `is_responsive` says the suffix is legal.
+                    # Rendering says it emits nothing. Rendering wins.
+                    c["responsive_broken"] = broken
+                    n_broken_rwd += 1
+                c["responsive_verified"] = sorted(claimed & v["rwd_ok"])
+
     # A shared control's verdict is the aggregate over the widgets where it could be
     # observed at all: FAILED anywhere is a failure; otherwise verified if it was
-    # ever verified.
+    # ever verified. Not every widget is in the sweep - the WooCommerce ones need a
+    # WooCommerce install - and a control is not unverified just because ONE of the
+    # 192 widgets carrying it has not been swept.
     for c in common:
         seen = {s for (o, n), s in classv.items() if n == c["name"] and o in widgets}
         if "FAILED" in seen:
             c["class_verified"] = "FAILED"
         elif "verified" in seen:
             c["class_verified"] = "verified"
+
+        vs = [v for (o, n), v in verif.items() if n == c["name"] and o in widgets]
+        if vs:
+            st = {v.get("status") for v in vs}
+            c["verified"] = ("FAILED" if "FAILED" in st
+                             else "verified" if "verified" in st
+                             else next(iter(st)) if st else None)
+            ok = set().union(*(v["rwd_ok"] for v in vs))
+            bad = set().union(*(v["rwd_bad"] for v in vs)) - ok
+            claimed = set(c.get("responsive") or [])
+            if claimed & bad:
+                c["responsive_broken"] = sorted(claimed & bad)
+            if claimed & ok:
+                c["responsive_verified"] = sorted(claimed & ok)
 
     tiers = tier_map(raw, free)
 
@@ -347,7 +493,7 @@ def main() -> int:
     # question is meaningful: "does this control disappear when Pro is off?"
     # Asking it of a Pro-only widget is circular.
     if free:
-        free_common, _ = compute_common(free["widgets"])
+        free_common, _, _ = compute_common(free["widgets"])
         free_common_names = {c["name"] for c in free_common}
         for c in common:
             c["tier"] = "free" if c["name"] in free_common_names else "pro"
@@ -366,7 +512,11 @@ def main() -> int:
             "title": w.get("title"),
             "tier": w["tier"],
             "categories": w.get("categories", []),
-            "has_common": name not in common_missing or len(common_missing[name]) < len(common_names),
+            # Measured, not inferred: this widget speaks the classic control system
+            # (and therefore carries the shared Advanced tab) or it does not. The V4
+            # atomic widgets do not, and saying they do would send an agent looking
+            # for a `_margin` that is not there.
+            "has_common": name in participants,
             "controls_own": len(own),
             "controls_total": w["controls_total"],
             "sections": w["sections"],
@@ -374,6 +524,15 @@ def main() -> int:
         }
         if name in common_missing:
             entry["common_missing"] = common_missing[name]
+        if w.get("module"):
+            entry["module"] = w["module"]
+        req = requires_of(w, gates)
+        if req:
+            entry["requires"] = req
+        # Elementor V4. A different data model, not a widget with no settings.
+        if w.get("control_system"):
+            entry["control_system"] = w["control_system"]
+            entry["props"] = w.get("props", [])
         # Measured, not assumed: dropped on a bare page with settings and nothing
         # else, this widget produced no markup. Its wrapper-class controls have
         # nothing to attach to, and an agent reaching for it needs to know it will
@@ -437,16 +596,26 @@ def main() -> int:
     )
 
     # ---- widgets.csv -------------------------------------------------------
+    def req_str(e: dict) -> str:
+        r = e.get("requires")
+        if not r:
+            return ""
+        if r.get("plugin"):
+            return f"plugin:{r['plugin']}"
+        if r.get("experiment"):
+            return f"experiment:{r['experiment']}"
+        return "wp-widget"
+
     with (out / "widgets.csv").open("w", newline="", encoding="utf-8") as f:
         w_ = csv.writer(f)
-        w_.writerow(["name", "elType", "tier", "title", "categories",
+        w_.writerow(["name", "elType", "tier", "requires", "title", "categories",
                      "controls_own", "controls_total", "has_common"])
         for name, e in elements.items():
-            w_.writerow([name, e["elType"], e["tier"], e.get("title") or name,
+            w_.writerow([name, e["elType"], e["tier"], req_str(e), e.get("title") or name,
                          "|".join(e.get("categories", [])), e["controls_total"],
                          e["controls_total"], "no"])
         for name, e in sorted(slim_widgets.items()):
-            w_.writerow([name, "widget", e["tier"], e.get("title") or name,
+            w_.writerow([name, "widget", e["tier"], req_str(e), e.get("title") or name,
                          "|".join(e.get("categories", [])), e["controls_own"],
                          e["controls_total"], "yes" if e["has_common"] else "no"])
 

@@ -153,6 +153,22 @@ def _fmt_conditions(node: dict) -> str:
 # ---------------------------------------------------------------------------
 
 
+def requires_tag(w: dict) -> str:
+    """
+    What an install must have before this widget EXISTS. Not a nicety: a schema
+    that lists `woocommerce-product-price` without saying it needs WooCommerce is
+    telling you to build a page out of a widget that will not be there.
+    """
+    r = w.get("requires")
+    if not r:
+        return ""
+    if r.get("plugin"):
+        return f"needs plugin:{r['plugin']}"
+    if r.get("experiment"):
+        return f"needs experiment:{r['experiment']}"
+    return "needs a WP widget some plugin registers"
+
+
 def cmd_widgets(a) -> None:
     s = schema()
     rows = []
@@ -163,18 +179,26 @@ def cmd_widgets(a) -> None:
         hay = f"{name} {w.get('title') or ''} {cats}".lower()
         if a.grep and a.grep.lower() not in hay:
             continue
+        if a.requires and requires_tag(w).find(a.requires.lower()) < 0:
+            continue
         rows.append({
             "name": name,
             "elType": w.get("elType", "widget"),
             "tier": w["tier"],
             "title": w.get("title"),
+            "requires": w.get("requires"),
             "controls_own": w.get("controls_own", w.get("controls_total")),
         })
     lines = [f"{len(rows)} match  (Elementor {s['meta']['elementor_version']} / Pro {s['meta']['elementor_pro_version']})"]
     for r in rows:
-        lines.append(f"  [{tier_tag(r['tier'])}] {r['name']:<30} {str(r['title'] or '')[:28]:<30} {r['controls_own']:>4} own controls")
+        req = requires_tag(r)
+        lines.append(f"  [{tier_tag(r['tier'])}] {r['name']:<30} {str(r['title'] or '')[:26]:<28} "
+                     f"{r['controls_own']:>4} own" + (f"  {req}" if req else ""))
     lines.append("")
-    lines.append("Every widget also has the 211 shared Advanced-tab controls: el.py common")
+    lines.append("Every widget also has the 210 shared Advanced-tab controls: el.py common")
+    n_req = sum(1 for r in rows if r.get("requires"))
+    if n_req:
+        lines.append(f"{n_req} of these do not exist on every install - see the `needs` column.")
     emit(rows, a.json, lines)
 
 
@@ -185,6 +209,44 @@ def cmd_widget(a) -> None:
         near = [k for k in o if a.name.lower() in k.lower()]
         sys.exit(f"No element/widget '{name}'." + (f" Did you mean: {', '.join(near[:8])}" if near else ""))
     w = o[name]
+
+    # Elementor V4. These do not have controls, they have a PROP SCHEMA, and their
+    # values are type-tagged. Printing an empty control list under the classic
+    # headings would say "this widget has no settings", which is false and would
+    # send an agent off to write `settings: {}` and wonder why nothing rendered.
+    if w.get("control_system") == "v4-atomic":
+        lines = [
+            f"{name}  [{w['tier'].upper()}]  \"{w.get('title') or name}\"  "
+            f"elType={w.get('elType', 'widget')}",
+            "",
+            "!! ELEMENTOR V4 ATOMIC ELEMENT - a DIFFERENT data model from everything",
+            "   else in this schema. It has no `controls`. It has a prop schema, its",
+            "   values are type-tagged, and its styling lives in a separate `styles`",
+            "   array rather than in `settings`:",
+            "",
+            '       classic:  "header_size": "h2"',
+            '       atomic:   "tag": { "$$type": "string", "value": "h2" }',
+            "",
+        ]
+        req = w.get("requires")
+        if req and req.get("experiment"):
+            lines.append(f"   It only exists when the `{req['experiment']}` experiment is on.")
+            lines.append("")
+        lines.append(f"prop schema ({len(w.get('props') or [])}):")
+        for p in w.get("props") or []:
+            d = json.dumps(p.get("default"), ensure_ascii=False)
+            if len(d) > 70:
+                d = d[:67] + "..."
+            lines.append(f"    {p['name']:<22} {str(p.get('type')):<10} default:{d}")
+        lines += [
+            "",
+            "This skill's validate-page.py / apply-page.php model the CLASSIC tree.",
+            "The prop schema above is reported so you know the element exists and what",
+            "it takes - not as a claim that building V4 elements here is verified.",
+        ]
+        emit(w, a.json, lines)
+        return
+
     ctrls = w["controls"]
     if a.tab:
         ctrls = [c for c in ctrls if c.get("tab") == a.tab]
@@ -203,6 +265,21 @@ def cmd_widget(a) -> None:
     if w["tier"] == "pro":
         lines.append("")
         lines.append("!! This whole widget requires Elementor Pro. Everything below is Pro.")
+    # Elementor Pro is not the only thing a widget can depend on. A module that
+    # does not load registers nothing, and its widgets are simply not there - no
+    # error, no placeholder, the widgetType just does not resolve.
+    req = w.get("requires")
+    if req:
+        lines.append("")
+        if req.get("plugin"):
+            lines.append(f"!! This widget DOES NOT EXIST unless the `{req['plugin']}` plugin is active.")
+        elif req.get("experiment"):
+            lines.append(f"!! This widget DOES NOT EXIST unless Elementor's `{req['experiment']}` "
+                         f"experiment is on.")
+        else:
+            lines.append("!! This is a legacy WordPress widget that Elementor wraps. It exists only "
+                         "while some plugin keeps registering it - it is not part of Elementor.")
+        lines.append(f"   Gate, from Elementor's source: {req.get('gate', '?')}")
     # Measured by rendering it: dropped on a page with nothing but its settings,
     # this widget produced no markup at all. Not a bug - it has nothing to show
     # until the site gives it something. But an agent that places it and walks away
@@ -512,19 +589,41 @@ def cmd_stats(a) -> None:
     s = schema()
     m = s["meta"]
     o = owners()
+    v4 = [n for n, w in o.items() if w.get("control_system") == "v4-atomic"]
+    reqs: dict[str, int] = {}
+    for w in o.values():
+        r = w.get("requires")
+        if r:
+            k = (f"plugin:{r['plugin']}" if r.get("plugin")
+                 else f"experiment:{r['experiment']}" if r.get("experiment")
+                 else "a WP widget some plugin registers")
+            reqs[k] = reqs.get(k, 0) + 1
     lines = [
         f"Elementor {m['elementor_version']} / Pro {m['elementor_pro_version']}  (extracted {m['extracted_at']})",
-        f"  elements        {m['counts']['elements']}  (container, section, column)",
+        f"  elements        {m['counts']['elements']}",
         f"  widgets         {m['counts']['widgets']}  = {m['counts']['widgets_free']} free + {m['counts']['widgets_pro']} pro",
         f"  control types   {m['counts']['control_types']}",
         f"  group controls  {m['counts']['group_controls']}",
-        f"  shared controls {s['common_controls']['count']}  (every widget's Advanced tab)",
-        f"  stored controls {sum(w.get('controls_own', w.get('controls_total')) for w in o.values())}",
+        f"  shared controls {s['common_controls']['count']}  (every classic widget's Advanced tab)",
+        f"  stored controls {sum(w.get('controls_own', w.get('controls_total', 0)) for w in o.values())}",
         f"  raw control rows before factoring: {sum(w.get('controls_total', 0) for w in o.values())}",
-        "",
-        f"  control optimisation disabled during extraction: {m.get('control_optimisation_disabled')}",
-        f"  responsive-collapse anomalies: {len(m.get('responsive_collapse_anomalies', []))}",
     ]
+    if v4:
+        lines += ["",
+                  f"  {len(v4)} of these are Elementor V4 ATOMIC elements. They have no controls -",
+                  f"  they have a prop schema and type-tagged values. Different data model.",
+                  f"  (el.py widget e-heading)"]
+    if reqs:
+        lines += ["",
+                  "  NOT EVERY WIDGET EXISTS ON EVERY INSTALL. The surface is a property of",
+                  "  the site, not of Elementor:"]
+        for k, n in sorted(reqs.items(), key=lambda kv: -kv[1]):
+            lines.append(f"    {n:4} widgets need {k}")
+        lines.append(f"    (`el.py widgets --requires woocommerce` etc.)")
+    lines += ["",
+              f"  extracted with WooCommerce active: {m.get('woocommerce_active')}",
+              f"  control optimisation disabled during extraction: {m.get('control_optimisation_disabled')}",
+              f"  responsive-collapse anomalies: {len(m.get('responsive_collapse_anomalies', []))}"]
     emit(m, a.json, lines)
 
 
@@ -536,6 +635,9 @@ def main() -> int:
 
     s = sub.add_parser("widgets", help="list widgets/elements")
     s.add_argument("--tier", choices=["free", "pro"])
+    s.add_argument("--requires", metavar="X",
+                   help="only widgets that need X to exist at all "
+                        "(e.g. woocommerce, e_atomic_elements, nested-elements)")
     s.add_argument("--grep")
     s.set_defaults(fn=cmd_widgets)
 
