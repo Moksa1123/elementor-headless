@@ -87,22 +87,33 @@ tree it is a normal widget node PLUS a `templateID` key at the node level - not 
   "settings": {}, "elements": [] }
 ```
 
-Read from the source (`global-widget/module.php` reads `$element_data['templateID']`),
-not yet render-verified here. Editing the library post updates every reference;
-`el.py doctypes` lists `widget` as the library document type it points at.
+Render-verified on a live page: a library post of type `widget` built headlessly
+and referenced by `templateID` delivers its content inside the host page. Editing
+the library post updates every reference; `el.py doctypes` lists `widget` as the
+library document type it points at.
 
 ## Element-level Display Conditions (Pro): `e_display_conditions`
 
 Not the Theme Builder conditions (those decide where a TEMPLATE applies) - this is
 the per-element "render this only if..." on every widget's Advanced tab. The
 control is `hidden`; a dedicated editor UI writes it, which means headlessly you
-write it yourself. The value is an OR-list of AND-groups:
+write it yourself.
+
+**The value is an array whose FIRST element is a JSON STRING** - the module reads
+`json_decode( $value[0] )` (module.php::get_saved_conditions), so a bare array of
+condition objects is stored fine and silently ignored:
 
 ```jsonc
 "e_display_conditions": [
-  [ { "condition": "login_status", "comparator": "is", "status": "logged_in" } ]
+  "[{\"condition\":\"login_status\",\"comparator\":\"is\",\"status\":\"logged_out\"}]"
 ]
 ```
+
+Comparators are `is` / `is_not` (plus `is_empty` / `is_not_empty` where a type
+takes text). Render-verified on a live page in an anonymous browser: a
+`logged_in`-conditioned element is absent from the delivered HTML, a
+`logged_out`-conditioned one is present - the element is dropped server-side via
+a `should_render` filter, not hidden with CSS.
 
 23 condition types ship in `elementor-pro/modules/display-conditions/conditions/`
 (login_status, user_role, current_date, day_of_the_week, time_of_the_day,
@@ -177,7 +188,11 @@ format, and the reason this skill ships a validator.
 
 **`__globals__`** points a control at a Global Colour or Global Font instead of a
 literal value. The referenced value lives in the active Kit, so changing it in
-Site Settings updates every element that points at it:
+Site Settings updates every element that points at it. The whole chain is
+render-verified: a colour appended headlessly to the kit's `custom_colors`
+repeater (`{_id, title, color}`), referenced as `globals/colors?id=<_id>`,
+computes to exactly that colour in a real browser - after
+`files_manager->clear_cache()`, because the kit's CSS is a site-wide file:
 
 ```json
 "settings": {
@@ -200,6 +215,8 @@ a shortcode — resolved at render time:
 ```
 
 The `settings` attribute is a **URL-encoded JSON object**. `%7B%7D` is `{}`.
+Render-verified: a heading bound to `post-title` delivers the post's real title
+in the HTML, and the control's literal value (the fallback) does not leak.
 
 Both keys sit alongside the normal controls, and both override whatever literal
 value the control also has. `validate-page.py` skips them rather than treating
