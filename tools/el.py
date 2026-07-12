@@ -585,6 +585,40 @@ def cmd_skeleton(a) -> None:
     emit(tree, a.json, lines)
 
 
+def cmd_tags(a) -> None:
+    """
+    The `__dynamic__` surface. A control with dynamic support does not take a tag
+    NAME - it takes a binding, and which tags are legal is matched by CATEGORY:
+
+        "__dynamic__": { "title": "[elementor-tag id=\"x\" name=\"post-title\" settings=\"...\"]" }
+
+    A text control accepts tags whose categories include `text`, a media control
+    `image`, and so on. Every tag here is Elementor Pro; 13 also need WooCommerce.
+    """
+    tags = schema().get("dynamic_tags") or {}
+    rows = []
+    for name, t in sorted(tags.items()):
+        if "error" in t:
+            continue
+        if a.group and t.get("group") != a.group:
+            continue
+        if a.grep and a.grep.lower() not in json.dumps(t).lower():
+            continue
+        rows.append(t)
+    lines = [f"{len(rows)} dynamic tags  (ALL require Elementor Pro; the woocommerce "
+             f"group also needs WooCommerce)", ""]
+    for t in rows:
+        st = " ".join(c["name"] for c in t.get("settings") or [])
+        lines.append(f"  {t['name']:<28} {str(t.get('group')):<12} "
+                     f"binds-to:{'|'.join(t.get('categories') or []):<18}"
+                     + (f" settings:{st}" if st else ""))
+    lines += ["",
+              "Bind one in `settings.__dynamic__.<control>`; the tag's own settings",
+              "(an ACF tag's `key`, a meta tag's field name) go inside the shortcode's",
+              "settings attribute, URL-encoded JSON. Unset settings render EMPTY, silently."]
+    emit(rows, a.json, lines)
+
+
 def cmd_stats(a) -> None:
     s = schema()
     m = s["meta"]
@@ -698,6 +732,11 @@ def main() -> int:
 
     s = sub.add_parser("skeleton", help="a minimal valid page tree")
     s.set_defaults(fn=cmd_skeleton)
+
+    s = sub.add_parser("tags", help="the dynamic tags a control can be bound to (__dynamic__)")
+    s.add_argument("--group", help="post / site / archive / author / woocommerce / media / action / comments")
+    s.add_argument("--grep")
+    s.set_defaults(fn=cmd_tags)
 
     s = sub.add_parser("stats", help="what's in the schema")
     s.set_defaults(fn=cmd_stats)

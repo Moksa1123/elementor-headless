@@ -23,12 +23,40 @@ define one:
 
 **Apply**: setting `_elementor_conditions` is what actually activates it — see below. Multiple templates of the same `_elementor_template_type` can coexist (e.g. several `single` templates for different post types); Theme Builder's condition-matching + priority system (below) decides which one renders for a given request.
 
+## Embedding a template anywhere: the shortcode and the widget
+
+Two ways to drop a saved template into other content, both Pro-less friendly on
+the render side:
+
+```
+[elementor-template id="123"]     <- works in ANY WordPress content: a classic
+                                     post, another page builder, a text widget,
+                                     a PHP template via do_shortcode()
+```
+
+- The `shortcode` widget (free) renders any shortcode inside an Elementor page -
+  including `[elementor-template id]`, which is how you nest a reusable block
+  into a page without Pro.
+- The `template` widget (Pro) does the same with a picker UI; its `template_id`
+  control takes the template post's ID.
+- Both render the template's OWN styling: the template's `post-<id>.css` is
+  enqueued by the embed. The template must be published, not draft - a draft
+  embeds as nothing, silently.
+
 ## Display Conditions: the complete type/name enumeration
 
 A condition string has the shape **`{action}/{type}/{name}`** —
 `action` is `include` or `exclude`; `type` is one of exactly three values;
-`name` identifies the specific sub-condition. Verified directly from every
-`Condition_Base` subclass Elementor Pro ships
+`name` identifies the specific sub-condition.
+
+**The registry is now extracted, not transcribed**: the schema's
+`theme_builder_conditions` key carries all 39 condition types straight from
+`Conditions_Manager::get_conditions_config()` on the live install - labels,
+sub-condition trees, and each type's own controls. Like the widget surface, IT IS
+INSTALL-DEPENDENT: the `woocommerce` branch (product / product_archive / shop
+page) only exists where WooCommerce is active, and every registered taxonomy and
+CPT contributes its own entries. The enumeration below is the invariant core,
+verified from every `Condition_Base` subclass Elementor Pro ships
 (`elementor-pro/modules/theme-builder/conditions/*.php`):
 
 ### `type: general`

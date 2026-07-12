@@ -156,6 +156,7 @@ python tools/el.py breakpoints                    # the responsive suffixes
 python tools/el.py skeleton                       # a minimal valid page tree
 python tools/el.py pro                            # everything that needs Elementor Pro
 python tools/el.py pro --check custom_css align   # exits 1 if any of these needs Pro
+python tools/el.py tags --group post              # dynamic tags (__dynamic__) - post title, ACF, ...
 ```
 
 Add `--json` to any of them for machine-readable output.
@@ -179,6 +180,8 @@ question completely. `data/*.csv` are there for `grep` when you want to scan.
 | what class a control puts on the wrapper | `el.py widget <name> --grep X` → `class:` / `class-rwd:` / `legacy:` |
 | the legal values of an animation | `el.py type animation` — they are camelCase (`fadeInUp`), not kebab |
 | whether a widget renders on a bare page | `el.py widget <name>` — it says so if not |
+| what a control can be dynamically BOUND to | `el.py tags [--group woocommerce]` · `data/dynamic-tags.csv` — all Pro |
+| where a Theme Builder template applies | schema key `theme_builder_conditions` — 39 types, install-dependent |
 | **whether something needs Pro** | `el.py pro --check <controls>` · `data/pro-only-controls.csv` |
 | **whether a widget exists on the target site at all** | `el.py widget <name>` → `requires:` · `data/widgets.csv` |
 

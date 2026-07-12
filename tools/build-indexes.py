@@ -606,6 +606,13 @@ def main() -> int:
         "breakpoints": raw["breakpoints"],
         "control_types": raw["control_types"],
         "group_controls": raw["group_controls"],
+        # The `__dynamic__` surface: every registered tag, its group, the control
+        # CATEGORIES it can bind to, its own settings, and its tier. All 51 are Pro
+        # on 4.1.2 - dynamic content IS the Pro feature - and 13 need WooCommerce.
+        "dynamic_tags": raw.get("dynamic_tags") or {},
+        # Theme Builder display conditions (Pro): the registry the condition strings
+        # ('include/singular/post/123') are built from.
+        "theme_builder_conditions": raw.get("theme_builder_conditions"),
         "common_controls": {
             "note": (
                 "Registered into every widget's own stack by Elementor, so they behave "
@@ -626,6 +633,19 @@ def main() -> int:
     (out / "elementor-schema.json").write_text(
         json.dumps(schema, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
     )
+
+    # ---- dynamic-tags.csv --------------------------------------------------
+    with (out / "dynamic-tags.csv").open("w", newline="", encoding="utf-8") as f:
+        w_ = csv.writer(f)
+        w_.writerow(["name", "title", "group", "binds_to_categories", "tier",
+                     "settings", "source"])
+        for name, t in sorted((raw.get("dynamic_tags") or {}).items()):
+            if "error" in t:
+                continue
+            w_.writerow([name, t.get("title"), t.get("group"),
+                         "|".join(t.get("categories") or []), t.get("tier"),
+                         " ".join(c["name"] for c in t.get("settings") or []),
+                         t.get("source", "")])
 
     # ---- css-selectors.csv -------------------------------------------------
     # (owner, control) -> the selector path relative to `.elementor-element-<id>`.

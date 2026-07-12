@@ -917,7 +917,91 @@ if ( ! $cls_ok ) {
 }
 
 // ---------------------------------------------------------------------------
-// 5. Emit.
+// 5. Dynamic tags — the `__dynamic__` surface.
+//
+// A control with `dynamic.active` can be BOUND instead of set: its value comes
+// from a registered tag (post title, featured image, an ACF field, the cart
+// total...) rendered at view time. Which tags a control accepts is matched by
+// CATEGORY - a text control takes tags in the `text` category, a media control
+// the `image` category - so without this list the schema can say a control is
+// dynamic-capable but nothing about what it can be bound TO, what settings the
+// binding takes (an ACF tag needs a `key`), or whether the tag itself is Pro.
+// ---------------------------------------------------------------------------
+$dynamic_tags = [];
+if ( isset( $plugin->dynamic_tags ) ) {
+	foreach ( $plugin->dynamic_tags->get_tags() as $tag_name => $cfg ) {
+		$inst = null;
+		if ( is_object( $cfg ) ) {
+			$inst = $cfg;
+		} elseif ( is_array( $cfg ) && is_object( $cfg['instance'] ?? null ) ) {
+			$inst = $cfg['instance'];
+		}
+		if ( ! $inst ) {
+			continue;
+		}
+		try {
+			list( $tier, $source ) = eh_tier_of( $inst );
+			$rec = [
+				'name'       => $tag_name,
+				'title'      => method_exists( $inst, 'get_title' ) ? $inst->get_title() : null,
+				'group'      => method_exists( $inst, 'get_group' ) ? $inst->get_group() : null,
+				'categories' => method_exists( $inst, 'get_categories' ) ? $inst->get_categories() : [],
+				'tier'       => $tier,
+			];
+			if ( $source !== 'elementor-core' && $source !== 'elementor-pro' ) {
+				$rec['source'] = $source;   // a third-party tag: say whose it is
+			}
+			// The tag's OWN settings - what goes inside `settings` in the binding.
+			// An ACF field tag without its `key` renders nothing, silently.
+			if ( method_exists( $inst, 'get_controls' ) ) {
+				$tctrl = [];
+				foreach ( $inst->get_controls() as $cname => $c ) {
+					$t = $c['type'] ?? '';
+					if ( in_array( $t, [ 'section', 'tab', 'tabs', 'heading', 'raw_html', 'divider' ], true ) ) {
+						continue;
+					}
+					$e = [ 'name' => $cname, 'type' => $t ];
+					$opts = eh_option_keys( $c );
+					if ( $opts ) {
+						$e['options'] = $opts;
+					}
+					if ( isset( $c['default'] ) && $c['default'] !== '' ) {
+						$e['default'] = $c['default'];
+					}
+					$tctrl[] = $e;
+				}
+				if ( $tctrl ) {
+					$rec['settings'] = $tctrl;
+				}
+			}
+			$dynamic_tags[ $tag_name ] = $rec;
+		} catch ( \Throwable $e ) {
+			$dynamic_tags[ $tag_name ] = [ 'name' => $tag_name, 'error' => $e->getMessage() ];
+		}
+	}
+}
+
+// ---------------------------------------------------------------------------
+// 5b. Theme Builder display conditions (Pro) — WHERE a template applies.
+//
+// The condition strings stored in a template's meta ('include/singular/post/123')
+// are built from this registry. Without it the schema can describe the Display
+// Conditions control but not one legal value of it.
+// ---------------------------------------------------------------------------
+$tb_conditions = null;
+if ( class_exists( '\ElementorPro\Modules\ThemeBuilder\Module' ) ) {
+	try {
+		$cm = \ElementorPro\Modules\ThemeBuilder\Module::instance()->get_conditions_manager();
+		if ( method_exists( $cm, 'get_conditions_config' ) ) {
+			$tb_conditions = $cm->get_conditions_config();
+		}
+	} catch ( \Throwable $e ) {
+		$tb_conditions = [ 'error' => $e->getMessage() ];
+	}
+}
+
+// ---------------------------------------------------------------------------
+// 5c. Emit.
 // ---------------------------------------------------------------------------
 // THE SURFACE IS A PROPERTY OF THE INSTALL, NOT OF ELEMENTOR. Record what was true
 // of the machine this ran on, so a consumer can tell "Elementor has no such widget"
@@ -963,6 +1047,8 @@ $out = [
 	'breakpoints'    => $breakpoints,
 	'control_types'  => $control_types,
 	'group_controls' => $group_controls,
+	'dynamic_tags'   => $dynamic_tags,
+	'theme_builder_conditions' => $tb_conditions,
 	'elements'       => $elements,
 	'widgets'        => $widgets,
 ];
