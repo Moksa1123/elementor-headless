@@ -55,6 +55,7 @@ import io
 import json
 import subprocess
 import sys
+import time
 from contextlib import redirect_stdout
 from pathlib import Path
 
@@ -73,12 +74,23 @@ def tok(text: str) -> int:
     return len(ENC.encode(text))
 
 
+QUERY_MS: list[float] = []
+
+
 def run_el(args: list[str]) -> str:
-    """Invoke el.py exactly as an agent would, and capture what it prints."""
+    """Invoke el.py exactly as an agent would, capture what it prints - and time it.
+
+    The latency recorded is the REAL tool-side cost (process spawn + schema load +
+    query), measured, not estimated. It is the only wall-clock number here that can
+    be measured honestly; the rest of "how long does an agent take" is model
+    ingest, which is derived from tokens at a disclosed rate below.
+    """
+    t0 = time.perf_counter()
     out = subprocess.run(
         [sys.executable, str(HERE / "el.py"), *args],
         capture_output=True, text=True, encoding="utf-8",
     )
+    QUERY_MS.append((time.perf_counter() - t0) * 1000)
     if out.returncode != 0:
         raise RuntimeError(f"el.py {' '.join(args)} failed: {out.stderr}")
     return out.stdout
@@ -217,6 +229,37 @@ def main() -> int:
     print("  And baseline A does not even answer the question fully: PHP source gives")
     print("  you control names but not the JSON value shape you have to write, which is")
     print("  the part that silently fails when you get it wrong.")
+
+    # ---- TIME ---------------------------------------------------------------
+    # Two different clocks, kept separate because only one of them is measured:
+    #
+    #   TOOL LATENCY (measured)  - the wall-clock of every el.py invocation made
+    #     above, process spawn + 4.5MB schema load + query, on this machine.
+    #
+    #   MODEL INGEST (derived)   - an agent does not "read" tokens for free; the
+    #     model has to process them. There is no portable measured number for
+    #     that, so it is DERIVED from the token counts at a disclosed reference
+    #     rate and clearly labelled an estimate. Change the rate; the ratio
+    #     does not move, and the ratio is the claim.
+    RATE = 1000.0   # tokens/second ingest, reference rate - disclosed, adjustable
+    print()
+    print("TIME")
+    print("=" * 78)
+    if QUERY_MS:
+        import statistics
+        print(f"  el.py tool latency (MEASURED, n={len(QUERY_MS)}): "
+              f"median {statistics.median(QUERY_MS):.0f} ms, "
+              f"max {max(QUERY_MS):.0f} ms per query")
+    if tot_src:
+        t_a = tot_src / RATE
+        t_c = tot_q / RATE + sum(QUERY_MS) / 1000
+        print(f"  model ingest at {RATE:.0f} tok/s (DERIVED estimate):")
+        print(f"    A. read the source   ~{t_a:7.1f} s  for the 5 tasks")
+        print(f"    B. load the schema   ~{schema_tokens / RATE:7.1f} s  once")
+        print(f"    C. query             ~{t_c:7.1f} s  including measured tool latency")
+        print(f"    C vs A: ~{t_a / t_c:.0f}x faster on ingest alone; the unpriced part")
+        print(f"    of A is larger still - converting PHP control registrations into")
+        print(f"    JSON value shapes in-head, which is where the silent mistakes live.")
 
     with a.out.open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))

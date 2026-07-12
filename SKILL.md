@@ -36,6 +36,11 @@ BROWSER  32,261 computed-style probes  6,177 verified in Chromium (getComputedSt
 WIDGETS  168 of 168 placeable widgets  functionally rendered, ONE PER PAGE, across two
                                        live sites: content markers echoed, element
                                        screenshot, 3 viewports, JS errors attributed
+INTERACT 5/5 behaviours pass           tabs switch, accordions open, toggles toggle,
+                                       carousels advance - real pointer events
+HOVER    3,882 :hover probes           hovered with a real pointer: 297 verified by
+                                       value; overrides are all same-element seed
+                                       collisions, disclosed per-row in the CSV
 ```
 
 Per-widget results in `data/widget-verification.csv`: 126 rendered with content or
@@ -371,6 +376,10 @@ PASS - the page a visitor receives contains every element of the tree,
 | `verify-live.py` | does the page **the public gets** contain it, through the cache and the CDN? |
 | `sweep-controls.py` | render EVERY CSS control and assert it works (99.1% covered, 0 failures) |
 | `sweep-classes.py` | render every CLASS control and assert the wrapper class (0 failures) |
+| `sweep-browser.py` | declared vs computed for every control, in Chromium, on the public URL |
+| `sweep-widgets.py` | every widget functionally, one per page, with screenshots |
+| `sweep-hover.py` | every `:hover` rule, driven by a real pointer |
+| `verify-interactions.py` | tabs/accordion/toggle/carousel behaviour, clicked for real |
 | `export-template.php` | export a page/template to Elementor's own JSON format |
 | `import-template.php` | import one, with media, via Elementor's own import path |
 | `benchmark-tokens.py` | reproduce the token numbers |
