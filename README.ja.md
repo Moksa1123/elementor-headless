@@ -1,37 +1,38 @@
 # elementor-headless
 
-**エディタを操作するのではなく、JSON を書いて Elementor ページを構築する。**
+**Elementor ページはエディタを操作して作るのではなく、JSON を直接書いて作る。**
 
-AI コーディングエージェントに、Elementor のオーサリング面すべて —
-**192 ウィジェットと 13 エレメントにまたがる 49,857 コントロールに加え、Kit の 773 Site
-Settings、48 のページ設定、29 のドキュメントタイプ、51 のダイナミックタグ、39 の表示条件、
-そしてすべてのリピーターのアイテムフィールド** — を、到底読み切れないドキュメントとしてではなく、
-クエリ可能なデータベースとして渡す
-[Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) です。
+AI コーディングエージェントに Elementor のオーサリングサーフェス全体を
+クエリ可能なデータベースとして与える
+[Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)。
+そして、そこに書かれたすべての主張を、実サイト上でのレンダリング・クリック・
+計測によって証明する。Elementor は何を間違えてもエラーを一切出さないからだ。
 
-さらに各ウィジェットには、**そのウィジェットがそもそも存在するためにサイトに何が必要か**も
-記載されています。29 個は WooCommerce プラグインを、36 個は Elementor の experiment を必要と
-します。これを省いたスキーマは不完全なのではなく、間違っています — そういうスキーマに
-`woocommerce-product-price` を尋ねれば、Elementor にそんなウィジェットは存在しないと、
-全き自信をもって答えるのです。
+```
+192 widgets · 13 elements · 49,857 control pairs
+the Kit's 773 Site Settings · 48 page settings · 29 document types
+51 dynamic tags · 39 display conditions · every repeater's item fields
+```
 
 [English](README.md) · [繁體中文](README.zh-TW.md) · 日本語 · [한국어](README.ko.md)
 
 ---
 
-## なぜ
+## 問題
 
-Elementor はページを post meta 内の JSON ツリーとして保存します。ツリーを書けば、ページは存在します。
-しかし Elementor は **書いた内容を検証しません**。値をそのまま保存し、理解できるものだけをレンダリングし、
-残りは黙って捨てます。
+Elementor はページを post meta 内の JSON ツリーとして保存する。ツリーを書けば
+ページは存在する。だが Elementor は**書いた内容を検証しない** — 値をそのまま
+保存し、理解できた分だけレンダリングし、残りは黙って捨てる。
 
-エラーは出ません。スペルを間違えたコントロール、オブジェクトが入るべき場所の文字列、Free サイト上の
-Pro 専用コントロール。どれも問題なく保存され、手元のマシンではきれいに描画され、そして肝心なところで
-静かに何もしません。
+エラーは出ない。コントロール名のタイポ、オブジェクトを置くべき場所の文字列、
+Free サイト上の Pro 専用コントロール、`"hidden-tablet"` と書くべきところの
+`hide_tablet: "yes"`。どれも問題なく保存され、静かに何もしない。90% 正しい
+ページは、誰かが「padding が一度も効いていない」と気づくまで、100% 正しい
+ページと見分けがつかない。
 
-つまり Elementor ページを構築するエージェントの選択肢は 2 つです。毎回 Elementor の PHP ソースを読む
-（高コスト — しかもそれでも JSON の形は分からない）か、推測する（黙って間違える）か。このスキルは
-3 つめの選択肢です。
+したがって Elementor ページを組むエージェントの選択肢は 2 つだった。毎回
+Elementor の PHP ソースを読む(高コストで、しかも JSON の形は分からない)か、
+推測する(黙って間違える)か。このスキルは第 3 の選択肢だ:
 
 ```bash
 $ python tools/el.py type slider
@@ -45,8 +46,12 @@ JSON value shape (what you write into _elementor_data settings):
 
 ![architecture](assets/diagrams/architecture.svg)
 
-3 つのフェーズ。抽出は Elementor のバージョンごとに 1 回、**あなたの**サイトに対して実行します。
-それ以降はすべてクエリです。
+3 フェーズ。**Extraction(抽出)** は Elementor のバージョンごとに 1 回、
+ライブインストールに対して実行され、劣化データの出力を拒否する 3 つの
+カナリアを備える。**Verification(検証)** はすべてのコントロール・
+ウィジェット・インタラクションを実サイト上でレンダリングし、実際に起きた
+ことをデータに書き戻す。**Query(クエリ)** は、ビルド時にエージェントが
+行う唯一の操作だ。
 
 ## インストール
 
@@ -57,424 +62,411 @@ python tools/install-skill.py claude-code --global     # or: cursor, codex-cli, 
 python tools/install-skill.py --list
 ```
 
-8 プラットフォーム対応: Claude Code、Claude.ai、Cursor、Codex CLI、Gemini CLI、Devin
-（旧 Windsurf）、GitHub Copilot、Continue。規約は 2026-07-11 に再検証済み —
-[8 つのうち 3 つが 6 週間でずれていた](references/multiplatform-install-verification.md)ので、
-仮定せず実際に確認しています。
+8 プラットフォーム対応:Claude Code、Claude.ai、Cursor、Codex CLI、
+Gemini CLI、Devin(旧 Windsurf)、GitHub Copilot、Continue。各プラットフォームの
+規約は 2026-07-11 に再検証済み —
+[8 つのうち 3 つは 6 週間でドリフトしていた](references/multiplatform-install-verification.md)
+ため、前提にせずチェックしている。アップグレード時は前バージョンが残した
+ファイルを掃除する。去年の間違ったデータセットを今年の正しいものの隣に
+放置するインストーラは、無い方がマシだ。
 
 ## 使い方
 
+調べる — 1 クエリ約 700 トークンで、完結した答えが返る:
+
 ```bash
-python tools/el.py widgets --tier free --grep box   # find a widget
-python tools/el.py widget heading --tab style       # its style controls
-python tools/el.py container --tab layout           # flex + grid, with conditions
-python tools/el.py css border-radius                # reverse lookup by CSS property
-python tools/el.py group typography                 # what a group control expands into
-python tools/el.py breakpoints                      # the responsive suffixes
-python tools/el.py pro --check custom_css align     # exits 1 if any of these needs Pro
+python tools/el.py widgets --tier free --grep box    # find a widget
+python tools/el.py widget heading --tab style        # its style controls, with every gate
+python tools/el.py container --tab layout            # flex + grid, conditions included
+python tools/el.py css border-radius                 # reverse lookup by CSS property
+python tools/el.py type dimensions                   # the JSON value shape
+python tools/el.py group typography                  # what a group control expands into
+python tools/el.py tags --group post                 # dynamic tags (__dynamic__)
+python tools/el.py page-settings                     # hide_title, CANVAS, page background
+python tools/el.py kit --section section_global_colors   # Site Settings / global colors
+python tools/el.py doctypes                          # legal _elementor_template_type values
+python tools/el.py widgets --requires woocommerce    # what needs what to exist
+python tools/el.py pro --check custom_css align      # exits 1 if any of these needs Pro
 ```
 
-そして構築し、チェックし、出荷する。
+組んで、検証して、出す:
 
 ```bash
 python tools/el.py skeleton > page.json
-python tools/validate-page.py page.json --target free
-wp eval-file tools/apply-page.php 123 page.json
+python tools/validate-page.py page.json --target free --have woocommerce
+wp eval-file tools/apply-page.php 123 page.json page-settings.json
+python tools/verify-live.py page.json https://your-site/your-page/
 ```
 
-`validate-page.py` は Elementor が捕まえないものを捕まえます。未知のコントロール名、誤った値の形、
-不正な単位、無効なオプション、重複した id、満たされていない条件、そして Free ターゲット上の
-Pro 専用コントロール。
+- `validate-page.py` は Elementor が捕まえないものを捕まえる:未知の
+  コントロール、間違った値の形、不正な単位、無効なオプション、id の重複、
+  3 種類すべての未充足依存(条件は**デフォルト値**に対して評価されるため、
+  `custom_messages` なしで `success_message` を設定すると、黙ってフォール
+  バックする代わりに警告が出る)、複数選択の値、class 系コントロールへの
+  数値の `0`、Free ターゲット上の Pro 専用コントロール、そして
+  **ターゲットサイトがそもそも持ち得ないウィジェット**。
+- `apply-page.php` は 4 つの meta キーと任意のページ設定(Canvas が実際に
+  必要とする `template` → `_wp_page_template` への振り分けを含む)を書き込み、
+  コンパイル済み CSS を再構築し、**レンダリング済み HTML キャッシュを削除
+  する** — 最後のこれを飛ばすと、正しいツリーがエラーひとつ出さずに前の
+  ページを永遠に配信し続ける。
+- `verify-live.py` はキャッシュ/CDN 越しに公開 URL を取得し、実際にワイヤーを
+  流れてきたものに対して、ツリー・CSS 値・ラッパークラスをアサートする。
 
-## トークンコスト
+## すべてのウィジェットがすべてのインストールに存在するわけではない
 
-**Elementor のソースを読む場合よりトークン 86.8% 削減。スキーマを読み込む場合より 99.4% 削減。
-モデルへの取り込みはソース比で約 5 倍、スキーマ読み込み比で約 118 倍高速**（計測したツールの
-レイテンシ: クエリあたり中央値 316 ms。取り込み時間は、明示した参照レート 1,000 tok/s のもとで
-トークン数から導出 — レートを変えても比率は動きません）。再現できます — スクリプトが
-`data/token-benchmark.csv` を書き出します。
+**ウィジェットサーフェスは Elementor のプロパティではなく、サイトの
+プロパティだ。** 同じ Elementor 4.1.4 / Pro 4.1.2 でも、あるマシンでは
+148 ウィジェット、別のマシンでは 192 ウィジェットが登録され、どちらも
+壊れてはいない — 増えた分は、最初のマシンに無い何かを必要としているだけだ。
+これを持たないスキーマは不完全なのではなく、**間違っている**。
+`woocommerce-product-price` について尋ねると、完全な自信をもって
+「Elementor にそんなウィジェットは無い」と答えるからだ。
+
+そこで各ウィジェットは自分の必要条件を持つ。Elementor のソースにある
+モジュール自身の `is_active()` ゲートから読み取ったものだ — 権威はこの
+ゲートであって、モジュール自身の `EXPERIMENT_NAME` 定数ではない。この教訓を
+学ぶまで、その定数は登録済みでレンダリングもされる 21 ウィジェットを
+誤ラベルしていた:
+
+| Needs | Widgets |
+|---|---|
+| nothing — always there | 104 |
+| `plugin:woocommerce` | 29 |
+| a WP legacy widget some plugin registers | 33 |
+| `experiment:container` / `nested-elements` / `e_atomic_elements` / … | 26 |
+
+`validate-page.py` はターゲットサイトが持ち得ないウィジェットをエラーにする。
+サイトが実際に持っているものは `--have woocommerce nested-elements` で伝える。
+
+**Elementor V4 のアトミック要素(`e-heading`、`e-flexbox`、`e-form-*` の
+18 個)は別のデータモデルだ** — 型タグ付きの props と独立した `styles` 配列
+であり、`settings` + コントロールではない。このスキルはその prop スキーマを
+報告する(`el.py widget e-heading`)が、構築を検証できるふりは拒否する。
+
+## トークンコストと時間
+
+**Elementor のソースを読むより 86.8% 少ないトークン。スキーマをロードする
+より 99.4% 少ない。モデル取り込みで約 5 倍、スキーマロード比で約 118 倍
+速い。** ツールのレイテンシは実測値(クエリあたり中央値 316 ms)。取り込み
+時間はトークン数から、開示済みの基準レート 1,000 tok/s で導出している —
+レートを変えても比率は動かない。再現できる。スクリプトが
+`data/token-benchmark.csv` を書き出す:
 
 ```bash
 pip install tiktoken
 python tools/benchmark-tokens.py --elementor-src /path/to/plugins/elementor
 ```
 
-| タスク | ソースを読む | スキーマを読み込む | **クエリ** |
+| Task | read source | load schema | **query** |
 |---|---|---|---|
-| ヒーローコンテナのレイアウト（flex、boxed、レスポンシブな padding） | 20,182 | 1,082,477 | **1,209** |
-| 見出しのスタイリング（色、タイポグラフィ、配置） | 8,329 | 1,082,477 | **836** |
-| ボタンのスタイリング（色、padding、radius、hover） | 7,803 | 1,082,477 | **3,664** |
-| 任意のウィジェットの余白をレスポンシブにする | 11,800 | 1,082,477 | **264** |
-| ある CSS プロパティを制御しているコントロールを探す | — | 1,082,477 | **363** |
-| **合計** | **48,114** | **1,082,477** | **6,336** |
+| Lay out a hero container (flex, boxed, responsive padding) | 20,182 | 1,082,477 | **1,209** |
+| Style a heading (colour, typography, alignment) | 8,329 | 1,082,477 | **836** |
+| Style a button (colour, padding, radius, hover) | 7,803 | 1,082,477 | **3,664** |
+| Make any widget's spacing responsive | 11,800 | 1,082,477 | **264** |
+| Find which control drives a CSS property | — | 1,082,477 | **363** |
+| **Total** | **48,114** | **1,082,477** | **6,336** |
 
-オーサリング面が正直になるにつれ（WooCommerce、Kit、セレクタ、リピーターフィールド）、スキーマは
-583k から 1.08M トークンへ成長し、削減率は 89.1% から**下がり**ました — 中身の濃い答えほどトークンを
-食うからです。良くなる一方の数字は選別された数字です。ここの数字はどちらに動こうと、スクリプトで
-再生成されます。
+節約率は以前 89.1% だった。それが**下がった** — サーフェスが正直になる
+(WooCommerce、Kit、セレクタ、リピータフィールド)につれてスキーマは 583k
+から 1.08M トークンへ成長し、リッチな答えはトークンを食う。改善しかしない
+数字はキュレーションされている。ここの数字はスクリプトで再生成され、
+どちらに動こうがそのまま載せる。
 
-効く理由は 2 つあります。データは**クエリするだけで、決して読み込まない**こと。そして、すべての
-ウィジェットが共有する 211 個の Advanced タブのコントロールを、**168 回ではなく 1 回だけ格納**して
-いること。これらは全行の過半を占めるため、括り出すことで初めてスキーマはクエリ可能であり続けます。
+成立させているのは 2 点:データは**ロードされず、必ずクエリされる**こと、
+そして全クラシックウィジェットが共有する 211 個の Advanced タブコントロールが
+**168 回ではなく 1 回だけ格納される**こと。トークン数は tiktoken
+`cl100k_base` による — Claude ではなく OpenAI のトークナイザなので絶対値は
+±10% 程度ずれるが、同一トークナイザ下での比率は安定しており、主張して
+いるのは比率のほうだ
+([token-efficiency.md](references/token-efficiency.md))。
 
-計測は tiktoken の `cl100k_base` によるもの — Claude ではなく OpenAI のトークナイザーなので、
-絶対値はおおよそ ±10% ずれます。同一トークナイザー下での 2 つのテキスト間の比率は安定しており、
-主張しているのはその比率です。手法と留意点は
-[token-efficiency.md](references/token-efficiency.md) に。
+## Free と Pro は推測ではなく実測
 
-## Free と Pro は推測ではなく計測
+Elementor Pro は**無料ウィジェットにコントロールを注入する**。Pro サイト上の
+無料 Heading ウィジェットには Motion Effects、Sticky、Custom CSS、Display
+Conditions、Custom Attributes が付いてくる。ウィジェットの tier をそのまま
+継承すると、この 46 個がすべて「free」とラベルされ — 自分の環境では完璧に
+レンダリングされるページが、Free インストール上でスタイルを失う。
 
-Elementor Pro は**無料ウィジェットにコントロールを注入します**。Pro が入ったサイトで無料の Heading
-ウィジェットを開けば、Advanced タブに Motion Effects、Sticky、Custom CSS、Display Conditions、
-Custom Attributes が並んでいます。ウィジェットのティアをそのまま継承すると、これらすべてが「free」と
-ラベル付けされ — そうして作ったページは自分の環境では完璧に描画され、Free 環境ではスタイルを失います。
+だから tier は実測する。Pro をロードした状態で 1 回、
+`wp --skip-plugins=elementor-pro`(その 1 つの CLI プロセスにしか影響しない。
+本番環境でも安全)で 1 回抽出し、差分を取る。同じ手法をもう 1 軸進めたのが
+WooCommerce だ。WooCommerce は 29 ウィジェットを足すだけではない — Pro 自身の
+ループウィジェットに `product_query_exclude*` を注入し、WooCommerce を切った
+ダンプだけが、それらのコントロールの持ち主を明かす。サードパーティ汚染も
+同じ方法で除外している。Rank Math は `accordion` に、Unlimited Elements は
+コンテナに注入し、それらをロードしたまま抽出したスキーマは、彼らの
+コントロールを Elementor 製として出荷してしまう。
 
-だからティアは計測します。2 回抽出し — 1 回は Pro を読み込んだ状態、もう 1 回は
-`wp --skip-plugins=elementor-pro`（影響するのはその CLI プロセスだけで、プラグインが無効化される
-わけではないため本番環境でも安全）で — 差分を取ります。
+tier について推論するな。**Border と Box Shadow はプレミアムに見えるが free。
+`_attributes` は地味に見えるが Pro だ。** このリポジトリは一度、実測ではなく
+推論で Border を Pro と誤ラベルして出荷した。さらに Elementor コアは、Pro が
+無効のとき**本物の Pro ウィジェットと完全に同名のプロモ用スタブ**を登録する —
+Pro なしのダンプを額面どおり受け取ると、26 個の Pro ウィジェットが free と
+して読めてしまう。
 
-| | Free 4.1.4 | + Pro 4.1.2 |
-|---|---|---|
-| ウィジェット | 64 | **135** |
-| すべてのウィジェットに載るコントロール | 165 | **211** (+46) |
-| `container` のコントロール | 277 | **356** (+79) |
-| コントロールタイプ | 52 | **59** |
-| グループコントロール | 11 | **16** |
+## 正確なのか?証明させろ。
 
-Pro が**すべての**ウィジェットに注入する 46 個: すべての `motion_fx_*`（37）、`sticky*`（6）、
-`custom_css`、`_attributes`、`e_display_conditions`。
+信用するな — テストしろ。8 つのチェック、8 つの異なる問い、それぞれ異なる
+アーティファクトからの読み出し:コントロールスタック、コンパイル済み
+スタイルシート、配信された HTML、実ブラウザの computed styles、実ポインタ
+イベント、CDN 越しの公開 URL。**ベリファイアは、自分が読むチャネルの中の
+バグしか見つけられない** — この 8 つはどれも、より甘いチェックが本物の何かを
+見逃したからこそ存在している。
 
-ティアを推論で決めないでください。**Border と Box Shadow は高機能に見えますが無料です。
-`_attributes` は基本的に見えますが Pro です。** このリポジトリも一度、計測せず推論した結果、
-Border を Pro と誤ってラベル付けしたまま出荷しました。
-
-## 本当に正確なのか。証明させてください。
-
-スキーマは Elementor 4.1.4 / Pro 4.1.2 から取得したものです。あなたの環境は違うかもしれません。
-信用せず、テストしてください。検証は 8 つ。それぞれ別の問いを立て、それぞれ別のアーティファクト
-から読み出します。
-
-**1. スキーマはあなたのインストールと一致するか。**
+**1. スキーマはあなたのインストールと一致しているか?**
 
 ```bash
-wp eval-file tools/extract-elementor-schema.php core+pro > mine.json
-wp --skip-plugins=elementor-pro eval-file tools/extract-elementor-schema.php core+pro > mine-free.json
 python tools/verify-schema.py mine.json --free-dump mine-free.json
 ```
 
-```
-checked 37,964 (owner, control) pairs from the shipped schema
-Free/Pro claims checked on free widgets/elements: 15,969
-FAILURES: 0
-PASS
-```
+すべての (owner, control) ペアを走査し、型と Free/Pro の主張を確認する。
+そしてスキーマが各ウィジェットの必要条件を明示しているおかげで、「スキーマが
+間違っている」と「このインストールに WooCommerce が無い」を区別し、どちらに
+対してもオオカミ少年にならない。両方の抽出サイトに対して PASS し、ドリフトが
+あれば非ゼロで終了するので、デプロイのゲートにできる。
 
-ずれがあれば非ゼロで終了するので、デプロイのゲートに使えます。
+**2. CSS を出すはずのコントロールは、全部が実際に CSS を出すのか?**
 
-**2. スキーマから構築したページは、スキーマが約束した CSS を実際にレンダリングするか。**
-
-スキーマは、各コントロールがどの CSS プロパティを制御するかを示します。これはページを実際に構築し、
-Elementor がコンパイルしたスタイルシートを読み戻して、そのすべてを検証します — 各レスポンシブキーが
-*そのブレークポイントの*メディアクエリの中に入っているかどうかまで含めて。
-
-```bash
-python tools/verify-render.py examples/demo-page.json rendered.css --post-id 9176
-```
+各コントロールに**それ固有の値**(固有の hex カラー、固有のピクセルサイズ)を
+与え、依存チェーンを自動で解決し、その出力を**公開 URL が配信した
+スタイルシート**の中でアサートする — サーバーのディスク上のファイルでは
+なく:
 
 ```
-CSS property assertions: 94/94 passed
-PASS
+25,259 CSS-driving controls    99.4% covered, 0 failures
+33,448 responsive suffixes     each asserted inside ITS media query, with a value
+                               distinct from desktop's, so a leak cannot pass
 ```
 
-**3. スキーマ内のすべてのコントロールは、本当に動作するのか。**
+Elementor 自身のメタデータが間違っている場合は、レンダリング結果が勝つ。
+9 個のコントロールは、実際には出力しないレスポンシブブレークポイントを
+宣伝しており、スキーマは現在それらを `rwd-BROKEN` と記載している。
 
-`verify-render.py` がカバーするのは、そのページがたまたま使っているコントロールだけです — デモページ
-では 94 個。`sweep-controls.py` が残りをカバーします。CSS を制御すると主張するすべてのコントロールに
-ついて正当な値を合成し、それを効かせるために必要な依存の連鎖を解き、レンダリングし、その値が実際に
-出力されたことをアサートします。各コントロールには**そのコントロール固有の**値（それぞれ異なる 16 進
-カラー、それぞれ異なるピクセルサイズ）が与えられるので、パスしたということは*そのコントロール*が
-*その値*を生み出したという意味になります。何か別のものが似たプロパティを書いた、ではなく。
+**3. class を出すコントロールは、全部がラッパーにそのクラスを付けるのか?**
 
-```bash
-python tools/sweep-controls.py plan --out sweep/ --post-id <draft post>
-# apply each batch, capture post-<id>.css
-python tools/sweep-controls.py check sweep/ --out data/control-verification.csv
-```
+2,573 個のコントロールは CSS を出す代わりにラッパークラスの付与で動作する —
+スタイルシートのチェックは、その全部に対して構造的に盲目だ。配信された HTML
+から読み出す:98.2% スイープ、失敗 0。`classes_dictionary` によるレガシー
+リマップ(`position: "top"` は `elementor-position-block-start` として
+レンダリングされる)と、デバイス別プレフィックス(`_tablet` サフィックス
+ではなく `elementor-tablet-position-`)も含めてだ。
 
-```
-DESKTOP  (18,853 CSS-driving controls)
-  verified by value   17,421  (92.4%)   the exact value we wrote is in the CSS
-  property only        1,270  ( 6.7%)   right property, value not literally assertable
-  FAILED                   0  ( 0.0%)
-  skipped, untested      162  ( 0.9%)   no test could be built for these
-  covered                      99.1%
+**4. 宣言したものを、実ブラウザは本当に COMPUTE するのか?**
 
-RESPONSIVE SUFFIXES  (25,404 _tablet / _mobile keys, each asserted inside ITS
-                      breakpoint's media query, with a value distinct from
-                      desktop's, so a leak cannot pass)
-  verified by value   24,568  (96.7%)
-  FAILED                  17  ( 0.1%)
-```
-
-コントロール単位の結果は `data/control-verification.csv` に同梱しています — `skipped` のものも
-含めてあるので、カバレッジの数字をそれらを抜きにして読むことはできません。
-
-**そしてスイープは抽出ツールを訂正します。** `build-indexes.py --verification` は、レンダリング結果を
-スキーマに折り返します。9 個のコントロールは、決して出力しないレスポンシブブレークポイントを宣伝して
-います（`hotspot.width_tablet` は CSS を一切生成しないことを、単独で検証済み）。これらは現在
-`responsive_broken` としてフラグが立ち、`el.py` は `rwd-BROKEN:` と表示し、`validate-page.py` は
-それを書けばエラーにします。レンダリングしなければ、9 個すべてが動作するレスポンシブコントロールとして
-スキーマに残ったままだったでしょう。
-
-**4. CSS ではなくクラスを出力するすべてのコントロールをスイープする。** スタイルシートのスイープでは
-これらはまったく見えません — しかも 2,573 個あります（`_position`、`hide_tablet`、あらゆる `view` /
-`shape` / `align` コントロール、そして transform 系）。こちらは**レンダリング後の HTML** を読み、
-ラッパーに付いたクラスをアサートします。
-
-```bash
-python tools/sweep-classes.py plan --out classsweep/ --post-id <draft post>
-bash classsweep/RUN.sh
-python tools/sweep-classes.py check classsweep/ --out data/class-verification.csv
-```
+ルールはファイルの中にあっても負けることがある — 詳細度に、カスケードに、
+何にもマッチしないセレクタに。`sweep-browser.py` はすべてのページを Chromium
+で開き、Elementor の宣言を `getComputedStyle` と比較する。それも**ルールが
+実際にターゲットとするノードの上で**(`data/css-selectors.csv` はそのために
+存在する):
 
 ```
-CLASS-EMITTING CONTROLS  (2,573)
-  verified by class     2,042  (79.4%)   the class we predicted is on the wrapper
-  FAILED                    0  ( 0.0%)
-  host never rendered     523  (20.3%)   the WIDGET produces no markup on a bare page,
-                                         so there is no wrapper - not a pass, not a fail
-  skipped, untestable       8  ( 0.3%)
-PER-DEVICE CLASS PREFIXES  306    246 verified
-classes_dictionary REMAPS   10     10 verified
+48,873 probes across two live sites with different themes
+25 of 26 override patterns IDENTICAL on both -> facts about Elementor,
+   led by: _element_width's max-width is dead on every widget inside a
+   container, killed by Elementor's own frontend.css at specificity (0,4,0)
+ 1 of 26 site-specific -> a fact about that theme, named by the data
 ```
 
-これを走らせて、他の何をもってしても見つけられなかったものが 3 つ出てきました。
+**5. コンテンツを与えたとき、各ウィジェットは本当にそれをレンダリングするのか?**
 
-- **`apply-page.php` が、古いレンダリング済み HTML キャッシュを残していた。** Elementor は自身が
-  レンダリングしたマークアップを `_elementor_element_cache` という post meta に保持し、それをそのまま
-  返します。Elementor 自身の保存経路はこれをクリアしますが、meta を直接書き込む場合はクリアされません。
-  結果、投稿は更新され、CSS も正しく再構築され、`_elementor_data` を読み戻せば完全に正しいのに —
-  ページは**以前のマークアップ**を返し続け、エラーは一切出ませんでした。CSS スイープはこのバグが
-  生きたまま 17,421 個のコントロールを通してグリーンで走りました。CSS は常に再構築される別ファイル
-  だからです。最初の HTML スイープは 1 分で捕まえました。14 バッチすべてがバイト単位で同一だったのです。
-- **`validate-page.py` が、完璧にレンダリングされるページを却下していた。** `icon-box` の
-  `position: "top"` はオプションリストに存在せず、しかも Elementor の `classes_dictionary` はそれを
-  `block-start` に読み替えます。誤ったエラーであり、現在は注記に変更しました。
-- **スキーマが、タブレットで間違ったクラスを主張していた。** レスポンシブなクラス系コントロールは
-  *デバイスごとに異なる prefix* を持ちます（`_tablet` サフィックスではなく
-  `elementor-tablet-position-`）。抽出ツールはバリアントを潰し、デバイスの prefix を捨てていました。
-
-**5. 配置可能なすべてのウィジェットを、機能として、1 ページに 1 つずつ。** コントロールのスイープが
-問うのは「各設定は効くか」。こちらはその手前の問いです — コンテンツを与えたとき、ウィジェットは
-それをレンダリングするのか。すべてのコンテンツ系コントロールに固有のマーカーを仕込み（リピーター
-アイテムは抽出したフィールドから構築）、JS エラーやゼロサイズのレンダリングをちょうど 1 つの
-ウィジェットに帰属できるよう 1 ページに 1 ウィジェットとし、それぞれエレメントのスクリーンショットを
-撮り、ビューポートは 3 種類。
+すべてのコンテンツコントロールに固有のマーカーを仕込み(リピータ項目は
+抽出済みフィールドから構築)、JS エラーやゼロサイズのレンダリングを正確に
+1 つのウィジェットへ帰属できるように**1 ページ 1 ウィジェット**、要素
+スクリーンショットを各 1 枚、3 ビューポートで:
 
 ```
-168/168 placeable widgets  (85 core+pro on one site, 62 WooCommerce+bridges and
-                            21 experiment-gated on another)
-  126 rendered  - marker echo, real site content, or hidden-by-design
+168/168 placeable widgets across the two sites
+  126 rendered — marker echo, real site content, or hidden-by-design
    42 correctly empty without site context (cart/checkout/loop on a bare page)
     0 broken
 ```
 
-ウィジェット単位の行は `data/widget-verification.csv` に。レンダリングされたウィジェットごとの
-PNG は `shots/` に 1 枚ずつ。
+**6. インタラクティブなウィジェットは、本当にインタラクトするのか?**
 
-**6. インタラクションを、実際のポインタで駆動する。** 正しくレンダリングされることは、インタラクティブ
-ウィジェットの半分でしかありません。公開ページ上で、5 つの挙動を実際にクリックして確かめます。
+公開ページ上の実ポインタイベント:
 
 ```
-nested-tabs        click tab 2   -> content 2 shows, content 1 hides   PASS
-nested-accordion   click item 2  -> <details> opens                    PASS
-accordion          click item 2  -> body becomes visible               PASS
-toggle             click item 1  -> body toggles open                  PASS
-image-carousel     click next    -> active slide advances              PASS
+nested-tabs        click tab 2  -> content 2 shows, content 1 hides    PASS
+nested-accordion   click item 2 -> <details> opens                     PASS
+accordion          click item 2 -> body becomes visible                PASS
+toggle             click item 1 -> body toggles open                   PASS
+image-carousel     click next   -> active slide advances               PASS
 ```
 
-そして `:hover` ルール — どんな静的な読み取りでも検証不可能なもの — は、実際のポインタで駆動します。
-擬似クラスが付くノードにホバーし、宣言が着地するノードの `getComputedStyle` を読み、配信された
-スタイルシートと突き合わせる。トランジションは先に無効化し、そのことを明示しています。仕込まれた
-79 秒のトランジションの 200ms 時点で色を読めば、アニメーション途中のフレームを最終状態と比較する
-ことになるからです。
+そして `:hover` ルール — どんな静的読み出しでも検証不能 — は実際のポインタで
+駆動する:3,882 プローブ、297 件が値で検証済み。113 件のオーバーライドは
+すべて同一要素上のシード衝突(2 つの hover コントロールが同じプロパティに
+意図的に異なる値を書く — どちらかは必ず負ける)で、行単位で分類済み。
+トランジションは事前に無効化し、その介入は開示している。シードした 79 秒の
+トランジションの 200 ms 時点で読んだ色は、アニメーション途中のフレームで
+あって、判定ではない。
 
-```
-3,882 :hover probes, pointer-driven, on the live public pages
-    verified          297   hovered, computed, matches the declaration
-    OVERRIDDEN        113   all same-element seed collisions: the sweep sets two
-                            hover controls that write the SAME property on the
-                            same node (hover_size vs hover_bg_width), and one of
-                            two deliberately different values must lose
-    no-target-node  2,292   hover branches whose node needs content or state
-    not-comparable  1,180   values the browser normalises
-```
+**7. ワークフローはエンドツーエンドで成立するのか?**
 
+以下はそれぞれヘッドレスで構築し、その後ライブサイト上のブラウザで検証した:
 
-**7. 一般の訪問者が受け取るページを検証する。** ここまでのすべては、マシンの内側にあるアーティファクトを
-読んでいます — サーバのディスク上の CSS ファイル、PHP 呼び出しから出てきた HTML。**そのどれも、訪問者が
-受け取るものではありません。** テーマ、ページキャッシュ、Varnish、そして CDN がすべてあいだに挟まっており、
-どれもが別のものを配信しうるのに、サーバ側のチェックはすべてグリーンのままです。これは罠 9 を、もう
-1 層外側に押し出したものです。
+- **Global colors**:Kit の `custom_colors` に色を追加し、`__globals__` 経由で
+  参照すると、computed でちょうどその色になる
+- **Dynamic tags**:`post-title` バインディングが投稿の実際のタイトルを届ける
+- **Display conditions**:`logged_in` 条件付きの要素は匿名の HTML から欠落
+  する — CSS で隠されるのではなく、サーバーサイドでドロップされる
+- **Theme Builder**:1 ページにスコープしたヘッダーは、そのページでだけ
+  レンダリングされ、他のどこにも現れない
+- **Popups**:`page_load` トリガーのポップアップが匿名ブラウザで開く
+- **Loop Builder**:loop-item テンプレート + loop-grid が実在する 3 投稿を
+  レンダリングする
+- **Forms**:匿名での入力 → nonce → データベース行 → カスタム成功メッセージ
+- **Canvas**:`template: elementor_canvas` がテーマのクロームを落とす
+  (ページ設定だけでは届かない `_wp_page_template` 経由で)
+- **Templates**:Elementor 自身の JSON フォーマットでエクスポート/インポート、
+  メディアは Elementor 自身のフックで再ホストされる
+
+**8. 一般公開されるページに、その全部が入っているのか?**
 
 ```bash
 python tools/verify-live.py examples/demo-page.json https://moksaweb.com/elementor-headless-demo/
 ```
 
-```
-GET https://moksaweb.com/elementor-headless-demo/
-    113,397 bytes   x-cache=HIT  age=200
-GET .../elementor/css/post-11.css      1,238 bytes     <- the Kit's globals
-GET .../elementor/css/post-9176.css    5,411 bytes     <- the page
-GET .../elementor/css/post-47.css      9,009 bytes
-GET .../elementor/css/post-52.css     18,470 bytes
-    -> 4 stylesheet(s), 34,131 bytes total
+公開 URL と、**そのページがリンクするすべてのスタイルシート**(ページの
+スタイルは複数ファイルに分かれている — Kit のグローバルは別ファイルにある)を
+エッジキャッシュ越しに取得し、ツリー + CSS 値 + ラッパークラスをアサート
+する。改ざんされたツリーに対しては fail する — 一度も赤くなったことのない
+ベリファイアは、ベリファイアではない。
 
-elements delivered      : 8/8
-CSS properties delivered: 94  (across 46 settings)
-  value-exact           : 43  (the exact value this tree asks for is in the delivered CSS)
-  property only         : 3  (Elementor rewrites the value; the sweep already proved which)
-wrapper-class assertions: 17 passed
-not assertable          : 24 settings drive neither CSS nor a class
-
-PASS - the page a visitor receives contains every element of the tree,
-       the stylesheet it links carries every property the schema promised,
-       and every wrapper carries the classes it should.
-```
-
-スタイルシートが 4 つあることに注目してください。**ページのスタイリングは複数のファイルに分割されます** —
-Kit がグローバルな色とフォントを、ページが自分自身の分を持ちます。ここにある他の検証ツールはどれも、
-ディスク上の単一の `post-<id>.css` を読んでおり、それは構造的に不完全な絵です。こちらは、ページが実際に
-*リンクしている*ものを、キャッシュ越しに（`x-cache=HIT`）読みます。訪問者が「動いている」と認めるであろう
-定義は、それだけです。
-
-**8. 実物を見る。** `examples/demo-page.json` は、このスキルだけで構築された実在の公開ページです。
-Elementor エディタは一度も開かれていません。
-
+デモページは実在し、公開済みで、エディタでは一度も開かれていない:
 **https://moksaweb.com/elementor-headless-demo/**
 
-## ページ間・サイト間でブロックを再利用する
+## 罠
 
-Elementor 自身の JSON 交換フォーマット — エディタの Export / Import Template ボタンの裏側にある
-ファイルです。
+これを素朴なやり方でやると、**番号付きで 11 通り**間違える — どれもこの
+リポジトリで実際に出荷されてから捕まったもので、いまはそれぞれカナリア、
+バリデータのルール、あるいはデータフィールドになっている。詳細は
+[extraction-traps.md](references/extraction-traps.md):
 
-```bash
-wp eval-file tools/export-template.php <post_id> > hero-block.json
-wp --user=1 eval-file tools/import-template.php hero-block.json <target_post_id>
-```
+1. WP-CLI には削ぎ落とされたコントロールスタックが渡る — 46% のコントロールが黙って消える
+2. レスポンシブは 2 つの仕組みでできている。`padding_tablet` にはコントロールオブジェクトが無いのに動く
+3. コントロールの tier はウィジェットの tier ではない — Pro は無料ウィジェットに注入する
+4. コントロールのゲートは 3 通りある。499 個のコントロールは空の補間値で死ぬ
+5. レスポンシブの依存関係はブレークポイントごとに再チェックされる
+6. `is_responsive` は過剰に約束する — 本当のことはレンダリングだけが知っている
+7. CSS はコントロールにできることの半分にすぎない — 2,573 個は代わりにクラスを出す
+8. class の値はリマップされ、そのデバイスプレフィックスは別の文字列になる
+9. `_elementor_data` を書くと古いレンダリング済み HTML キャッシュが残る — 正しいツリーが前のページを配信し、17k コントロールのスイープがその上を green で走った
+10. ウィジェットサーフェスは Elementor ではなくインストールのプロパティ
+11. ルールはスタイルシートの中にあっても負けることがある — それが見えるのはブラウザだけ
 
-**`_elementor_data` をコピーしてサイト間でブロックを移動させては絶対にいけません。** メディア系の
-コントロールは添付ファイルの id を保存しており、その id は移動先のサイトでは*別の画像*を指します —
-あるいは何も指しません。Elementor の `on_export` は id を url に置き換え、`on_import` はそれを
-移動先のメディアライブラリへ再ダウンロードします。生の meta をコピーすれば、画像は黙って壊れるか、
-黙って別の画像に化けます。ここで提供するツールは Elementor 自身のインポート経路を呼び出し、これらの
-フックを確実に通します。ラウンドトリップの計測結果は、記述した設定 82 件、失われたもの 0、
-変化したもの 0。
+加えて、それぞれの現場で文書化されている罠がある。Canvas の `template` 設定は
+ページ設定ではなく `_wp_page_template` に保存される。ライブラリテンプレートには
+`elementor_library_type` **タクソノミー**と conditions の**キャッシュ**が必要で、
+無ければ Theme Builder は永遠にそれを見ない。`theme-*` ウィジェットは挿入時に
+エディタから動的バインディングをもらうので、ヘッドレスのツリーでは
+`__dynamic__` を自分で書く。WP レガシーブリッジはすべてを `settings.wp` の
+下に取る。`e_display_conditions` は JSON **文字列**を包む配列であり、
+ドキュメントがかつて示していた裸の配列は、問題なく保存された上で黙って
+無視される。
 
 ## 同梱物
 
 ```
 data/
-  elementor-schema.json    3.2 MB   オーサリング面の全体 - クエリするもので、読み込むものではない
-  controls.csv             2.0 MB   ウィジェット/エレメント固有のコントロール全件
-  common-controls.csv       39 KB   全ウィジェットが共有する 210 個
-  pro-only-controls.csv     33 KB   安全確認用テーブル
-  pro-only-widgets.csv     3.0 KB
-  control-types.csv        4.6 KB   59 種類すべての JSON 値の形
-  group-controls.csv       3.7 KB   16 グループと、それが展開されるフラットキー
-  widgets.csv              8.3 KB   135 ウィジェット + 3 エレメント
-  breakpoints.csv          0.2 KB
-  control-verification.csv          コントロール単位: 主張どおりの CSS を出力するか?
-  class-verification.csv            コントロール単位: 主張どおりのクラスを出力するか?
-  browser-verification*.csv         コントロール単位: Chromium はそれを算出するか? (2 サイト)
-  widget-verification.csv           ウィジェット単位: コンテンツをレンダリングするか? (168)
-  hover-verification.csv            :hover ルール単位、実際のポインタで駆動
-  dynamic-tags.csv                  __dynamic__ の表面、51 タグ
-  css-selectors.csv                 各コントロールの CSS が実際にどのノードに着地するか
-  token-benchmark.csv               再現可能なトークンとレイテンシの計測結果
+  elementor-schema.json      the full surface - queried, never loaded
+  controls.csv               every (owner, control) pair, greppable
+  common-controls.csv        the 211 shared by every classic widget
+  pro-only-controls.csv      the safety table       pro-only-widgets.csv
+  control-types.csv          all value shapes       group-controls.csv
+  widgets.csv                incl. per-widget requirements
+  dynamic-tags.csv           the __dynamic__ surface, 51 tags
+  css-selectors.csv          which node each control's CSS actually lands on
+  control-verification.csv   per-control: does it emit the CSS it claims?
+  class-verification.csv     per-control: does it emit the CLASS it claims?
+  browser-verification*.csv  per-control: does Chromium COMPUTE it? (2 sites)
+  widget-verification.csv    per-widget: does it render its content? (168)
+  hover-verification.csv     per :hover rule, driven by a real pointer
+  token-benchmark.csv        reproducible token AND latency measurements
 
 tools/
-  el.py                          スキーマにクエリする - 正面入口
-  validate-page.py               ページツリーの事前チェック
-  apply-page.php                 書き込む: meta + CSS 再構築 + HTML キャッシュ + バックアップ
-  extract-elementor-schema.php   稼働中のインストールをダンプする
-  build-indexes.py               ダンプ + スイープ結果 -> 同梱データファイル
-  verify-schema.py               スキーマはあなたのインストールと一致するか?
-  verify-render.py               Elementor はスキーマが約束したものを出力するか?
-  verify-live.py                 CDN 越しの公開ページに、それは載っているか?
-  verify-browser.py              実際の Chromium は、正しいノードでそれを算出するか?
-  verify-interactions.py         タブは切り替わり、アコーディオンは開き、カルーセルは進むか?
-  sweep-controls.py              CSS 系コントロールを全件レンダリングし、スタイルシートをアサートする
-  sweep-classes.py               クラス系コントロールを全件レンダリングし、HTML をアサートする
-  sweep-browser.py               宣言値と算出値の突き合わせ、全コントロール、Chromium 上で
-  sweep-widgets.py               全ウィジェットを機能として、1 ページ 1 つ、スクリーンショット付き
-  sweep-hover.py                 :hover ルール全件、実際のポインタで駆動
-  export-template.php            Elementor 自身の JSON 形式でエクスポートする
-  import-template.php            Elementor 自身の経路で、メディアごとインポートする
-  benchmark-tokens.py            トークン数値を再現する
-  install-skill.py               8 プラットフォーム対応インストーラ
+  el.py                      query the schema - the front door
+  validate-page.py           pre-flight a tree, incl. what the target site can have
+  apply-page.php             meta + page settings + CSS rebuild + HTML-cache purge
+  extract-elementor-schema.php   dump a live install (3 canaries)
+  build-indexes.py           dumps + sweep results -> shipped data
+  verify-schema.py           does the schema match your install?
+  verify-render.py           does Elementor emit what was promised?
+  verify-live.py             does the PUBLIC page have it, through the CDN?
+  verify-browser.py          does Chromium COMPUTE it, on the right node?
+  verify-interactions.py     do tabs switch, accordions open, carousels advance?
+  sweep-controls.py          every CSS control, delivered stylesheet
+  sweep-classes.py           every CLASS control, delivered HTML
+  sweep-browser.py           declared vs computed, every control, in Chromium
+  sweep-widgets.py           every widget functionally, one per page, screenshots
+  sweep-hover.py             every :hover rule, real pointer
+  sweep-frontend.sh          capture what the public URL actually serves, per batch
+  export-template.php        Elementor's own JSON format out
+  import-template.php        and back in, media handled by Elementor's own hooks
+  benchmark-tokens.py        reproduce the token and time numbers
+  install-skill.py           8-platform installer, prunes stale files
 
 references/   data-model · control-types · containers-and-layout · responsive
               templates-and-conditions · import-export · extraction-traps
-              token-efficiency
-examples/     demo-page.json - 上記の公開ページ
+              token-efficiency · multiplatform-install-verification
+examples/     demo-page.json - the published proof page
 ```
 
-## 9 つの罠
+## 正直な限界
 
-これを素朴にやると、9 つの別々のかたちで間違えます。どれも、完全に見えて嘘をつくスキルを生みます。
-**9 つとも、発覚する前にこのリポジトリで実際に出荷されました** — いくつかは Elementor のソースを
-読んで、残りはすべてのコントロールをレンダリングして出てきたものを見て、初めて分かりました。詳細は
-[extraction-traps.md](references/extraction-traps.md) に。
+- **Elementor V4 アトミック要素**:クエリのみ。構築は別のデータモデルで、
+  このスキルはまだそれを書けない。
+- **コンテキスト依存のウィジェット**(カート、チェックアウト、投稿コメント、
+  商品パーツ)は、素のページ上では「正しく空」として検証される。完全な挙動には
+  ストアや投稿のコンテキストが必要で、スイープはそれを捏造しない。
+- **バージョン固定**:ここにある数字はすべて Elementor 4.1.4 / Pro 4.1.2 で
+  計測したものだ。新しいバージョンはそのどれでも無効化しうる — だからこそ
+  すべてのベリファイアを同梱し、*あなたの*インストールに対して再実行できる
+  ようにしてある。
+- `page_load` 以外のポップアップトリガー、`save-to-database` 以外のフォーム
+  アクション、サードパーティ製アドオンのウィジェットは、抽出はされているが
+  E2E 検証はしていない。
 
-1. **WP-CLI は Elementor からはフロントエンドに見える**ため、痩せたコントロールスタックが返ってきます。
-   **コントロールの 46%、そしてタブ/ラベルのメタデータのほぼ 100% が消え**、しかもエラーは出ません。
-   抽出ツールはこの経路を無効化し、劣化したデータを出力するくらいなら中断する 3 つのカナリアを備えています。
-2. **レスポンシブは 2 つの機構**であり、素直なテストでは片方しか見つかりません。`padding_tablet` という
-   コントロールオブジェクトは*どこにも存在しません* — それでも `padding_tablet` は動きます。
-   サフィックス付きの兄弟を探してレスポンシブを検出する方法では、padding、margin、width、font size、
-   gap を取りこぼしていました。（修正後、コントロールの 9.8% → 30.1%。）
-3. **コントロールのティアは、そのウィジェットのティアではありません。** Pro が無料ウィジェットに
-   注入するからです。継承ではなく、計測。
-4. **コントロールのゲートのかかり方は 3 通りあり**、`condition` はそのうちの 1 つにすぎません。
-   152 個のコントロールは、独自の演算子を持つ高度なブール形式によって*のみ*ゲートされています。
-   さらに 499 個のコントロールは、*別の*コントロールの値を自分の CSS に補間します — その別の値が
-   空だと、Elementor は宣言全体を捨てます。文書化された条件はすべて満たされていて、エラーも出ないのに、
-   です。グラデーションの色を指定せずにグラデーションの角度だけ設定すれば、何も出てきません。黙って。
-5. **レスポンシブコントロールの依存関係は、ブレークポイントで再チェックされます。** `X_tablet` を
-   設定して `Y_tablet` を設定しなければ、デスクトップは完璧に描画され、タブレットは黙って空になります。
-   1,433 個のレスポンシブサフィックスが、まさにこの理由で何も出力していませんでした。
-6. **`is_responsive` は過大な約束をします。** `hotspot.width` は `container.padding` と同じフラグを
-   持っています。`padding_tablet` は動き、`width_tablet` は何も出力しません。知っているのはレンダリング
-   だけです — だからスイープはその結果を折り返し、スキーマを訂正します。
-7. **CSS はコントロールができることの半分にすぎません。** 2,573 個のコントロールはラッパーに
-   **クラス**を付けることで作用し、そのうち 1,894 個は CSS を一切出力しません — つまりスタイルシートの
-   スイープは、どれだけグリーンで走ろうと、それらの存在すら見ることができません。ここではその全部が
-   「Elementor が `prefix_class` を登録しているのだから、おそらく動くだろう」という根拠だけで出荷されて
-   いました。
-8. **クラス系コントロールの値は読み替えられ、prefix はデバイスごとに変わります。**
-   `position: "top"` はオプションリストに存在しないのに `elementor-position-block-start` を
-   レンダリングします（`classes_dictionary`）。`position_tablet` は
-   `elementor-**tablet**-position-…` をレンダリングするのであって、クラスに `_tablet` サフィックスが
-   付くのではありません。switcher は `return_value` を保存するので、`hide_tablet: "yes"` は
-   `elementor-yes` をレンダリングし、何も隠しません。そして `"columns": 0` は何も出力せず、
-   `"columns": "0"` は動きます。
-9. **`_elementor_data` を書き込むと、古いレンダリング済み HTML キャッシュが残ります。** 投稿は更新され、
-   CSS は再構築され、meta を読み戻せば完全に正しい — それでもページは**以前のマークアップ**を、永遠に、
-   エラーも出さずに返し続けます。17,421 個のコントロールを通す CSS スイープが、このバグが生きたまま
-   グリーンで走りました。CSS は常に再構築される別ファイルだからです。
+## あなたのインストール向けに再生成する
 
-罠 9 は、このプロジェクトの主張そのものを 1 行で表しています。**検証ツールは、自分が読むチャネルの
-バグしか見つけられません。** あるチャネルでグリーンだったことは、他のチャネルについて何も語りません。
+```bash
+# three dumps, ONE axis changing at a time - see CLAUDE.md for why this matters
+wp --skip-plugins="<all but elementor,elementor-pro,woocommerce>" eval-file tools/extract-elementor-schema.php core+pro > iso-woo.json
+wp --skip-plugins="<all but elementor,woocommerce>"               eval-file tools/extract-elementor-schema.php core+pro > iso-free-woo.json
+wp --skip-plugins="<all but elementor,elementor-pro>"             eval-file tools/extract-elementor-schema.php core+pro > iso-pro.json
+
+python tools/build-indexes.py iso-woo.json --free-dump iso-free-woo.json \
+    --gated-dump woocommerce=iso-pro.json \
+    --verification data/control-verification.csv \
+    --class-verification data/class-verification.csv --out data/
+python tools/verify-schema.py iso-woo.json --free-dump iso-free-woo.json   # must exit 0
+```
+
+## ブロックをページ間・サイト間で再利用する
+
+```bash
+wp eval-file tools/export-template.php <post_id> > hero-block.json
+wp --user=1 eval-file tools/import-template.php hero-block.json
+```
+
+`_elementor_data` のコピーでブロックをサイト間移動してはいけない。メディア系
+コントロールが保存しているのは添付ファイルの **id** であり、id は別のサイト
+では別の画像を意味する。これらのツールは Elementor 自身のインポート経路を
+通るので、`on_import` フックがメディアを再ダウンロードしてくれる。さらに
+`[elementor-template id="123"]` は、保存済みテンプレートを任意の WordPress
+コンテンツに埋め込める — 無料の shortcode ウィジェット経由で、Pro なしに
+ブロックをページへネストすることも含めてだ。
 
 ## コントリビュート
 
-より新しい Elementor に対して再抽出し、再生成した `data/` を添えて PR を送ってください —
-`verify-schema.py` が、何が変わったかを正確に教えてくれます。
+より新しい Elementor に対して再抽出し、再生成した `data/` で PR を開いて
+ほしい — 何が変わったかは `verify-schema.py` が正確に教えてくれる。
 [CONTRIBUTING.md](CONTRIBUTING.md) を参照。
 
 ## ライセンス
 
-MIT。制作・保守: **moksa** · [moksaweb.com](https://moksaweb.com)
+MIT。**moksa** · [moksaweb.com](https://moksaweb.com) が構築・保守。
 
-姉妹スキル: [rankmath-seo-wp](https://github.com/moksa1123/rankmath-seo-wp)
+姉妹スキル:[rankmath-seo-wp](https://github.com/moksa1123/rankmath-seo-wp)
