@@ -33,7 +33,15 @@ CSS      25,259 CSS-driving controls   99.4% swept, 0 failures   (the delivered 
 CLASS     3,308 wrapper-class controls 98.2% swept, 0 failures   (the delivered HTML)
 BROWSER  32,261 computed-style probes  6,177 verified in Chromium (getComputedStyle on
                                        the node each rule targets, on the public URL)
+WIDGETS  168 of 168 placeable widgets  functionally rendered, ONE PER PAGE, across two
+                                       live sites: content markers echoed, element
+                                       screenshot, 3 viewports, JS errors attributed
 ```
+
+Per-widget results in `data/widget-verification.csv`: 126 rendered with content or
+markers, 38 correctly empty without site context (cart/checkout/loop widgets on a
+bare page), 4 context-dependent, 0 broken. The remaining 18 V4 atomic elements are
+a different data model and excluded by design; 6 registry entries are not placeable.
 
 The browser pass is the only one that catches a rule that is IN the stylesheet and
 LOSES - and it found one that is systemic: **`_element_width` / `_element_custom_width`

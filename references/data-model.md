@@ -124,6 +124,21 @@ renders), and a conditioned element makes the page dynamic - Elementor's own cac
 layer flags it (`cache-notice.php`), but external page caches will happily serve
 the wrong variant.
 
+## WP legacy-widget bridges: everything lives under `settings.wp`
+
+The `wp-widget-*` widgets wrap classic WordPress widgets, and their settings are
+NOT flat controls - the whole classic-widget instance array sits under one key:
+
+```jsonc
+{ "elType": "widget", "widgetType": "wp-widget-text",
+  "settings": { "wp": { "title": "Hello", "text": "..." } }, "elements": [] }
+```
+
+`wordpress.php` hands `get_settings( 'wp' )` straight to the WP widget's own
+`widget()` method, so the keys inside are whatever THAT widget's form saves -
+Elementor knows nothing about them. Seed flat controls and the bridge renders
+nothing.
+
 ## Nested widgets: the one place a widget has children
 
 `nested-tabs`, `nested-accordion`, `mega-menu` (all gated on the `nested-elements`

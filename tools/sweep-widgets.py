@@ -58,7 +58,9 @@ TEXTISH = {"text", "textarea", "wysiwyg"}
 
 # Widgets whose emptiness IS the correct render outside a post/comment context.
 # Saying "EMPTY" about them is a statement about the TEST PAGE, not the widget.
-CONTEXTUAL = {"read-more", "post-comments"}
+CONTEXTUAL = {"read-more", "post-comments", "wp-widget-text"}
+# Product widgets render empty outside a product page - correctly.
+CONTEXT_PREFIX = ("woocommerce-product-", "wc-single-")
 # Renders nothing visible by design until user interaction opens it.
 HIDDEN_BY_DESIGN = {"off-canvas", "popup"}
 # Renders empty space ON PURPOSE; size is the whole assertion.
@@ -102,10 +104,30 @@ def seed_widget(widget: str, controls: dict) -> tuple[dict, list[str]]:
     """
     settings: dict = {}
     markers: list[str] = []
+
+    def condition_met_by_defaults(cond: dict) -> bool:
+        """
+        Seed a conditioned control when its condition is ALREADY satisfied by the
+        defaults. The Pro gallery's image source is `gallery`, conditioned on
+        `gallery_type: single` - which is the default. Skipping every conditioned
+        control left the widget with no images and scored it NOT-IN-DOM, a
+        statement about the seeder, not the widget.
+        """
+        for dep, want in cond.items():
+            if dep.endswith("!") or "[" in dep:
+                return False               # negations/sub-keys: leave to the CSS sweep
+            have = controls.get(dep, {}).get("default", "")
+            wants = want if isinstance(want, list) else [want]
+            if not any(str(have) == str(x) for x in wants):
+                return False
+        return True
+
     for c in controls.values():
         if c.get("tab") not in (None, "content"):
             continue
-        if c.get("condition") or c.get("conditions"):
+        if c.get("conditions"):
+            continue
+        if c.get("condition") and not condition_met_by_defaults(c["condition"]):
             continue                       # do not fight dependency chains here
         name, t = c["name"], c.get("type")
         if t in TEXTISH:
@@ -300,6 +322,7 @@ def cmd_check(a) -> int:
                               and (r_.get("h", 0) or 0) > 60
                               else "rendered-DEFAULTS-ONLY" if r_["contentful"]
                               else "needs-post-context" if name in CONTEXTUAL
+                              or name.startswith(CONTEXT_PREFIX)
                               else "EMPTY")
                 elif r_["contentful"] or r_.get("media_used"):
                     status = "rendered"
@@ -309,7 +332,9 @@ def cmd_check(a) -> int:
                               else "EMPTY")
                 if (status.startswith("rendered") and name not in HIDDEN_BY_DESIGN
                         and r_.get("w", 0) == 0 and r_.get("h", 0) == 0):
-                    status = "ZERO-SIZE"
+                    status = ("needs-post-context"
+                              if name in CONTEXTUAL or name.startswith(CONTEXT_PREFIX)
+                              else "ZERO-SIZE")
 
                 shot = ""
                 if r_.get("present") and a.shots:
