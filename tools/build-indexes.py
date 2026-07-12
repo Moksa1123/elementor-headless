@@ -145,12 +145,46 @@ def tier_map(raw: dict, free: dict | None) -> dict:
     return tiers
 
 
+def load_verification(path: Path | None) -> dict:
+    """
+    Fold the render sweep's results back into the schema.
+
+    The extractor can only report what Elementor *claims*. The sweep reports what
+    Elementor *does*. Where they disagree, the sweep wins, because it wrote the
+    value into a real page and read the compiled CSS back.
+
+    The clearest case is responsiveness. `hotspot.width` carries
+    `is_responsive: true`, exactly like `container.padding` — but writing
+    `width_tablet` emits nothing, verified in isolation with no other settings on
+    the element. The flag over-promises. Left alone, the schema would keep telling
+    people to write a key that silently does nothing, which is the precise failure
+    this whole project exists to prevent.
+    """
+    if not path:
+        return {}
+    out: dict = {}
+    with path.open(encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            key = (r["owner"], r["control"].rsplit("_", 1)[0] if r.get("device") else r["control"])
+            e = out.setdefault(key, {"rwd_ok": set(), "rwd_bad": set()})
+            if r.get("device"):
+                (e["rwd_ok"] if r["status"] in ("verified", "property")
+                 else e["rwd_bad"]).add(r["device"])
+            else:
+                e["status"] = r["status"]
+    return out
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("raw", help="raw dump from extract-elementor-schema.php (Pro active)")
     ap.add_argument("--free-dump",
                     help="second dump taken with `wp --skip-plugins=elementor-pro`. "
                          "Without it, control tiers are marked 'unknown' rather than guessed.")
+    ap.add_argument("--verification",
+                    help="control-verification.csv from sweep-controls.py. Folds the "
+                         "RENDERED result back in, so the schema stops claiming a control "
+                         "or a breakpoint works when it demonstrably does not.")
     ap.add_argument("--out", default="data", help="output directory (default: data)")
     args = ap.parse_args()
 
@@ -179,8 +213,59 @@ def main() -> int:
     # widget is trivially "pro" (the widget itself needs Pro), so `_margin`
     # would read as pro on the Posts widget and free on Heading, and the shared
     # set would shatter into per-widget copies.
+    #
+    # The verification results ARE stamped before it, deliberately: a control that
+    # renders on one widget and not another is not the same control, and the shared
+    # set should not pretend otherwise.
+    verif = load_verification(Path(args.verification) if args.verification else None)
+    n_broken_rwd = 0
+    for owner, w in {**elements, **widgets}.items():
+        for c in w["controls"]:
+            v = verif.get((owner, c["name"]))
+            if not v:
+                continue
+            if v.get("status"):
+                c["verified"] = v["status"]
+            claimed = set(c.get("responsive") or [])
+            if claimed and (v["rwd_ok"] or v["rwd_bad"]):
+                broken = sorted(claimed & v["rwd_bad"])
+                if broken:
+                    # Elementor's `is_responsive` says the suffix is legal.
+                    # Rendering says it emits nothing. Rendering wins.
+                    c["responsive_broken"] = broken
+                    n_broken_rwd += 1
+                c["responsive_verified"] = sorted(claimed & v["rwd_ok"])
+
     common, common_missing = compute_common(widgets)
     common_names = {c["name"] for c in common}
+
+    # DEAD CONDITIONS. A control whose `condition` names a control that this widget
+    # does not register can never become visible, because
+    # controls-stack.php::is_control_visible bails at
+    #
+    #     if ( ! isset( $values[ $pure_condition_key ] ) ) { return false; }
+    #
+    # The button widget is the clearest case: its Background group excludes the
+    # `image` field, yet background_attachment / _repeat / _size / _position are
+    # still registered conditioned on `background_image[url]!`. In the editor they
+    # are inert - there is no way to satisfy them.
+    #
+    # Writing the data directly, there is: put the missing key in `settings`
+    # yourself and isset() becomes true. Verified on a live install (A/B: without
+    # the key, nothing; with it, background-attachment/repeat/size all emit).
+    #
+    # So these are flagged rather than hidden: `dead_dep` lists the missing
+    # control(s), and el.py / validate-page.py tell you what to write to revive it.
+    for owner, w in {**elements, **widgets}.items():
+        own = {c["name"] for c in w["controls"]}
+        for c in w["controls"]:
+            missing = []
+            for dep in (c.get("condition") or {}):
+                key = dep.split("[")[0].rstrip("!")
+                if key not in own:
+                    missing.append(key)
+            if missing:
+                c["dead_dep"] = sorted(set(missing))
 
     tiers = tier_map(raw, free)
 
@@ -411,6 +496,22 @@ def main() -> int:
     print(f"  control types  {len(raw['control_types'])}")
     print(f"  group controls {len(raw['group_controls'])}")
     print()
+    if verif:
+        vc = sum(1 for w in {**elements, **slim_widgets}.values()
+                 for c in w["controls"] if c.get("verified"))
+        print(f"  RENDER-VERIFIED (folded back in from the sweep):")
+        print(f"    controls with a rendered result   {vc:,}")
+        print(f"    controls whose responsive suffix  {n_broken_rwd:,}  <- `is_responsive` promises")
+        print(f"      is claimed but emits NOTHING            a breakpoint Elementor never renders")
+        print()
+    else:
+        print("  NOTE: no --verification given, so the schema records what Elementor")
+        print("        CLAIMS, not what it was seen to do. Run the sweep and rebuild:")
+        print("        python tools/sweep-controls.py plan ... && bash sweep/RUN.sh")
+        print("        python tools/sweep-controls.py check sweep/ --out data/control-verification.csv")
+        print("        python tools/build-indexes.py raw.json --free-dump free.json \\")
+        print("               --verification data/control-verification.csv --out data/")
+        print()
     if free:
         all_ctrls = [c for w in {**elements, **slim_widgets}.values() for c in w["controls"]] + common
         n_pro = sum(1 for c in all_ctrls if c.get("tier") == "pro")

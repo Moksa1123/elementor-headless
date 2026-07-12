@@ -188,13 +188,29 @@ python tools/sweep-controls.py check sweep/ --out data/control-verification.csv
 ```
 
 ```
-controls asserted     16,778
-  verified by value   15,508  (92.4%)   the exact value we wrote is in the CSS
-  property only        1,270  ( 7.6%)   right property, value not literally assertable
+DESKTOP  (18,853 CSS-driving controls)
+  verified by value   17,421  (92.4%)   the exact value we wrote is in the CSS
+  property only        1,270  ( 6.7%)   right property, value not literally assertable
   FAILED                   0  ( 0.0%)
+  skipped, untested      162  ( 0.9%)   no test could be built for these
+  covered                      99.1%
+
+RESPONSIVE SUFFIXES  (25,404 _tablet / _mobile keys, each asserted inside ITS
+                      breakpoint's media query, with a value distinct from
+                      desktop's, so a leak cannot pass)
+  verified by value   24,568  (96.7%)
+  FAILED                  17  ( 0.1%)
 ```
 
-Per-control results ship in `data/control-verification.csv`.
+Per-control results ship in `data/control-verification.csv` - including the
+`skipped` ones, so the coverage number can never be read without them.
+
+**And the sweep corrects the extractor.** `build-indexes.py --verification` folds
+the rendered result back into the schema: 9 controls advertise a responsive
+breakpoint they never emit (`hotspot.width_tablet` produces no CSS at all, verified
+in isolation). They are now flagged `responsive_broken`, `el.py` prints
+`rwd-BROKEN:`, and `validate-page.py` errors if you write one. Without rendering,
+all 9 would still be in the schema as working responsive controls.
 
 **4. Look at it.** `examples/demo-page.json` is a real published page, built with
 nothing but this skill. The Elementor editor has never been opened on it.
@@ -255,11 +271,13 @@ references/   data-model · control-types · containers-and-layout · responsive
 examples/     demo-page.json - the published page above
 ```
 
-## The four traps
+## The six traps
 
-The naive way to extract this data is wrong in four separate ways, each producing a
-schema that looks complete and lies. All four were shipped in this repo before being
-caught. Write-ups in [extraction-traps.md](references/extraction-traps.md):
+The naive way to extract this data is wrong in six separate ways, each producing a
+schema that looks complete and lies. All six were shipped in this repo before being
+caught - three found by reading Elementor's source, three only by rendering every
+control and looking. Write-ups in
+[extraction-traps.md](references/extraction-traps.md):
 
 1. **WP-CLI looks like the front end to Elementor**, so it hands back the lean
    control stack: **46% of controls and ~100% of tab/label metadata vanish**, with

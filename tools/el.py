@@ -73,7 +73,15 @@ def fmt_control(c: dict, indent: str = "  ") -> str:
     mark = "PRO " if c.get("tier") == "pro" else "    "
     bits = [f"{indent}{mark}{c['name']:<30} {c['type']:<14}"]
     if c.get("responsive"):
-        bits.append("rwd:" + ",".join(c["responsive"]))
+        # `responsive` is what Elementor's is_responsive flag CLAIMS.
+        # `responsive_broken` is what rendering the page proved it does not do.
+        broken = c.get("responsive_broken") or []
+        works = [d for d in c["responsive"] if d not in broken]
+        if works:
+            bits.append("rwd:" + ",".join(works))
+        if broken:
+            bits.append("rwd-BROKEN:" + ",".join(broken)
+                        + " (Elementor claims the suffix; it emits nothing)")
     if c.get("options"):
         o = c["options"]
         if isinstance(o, dict) and "__truncated__" in o:

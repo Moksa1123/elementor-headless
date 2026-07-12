@@ -955,6 +955,7 @@ accordion,content_typography_word_spacing,slider,style,section_toggle_style_cont
 accordion,content_shadow_text_shadow_type,popover_toggle,style,section_toggle_style_content,,free,free,,,,,Text Shadow
 accordion,content_shadow_text_shadow,text_shadow,style,section_toggle_style_content,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""color"":""rgba(0,0,0,0.3)""}",,"{""content_shadow_text_shadow_type!"":""""}",text-shadow,Text Shadow
 accordion,content_padding,dimensions,style,section_toggle_style_content,mobile|tablet,free,free,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,,padding,Padding
+accordion,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 alert,alert_type,select,content,section_alert,,free,free,info,"[""info"",""success"",""warning"",""danger""]",,,Type
 alert,alert_title,text,content,section_alert,,free,free,This is an Alert,,,,Title
 alert,alert_description,textarea,content,section_alert,,free,free,I am a description. Click the edit button to change this text.,,,,Content
@@ -995,6 +996,7 @@ alert,dismiss_icon_horizontal_position,slider,style,section_dismiss_icon,mobile|
 alert,dismiss_icon_normal_color,color,style,section_dismiss_icon,,free,free,,,"{""show_dismiss"":""show""}",--dismiss-icon-normal-color,Color
 alert,dismiss_icon_hover_color,color,style,section_dismiss_icon,,free,free,,,"{""show_dismiss"":""show""}",--dismiss-icon-hover-color,Color
 alert,dismiss_icon_hover_transition_duration,slider,style,section_dismiss_icon,,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""show_dismiss"":""show""}",--dismiss-icon-hover-transition-duration,Transition Duration (s)
+alert,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 animated-headline,headline_style,select,content,text_elements,,pro,pro,highlight,"[""highlight"",""rotate""]",,,Animation Style
 animated-headline,animation_type,select,content,text_elements,,pro,pro,typing,"[""typing"",""clip"",""flip"",""swirl"",""blinds"",""drop-in"",""wave"",""slide"",""slide-down""]","{""headline_style"":""rotate""}",,Animation Type
 animated-headline,marker,select,content,text_elements,,pro,pro,circle,"[""circle"",""curly"",""underline"",""double"",""double_underline"",""underline_zigzag"",""diagonal"",""strikethrough"",""x""]","{""headline_style"":""highlight""}",,Animation Shape
@@ -1048,6 +1050,7 @@ animated-headline,marker_color,color,style,section_style_text,,pro,pro,,,"{""hea
 animated-headline,stroke_width,slider,style,section_style_text,,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""headline_style"":""highlight""}",stroke-width,Width
 animated-headline,above_content,switcher,style,section_style_text,,pro,pro,,,"{""headline_style"":""highlight""}",z-index,Bring to Front
 animated-headline,rounded_edges,switcher,style,section_style_text,,pro,pro,,,"{""headline_style"":""highlight""}",stroke-linecap|stroke-linejoin,Rounded Edges
+animated-headline,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 archive-posts,_skin,select,content,section_layout,,pro,pro,archive_classic,"[""archive_classic"",""archive_cards"",""archive_full_content""]",,,Skin
 archive-posts,archive_classic_columns,select,content,section_layout,mobile|tablet,pro,pro,3,"[1,2,3,4,5,6]","{""_skin"":""archive_classic""}",,Columns
 archive-posts,archive_classic_thumbnail,select,content,section_layout,,pro,pro,top,"[""top"",""left"",""right"",""none""]","{""_skin"":""archive_classic""}",,Image Position
@@ -1486,6 +1489,7 @@ archive-posts,nothing_found_typography_text_decoration,select,style,section_noth
 archive-posts,nothing_found_typography_line_height,slider,style,section_nothing_found_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""nothing_found_message!"":"""",""nothing_found_typography_typography!"":""""}",line-height,Line Height
 archive-posts,nothing_found_typography_letter_spacing,slider,style,section_nothing_found_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""nothing_found_message!"":"""",""nothing_found_typography_typography!"":""""}",letter-spacing,Letter Spacing
 archive-posts,nothing_found_typography_word_spacing,slider,style,section_nothing_found_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""nothing_found_message!"":"""",""nothing_found_typography_typography!"":""""}",word-spacing,Word Spacing
+archive-posts,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 audio,link,url,content,section_audio,,free,free,"{""url"":""https://soundcloud.com/shchxango/john-coltrane-1963-my-favorite"",""is_external"":"""",""nofollow"":"""",""custom_attributes"":""""}",,,,Link
 audio,visual,select,content,section_audio,,free,free,no,"[""yes"",""no""]",,,Visual Player
 audio,sc_auto_play,switcher,content,section_audio,,free,free,,,,,Autoplay
@@ -1498,6 +1502,7 @@ audio,sc_show_comments,switcher,content,section_audio,,free,free,yes,,,,Comments
 audio,sc_show_playcount,switcher,content,section_audio,,free,free,yes,,,,Play Counts
 audio,sc_show_user,switcher,content,section_audio,,free,free,yes,,,,Username
 audio,sc_color,color,content,section_audio,,free,free,,,,,Controls Color
+audio,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 author-box,source,select,content,section_author_info,,pro,pro,current,"[""current"",""custom""]",,,Source
 author-box,show_avatar,switcher,content,section_author_info,,pro,pro,yes,,"{""source"":""current""}",,Profile Picture
 author-box,avatar_size,number,content,section_author_info,,pro,pro,300,,"{""source"":""current"",""show_avatar"":""yes""}",,Picture Size
@@ -1567,6 +1572,7 @@ author-box,button_hover_animation,hover_animation,style,section_style_button,,pr
 author-box,button_border_width,slider,style,section_style_button,,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""link_text!"":""""}",border-width,Border Width
 author-box,button_border_radius,slider,style,section_style_button,,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""link_text!"":""""}",border-radius,Border Radius
 author-box,button_text_padding,dimensions,style,section_style_button,,pro,pro,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,"{""link_text!"":""""}",padding,Padding
+author-box,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 blockquote,blockquote_skin,select,content,section_blockquote_content,,pro,pro,border,"[""border"",""quotation"",""boxed"",""clean""]",,,Skin
 blockquote,blockquote_content,textarea,content,section_blockquote_content,,pro,pro,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet consectetur adipiscing elit dolor",,,,Content
 blockquote,author_name,text,content,section_blockquote_content,,pro,pro,John Doe,,,,Author
@@ -1646,6 +1652,7 @@ blockquote,box_transition_duration,slider,style,section_box_style,,pro,pro,"{""u
 blockquote,quote_text_color,color,style,section_quote_style,,pro,pro,,,"{""blockquote_skin"":""quotation""}",color,Color
 blockquote,quote_size,slider,style,section_quote_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":1,""sizes"":[]}",,"{""blockquote_skin"":""quotation""}",font-size,Size
 blockquote,quote_gap,slider,style,section_quote_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""blockquote_skin"":""quotation""}",margin-top,Gap
+blockquote,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 button,button_type,select,content,section_button,,free,free,,"["""",""info"",""success"",""warning"",""danger""]",,,Type
 button,text,text,content,section_button,,free,free,Click here,,,,Text
 button,link,url,content,section_button,,free,free,"{""url"":""#"",""is_external"":"""",""nofollow"":"""",""custom_attributes"":""""}",,,,Link
@@ -1748,6 +1755,7 @@ button,border_width,dimensions,style,section_style,mobile|tablet,free,free,"{""u
 button,border_color,color,style,section_style,,free,free,,,"{""border_border!"":["""",""none""]}",border-color,Border Color
 button,border_radius,dimensions,style,section_style,mobile|tablet,free,free,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,,border-radius,Border Radius
 button,text_padding,dimensions,style,section_style,mobile|tablet,free,free,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,,padding,Padding
+button,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 call-to-action,skin,select,content,section_main_image,,pro,pro,classic,"[""classic"",""cover""]",,,Skin
 call-to-action,layout,choose,content,section_main_image,mobile|tablet,pro,pro,,"[""left"",""above"",""right"",""below""]","{""skin!"":""cover""}",,Position
 call-to-action,bg_image,media,content,section_main_image,,pro,pro,"{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png"",""id"":"""",""size"":""""}",,,,Choose Image
@@ -1885,6 +1893,7 @@ call-to-action,bg_filters_hover_contrast,slider,style,hover_effects,,pro,pro,"{"
 call-to-action,bg_filters_hover_saturate,slider,style,hover_effects,,pro,pro,"{""unit"":""px"",""size"":100,""sizes"":[]}",,"{""bg_filters_hover_css_filter!"":""""}",,Saturation
 call-to-action,bg_filters_hover_hue,slider,style,hover_effects,,pro,pro,"{""unit"":""px"",""size"":0,""sizes"":[]}",,"{""bg_filters_hover_css_filter!"":""""}",,Hue
 call-to-action,effect_duration,slider,style,hover_effects,,pro,pro,"{""unit"":""px"",""size"":1500,""sizes"":[]}",,,transition-duration,Transition Duration (ms)
+call-to-action,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 code-highlight,language,select2,content,section_content,,pro,pro,javascript,"[""markup"",""html"",""css"",""sass"",""scss"",""less"",""javascript"",""typescript"",""jsx"",""tsx"",""php"",""ruby"",""json"",""http"",""xml"",""svg"",""rust"",""csharp"",""dart"",""git"",""java"",""sql"",""go"",""kotlin"",""julia"",""python"",""swift"",""bash"",""scala"",""haskell"",""perl"",""objectivec"",""visual-basic,"",""r"",""c"",""cpp"",""aspnet""]",,,Language
 code-highlight,code,code,content,section_content,,pro,pro,console.log( 'Code is Poetry' );,,,,Code
 code-highlight,line_numbers,switcher,content,section_content,,pro,pro,line-numbers,,,,Line Numbers
@@ -1894,6 +1903,10 @@ code-highlight,word_wrap,switcher,content,section_content,,pro,pro,,,,,Word Wrap
 code-highlight,theme,select,content,section_content,,pro,pro,default,"[""default"",""dark"",""okaidia"",""solarizedlight"",""tomorrow"",""twilight""]",,,Theme
 code-highlight,height,slider,content,section_content,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,height,Height
 code-highlight,font_size,slider,content,section_content,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,font-size,Font Size
+code-highlight,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
+common,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
+common-base,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
+common-optimized,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 contact-buttons,chat_aria_label,text,content,chat_button_section,,free,free,Floating Element,,,,Accessible name
 contact-buttons,chat_button_platform,select,content,chat_button_section,,free,free,WhatsApp,"[""WhatsApp"",""Messenger"",""Email"",""SMS"",""VIBER"",""Skype""]",,,Platform
 contact-buttons,chat_button_mail,text,content,chat_button_section,,free,free,,,"{""chat_button_platform"":""Email""}",,Email
@@ -2024,6 +2037,7 @@ contact-buttons,advanced_vertical_position,choose,advanced-tab-floating-buttons,
 contact-buttons,advanced_vertical_offset,slider,advanced-tab-floating-buttons,advanced_layout_section,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""advanced_vertical_position"":[""top"",""bottom""]}",--e-contact-buttons-vertical-offset,Offset
 contact-buttons,advanced_custom_css_id,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,free,free,,,,,CSS ID
 contact-buttons,advanced_custom_css_classes,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,free,free,,,,,CSS Classes
+contact-buttons,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 contact-buttons-var-1,chat_aria_label,text,content,chat_button_section,,pro,pro,Floating Element,,,,Accessible name
 contact-buttons-var-1,chat_button_icon,icons,content,chat_button_section,,pro,pro,"{""value"":""far fa-comment-dots"",""library"":""fa-regular""}",,,,Icon
 contact-buttons-var-1,chat_button_show_dot,switcher,content,chat_button_section,,pro,pro,yes,,,,Notification Dot
@@ -2139,6 +2153,7 @@ contact-buttons-var-1,advanced_vertical_position,choose,advanced-tab-floating-bu
 contact-buttons-var-1,advanced_vertical_offset,slider,advanced-tab-floating-buttons,advanced_layout_section,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""advanced_vertical_position"":[""top"",""bottom""]}",--e-contact-buttons-vertical-offset,Offset
 contact-buttons-var-1,advanced_custom_css_id,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS ID
 contact-buttons-var-1,advanced_custom_css_classes,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS Classes
+contact-buttons-var-1,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 contact-buttons-var-10,contact_aria_label,text,content,contact_section,,pro,pro,Floating Element,,,,Accessible name
 contact-buttons-var-10,contact_repeater,repeater,content,contact_section,,pro,pro,"[{""contact_icon_platform"":""WhatsApp""},{""contact_icon_platform"":""Email""},{""contact_icon_platform"":""SMS""},{""contact_icon_platform"":""VIBER""},{""contact_icon_platform"":""Messenger""}]",,,,
 contact-buttons-var-10,style_contact_button_size,select,style,style_contact_section,,pro,pro,small,"[""small"",""medium"",""large""]",,,Size
@@ -2167,6 +2182,7 @@ contact-buttons-var-10,advanced_vertical_position,choose,advanced-tab-floating-b
 contact-buttons-var-10,advanced_vertical_offset,slider,advanced-tab-floating-buttons,advanced_layout_section,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""advanced_vertical_position"":[""top"",""bottom""]}",--e-contact-buttons-vertical-offset,Offset
 contact-buttons-var-10,advanced_custom_css_id,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS ID
 contact-buttons-var-10,advanced_custom_css_classes,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS Classes
+contact-buttons-var-10,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 contact-buttons-var-3,chat_aria_label,text,content,chat_button_section,,pro,pro,Floating Element,,,,Accessible name
 contact-buttons-var-3,chat_button_icon,icons,content,chat_button_section,,pro,pro,"{""value"":""fas fa-info"",""library"":""fa-solid""}",,,,Icon
 contact-buttons-var-3,top_bar_title,text,content,top_bar_section,,pro,pro,Need help?,,,,Greeting
@@ -2249,6 +2265,7 @@ contact-buttons-var-3,advanced_vertical_position,choose,advanced-tab-floating-bu
 contact-buttons-var-3,advanced_vertical_offset,slider,advanced-tab-floating-buttons,advanced_layout_section,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""advanced_vertical_position"":[""top"",""bottom""]}",--e-contact-buttons-vertical-offset,Offset
 contact-buttons-var-3,advanced_custom_css_id,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS ID
 contact-buttons-var-3,advanced_custom_css_classes,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS Classes
+contact-buttons-var-3,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 contact-buttons-var-4,chat_aria_label,text,content,chat_button_section,,pro,pro,Links,,,,Accessible name
 contact-buttons-var-4,chat_button_icon,icons,content,chat_button_section,,pro,pro,"{""value"":""fas fa-ellipsis-v"",""library"":""fa-solid""}",,,,Icon
 contact-buttons-var-4,contact_repeater,repeater,content,contact_section,,pro,pro,"[{""contact_icon_platform"":""WhatsApp""},{""contact_icon_platform"":""Messenger""},{""contact_icon_platform"":""Email""},{""contact_icon_platform"":""Telephone""}]",,,,
@@ -2295,6 +2312,7 @@ contact-buttons-var-4,advanced_vertical_position,choose,advanced-tab-floating-bu
 contact-buttons-var-4,advanced_vertical_offset,slider,advanced-tab-floating-buttons,advanced_layout_section,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""advanced_vertical_position"":[""top"",""bottom""]}",--e-contact-buttons-vertical-offset,Offset
 contact-buttons-var-4,advanced_custom_css_id,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS ID
 contact-buttons-var-4,advanced_custom_css_classes,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS Classes
+contact-buttons-var-4,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 contact-buttons-var-5,chat_aria_label,text,content,chat_button_section,,pro,pro,Chat,,,,Accessible name
 contact-buttons-var-5,chat_button_platform,select,content,chat_button_section,,pro,pro,WhatsApp,"[""WhatsApp"",""Waze"",""Messenger"",""Telephone"",""Email"",""SMS"",""VIBER"",""Skype""]",,,Platform
 contact-buttons-var-5,chat_button_mail,text,content,chat_button_section,,pro,pro,,,"{""chat_button_platform"":""Email""}",,Email
@@ -2326,6 +2344,7 @@ contact-buttons-var-5,advanced_vertical_position,choose,advanced-tab-floating-bu
 contact-buttons-var-5,advanced_vertical_offset,slider,advanced-tab-floating-buttons,advanced_layout_section,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""advanced_vertical_position"":[""top"",""bottom""]}",--e-contact-buttons-vertical-offset,Offset
 contact-buttons-var-5,advanced_custom_css_id,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS ID
 contact-buttons-var-5,advanced_custom_css_classes,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS Classes
+contact-buttons-var-5,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 contact-buttons-var-6,contact_aria_label,text,content,contact_section,,pro,pro,Floating Element,,,,Accessible name
 contact-buttons-var-6,contact_repeater,repeater,content,contact_section,,pro,pro,"[{""contact_icon_platform"":""Telephone""},{""contact_icon_platform"":""Email""},{""contact_icon_platform"":""WhatsApp""},{""contact_icon_platform"":""Waze""}]",,,,
 contact-buttons-var-6,style_contact_button_size,select,style,style_contact_section,,pro,pro,small,"[""small"",""medium"",""large""]",,,Size
@@ -2341,6 +2360,7 @@ contact-buttons-var-6,advanced_vertical_position,choose,advanced-tab-floating-bu
 contact-buttons-var-6,advanced_vertical_offset,slider,advanced-tab-floating-buttons,advanced_layout_section,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""advanced_vertical_position"":[""top"",""bottom""]}",--e-contact-buttons-vertical-offset,Offset
 contact-buttons-var-6,advanced_custom_css_id,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS ID
 contact-buttons-var-6,advanced_custom_css_classes,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS Classes
+contact-buttons-var-6,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 contact-buttons-var-7,chat_aria_label,text,content,chat_button_section,,pro,pro,Floating Element,,,,Accessible name
 contact-buttons-var-7,chat_button_platform,select,content,chat_button_section,,pro,pro,Telephone,"[""WhatsApp"",""Waze"",""Messenger"",""Telephone"",""Email"",""Url"",""SMS"",""VIBER"",""Skype""]",,,Platform
 contact-buttons-var-7,chat_button_mail,text,content,chat_button_section,,pro,pro,,,"{""chat_button_platform"":""Email""}",,Email
@@ -2380,6 +2400,7 @@ contact-buttons-var-7,advanced_vertical_offset,slider,advanced-tab-floating-butt
 contact-buttons-var-7,advanced_mobile_full_width,switcher,advanced-tab-floating-buttons,advanced_layout_section,,pro,pro,yes,,,,Full Width on Mobile
 contact-buttons-var-7,advanced_custom_css_id,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS ID
 contact-buttons-var-7,advanced_custom_css_classes,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS Classes
+contact-buttons-var-7,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 contact-buttons-var-8,chat_aria_label,text,content,chat_button_section,,pro,pro,Floating Element,,,,Accessible name
 contact-buttons-var-8,chat_button_icon,icons,content,chat_button_section,,pro,pro,"{""value"":""fas fa-life-ring"",""library"":""fa-solid""}",,,,Icon
 contact-buttons-var-8,top_bar_title,text,content,top_bar_section,,pro,pro,We're here for you,,,,Greeting
@@ -2465,6 +2486,7 @@ contact-buttons-var-8,advanced_vertical_position,choose,advanced-tab-floating-bu
 contact-buttons-var-8,advanced_vertical_offset,slider,advanced-tab-floating-buttons,advanced_layout_section,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""advanced_vertical_position"":[""top"",""bottom""]}",--e-contact-buttons-vertical-offset,Offset
 contact-buttons-var-8,advanced_custom_css_id,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS ID
 contact-buttons-var-8,advanced_custom_css_classes,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS Classes
+contact-buttons-var-8,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 contact-buttons-var-9,chat_aria_label,text,content,chat_button_section,,pro,pro,Floating Element,,,,Accessible name
 contact-buttons-var-9,chat_button_platform,select,content,chat_button_section,,pro,pro,WhatsApp,"[""WhatsApp"",""Waze"",""Messenger"",""Telephone"",""Email"",""Url"",""SMS"",""VIBER"",""Skype""]",,,Platform
 contact-buttons-var-9,chat_button_mail,text,content,chat_button_section,,pro,pro,,,"{""chat_button_platform"":""Email""}",,Email
@@ -2501,6 +2523,7 @@ contact-buttons-var-9,advanced_vertical_position,choose,advanced-tab-floating-bu
 contact-buttons-var-9,advanced_vertical_offset,slider,advanced-tab-floating-buttons,advanced_layout_section,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""advanced_vertical_position"":[""top"",""bottom""]}",--e-contact-buttons-vertical-offset,Offset
 contact-buttons-var-9,advanced_custom_css_id,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS ID
 contact-buttons-var-9,advanced_custom_css_classes,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS Classes
+contact-buttons-var-9,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 countdown,countdown_type,select,content,section_countdown,,pro,pro,due_date,"[""due_date"",""evergreen""]",,,Type
 countdown,due_date,date_time,content,section_countdown,,pro,pro,2026-08-12 02:44,,"{""countdown_type"":""due_date""}",,Due Date
 countdown,evergreen_counter_hours,number,content,section_countdown,,pro,pro,47,,"{""countdown_type"":""evergreen""}",,Hours
@@ -2575,6 +2598,7 @@ countdown,typography_word_spacing,slider,style,section_expire_message_style,mobi
 countdown,message_text_shadow_text_shadow_type,popover_toggle,style,section_expire_message_style,,pro,pro,,,"{""expire_actions"":""message""}",,Text Shadow
 countdown,message_text_shadow_text_shadow,text_shadow,style,section_expire_message_style,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""color"":""rgba(0,0,0,0.3)""}",,"{""expire_actions"":""message"",""message_text_shadow_text_shadow_type!"":""""}",text-shadow,Text Shadow
 countdown,message_padding,dimensions,style,section_expire_message_style,mobile|tablet,pro,pro,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,"{""expire_actions"":""message""}",padding,Padding
+countdown,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 counter,starting_number,number,content,section_counter,,free,free,0,,,,Starting Number
 counter,ending_number,number,content,section_counter,,free,free,100,,,,Ending Number
 counter,prefix,text,content,section_counter,,free,free,,,,,Number Prefix
@@ -2623,6 +2647,7 @@ counter,title_stroke_text_stroke,slider,style,section_title,mobile|tablet,free,f
 counter,title_stroke_stroke_color,color,style,section_title,,free,free,#000,,"{""title!"":"""",""title_stroke_text_stroke_type!"":""""}",-webkit-text-stroke-color|stroke,Stroke Color
 counter,title_shadow_text_shadow_type,popover_toggle,style,section_title,,free,free,,,"{""title!"":""""}",,Text Shadow
 counter,title_shadow_text_shadow,text_shadow,style,section_title,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""color"":""rgba(0,0,0,0.3)""}",,"{""title!"":"""",""title_shadow_text_shadow_type!"":""""}",text-shadow,Text Shadow
+counter,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 divider,style,select,content,section_divider,,free,free,solid,,,--divider-border-style,Style
 divider,separator_type,hidden,content,section_divider,,free,free,pattern,,"{""style!"":["""",""solid"",""double"",""dotted"",""dashed""]}",,
 divider,pattern_spacing_flag,hidden,content,section_divider,,free,free,no-spacing,,"{""style"":[""multiple"",""dots_tribal"",""trees_2_tribal"",""rounds_tribal"",""leaves_tribal"",""stripes_tribal"",""squares_tribal"",""trees_tribal"",""planes_tribal"",""x_tribal"",""zigzag_tribal""]}",,
@@ -2664,6 +2689,7 @@ divider,icon_spacing,slider,style,section_icon_style,mobile|tablet,free,free,"{"
 divider,rotate,slider,style,section_icon_style,mobile|tablet,free,free,"{""unit"":""deg"",""size"":"""",""sizes"":[]}",,"{""look"":""line_icon""}",transform,Rotate
 divider,icon_border_width,slider,style,section_icon_style,,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""look"":""line_icon"",""icon_view"":""framed""}",border-width,Border Width
 divider,border_radius,slider,style,section_icon_style,,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""look"":""line_icon"",""icon_view!"":""default""}",border-radius,Border Radius
+divider,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 facebook-button,type,select,content,section_content,,pro,pro,like,"[""like"",""recommend""]",,,Type
 facebook-button,layout,select,content,section_content,,pro,pro,standard,"[""standard"",""button"",""button_count"",""box_count""]",,,Layout
 facebook-button,size,select,content,section_content,,pro,pro,small,"[""small"",""large""]",,,Size
@@ -2673,11 +2699,13 @@ facebook-button,show_faces,switcher,content,section_content,,pro,pro,,,,,Faces
 facebook-button,url_type,select,content,section_content,,pro,pro,current_page,"[""current_page"",""custom""]","{""type"":[""like"",""recommend""]}",,Target URL
 facebook-button,url_format,select,content,section_content,,pro,pro,plain,"[""plain"",""pretty""]","{""url_type"":""current_page""}",,URL Format
 facebook-button,url,text,content,section_content,,pro,pro,,,"{""type"":[""like"",""recommend""],""url_type"":""custom""}",,Link
+facebook-button,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 facebook-comments,comments_number,number,content,section_content,,pro,pro,10,,,,Comment Count
 facebook-comments,order_by,select,content,section_content,,pro,pro,social,"[""social"",""reverse_time"",""time""]",,,Order By
 facebook-comments,url_type,select,content,section_content,,pro,pro,current_page,"[""current_page"",""custom""]",,,Target URL
 facebook-comments,url_format,select,content,section_content,,pro,pro,plain,"[""plain"",""pretty""]","{""url_type"":""current_page""}",,URL Format
 facebook-comments,url,text,content,section_content,,pro,pro,,,"{""url_type"":""custom""}",,Link
+facebook-comments,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 facebook-embed,type,select,content,section_content,,pro,pro,post,"[""post"",""video"",""comment""]",,,Type
 facebook-embed,post_url,text,content,section_content,,pro,pro,https://www.facebook.com/elemntor/posts/2624214124556197,,"{""type"":""post""}",,URL
 facebook-embed,video_url,text,content,section_content,,pro,pro,https://www.facebook.com/elemntor/videos/1683988961912056/,,"{""type"":""video""}",,URL
@@ -2687,6 +2715,7 @@ facebook-embed,show_text,switcher,content,section_content,,pro,pro,,,"{""type"":
 facebook-embed,video_allowfullscreen,switcher,content,section_content,,pro,pro,,,"{""type"":""video""}",,Allow Full Screen
 facebook-embed,video_autoplay,switcher,content,section_content,,pro,pro,,,"{""type"":""video""}",,Autoplay
 facebook-embed,video_show_captions,switcher,content,section_content,,pro,pro,,,"{""type"":""video""}",,Captions
+facebook-embed,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 facebook-page,url,text,content,section_content,,pro,pro,https://www.facebook.com/elemntor/,,,,Link
 facebook-page,tabs,select2,content,section_content,,pro,pro,"[""timeline""]","[""timeline"",""events"",""messages""]",,,Layout
 facebook-page,small_header,switcher,content,section_content,,pro,pro,,,,,Small Header
@@ -2694,6 +2723,7 @@ facebook-page,show_cover,switcher,content,section_content,,pro,pro,yes,,,,Cover 
 facebook-page,show_facepile,switcher,content,section_content,,pro,pro,yes,,,,Profile Photos
 facebook-page,show_cta,switcher,content,section_content,,pro,pro,yes,,,,Custom CTA Button
 facebook-page,height,slider,content,section_content,,pro,pro,"{""unit"":""px"",""size"":500,""sizes"":[]}",,,,Height
+facebook-page,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 flip-box,graphic_element,choose,content,section_side_a_content,,pro,pro,icon,"[""none"",""image"",""icon""]",,,Graphic Element
 flip-box,image,media,content,section_side_a_content,,pro,pro,"{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png"",""id"":"""",""size"":""""}",,"{""graphic_element"":""image""}",,Choose Image
 flip-box,image_size,select,content,section_side_a_content,,pro,pro,thumbnail,"[""thumbnail"",""medium"",""medium_large"",""large"",""1536x1536"",""2048x2048"",""full"",""custom""]","{""graphic_element"":""image""}",,Image Resolution
@@ -2965,6 +2995,7 @@ flip-box,button_hover_border_color,color,style,section_style_b,,pro,pro,,,"{""bu
 flip-box,button_hover_transition_duration,slider,style,section_style_b,,pro,pro,"{""unit"":""ms"",""size"":"""",""sizes"":[]}",,,transition-duration,Transition Duration
 flip-box,button_border_width,slider,style,section_style_b,,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""button_text!"":""""}",border-width,Border Width
 flip-box,button_border_radius,slider,style,section_style_b,,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""button_text!"":""""}",border-radius,Border Radius
+flip-box,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 floating-bars-var-1,announcement_icon,icons,content,announcement_content_section,,free,free,"{""value"":""fas fa-tshirt"",""library"":""fa-solid""}",,,,Icon
 floating-bars-var-1,announcement_text,textarea,content,announcement_content_section,,free,free,Just in! Cool summer tees,,,,Text
 floating-bars-var-1,cta_text,text,content,cta_button_content_section,,free,free,Shop now,,,,Text
@@ -3090,6 +3121,7 @@ floating-bars-var-1,advanced_vertical_position,choose,advanced-tab-floating-bars
 floating-bars-var-1,advanced_toggle_sticky,switcher,advanced-tab-floating-bars,advanced_layout_section,,free,free,yes,,,,Sticky
 floating-bars-var-1,advanced_custom_css_id,text,advanced-tab-floating-bars,advanced_custom_controls_section,,free,free,,,,,CSS ID
 floating-bars-var-1,advanced_custom_css_classes,text,advanced-tab-floating-bars,advanced_custom_controls_section,,free,free,,,,,CSS Classes
+floating-bars-var-1,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 floating-bars-var-2,headlines_repeater,repeater,content,headlines_content,,pro,pro,"[{""headlines_text"":""Item #1""},{""headlines_text"":""Item #2""},{""headlines_text"":""Item #3""}]",,,,
 floating-bars-var-2,style_ticker_animation_type,select,content,style_ticker,mobile|tablet,pro,pro,autoplay,"[""autoplay"",""scroll""]",,,Type
 floating-bars-var-2,style_ticker_scroll_direction,choose,content,style_ticker,mobile|tablet,pro,pro,forwards,"[""forwards"",""reverse""]","{""style_ticker_animation_type"":""autoplay""}",--e-floating-bars-scroll-direction,Scroll Direction
@@ -3196,6 +3228,7 @@ floating-bars-var-2,advanced_vertical_position,choose,advanced-tab-floating-bars
 floating-bars-var-2,advanced_toggle_sticky,switcher,advanced-tab-floating-bars,advanced_layout_section,,pro,pro,yes,,,,Sticky
 floating-bars-var-2,advanced_custom_css_id,text,advanced-tab-floating-bars,advanced_custom_controls_section,,pro,pro,,,,,CSS ID
 floating-bars-var-2,advanced_custom_css_classes,text,advanced-tab-floating-bars,advanced_custom_controls_section,,pro,pro,,,,,CSS Classes
+floating-bars-var-2,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 floating-bars-var-3,announcement_icon,icons,content,announcement_content_section,,pro,pro,"{""value"":""fas fa-star"",""library"":""fa-solid""}",,,,Icon
 floating-bars-var-3,announcement_text,textarea,content,announcement_content_section,,pro,pro,10% off on your first order!,,,,Offer Text
 floating-bars-var-3,coupon_code,text,content,coupon_content_section,,pro,pro,NEW10,,,,Code
@@ -3318,6 +3351,7 @@ floating-bars-var-3,advanced_vertical_position,choose,advanced-tab-floating-bars
 floating-bars-var-3,advanced_toggle_sticky,switcher,advanced-tab-floating-bars,advanced_layout_section,,pro,pro,yes,,,,Sticky
 floating-bars-var-3,advanced_custom_css_id,text,advanced-tab-floating-bars,advanced_custom_controls_section,,pro,pro,,,,,CSS ID
 floating-bars-var-3,advanced_custom_css_classes,text,advanced-tab-floating-bars,advanced_custom_controls_section,,pro,pro,,,,,CSS Classes
+floating-bars-var-3,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 form,form_name,text,content,section_form_fields,,pro,pro,New Form,,,,Form Name
 form,form_fields,form-fields-repeater,content,section_form_fields,,pro,pro,"[{""custom_id"":""name"",""field_type"":""text"",""field_label"":""Name"",""placeholder"":""Name"",""width"":""100"",""dynamic"":{""active"":true}},{""custom_id"":""email"",""field_type"":""email"",""required"":""true"",""field_label"":""Email"",""placeholder"":""Email"",""width"":""100""},{""custom_id"":""message"",""field_type"":""textarea"",""field_label"":""Message"",""placeholder"":""Message"",""width"":""100""}]",,,,
 form,input_size,select,content,section_form_fields,,pro,pro,sm,"[""xs"",""sm"",""md"",""lg"",""xl""]",,,Input Size
@@ -3543,6 +3577,7 @@ form,step_progress_bar_percentage__typography_line_height,slider,style,section_s
 form,step_progress_bar_percentage__typography_letter_spacing,slider,style,section_steps_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""step_progress_bar_percentage__typography_typography!"":"""",""step_type"":""progress_bar""}",letter-spacing,Letter Spacing
 form,step_progress_bar_percentage__typography_word_spacing,slider,style,section_steps_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""step_progress_bar_percentage__typography_typography!"":"""",""step_type"":""progress_bar""}",word-spacing,Word Spacing
 form,step_progress_bar_percentage_color,color,style,section_steps_style,,pro,pro,,,"{""step_type"":""progress_bar""}",--e-form-steps-indicator-progress-meter-color,Color
+form,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 gallery,gallery_type,select,content,settings,,pro,pro,single,"[""single"",""multiple""]",,,Type
 gallery,gallery,gallery,content,settings,,pro,pro,,,"{""gallery_type"":""single""}",,
 gallery,galleries,repeater,content,settings,,pro,pro,"[{""gallery_title"":""New Gallery""}]",,"{""gallery_type"":""multiple""}",,Galleries
@@ -3703,6 +3738,7 @@ gallery,galleries_pointer_color_active,color,style,filter_bar_style,,pro,pro,,,"
 gallery,pointer_width,slider,style,filter_bar_style,,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""gallery_type"":""multiple"",""pointer"":[""underline"",""overline"",""double-line"",""framed""]}",--galleries-pointer-border-width,Pointer Width
 gallery,galleries_titles_space_between,slider,style,filter_bar_style,,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""gallery_type"":""multiple""}",--space-between,Space Between
 gallery,galleries_titles_gap,slider,style,filter_bar_style,,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""gallery_type"":""multiple""}",margin-bottom,Gap
+gallery,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 google_maps,address,text,content,section_map,,free,free,"London Eye, London, United Kingdom",,,,Location
 google_maps,zoom,slider,content,section_map,,free,free,"{""unit"":""px"",""size"":10,""sizes"":[]}",,,,Zoom
 google_maps,height,slider,content,section_map,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,height,Height
@@ -3719,6 +3755,7 @@ google_maps,css_filters_hover_contrast,slider,style,section_map_style,,free,free
 google_maps,css_filters_hover_saturate,slider,style,section_map_style,,free,free,"{""unit"":""px"",""size"":100,""sizes"":[]}",,"{""css_filters_hover_css_filter!"":""""}",,Saturation
 google_maps,css_filters_hover_hue,slider,style,section_map_style,,free,free,"{""unit"":""px"",""size"":0,""sizes"":[]}",,"{""css_filters_hover_css_filter!"":""""}",,Hue
 google_maps,hover_transition,slider,style,section_map_style,,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,transition-duration,Transition Duration (s)
+google_maps,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 heading,title,textarea,content,section_title,,free,free,Add Your Heading Text Here,,,,Title
 heading,link,url,content,section_title,,free,free,"{""url"":"""",""is_external"":"""",""nofollow"":"""",""custom_attributes"":""""}",,,,Link
 heading,size,select,content,section_title,,free,free,default,"[""default"",""small"",""medium"",""large"",""xl"",""xxl""]","{""size!"":""default""}",,Size
@@ -3743,6 +3780,7 @@ heading,blend_mode,select,style,section_title_style,,free,free,,"["""",""multipl
 heading,title_color,color,style,section_title_style,,free,free,,,,color,Text Color
 heading,title_hover_color,color,style,section_title_style,,free,free,,,,color,Link Color
 heading,title_hover_color_transition_duration,slider,style,section_title_style,,free,free,"{""unit"":""s"",""size"":"""",""sizes"":[]}",,,transition-duration,Transition Duration
+heading,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 hotspot,image,media,content,section_image,,pro,pro,"{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png"",""id"":"""",""size"":""""}",,,,Choose Image
 hotspot,image_size,select,content,section_image,,pro,pro,large,"[""thumbnail"",""medium"",""medium_large"",""large"",""1536x1536"",""2048x2048"",""full"",""custom""]","{""image[url]!"":""""}",,Image Resolution
 hotspot,image_custom_dimension,image_dimensions,content,section_image,,pro,pro,"{""width"":"""",""height"":""""}",,"{""image_size"":""custom"",""image[url]!"":""""}",,Image Dimension
@@ -3833,7 +3871,9 @@ hotspot,style_tooltip_border_radius,dimensions,style,section_style_tooltip,,pro,
 hotspot,style_tooltip_box_shadow_box_shadow_type,popover_toggle,style,section_style_tooltip,,pro,pro,,,,,Box Shadow
 hotspot,style_tooltip_box_shadow_box_shadow,box_shadow,style,section_style_tooltip,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""style_tooltip_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 hotspot,style_tooltip_box_shadow_box_shadow_position,select,style,section_style_tooltip,,pro,pro, ,"["" "",""inset""]","{""style_tooltip_box_shadow_box_shadow_type!"":""""}",,Position
+hotspot,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 html,html,code,content,section_title,,free,free,,,,,HTML Code
+html,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 icon,selected_icon,icons,content,section_icon,,free,free,"{""value"":""fas fa-star"",""library"":""fa-solid""}",,,,Icon
 icon,view,select,content,section_icon,,free,free,default,"[""default"",""stacked"",""framed""]",,,View
 icon,shape,select,content,section_icon,,free,free,circle,"[""square"",""rounded"",""circle""]","{""view!"":""default""}",,Shape
@@ -3850,6 +3890,7 @@ icon,icon_padding,slider,style,section_style_icon,,free,free,"{""unit"":""px"","
 icon,rotate,slider,style,section_style_icon,mobile|tablet,free,free,"{""unit"":""deg"",""size"":"""",""sizes"":[]}",,,transform,Rotate
 icon,border_width,dimensions,style,section_style_icon,,free,free,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,"{""view"":""framed""}",border-width,Border Width
 icon,border_radius,dimensions,style,section_style_icon,mobile|tablet,free,free,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,"{""view!"":""default""}",border-radius,Border Radius
+icon,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 icon-box,selected_icon,icons,content,section_icon,,free,free,"{""value"":""fas fa-star"",""library"":""fa-solid""}",,,,Icon
 icon-box,view,select,content,section_icon,,free,free,default,"[""default"",""stacked"",""framed""]","{""selected_icon[value]!"":""""}",,View
 icon-box,shape,select,content,section_icon,,free,free,circle,"[""square"",""rounded"",""circle""]","{""view!"":""default"",""selected_icon[value]!"":""""}",,Shape
@@ -3904,6 +3945,7 @@ icon-box,description_typography_word_spacing,slider,style,section_style_content,
 icon-box,description_shadow_text_shadow_type,popover_toggle,style,section_style_content,,free,free,,,,,Text Shadow
 icon-box,description_shadow_text_shadow,text_shadow,style,section_style_content,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""color"":""rgba(0,0,0,0.3)""}",,"{""description_shadow_text_shadow_type!"":""""}",text-shadow,Text Shadow
 icon-box,description_color,color,style,section_style_content,,free,free,,,,color,Color
+icon-box,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 icon-list,view,choose,content,section_icon,,free,free,traditional,"[""traditional"",""inline""]",,,Layout
 icon-list,icon_list,repeater,content,section_icon,,free,free,"[{""text"":""List Item #1"",""selected_icon"":{""value"":""fas fa-check"",""library"":""fa-solid""}},{""text"":""List Item #2"",""selected_icon"":{""value"":""fas fa-times"",""library"":""fa-solid""}},{""text"":""List Item #3"",""selected_icon"":{""value"":""fas fa-dot-circle"",""library"":""fa-solid""}}]",,,,Items
 icon-list,link_click,select,content,section_icon,,free,free,full_width,"[""full_width"",""inline""]",,,Apply Link On
@@ -3938,6 +3980,7 @@ icon-list,text_shadow_text_shadow,text_shadow,style,section_text_style,,free,fre
 icon-list,text_color,color,style,section_text_style,,free,free,,,,color,Color
 icon-list,text_color_hover,color,style,section_text_style,,free,free,,,,color,Color
 icon-list,text_color_hover_transition,slider,style,section_text_style,,free,free,"{""unit"":""s"",""size"":0.3,""sizes"":[]}",,,transition,Transition Duration
+icon-list,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 image,image,media,content,section_image,,free,free,"{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png"",""id"":"""",""size"":""""}",,,,Choose Image
 image,image_size,select,content,section_image,,free,free,large,"[""thumbnail"",""medium"",""medium_large"",""large"",""1536x1536"",""2048x2048"",""full"",""custom""]","{""image[url]!"":""""}",,Image Resolution
 image,image_custom_dimension,image_dimensions,content,section_image,,free,free,"{""width"":"""",""height"":""""}",,"{""image_size"":""custom"",""image[url]!"":""""}",,Image Dimension
@@ -3990,6 +4033,7 @@ image,caption_typography_word_spacing,slider,style,section_style_caption,mobile|
 image,caption_text_shadow_text_shadow_type,popover_toggle,style,section_style_caption,,free,free,,,"{""image[url]!"":"""",""caption_source!"":""none""}",,Text Shadow
 image,caption_text_shadow_text_shadow,text_shadow,style,section_style_caption,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""color"":""rgba(0,0,0,0.3)""}",,"{""image[url]!"":"""",""caption_source!"":""none"",""caption_text_shadow_text_shadow_type!"":""""}",text-shadow,Text Shadow
 image,caption_space,slider,style,section_style_caption,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""image[url]!"":"""",""caption_source!"":""none""}",margin-block-start,Spacing
+image,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 image-box,image,media,content,section_image,,free,free,"{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png"",""id"":"""",""size"":""""}",,,,Choose Image
 image-box,thumbnail_size,select,content,section_image,,free,free,full,"[""thumbnail"",""medium"",""medium_large"",""large"",""1536x1536"",""2048x2048"",""full"",""custom""]","{""image[url]!"":""""}",,Image Resolution
 image-box,thumbnail_custom_dimension,image_dimensions,content,section_image,,free,free,"{""width"":"""",""height"":""""}",,"{""thumbnail_size"":""custom"",""image[url]!"":""""}",,Image Dimension
@@ -4060,6 +4104,7 @@ image-box,description_typography_word_spacing,slider,style,section_style_content
 image-box,description_shadow_text_shadow_type,popover_toggle,style,section_style_content,,free,free,,,,,Text Shadow
 image-box,description_shadow_text_shadow,text_shadow,style,section_style_content,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""color"":""rgba(0,0,0,0.3)""}",,"{""description_shadow_text_shadow_type!"":""""}",text-shadow,Text Shadow
 image-box,description_color,color,style,section_style_content,,free,free,,,,color,Color
+image-box,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 image-carousel,carousel_name,text,content,section_image_carousel,,free,free,Image Carousel,,,,Carousel Name
 image-carousel,carousel,gallery,content,section_image_carousel,,free,free,,,,,Add Images
 image-carousel,thumbnail_size,select,content,section_image_carousel,,free,free,thumbnail,"[""thumbnail"",""medium"",""medium_large"",""large"",""1536x1536"",""2048x2048"",""full"",""custom""]",,,Image Resolution
@@ -4113,6 +4158,7 @@ image-carousel,caption_typography_word_spacing,slider,style,section_caption,mobi
 image-carousel,caption_shadow_text_shadow_type,popover_toggle,style,section_caption,,free,free,,,"{""caption_type!"":""""}",,Text Shadow
 image-carousel,caption_shadow_text_shadow,text_shadow,style,section_caption,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""color"":""rgba(0,0,0,0.3)""}",,"{""caption_type!"":"""",""caption_shadow_text_shadow_type!"":""""}",text-shadow,Text Shadow
 image-carousel,caption_space,slider,style,section_caption,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""caption_type!"":""""}",margin-block-start,Spacing
+image-carousel,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 image-gallery,wp_gallery,gallery,content,section_gallery,,free,free,,,,,Add Images
 image-gallery,thumbnail_size,select,content,section_gallery,,free,free,thumbnail,"[""thumbnail"",""medium"",""medium_large"",""large"",""1536x1536"",""2048x2048"",""full""]",,,Image Resolution
 image-gallery,gallery_columns,select,content,section_gallery,,free,free,4,"[1,2,3,4,5,6,7,8,9,10]",,,Columns
@@ -4141,6 +4187,8 @@ image-gallery,typography_word_spacing,slider,style,section_caption,mobile|tablet
 image-gallery,caption_shadow_text_shadow_type,popover_toggle,style,section_caption,,free,free,,,"{""gallery_display_caption"":""""}",,Text Shadow
 image-gallery,caption_shadow_text_shadow,text_shadow,style,section_caption,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""color"":""rgba(0,0,0,0.3)""}",,"{""gallery_display_caption"":"""",""caption_shadow_text_shadow_type!"":""""}",text-shadow,Text Shadow
 image-gallery,caption_space,slider,style,section_caption,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""gallery_display_caption"":""""}",margin-block-start,Spacing
+image-gallery,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
+inner-section,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 link-in-bio,identity_image_style,select,content,identity_section,,free,free,profile,"[""profile"",""cover""]",,,Image style
 link-in-bio,identity_image,media,content,identity_section,,free,free,"{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png"",""id"":"""",""size"":""""}",,,,Choose Image
 link-in-bio,identity_image_position,select,content,identity_section,mobile|tablet,free,free,,"["""",""center center"",""center left"",""center right"",""top center"",""top left"",""top right"",""bottom center"",""bottom left"",""bottom right""]","{""identity_image[url]!"":""""}",--e-link-in-bio-identity-image-profile-position,Position
@@ -4288,6 +4336,7 @@ link-in-bio,advanced_layout_width,slider,style,background_border_section_style,m
 link-in-bio,advanced_layout_content_width,slider,style,background_border_section_style,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,--e-link-in-bio-content-width,Content Width (px)
 link-in-bio,advanced_layout_full_screen_height,switcher,style,background_border_section_style,,free,free,,,"{""advanced_layout_full_width_custom"":""yes""}",,Full Screen Height
 link-in-bio,advanced_layout_full_screen_height_controls,select2,style,background_border_section_style,,free,free,"[""desktop"",""tablet"",""mobile""]","[""desktop"",""tablet"",""mobile""]","{""advanced_layout_full_width_custom"":""yes"",""advanced_layout_full_screen_height"":""yes""}",,Apply Full Screen Height on
+link-in-bio,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 link-in-bio-var-2,identity_image_cover,media,content,identity_section,,pro,pro,"{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png"",""id"":"""",""size"":""""}",,,,Choose Image
 link-in-bio-var-2,identity_image_cover_position,select,content,identity_section,mobile|tablet,pro,pro,,"["""",""center center"",""center left"",""center right"",""top center"",""top left"",""top right"",""bottom center"",""bottom left"",""bottom right""]","{""identity_image_cover[url]!"":""""}",--e-link-in-bio-identity-image-cover-position,Position
 link-in-bio-var-2,identity_image,media,content,identity_section,,pro,pro,"{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png"",""id"":"""",""size"":""""}",,,,Choose Image
@@ -4435,6 +4484,7 @@ link-in-bio-var-2,advanced_layout_width,slider,style,background_border_section_s
 link-in-bio-var-2,advanced_layout_content_width,slider,style,background_border_section_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,--e-link-in-bio-content-width,Content Width (px)
 link-in-bio-var-2,advanced_layout_full_screen_height,switcher,style,background_border_section_style,,pro,pro,,,"{""advanced_layout_full_width_custom"":""yes""}",,Full Screen Height
 link-in-bio-var-2,advanced_layout_full_screen_height_controls,select2,style,background_border_section_style,,pro,pro,"[""desktop"",""tablet"",""mobile""]","[""desktop"",""tablet"",""mobile""]","{""advanced_layout_full_width_custom"":""yes"",""advanced_layout_full_screen_height"":""yes""}",,Apply Full Screen Height on
+link-in-bio-var-2,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 link-in-bio-var-3,identity_image_style,select,content,identity_section,,pro,pro,profile,"[""profile"",""cover""]",,,Image style
 link-in-bio-var-3,identity_image,media,content,identity_section,,pro,pro,"{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png"",""id"":"""",""size"":""""}",,,,Choose Image
 link-in-bio-var-3,identity_image_position,select,content,identity_section,mobile|tablet,pro,pro,,"["""",""center center"",""center left"",""center right"",""top center"",""top left"",""top right"",""bottom center"",""bottom left"",""bottom right""]","{""identity_image[url]!"":""""}",--e-link-in-bio-identity-image-profile-position,Position
@@ -4579,6 +4629,7 @@ link-in-bio-var-3,advanced_layout_width,slider,style,background_border_section_s
 link-in-bio-var-3,advanced_layout_content_width,slider,style,background_border_section_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,--e-link-in-bio-content-width,Content Width (px)
 link-in-bio-var-3,advanced_layout_full_screen_height,switcher,style,background_border_section_style,,pro,pro,,,"{""advanced_layout_full_width_custom"":""yes""}",,Full Screen Height
 link-in-bio-var-3,advanced_layout_full_screen_height_controls,select2,style,background_border_section_style,,pro,pro,"[""desktop"",""tablet"",""mobile""]","[""desktop"",""tablet"",""mobile""]","{""advanced_layout_full_width_custom"":""yes"",""advanced_layout_full_screen_height"":""yes""}",,Apply Full Screen Height on
+link-in-bio-var-3,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 link-in-bio-var-4,identity_image,media,content,identity_section,,pro,pro,"{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png"",""id"":"""",""size"":""""}",,,,Choose Image
 link-in-bio-var-4,identity_image_position,select,content,identity_section,mobile|tablet,pro,pro,,"["""",""center center"",""center left"",""center right"",""top center"",""top left"",""top right"",""bottom center"",""bottom left"",""bottom right""]","{""identity_image[url]!"":""""}",--e-link-in-bio-identity-image-profile-position,Position
 link-in-bio-var-4,bio_heading,textarea,content,bio_section,,pro,pro,Sara Parker,,,,Heading
@@ -4720,6 +4771,7 @@ link-in-bio-var-4,advanced_layout_width,slider,style,background_border_section_s
 link-in-bio-var-4,advanced_layout_content_width,slider,style,background_border_section_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,--e-link-in-bio-content-width,Content Width (px)
 link-in-bio-var-4,advanced_layout_full_screen_height,switcher,style,background_border_section_style,,pro,pro,,,"{""advanced_layout_full_width_custom"":""yes""}",,Full Screen Height
 link-in-bio-var-4,advanced_layout_full_screen_height_controls,select2,style,background_border_section_style,,pro,pro,"[""desktop"",""tablet"",""mobile""]","[""desktop"",""tablet"",""mobile""]","{""advanced_layout_full_width_custom"":""yes"",""advanced_layout_full_screen_height"":""yes""}",,Apply Full Screen Height on
+link-in-bio-var-4,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 link-in-bio-var-5,identity_image_style,select,content,identity_section,,pro,pro,cover,"[""profile"",""cover""]",,,Image style
 link-in-bio-var-5,identity_image,media,content,identity_section,,pro,pro,"{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png"",""id"":"""",""size"":""""}",,,,Choose Image
 link-in-bio-var-5,identity_image_position,select,content,identity_section,mobile|tablet,pro,pro,,"["""",""center center"",""center left"",""center right"",""top center"",""top left"",""top right"",""bottom center"",""bottom left"",""bottom right""]","{""identity_image[url]!"":""""}",--e-link-in-bio-identity-image-profile-position,Position
@@ -4864,6 +4916,7 @@ link-in-bio-var-5,advanced_layout_width,slider,style,background_border_section_s
 link-in-bio-var-5,advanced_layout_content_width,slider,style,background_border_section_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,--e-link-in-bio-content-width,Content Width (px)
 link-in-bio-var-5,advanced_layout_full_screen_height,switcher,style,background_border_section_style,,pro,pro,,,"{""advanced_layout_full_width_custom"":""yes""}",,Full Screen Height
 link-in-bio-var-5,advanced_layout_full_screen_height_controls,select2,style,background_border_section_style,,pro,pro,"[""desktop"",""tablet"",""mobile""]","[""desktop"",""tablet"",""mobile""]","{""advanced_layout_full_width_custom"":""yes"",""advanced_layout_full_screen_height"":""yes""}",,Apply Full Screen Height on
+link-in-bio-var-5,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 link-in-bio-var-6,identity_image_style,select,content,identity_section,,pro,pro,profile,"[""profile"",""cover""]",,,Image style
 link-in-bio-var-6,identity_image,media,content,identity_section,,pro,pro,"{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png"",""id"":"""",""size"":""""}",,,,Choose Image
 link-in-bio-var-6,identity_image_position,select,content,identity_section,mobile|tablet,pro,pro,,"["""",""center center"",""center left"",""center right"",""top center"",""top left"",""top right"",""bottom center"",""bottom left"",""bottom right""]","{""identity_image[url]!"":""""}",--e-link-in-bio-identity-image-profile-position,Position
@@ -4998,6 +5051,7 @@ link-in-bio-var-6,advanced_layout_width,slider,style,background_border_section_s
 link-in-bio-var-6,advanced_layout_content_width,slider,style,background_border_section_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,--e-link-in-bio-content-width,Content Width (px)
 link-in-bio-var-6,advanced_layout_full_screen_height,switcher,style,background_border_section_style,,pro,pro,,,"{""advanced_layout_full_width_custom"":""yes""}",,Full Screen Height
 link-in-bio-var-6,advanced_layout_full_screen_height_controls,select2,style,background_border_section_style,,pro,pro,"[""desktop"",""tablet"",""mobile""]","[""desktop"",""tablet"",""mobile""]","{""advanced_layout_full_width_custom"":""yes"",""advanced_layout_full_screen_height"":""yes""}",,Apply Full Screen Height on
+link-in-bio-var-6,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 link-in-bio-var-7,identity_image_cover,media,content,identity_section,,pro,pro,"{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png"",""id"":"""",""size"":""""}",,,,Choose Image
 link-in-bio-var-7,identity_image_cover_position,select,content,identity_section,mobile|tablet,pro,pro,,"["""",""center center"",""center left"",""center right"",""top center"",""top left"",""top right"",""bottom center"",""bottom left"",""bottom right""]","{""identity_image_cover[url]!"":""""}",--e-link-in-bio-identity-image-cover-position,Position
 link-in-bio-var-7,identity_image,media,content,identity_section,,pro,pro,"{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png"",""id"":"""",""size"":""""}",,,,Choose Image
@@ -5187,6 +5241,7 @@ link-in-bio-var-7,advanced_layout_width,slider,style,background_border_section_s
 link-in-bio-var-7,advanced_layout_content_width,slider,style,background_border_section_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,--e-link-in-bio-content-width,Content Width (px)
 link-in-bio-var-7,advanced_layout_full_screen_height,switcher,style,background_border_section_style,,pro,pro,,,"{""advanced_layout_full_width_custom"":""yes""}",,Full Screen Height
 link-in-bio-var-7,advanced_layout_full_screen_height_controls,select2,style,background_border_section_style,,pro,pro,"[""desktop"",""tablet"",""mobile""]","[""desktop"",""tablet"",""mobile""]","{""advanced_layout_full_width_custom"":""yes"",""advanced_layout_full_screen_height"":""yes""}",,Apply Full Screen Height on
+link-in-bio-var-7,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 login,show_labels,switcher,content,section_fields_content,,pro,pro,yes,,,,Label
 login,input_size,select,content,section_fields_content,,pro,pro,sm,"[""xs"",""sm"",""md"",""lg"",""xl""]",,,Input Size
 login,button_text,text,content,section_button_content,,pro,pro,Log In,,,,Text
@@ -5329,6 +5384,7 @@ login,message_typography_text_decoration,select,style,section_style_message,,pro
 login,message_typography_line_height,slider,style,section_style_message,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""show_logged_in_message"":""yes"",""message_typography_typography!"":""""}",line-height,Line Height
 login,message_typography_letter_spacing,slider,style,section_style_message,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""show_logged_in_message"":""yes"",""message_typography_typography!"":""""}",letter-spacing,Letter Spacing
 login,message_typography_word_spacing,slider,style,section_style_message,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""show_logged_in_message"":""yes"",""message_typography_typography!"":""""}",word-spacing,Word Spacing
+login,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 loop-carousel,_skin,select,content,section_layout,,pro,pro,post,"[""post"",""post_taxonomy""]",,,Choose template type
 loop-carousel,template_id,template_query,content,section_layout,,pro,pro,,,,,Choose a template
 loop-carousel,posts_per_page,number,content,section_layout,,pro,pro,6,,"{""template_id!"":""""}",,Number of slides
@@ -5512,6 +5568,7 @@ loop-carousel,fraction_pagination_spacing,slider,style,section_pagination_design
 loop-carousel,progressbar_height,slider,style,section_pagination_design,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""pagination!"":"""",""pagination"":""progressbar""}",--swiper-pagination-size,Height
 loop-carousel,progressbar_normal_color,color,style,section_pagination_design,,pro,pro,,,"{""pagination!"":"""",""pagination"":""progressbar""}",--progressbar-normal-color,Color
 loop-carousel,progressbar_hover_color,color,style,section_pagination_design,,pro,pro,,,"{""pagination!"":"""",""pagination"":""progressbar""}",--progressbar-hover-color,Color
+loop-carousel,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 loop-grid,_skin,select,content,section_layout,,pro,pro,post,"[""post"",""post_taxonomy""]",,,Choose template type
 loop-grid,template_id,template_query,content,section_layout,,pro,pro,,,,,Choose a template
 loop-grid,columns,number,content,section_layout,mobile|tablet,pro,pro,3,,"{""template_id!"":""""}",--grid-columns,Columns
@@ -5726,6 +5783,7 @@ loop-grid,nothing_found_message_text_shadow_text_shadow,text_shadow,style,sectio
 loop-grid,nothing_found_message_text_stroke_text_stroke_type,popover_toggle,style,section_nothing_found_message_design,,pro,pro,,,"{""template_id!"":"""",""enable_nothing_found_message"":""yes""}",,Text Stroke
 loop-grid,nothing_found_message_text_stroke_text_stroke,slider,style,section_nothing_found_message_design,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""template_id!"":"""",""enable_nothing_found_message"":""yes"",""nothing_found_message_text_stroke_text_stroke_type!"":""""}",-webkit-text-stroke-width|stroke-width,Text Stroke
 loop-grid,nothing_found_message_text_stroke_stroke_color,color,style,section_nothing_found_message_design,,pro,pro,#000,,"{""template_id!"":"""",""enable_nothing_found_message"":""yes"",""nothing_found_message_text_stroke_text_stroke_type!"":""""}",-webkit-text-stroke-color|stroke,Stroke Color
+loop-grid,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 lottie,source,select,content,lottie,,pro,pro,media_file,"[""media_file""]",,,Source
 lottie,source_external_url,hidden,content,lottie,,pro,pro,"{""url"":"""",""is_external"":"""",""nofollow"":"""",""custom_attributes"":""""}",,"{""source"":""external_url""}",,External URL
 lottie,source_json,media,content,lottie,,pro,pro,"{""url"":"""",""id"":"""",""size"":""""}",,"{""source"":""media_file""}",,Upload JSON File
@@ -5778,6 +5836,7 @@ lottie,caption_typography_line_height,slider,style,section_style_caption,mobile|
 lottie,caption_typography_letter_spacing,slider,style,section_style_caption,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""caption_source!"":""none"",""caption_typography_typography!"":""""}",letter-spacing,Letter Spacing
 lottie,caption_typography_word_spacing,slider,style,section_style_caption,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""caption_source!"":""none"",""caption_typography_typography!"":""""}",word-spacing,Word Spacing
 lottie,caption_space,slider,style,section_style_caption,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""caption_source!"":""none""}",--caption-margin-top,Spacing
+lottie,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 media-carousel,skin,select,content,section_slides,,pro,pro,carousel,"[""carousel"",""slideshow"",""coverflow""]",,,Skin
 media-carousel,slides_name,text,content,section_slides,,pro,pro,Slides,,,,Slides Name
 media-carousel,slides,repeater,content,section_slides,,pro,pro,"[{""image"":{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png""}},{""image"":{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png""}},{""image"":{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png""}},{""image"":{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png""}},{""image"":{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png""}}]",,,,Slides
@@ -5840,6 +5899,7 @@ media-carousel,lightbox_color,color,style,section_lightbox_style,,pro,pro,,,,bac
 media-carousel,lightbox_ui_color,color,style,section_lightbox_style,,pro,pro,,,,color,UI Color
 media-carousel,lightbox_ui_hover_color,color,style,section_lightbox_style,,pro,pro,,,,color,UI Hover Color
 media-carousel,lightbox_video_width,slider,style,section_lightbox_style,,pro,pro,"{""unit"":""%"",""size"":"""",""sizes"":[]}",,,width,Video Width
+media-carousel,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 mega-menu,menu_name,text,content,section_layout,,pro,pro,Menu,,,,Menu Name
 mega-menu,menu_items,nested-elements-repeater,content,section_layout,,pro,pro,"[{""item_title"":""Item #1""},{""item_title"":""Item #2""},{""item_title"":""Item #3""}]",,,,Menu Items
 mega-menu,content_width,select,content,section_layout,,pro,pro,full_width,"[""full_width"",""fit_to_content""]",,--n-menu-dropdown-content-max-width,Content Width
@@ -6256,7 +6316,9 @@ mega-menu,menu_dropdown_box_border_radius,dimensions,style,section_dropdown_menu
 mega-menu,menu_dropdown_box_shadow_box_shadow_type,popover_toggle,style,section_dropdown_menu_style,,pro,pro,,,,,Box Shadow
 mega-menu,menu_dropdown_box_shadow_box_shadow,box_shadow,style,section_dropdown_menu_style,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""menu_dropdown_box_shadow_box_shadow_type!"":""""}",--n-menu-dropdown-content-box-shadow-horizontal|--n-menu-dropdown-content-box-shadow-vertical|--n-menu-dropdown-content-box-shadow-blur|--n-menu-dropdown-content-box-shadow-spread|--n-menu-dropdown-content-box-shadow-color|--n-menu-dropdown-content-box-shadow-position,Box Shadow
 mega-menu,menu_dropdown_box_shadow_box_shadow_position,select,style,section_dropdown_menu_style,,pro,pro, ,"["" "",""inset""]","{""menu_dropdown_box_shadow_box_shadow_type!"":""""}",,Position
+mega-menu,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 menu-anchor,anchor,text,content,section_anchor,,free,free,,,,,The ID of Menu Anchor.
+menu-anchor,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 nav-menu,menu_name,text,content,section_layout,,pro,pro,Menu,,,,Menu Name
 nav-menu,menu,select,content,section_layout,,pro,pro,footer-menu,"[""footer-menu"",""main-menu""]",,,Menu
 nav-menu,layout,select,content,section_layout,,pro,pro,horizontal,"[""horizontal"",""vertical"",""dropdown""]",,,Layout
@@ -6335,6 +6397,7 @@ nav-menu,toggle_background_color_hover,color,style,style_toggle,,pro,pro,,,"{""t
 nav-menu,toggle_size,slider,style,style_toggle,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""toggle!"":"""",""dropdown!"":""none""}",--nav-menu-icon-size,Size
 nav-menu,toggle_border_width,slider,style,style_toggle,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""toggle!"":"""",""dropdown!"":""none""}",border-width,Border Width
 nav-menu,toggle_border_radius,slider,style,style_toggle,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""toggle!"":"""",""dropdown!"":""none""}",border-radius,Border Radius
+nav-menu,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 nested-accordion,items,nested-elements-repeater,content,section_items,,free,free,"[{""item_title"":""Item #1""},{""item_title"":""Item #2""},{""item_title"":""Item #3""}]",,,,Items
 nested-accordion,accordion_item_title_position_horizontal,choose,content,section_items,mobile|tablet,free,free,,"[""start"",""center"",""end"",""stretch""]",,,Item Position
 nested-accordion,accordion_item_title_icon_position,choose,content,section_items,mobile|tablet,free,free,,"[""start"",""end""]",,,Position
@@ -6525,6 +6588,7 @@ nested-accordion,content_border_width,dimensions,style,section_content_style,mob
 nested-accordion,content_border_color,color,style,section_content_style,,free,free,,,"{""content_border_border!"":["""",""none""]}",border-color,Border Color
 nested-accordion,content_border_radius,dimensions,style,section_content_style,mobile|tablet,free,free,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,,--border-radius,Border Radius
 nested-accordion,content_padding,dimensions,style,section_content_style,mobile|tablet,free,free,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,,--padding-top|--padding-right|--padding-bottom|--padding-left,Padding
+nested-accordion,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 nested-carousel,carousel_name,text,content,section_slides,,pro,pro,Carousel,,,,Carousel Name
 nested-carousel,carousel_items,nested-elements-repeater,content,section_slides,,pro,pro,"[{""slide_title"":""Slide #1""},{""slide_title"":""Slide #2""},{""slide_title"":""Slide #3""}]",,,,Carousel Items
 nested-carousel,slides_to_show,select,content,section_slides,mobile|tablet,pro,pro,,"["""",1,2,3,4,5,6,7,8]",,--e-n-carousel-swiper-slides-to-display,Slides on display
@@ -6703,6 +6767,7 @@ nested-carousel,fraction_pagination_spacing,slider,style,section_pagination_desi
 nested-carousel,progressbar_height,slider,style,section_pagination_design,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""pagination!"":"""",""pagination"":""progressbar""}",--e-n-carousel-swiper-pagination-size,Height
 nested-carousel,progressbar_normal_color,color,style,section_pagination_design,,pro,pro,,,"{""pagination!"":"""",""pagination"":""progressbar""}",--e-n-carousel-progressbar-normal-color,Color
 nested-carousel,progressbar_hover_color,color,style,section_pagination_design,,pro,pro,,,"{""pagination!"":"""",""pagination"":""progressbar""}",--e-n-carousel-progressbar-hover-color,Color
+nested-carousel,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 nested-tabs,tabs,nested-elements-repeater,content,section_tabs,,free,free,"[{""tab_title"":""Tab #1""},{""tab_title"":""Tab #2""},{""tab_title"":""Tab #3""}]",,,,Tabs Items
 nested-tabs,tabs_direction,choose,content,section_tabs,mobile|tablet,free,free,,"[""block-start"",""block-end"",""inline-end"",""inline-start""]",,,Direction
 nested-tabs,tabs_justify_horizontal,choose,content,section_tabs,mobile|tablet,free,free,,"[""start"",""center"",""end"",""stretch""]","{""tabs_direction"":["""",""block-start"",""block-end"",""top"",""bottom""]}",,Justify
@@ -6905,6 +6970,7 @@ nested-tabs,box_shadow_box_shadow_box_shadow_type,popover_toggle,style,section_b
 nested-tabs,box_shadow_box_shadow_box_shadow,box_shadow,style,section_box_style,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""box_shadow_box_shadow_box_shadow_type!"":"""",""box_height!"":""height""}",box-shadow,Box Shadow
 nested-tabs,box_shadow_box_shadow_box_shadow_position,select,style,section_box_style,,free,free, ,"["" "",""inset""]","{""box_shadow_box_shadow_box_shadow_type!"":"""",""box_height!"":""height""}",,Position
 nested-tabs,box_padding,dimensions,style,section_box_style,mobile|tablet,free,free,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,,--padding-top|--padding-right|--padding-bottom|--padding-left,Padding
+nested-tabs,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 off-canvas,editing_mode,switcher,content,section_layout,,pro,pro,yes,,,,Editing Mode
 off-canvas,off_canvas_name,text,content,section_layout,,pro,pro,Off-Canvas,,,,Off-Canvas Name
 off-canvas,horizontal_position,choose,content,section_layout,mobile|tablet,pro,pro,,"[""flex-start"",""center"",""flex-end""]",,--e-off-canvas-justify-content,Horizontal Position
@@ -6992,6 +7058,7 @@ off-canvas,overlay_background_slideshow_background_position,select,style,section
 off-canvas,overlay_background_slideshow_lazyload,switcher,style,section_overlay,,pro,pro,,,"{""overlay_background_background"":[""slideshow""],""has_overlay"":""yes""}",,Lazyload
 off-canvas,overlay_background_slideshow_ken_burns,switcher,style,section_overlay,,pro,pro,,,"{""overlay_background_background"":[""slideshow""],""has_overlay"":""yes""}",,Ken Burns Effect
 off-canvas,overlay_background_slideshow_ken_burns_zoom_direction,select,style,section_overlay,,pro,pro,in,"[""in"",""out""]","{""overlay_background_background"":[""slideshow""],""overlay_background_slideshow_ken_burns!"":"""",""has_overlay"":""yes""}",,Direction
+off-canvas,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 paypal-button,merchant_account,hidden,content,section_account,,pro,pro,simple,"[""simple"",""advanced""]",,,Merchant Account
 paypal-button,email,text,content,section_account,,pro,pro,,,"{""merchant_account"":""simple""}",,PayPal Account
 paypal-button,sdk_token,text,content,section_account,,pro,pro,,,"{""merchant_account"":""advanced""}",,SDK Token
@@ -7126,6 +7193,7 @@ paypal-button,message_typography_letter_spacing,slider,style,section_messages_st
 paypal-button,message_typography_word_spacing,slider,style,section_messages_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""message_typography_typography!"":""""}",word-spacing,Word Spacing
 paypal-button,message_color_global,color,style,section_messages_style,,pro,pro,,,,color,Error Message Color
 paypal-button,message_color_payment,color,style,section_messages_style,,pro,pro,,,,color,PayPal Not Connected Color
+paypal-button,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 portfolio,columns,select,content,section_layout,mobile|tablet,pro,pro,3,"[1,2,3,4,5,6]",,,Columns
 portfolio,posts_per_page,number,content,section_layout,,pro,pro,6,,,,Posts Per Page
 portfolio,thumbnail_size_size,select,content,section_layout,,pro,pro,medium,"[""thumbnail"",""medium"",""medium_large"",""large"",""1536x1536"",""2048x2048"",""full""]",,,Image Resolution
@@ -7186,10 +7254,12 @@ portfolio,typography_filter_letter_spacing,slider,style,section_design_filter,mo
 portfolio,typography_filter_word_spacing,slider,style,section_design_filter,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""show_filter_bar"":""yes"",""typography_filter_typography!"":""""}",word-spacing,Word Spacing
 portfolio,filter_item_spacing,slider,style,section_design_filter,,pro,pro,"{""unit"":""px"",""size"":10,""sizes"":[]}",,"{""show_filter_bar"":""yes""}",margin-right|margin-left,Space Between
 portfolio,filter_spacing,slider,style,section_design_filter,,pro,pro,"{""unit"":""px"",""size"":10,""sizes"":[]}",,"{""show_filter_bar"":""yes""}",margin-bottom,Spacing
+portfolio,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 post-comments,_skin,hidden,content,section_content,,pro,pro,,,,,
 post-comments,skin_temp,select,content,section_content,,pro,pro,,"[""""]",,,Skin
 post-comments,source_type,select,content,section_content,,pro,pro,current_post,"[""current_post"",""custom""]",,,Source
 post-comments,source_custom,query,content,section_content,,pro,pro,,,"{""source_type"":""custom""}",,Search &amp; Select
+post-comments,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 post-info,view,choose,content,section_icon,,pro,pro,inline,"[""traditional"",""inline""]",,,Layout
 post-info,icon_list,repeater,content,section_icon,,pro,pro,"[{""type"":""author"",""selected_icon"":{""value"":""far fa-user-circle"",""library"":""fa-regular""}},{""type"":""date"",""selected_icon"":{""value"":""fas fa-calendar"",""library"":""fa-solid""}},{""type"":""time"",""selected_icon"":{""value"":""far fa-clock"",""library"":""fa-regular""}},{""type"":""comments"",""selected_icon"":{""value"":""far fa-comment-dots"",""library"":""fa-regular""}}]",,,,
 post-info,space_between,slider,style,section_icon_list,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,padding-bottom|margin-top|margin-right|margin-left|left|right,Space Between
@@ -7214,6 +7284,7 @@ post-info,icon_typography_text_decoration,select,style,section_text_style,,pro,p
 post-info,icon_typography_line_height,slider,style,section_text_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""icon_typography_typography!"":""""}",line-height,Line Height
 post-info,icon_typography_letter_spacing,slider,style,section_text_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""icon_typography_typography!"":""""}",letter-spacing,Letter Spacing
 post-info,icon_typography_word_spacing,slider,style,section_text_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""icon_typography_typography!"":""""}",word-spacing,Word Spacing
+post-info,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 post-navigation,show_label,switcher,content,section_post_navigation_content,,pro,pro,yes,,,,Label
 post-navigation,prev_label,text,content,section_post_navigation_content,,pro,pro,Previous,,"{""show_label"":""yes""}",,Previous Label
 post-navigation,next_label,text,content,section_post_navigation_content,,pro,pro,Next,,"{""show_label"":""yes""}",,Next Label
@@ -7257,6 +7328,7 @@ post-navigation,arrow_padding,slider,style,arrow_style,,pro,pro,"{""unit"":""px"
 post-navigation,sep_color,color,style,borders_section_style,,pro,pro,,,"{""show_borders!"":""""}",background-color|color,Color
 post-navigation,borders_width,slider,style,borders_section_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""show_borders!"":""""}",width|border-block-width,Size
 post-navigation,borders_spacing,slider,style,borders_section_style,,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""show_borders!"":""""}",padding,Spacing
+post-navigation,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 posts,_skin,select,content,section_layout,,pro,pro,classic,"[""classic"",""cards"",""full_content""]",,,Skin
 posts,classic_columns,select,content,section_layout,mobile|tablet,pro,pro,3,"[1,2,3,4,5,6]","{""_skin"":""classic""}",,Columns
 posts,classic_posts_per_page,number,content,section_layout,,pro,pro,6,,"{""_skin"":""classic""}",,Posts Per Page
@@ -7721,6 +7793,7 @@ posts,load_more_no_posts_message_word_spacing,slider,style,section_style,mobile|
 posts,load_more_no_posts_message_color,color,style,section_style,,pro,pro,,,"{""pagination_type"":[""load_more_on_click"",""load_more_infinite_scroll""]}",--load-more-message-color,Color
 posts,load_more_spinner_color,color,style,section_style,,pro,pro,,,"{""pagination_type"":[""load_more_on_click"",""load_more_infinite_scroll""],""load_more_spinner[value]!"":""""}",--load-more-spinner-color,Spinner Color
 posts,load_more_spacing,slider,style,section_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""pagination_type"":[""load_more_on_click"",""load_more_infinite_scroll""]}",,Spacing
+posts,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 price-list,price_list,repeater,content,section_list,,pro,pro,"[{""title"":""First item on the list"",""item_description"":""Lorem ipsum dolor sit amet consectetur adipiscing elit dolor"",""price"":""$20"",""link"":{""url"":""#""}},{""title"":""Second item on the list"",""item_description"":""Lorem ipsum dolor sit amet consectetur adipiscing elit dolor"",""price"":""$9"",""link"":{""url"":""#""}},{""title"":""Third item on the list"",""item_description"":""Lorem ipsum dolor sit amet consectetur adipiscing elit dolor"",""price"":""$32"",""link"":{""url"":""#""}}]",,,,List Items
 price-list,title_tag,select,content,section_list,,pro,pro,span,"[""h1"",""h2"",""h3"",""h4"",""h5"",""h6"",""div"",""span"",""p""]",,,Title HTML Tag
 price-list,description_tag,select,content,section_list,,pro,pro,p,"[""h1"",""h2"",""h3"",""h4"",""h5"",""h6"",""div"",""span"",""p""]",,,Description HTML Tag
@@ -7771,6 +7844,7 @@ price-list,separator_weight,slider,style,section_content_style,,pro,pro,"{""unit
 price-list,separator_color,color,style,section_content_style,,pro,pro,,,"{""separator_style!"":""none""}",border-bottom-color,Color
 price-list,separator_spacing,slider,style,section_content_style,,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""separator_style!"":""none""}",margin-left|margin-right,Spacing
 price-list,border_radius,dimensions,style,section_image_style,,pro,pro,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,,border-radius,Border Radius
+price-list,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 price-table,heading,text,content,section_header,,pro,pro,Enter your title,,,,Title
 price-table,sub_heading,text,content,section_header,,pro,pro,Enter your description,,,,Description
 price-table,heading_tag,select,content,section_header,,pro,pro,h3,"[""h2"",""h3"",""h4"",""h5"",""h6""]","{""heading!"":""""}",,Title HTML Tag
@@ -7989,6 +8063,7 @@ price-table,ribbon_typography_word_spacing,slider,style,section_ribbon_style,mob
 price-table,box_shadow_box_shadow_type,popover_toggle,style,section_ribbon_style,,pro,pro,,,"{""show_ribbon"":""yes""}",,Box Shadow
 price-table,box_shadow_box_shadow,box_shadow,style,section_ribbon_style,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""show_ribbon"":""yes"",""box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 price-table,box_shadow_box_shadow_position,select,style,section_ribbon_style,,pro,pro, ,"["" "",""inset""]","{""show_ribbon"":""yes"",""box_shadow_box_shadow_type!"":""""}",,Position
+price-table,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 progress,title,text,content,section_progress,,free,free,My Skill,,,,Title
 progress,title_tag,select,content,section_progress,,free,free,span,"[""h1"",""h2"",""h3"",""h4"",""h5"",""h6"",""div"",""span"",""p""]","{""title!"":""""}",,Title HTML Tag
 progress,title_display,switcher,content,section_progress,,free,free,yes,,"{""title!"":""""}",,Display Title
@@ -8025,6 +8100,7 @@ progress,bar_inner_typography_letter_spacing,slider,style,section_progress_style
 progress,bar_inner_typography_word_spacing,slider,style,section_progress_style,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""bar_inner_typography_typography!"":"""",""inner_text!"":""""}",word-spacing,Word Spacing
 progress,bar_inner_shadow_text_shadow_type,popover_toggle,style,section_progress_style,,free,free,,,"{""inner_text!"":""""}",,Text Shadow
 progress,bar_inner_shadow_text_shadow,text_shadow,style,section_progress_style,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""color"":""rgba(0,0,0,0.3)""}",,"{""bar_inner_shadow_text_shadow_type!"":"""",""inner_text!"":""""}",text-shadow,Text Shadow
+progress,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 progress-tracker,type,select,content,section_content_scrolling_tracker,,pro,pro,horizontal,"[""horizontal"",""circular""]",,,Tracker Type
 progress-tracker,relative_to,select,content,section_content_scrolling_tracker,,pro,pro,entire_page,"[""entire_page"",""post_content"",""selector""]",,,Progress relative to
 progress-tracker,selector,text,content,section_content_scrolling_tracker,,pro,pro,,,"{""relative_to"":""selector""}",,Selector
@@ -8127,6 +8203,7 @@ progress-tracker,percentage_typography_letter_spacing,slider,style,section__cont
 progress-tracker,percentage_typography_word_spacing,slider,style,section__content_style_scrolling_tracker,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""percentage"":""yes"",""percentage_typography_typography!"":""""}",word-spacing,Word Spacing
 progress-tracker,percentage_text_shadow_text_shadow_type,popover_toggle,style,section__content_style_scrolling_tracker,,pro,pro,,,"{""percentage"":""yes""}",,Text Shadow
 progress-tracker,percentage_text_shadow_text_shadow,text_shadow,style,section__content_style_scrolling_tracker,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""color"":""rgba(0,0,0,0.3)""}",,"{""percentage"":""yes"",""percentage_text_shadow_text_shadow_type!"":""""}",text-shadow,Text Shadow
+progress-tracker,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 rating,rating_scale,slider,content,section_rating,,free,free,"{""unit"":""px"",""size"":5,""sizes"":[]}",,,,Rating Scale
 rating,rating_value,number,content,section_rating,,free,free,,,,,Rating
 rating,rating_icon,icons,content,section_rating,,free,free,"{""value"":""eicon-star"",""library"":""eicons""}",,,,Icon
@@ -8135,7 +8212,9 @@ rating,icon_size,slider,style,section_icon_style,mobile|tablet,free,free,"{""uni
 rating,icon_gap,slider,style,section_icon_style,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,--e-rating-gap,Spacing
 rating,icon_color,color,style,section_icon_style,,free,free,,,,--e-rating-icon-marked-color,Color
 rating,icon_unmarked_color,color,style,section_icon_style,,free,free,,,,--e-rating-icon-color,Unmarked Color
+rating,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 read-more,link_text,text,content,section_title,,free,free,Continue reading,,,,Read More Text
+read-more,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 reviews,slides_name,text,content,section_slides,,pro,pro,Slides,,,,Slides Name
 reviews,slides,repeater,content,section_slides,,pro,pro,"[{""content"":""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."",""name"":""John Doe"",""title"":""@username"",""image"":{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png""}},{""content"":""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."",""name"":""John Doe"",""title"":""@username"",""image"":{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png""}},{""content"":""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."",""name"":""John Doe"",""title"":""@username"",""image"":{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png""}}]",,,,Slides
 reviews,slides_per_view,select,content,section_slides,mobile|tablet,pro,pro,,"["""",1,2,3,4,5,6,7,8,9,10]",,,Slides Per View
@@ -8214,6 +8293,7 @@ reviews,pagination_gap,slider,style,section_navigation,mobile|tablet,pro,pro,"{"
 reviews,pagination_size,slider,style,section_navigation,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""pagination!"":""""}",height|width,Size
 reviews,pagination_color_inactive,color,style,section_navigation,,pro,pro,,,"{""pagination!"":""""}",background-color|opacity,Color
 reviews,pagination_color,color,style,section_navigation,,pro,pro,,,"{""pagination!"":""""}",background-color|color,Active Color
+reviews,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 search,search_input_placeholder_text,text,content,content_section_search_field,,pro,pro,Type to start searching...,,,,Placeholder
 search,icon_search,icons,content,content_section_search_field,,pro,pro,"{""value"":"""",""library"":""""}",,,,Icon
 search,autocomplete,switcher,content,content_section_search_field,,pro,pro,,,,,Autocomplete
@@ -8537,6 +8617,7 @@ search,nothing_found_message_text_shadow_text_shadow,text_shadow,style,style_sec
 search,nothing_found_message_text_stroke_text_stroke_type,popover_toggle,style,style_section_nothing_found_message,,pro,pro,,,"{""enable_nothing_found_message"":""yes"",""live_results"":""yes"",""template_id!"":""""}",,Text Stroke
 search,nothing_found_message_text_stroke_text_stroke,slider,style,style_section_nothing_found_message,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""enable_nothing_found_message"":""yes"",""live_results"":""yes"",""template_id!"":"""",""nothing_found_message_text_stroke_text_stroke_type!"":""""}",-webkit-text-stroke-width|stroke-width,Text Stroke
 search,nothing_found_message_text_stroke_stroke_color,color,style,style_section_nothing_found_message,,pro,pro,#000,,"{""enable_nothing_found_message"":""yes"",""live_results"":""yes"",""template_id!"":"""",""nothing_found_message_text_stroke_text_stroke_type!"":""""}",-webkit-text-stroke-color|stroke,Stroke Color
+search,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 search-form,skin,select,content,search_content,,pro,pro,classic,"[""classic"",""minimal"",""full_screen""]",,,Skin
 search-form,placeholder,text,content,search_content,,pro,pro,Search...,,,,Placeholder
 search-form,button_type,select,content,search_content,,pro,pro,icon,"[""icon"",""text""]","{""skin"":""classic""}",,Type
@@ -8594,6 +8675,7 @@ search-form,toggle_background_color_hover,color,style,section_toggle_style,,pro,
 search-form,toggle_icon_size,slider,style,section_toggle_style,,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""skin"":""full_screen""}",--e-search-form-toggle-icon-size,Icon Size
 search-form,toggle_border_width,slider,style,section_toggle_style,,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""skin"":""full_screen""}",--e-search-form-toggle-border-width,Border Width
 search-form,toggle_border_radius,slider,style,section_toggle_style,,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""skin"":""full_screen""}",--e-search-form-toggle-border-radius,Border Radius
+search-form,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 share-buttons,share_buttons,repeater,content,section_buttons_content,,pro,pro,"[{""button"":""facebook""},{""button"":""x-twitter""},{""button"":""linkedin""}]",,,,
 share-buttons,view,select,content,section_buttons_content,,pro,pro,icon-text,"[""icon-text"",""icon"",""text""]",,,View
 share-buttons,show_label,switcher,content,section_buttons_content,,pro,pro,yes,,"{""view"":""icon-text""}",,Label
@@ -8624,8 +8706,11 @@ share-buttons,typography_text_decoration,select,style,section_buttons_style,,pro
 share-buttons,typography_letter_spacing,slider,style,section_buttons_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""typography_typography!"":""""}",letter-spacing,Letter Spacing
 share-buttons,typography_word_spacing,slider,style,section_buttons_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""typography_typography!"":""""}",word-spacing,Word Spacing
 share-buttons,text_padding,dimensions,style,section_buttons_style,,pro,pro,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,"{""view"":""text""}",padding,Text Padding
+share-buttons,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 shortcode,shortcode,textarea,content,section_shortcode,,free,free,,,,,Enter your shortcode
+shortcode,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 sidebar,sidebar,select,content,section_sidebar,,free,free,,"["""",""sidebar-1"",""ct-footer-sidebar-1"",""ct-footer-sidebar-2"",""ct-footer-sidebar-3"",""ct-footer-sidebar-4"",""ct-footer-sidebar-5"",""ct-footer-sidebar-6""]",,,Choose Sidebar
+sidebar,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 sitemap,sitemap_items,repeater,content,sitemap_section,,pro,pro,"[{""sitemap_type_selector"":""post_type"",""sitemap_title"":""Pages"",""sitemap_source_post_type"":""page""},{""sitemap_type_selector"":""taxonomy"",""sitemap_title"":""Categories"",""sitemap_source_taxonomy"":""category""}]",,,,
 sitemap,sitemap_columns,select,content,sitemap_section,mobile|tablet,pro,pro,4,"[1,2,3,4,5,6]",,flex-basis,Columns
 sitemap,sitemap_title_tag,select,content,sitemap_section,,pro,pro,h2,"[""h1"",""h2"",""h3"",""h4"",""h5"",""h6"",""div"",""span"",""p""]",,,Title HTML Tag
@@ -8659,6 +8744,7 @@ sitemap,sitemap_list_item_typography_letter_spacing,slider,style,section_sitemap
 sitemap,sitemap_list_item_typography_word_spacing,slider,style,section_sitemap_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""sitemap_list_item_typography_typography!"":""""}",word-spacing,Word Spacing
 sitemap,sitemap_bullet_color,color,style,section_sitemap_style,,pro,pro,,,,color,Color
 sitemap,sitemap_list_item_bullet_style,choose,style,section_sitemap_style,,pro,pro,disc,"[""disc"",""circle"",""square"",""none""]",,list-style-type,Style
+sitemap,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 slides,slides_name,text,content,section_slides,,pro,pro,Slides,,,,Slides Name
 slides,slides,repeater,content,section_slides,,pro,pro,"[{""heading"":""Slide 1 Heading"",""description"":""Lorem ipsum dolor sit amet consectetur adipiscing elit dolor"",""button_text"":""Click Here"",""background_color"":""#833ca3"",""background_image"":{""url"":""""}},{""heading"":""Slide 2 Heading"",""description"":""Lorem ipsum dolor sit amet consectetur adipiscing elit dolor"",""button_text"":""Click Here"",""background_color"":""#4054b2"",""background_image"":{""url"":""""}},{""heading"":""Slide 3 Heading"",""description"":""Lorem ipsum dolor sit amet consectetur adipiscing elit dolor"",""button_text"":""Click Here"",""background_color"":""#1abc9c"",""background_image"":{""url"":""""}}]",,,,Slides
 slides,slides_height,slider,content,section_slides,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":400,""sizes"":[]}",,,height,Height
@@ -8794,6 +8880,7 @@ slides,dots_gap,slider,style,section_style_navigation,mobile|tablet,pro,pro,"{""
 slides,dots_size,slider,style,section_style_navigation,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""navigation"":[""dots"",""both"",""both""]}",height|width|font-size,Size
 slides,dots_color_inactive,color,style,section_style_navigation,,pro,pro,,,"{""navigation"":[""dots"",""both"",""both""]}",background-color|opacity,Color
 slides,dots_color,color,style,section_style_navigation,,pro,pro,,,"{""navigation"":[""dots"",""both"",""both""]}",background-color,Active Color
+slides,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 social-icons,social_icon_list,repeater,content,section_social_icon,,free,free,"[{""social_icon"":{""value"":""fab fa-facebook"",""library"":""fa-brands""}},{""social_icon"":{""value"":""fab fa-x-twitter"",""library"":""fa-brands""}},{""social_icon"":{""value"":""fab fa-youtube"",""library"":""fa-brands""}}]",,,,Social Icons
 social-icons,shape,select,content,section_social_icon,,free,free,rounded,"[""square"",""rounded"",""circle""]",,,Shape
 social-icons,columns,select,content,section_social_icon,mobile|tablet,free,free,0,"[0,1,2,3,4,5,6]",,--grid-template-columns,Columns
@@ -8813,7 +8900,9 @@ social-icons,hover_primary_color,color,style,section_social_hover,,free,free,,,"
 social-icons,hover_secondary_color,color,style,section_social_hover,,free,free,,,"{""icon_color"":""custom""}",color|fill,Secondary Color
 social-icons,hover_border_color,color,style,section_social_hover,,free,free,,,"{""image_border_border!"":""""}",border-color,Border Color
 social-icons,hover_animation,hover_animation,style,section_social_hover,,free,free,,,,,Hover Animation
+social-icons,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 spacer,space,slider,content,section_spacer,mobile|tablet,free,free,"{""unit"":""px"",""size"":50,""sizes"":[]}",,,--spacer-size,Space
+spacer,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 star-rating,rating_scale,select,content,section_rating,,free,free,5,"[5,10]",,,Rating Scale
 star-rating,rating,number,content,section_rating,,free,free,5,,,,Rating
 star-rating,star_style,select,content,section_rating,,free,free,star_fontawesome,"[""star_fontawesome"",""star_unicode""]",,,Icon
@@ -8838,6 +8927,7 @@ star-rating,icon_size,slider,style,section_stars_style,mobile|tablet,free,free,"
 star-rating,icon_space,slider,style,section_stars_style,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,margin-inline-end,Spacing
 star-rating,stars_color,color,style,section_stars_style,,free,free,,,,color,Color
 star-rating,stars_unmarked_color,color,style,section_stars_style,,free,free,,,,color,Unmarked Color
+star-rating,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 stripe-button,product_name,text,content,section_stripe_account,,pro,pro,,,,,Product Name
 stripe-button,donation_type,select,content,section_stripe_account,,pro,pro,fixed,"[""any"",""fixed""]","{""type"":""donation""}",,Donation Amount
 stripe-button,donation_amount,number,content,section_stripe_account,,pro,pro,1,,"{""type"":""donation"",""donation_type"":""fixed""}",,Amount
@@ -8966,6 +9056,7 @@ stripe-button,message_typography_letter_spacing,slider,style,section_messages_st
 stripe-button,message_typography_word_spacing,slider,style,section_messages_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""message_typography_typography!"":""""}",word-spacing,Word Spacing
 stripe-button,message_color_global,color,style,section_messages_style,,pro,pro,,,,color,Error Message Color
 stripe-button,message_color_payment,color,style,section_messages_style,,pro,pro,,,,color,Stripe Not Connected Color
+stripe-button,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 table-of-contents,title,text,content,table_of_contents,,pro,pro,Table of Contents,,,,Title
 table-of-contents,html_tag,select,content,table_of_contents,,pro,pro,h4,"[""h2"",""h3"",""h4"",""h5"",""h6"",""div""]",,,HTML Tag
 table-of-contents,headings_by_tags,select2,content,table_of_contents,,pro,pro,"[""h2"",""h3"",""h4"",""h5"",""h6""]","[""h1"",""h2"",""h3"",""h4"",""h5"",""h6""]",,,Anchors By Tags
@@ -9029,6 +9120,7 @@ table-of-contents,item_text_color_active,color,style,list_style,,pro,pro,,,,--it
 table-of-contents,item_text_underline_active,switcher,style,list_style,,pro,pro,,,,--item-text-active-decoration,Underline
 table-of-contents,marker_color,color,style,list_style,,pro,pro,,,,--marker-color,Color
 table-of-contents,marker_size,slider,style,list_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,--marker-size,Size
+table-of-contents,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 tabs,tabs,repeater,content,section_tabs,,free,free,"[{""tab_title"":""Tab #1"",""tab_content"":""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.""},{""tab_title"":""Tab #2"",""tab_content"":""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.""}]",,,,Tabs Items
 tabs,type,choose,content,section_tabs,,free,free,horizontal,"[""vertical"",""horizontal""]",,,Position
 tabs,tabs_align_horizontal,choose,content,section_tabs,,free,free,,"["""",""center"",""end"",""stretch""]","{""type"":""horizontal""}",,Alignment
@@ -9068,6 +9160,7 @@ tabs,content_typography_letter_spacing,slider,style,section_tabs_style,mobile|ta
 tabs,content_typography_word_spacing,slider,style,section_tabs_style,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""content_typography_typography!"":""""}",word-spacing,Word Spacing
 tabs,content_shadow_text_shadow_type,popover_toggle,style,section_tabs_style,,free,free,,,,,Text Shadow
 tabs,content_shadow_text_shadow,text_shadow,style,section_tabs_style,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""color"":""rgba(0,0,0,0.3)""}",,"{""content_shadow_text_shadow_type!"":""""}",text-shadow,Text Shadow
+tabs,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 taxonomy-filter,selected_element,select,content,section_taxonomy_filter,,pro,pro,,"[""""]",,,Selected loop grid
 taxonomy-filter,taxonomy,select,content,section_taxonomy_filter,,pro,pro,,"[""""]","{""selected_element!"":""""}",,Taxonomy
 taxonomy-filter,direction,select,content,section_taxonomy_filter,mobile|tablet,pro,pro,horizontal,"[""horizontal"",""vertical""]","{""selected_element!"":""""}",,Direction
@@ -9220,7 +9313,9 @@ taxonomy-filter,taxonomy_filter_active_box_shadow_box_shadow,box_shadow,style,se
 taxonomy-filter,taxonomy_filter_active_box_shadow_box_shadow_position,select,style,section_design_layout,,pro,pro, ,"["" "",""inset""]","{""taxonomy_filter_active_box_shadow_box_shadow_type!"":""""}",,Position
 taxonomy-filter,taxonomy_filter_border_radius,dimensions,style,section_design_layout,mobile|tablet,pro,pro,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,,--e-filter-item-border-radius,Border Radius
 taxonomy-filter,taxonomy_filter_padding,dimensions,style,section_design_layout,mobile|tablet,pro,pro,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,,padding,Padding
+taxonomy-filter,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 template,template_id,query,content,section_template,,pro,pro,,,,,Choose Template
+template,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 testimonial,testimonial_content,textarea,content,section_testimonial,,free,free,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",,,,Content
 testimonial,testimonial_image,media,content,section_testimonial,,free,free,"{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png"",""id"":"""",""size"":""""}",,,,Choose Image
 testimonial,testimonial_image_size,select,content,section_testimonial,,free,free,full,"[""thumbnail"",""medium"",""medium_large"",""large"",""1536x1536"",""2048x2048"",""full"",""custom""]",,,Image Resolution
@@ -9274,6 +9369,7 @@ testimonial,job_typography_letter_spacing,slider,style,section_style_testimonial
 testimonial,job_typography_word_spacing,slider,style,section_style_testimonial_job,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""job_typography_typography!"":""""}",word-spacing,Word Spacing
 testimonial,job_shadow_text_shadow_type,popover_toggle,style,section_style_testimonial_job,,free,free,,,,,Text Shadow
 testimonial,job_shadow_text_shadow,text_shadow,style,section_style_testimonial_job,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""color"":""rgba(0,0,0,0.3)""}",,"{""job_shadow_text_shadow_type!"":""""}",text-shadow,Text Shadow
+testimonial,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 testimonial-carousel,slides_name,text,content,section_slides,,pro,pro,Slides,,,,Slides Name
 testimonial-carousel,slides,repeater,content,section_slides,,pro,pro,"[{""content"":""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."",""name"":""John Doe"",""title"":""CEO"",""image"":{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png""}},{""content"":""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."",""name"":""John Doe"",""title"":""CEO"",""image"":{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png""}},{""content"":""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."",""name"":""John Doe"",""title"":""CEO"",""image"":{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png""}}]",,,,Slides
 testimonial-carousel,skin,select,content,section_slides,,pro,pro,default,"[""default"",""bubble""]",,,Skin
@@ -9356,6 +9452,7 @@ testimonial-carousel,border_radius,dimensions,style,section_skin_style,mobile|ta
 testimonial-carousel,border,switcher,style,section_skin_style,,pro,pro,,,"{""skin"":""bubble""}",border-style,Border
 testimonial-carousel,border_color,color,style,section_skin_style,,pro,pro,#000,,"{""skin"":""bubble"",""border"":""yes""}",border-color,Border Color
 testimonial-carousel,border_width,slider,style,section_skin_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""skin"":""bubble"",""border"":""yes""}",border-width|margin-top|margin-bottom,Border Width
+testimonial-carousel,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 text-editor,editor,wysiwyg,content,section_editor,,free,free,"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>",,,,
 text-editor,drop_cap,switcher,content,section_editor,,free,free,,,,,Drop Cap
 text-editor,text_columns,select,content,section_editor,mobile|tablet,free,free,,"["""",1,2,3,4,5,6,7,8,9,10]",,columns,Columns
@@ -9396,6 +9493,7 @@ text-editor,drop_cap_typography_font_style,select,style,section_drop_cap,,free,f
 text-editor,drop_cap_typography_text_decoration,select,style,section_drop_cap,,free,free,,"["""",""underline"",""overline"",""line-through"",""none""]","{""drop_cap"":""yes"",""drop_cap_typography_typography!"":""""}",text-decoration,Decoration
 text-editor,drop_cap_typography_line_height,slider,style,section_drop_cap,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""drop_cap"":""yes"",""drop_cap_typography_typography!"":""""}",line-height,Line Height
 text-editor,drop_cap_typography_word_spacing,slider,style,section_drop_cap,mobile|tablet,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""drop_cap"":""yes"",""drop_cap_typography_typography!"":""""}",word-spacing,Word Spacing
+text-editor,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 text-path,text,text,content,section_content_text_path,,free,free,Add Your Curvy Text Here,,,,Text
 text-path,path,select,content,section_content_text_path,,free,free,wave,"[""wave"",""arc"",""circle"",""line"",""oval"",""spiral"",""custom""]",,,Path Type
 text-path,custom_path,media,content,section_content_text_path,,free,free,"{""url"":"""",""id"":"""",""size"":""""}",,"{""path"":""custom""}",,SVG
@@ -9431,6 +9529,7 @@ text-path,path_fill_hover,color,style,section_style_path,,free,free,,,"{""show_p
 text-path,stroke_color_hover,color,style,section_style_path,,free,free,,,"{""show_path!"":""""}",--stroke-color-hover,Color
 text-path,stroke_width_hover,slider,style,section_style_path,,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""show_path!"":""""}",--stroke-width-hover,Width
 text-path,stroke_transition,slider,style,section_style_path,,free,free,"{""unit"":""s"",""size"":0.3,""sizes"":[]}",,"{""show_path!"":""""}",--stroke-transition,Transition Duration
+text-path,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 theme-archive-title,title,textarea,content,section_title,,pro,pro,Add Your Heading Text Here,,,,Title
 theme-archive-title,link,url,content,section_title,,pro,pro,"{""url"":"""",""is_external"":"""",""nofollow"":"""",""custom_attributes"":""""}",,,,Link
 theme-archive-title,size,select,content,section_title,,pro,pro,default,"[""default"",""small"",""medium"",""large"",""xl"",""xxl""]","{""size!"":""default""}",,Size
@@ -9455,6 +9554,7 @@ theme-archive-title,blend_mode,select,style,section_title_style,,pro,pro,,"[""""
 theme-archive-title,title_color,color,style,section_title_style,,pro,pro,,,,color,Text Color
 theme-archive-title,title_hover_color,color,style,section_title_style,,pro,pro,,,,color,Link Color
 theme-archive-title,title_hover_color_transition_duration,slider,style,section_title_style,,pro,pro,"{""unit"":""s"",""size"":"""",""sizes"":[]}",,,transition-duration,Transition Duration
+theme-archive-title,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 theme-page-title,title,textarea,content,section_title,,pro,pro,Add Your Heading Text Here,,,,Title
 theme-page-title,link,url,content,section_title,,pro,pro,"{""url"":"""",""is_external"":"""",""nofollow"":"""",""custom_attributes"":""""}",,,,Link
 theme-page-title,size,select,content,section_title,,pro,pro,default,"[""default"",""small"",""medium"",""large"",""xl"",""xxl""]","{""size!"":""default""}",,Size
@@ -9479,6 +9579,7 @@ theme-page-title,blend_mode,select,style,section_title_style,,pro,pro,,"["""",""
 theme-page-title,title_color,color,style,section_title_style,,pro,pro,,,,color,Text Color
 theme-page-title,title_hover_color,color,style,section_title_style,,pro,pro,,,,color,Link Color
 theme-page-title,title_hover_color_transition_duration,slider,style,section_title_style,,pro,pro,"{""unit"":""s"",""size"":"""",""sizes"":[]}",,,transition-duration,Transition Duration
+theme-page-title,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 theme-post-content,align,choose,style,section_style,mobile|tablet,pro,pro,,"[""start"",""center"",""end"",""justify""]",,text-align,Alignment
 theme-post-content,text_color,color,style,section_style,,pro,pro,,,,color,Text Color
 theme-post-content,typography_typography,popover_toggle,style,section_style,,pro,pro,,,,,Typography
@@ -9491,6 +9592,7 @@ theme-post-content,typography_text_decoration,select,style,section_style,,pro,pr
 theme-post-content,typography_line_height,slider,style,section_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""typography_typography!"":""""}",line-height,Line Height
 theme-post-content,typography_letter_spacing,slider,style,section_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""typography_typography!"":""""}",letter-spacing,Letter Spacing
 theme-post-content,typography_word_spacing,slider,style,section_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""typography_typography!"":""""}",word-spacing,Word Spacing
+theme-post-content,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 theme-post-excerpt,excerpt,text,content,section_content,,pro,pro,,,,,
 theme-post-excerpt,align,choose,style,section_style,mobile|tablet,pro,pro,,"[""start"",""center"",""end"",""justify""]",,text-align,Alignment
 theme-post-excerpt,typography_typography,popover_toggle,style,section_style,,pro,pro,,,,,Typography
@@ -9510,6 +9612,7 @@ theme-post-excerpt,title_color,color,style,section_style,,pro,pro,,,,color,Text 
 theme-post-excerpt,link_color,color,style,section_style,,pro,pro,,,,color,Link Color
 theme-post-excerpt,link_hover_color,color,style,section_style,,pro,pro,,,,color,Link Color
 theme-post-excerpt,link_hover_color_transition_duration,slider,style,section_style,,pro,pro,"{""unit"":""s"",""size"":"""",""sizes"":[]}",,,transition-duration,Transition Duration
+theme-post-excerpt,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 theme-post-featured-image,image,media,content,section_image,,pro,pro,"{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png"",""id"":"""",""size"":""""}",,,,Choose Image
 theme-post-featured-image,image_size,select,content,section_image,,pro,pro,large,"[""thumbnail"",""medium"",""medium_large"",""large"",""1536x1536"",""2048x2048"",""full"",""custom""]","{""image[url]!"":""""}",,Image Resolution
 theme-post-featured-image,image_custom_dimension,image_dimensions,content,section_image,,pro,pro,"{""width"":"""",""height"":""""}",,"{""image_size"":""custom"",""image[url]!"":""""}",,Image Dimension
@@ -9562,6 +9665,7 @@ theme-post-featured-image,caption_typography_word_spacing,slider,style,section_s
 theme-post-featured-image,caption_text_shadow_text_shadow_type,popover_toggle,style,section_style_caption,,pro,pro,,,"{""image[url]!"":"""",""caption_source!"":""none""}",,Text Shadow
 theme-post-featured-image,caption_text_shadow_text_shadow,text_shadow,style,section_style_caption,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""color"":""rgba(0,0,0,0.3)""}",,"{""image[url]!"":"""",""caption_source!"":""none"",""caption_text_shadow_text_shadow_type!"":""""}",text-shadow,Text Shadow
 theme-post-featured-image,caption_space,slider,style,section_style_caption,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""image[url]!"":"""",""caption_source!"":""none""}",margin-block-start,Spacing
+theme-post-featured-image,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 theme-post-title,title,textarea,content,section_title,,pro,pro,Add Your Heading Text Here,,,,Title
 theme-post-title,link,url,content,section_title,,pro,pro,"{""url"":"""",""is_external"":"""",""nofollow"":"""",""custom_attributes"":""""}",,,,Link
 theme-post-title,size,select,content,section_title,,pro,pro,default,"[""default"",""small"",""medium"",""large"",""xl"",""xxl""]","{""size!"":""default""}",,Size
@@ -9586,6 +9690,7 @@ theme-post-title,blend_mode,select,style,section_title_style,,pro,pro,,"["""",""
 theme-post-title,title_color,color,style,section_title_style,,pro,pro,,,,color,Text Color
 theme-post-title,title_hover_color,color,style,section_title_style,,pro,pro,,,,color,Link Color
 theme-post-title,title_hover_color_transition_duration,slider,style,section_title_style,,pro,pro,"{""unit"":""s"",""size"":"""",""sizes"":[]}",,,transition-duration,Transition Duration
+theme-post-title,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 theme-site-logo,image,media-preview,content,section_image,,pro,pro,"{""url"":""http://moksaweb.com/wp-content/plugins/elementor/assets/images/placeholder.png"",""id"":"""",""size"":""""}",,,,Site Logo
 theme-site-logo,change_logo_cta,button,content,section_image,,pro,pro,,,,,
 theme-site-logo,image_size,select,content,section_image,,pro,pro,full,"[""thumbnail"",""medium"",""medium_large"",""large"",""1536x1536"",""2048x2048"",""full"",""custom""]","{""image[url]!"":""""}",,Image Resolution
@@ -9638,6 +9743,7 @@ theme-site-logo,caption_typography_word_spacing,slider,style,section_style_capti
 theme-site-logo,caption_text_shadow_text_shadow_type,popover_toggle,style,section_style_caption,,pro,pro,,,"{""image[url]!"":"""",""caption_source!"":""none""}",,Text Shadow
 theme-site-logo,caption_text_shadow_text_shadow,text_shadow,style,section_style_caption,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""color"":""rgba(0,0,0,0.3)""}",,"{""image[url]!"":"""",""caption_source!"":""none"",""caption_text_shadow_text_shadow_type!"":""""}",text-shadow,Text Shadow
 theme-site-logo,caption_space,slider,style,section_style_caption,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""image[url]!"":"""",""caption_source!"":""none""}",margin-block-start,Spacing
+theme-site-logo,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 theme-site-title,title,textarea,content,section_title,,pro,pro,Add Your Heading Text Here,,,,Title
 theme-site-title,link,url,content,section_title,,pro,pro,"{""url"":"""",""is_external"":"""",""nofollow"":"""",""custom_attributes"":""""}",,,,Link
 theme-site-title,size,select,content,section_title,,pro,pro,default,"[""default"",""small"",""medium"",""large"",""xl"",""xxl""]","{""size!"":""default""}",,Size
@@ -9662,6 +9768,7 @@ theme-site-title,blend_mode,select,style,section_title_style,,pro,pro,,"["""",""
 theme-site-title,title_color,color,style,section_title_style,,pro,pro,,,,color,Text Color
 theme-site-title,title_hover_color,color,style,section_title_style,,pro,pro,,,,color,Link Color
 theme-site-title,title_hover_color_transition_duration,slider,style,section_title_style,,pro,pro,"{""unit"":""s"",""size"":"""",""sizes"":[]}",,,transition-duration,Transition Duration
+theme-site-title,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 toggle,tabs,repeater,content,section_toggle,,free,free,"[{""tab_title"":""Toggle #1"",""tab_content"":""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.""},{""tab_title"":""Toggle #2"",""tab_content"":""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.""}]",,,,Toggle Items
 toggle,selected_icon,icons,content,section_toggle,,free,free,"{""value"":""fas fa-caret-right"",""library"":""fa-solid""}",,,,Icon
 toggle,selected_active_icon,icons,content,section_toggle,,free,free,"{""value"":""fas fa-caret-up"",""library"":""fa-solid""}",,"{""selected_icon[value]!"":""""}",,Active Icon
@@ -9708,6 +9815,7 @@ toggle,content_typography_word_spacing,slider,style,section_toggle_style_content
 toggle,content_shadow_text_shadow_type,popover_toggle,style,section_toggle_style_content,,free,free,,,,,Text Shadow
 toggle,content_shadow_text_shadow,text_shadow,style,section_toggle_style_content,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""color"":""rgba(0,0,0,0.3)""}",,"{""content_shadow_text_shadow_type!"":""""}",text-shadow,Text Shadow
 toggle,content_padding,dimensions,style,section_toggle_style_content,mobile|tablet,free,free,"{""unit"":""px"",""top"":"""",""right"":"""",""bottom"":"""",""left"":"""",""isLinked"":true}",,,padding,Padding
+toggle,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 video,video_type,select,content,section_video,,free,free,youtube,"[""youtube"",""vimeo"",""dailymotion"",""videopress"",""hosted""]",,,Source
 video,youtube_url,text,content,section_video,,free,free,https://www.youtube.com/watch?v=XHOmBV4js_E,,"{""video_type"":""youtube""}",,Link
 video,vimeo_url,text,content,section_video,,free,free,https://vimeo.com/235215203,,"{""video_type"":""vimeo""}",,Link
@@ -9760,6 +9868,7 @@ video,lightbox_ui_color_hover,color,style,section_lightbox_style,,free,free,,,"{
 video,lightbox_content_animation,animation,style,section_lightbox_style,mobile|tablet,free,free,,,"{""show_image_overlay"":""yes"",""image_overlay[url]!"":"""",""lightbox"":""yes""}",,Entrance Animation
 video,lightbox_video_width,slider,style,section_lightbox_style,,free,free,"{""unit"":""%"",""size"":"""",""sizes"":[]}",,"{""show_image_overlay"":""yes"",""image_overlay[url]!"":"""",""lightbox"":""yes"",""lightbox_video_width!"":"""",""lightbox_content_position!"":""""}",,Content Width
 video,lightbox_content_position,select,style,section_lightbox_style,,free,free,,"["""",""top""]","{""show_image_overlay"":""yes"",""image_overlay[url]!"":"""",""lightbox"":""yes"",""lightbox_video_width!"":"""",""lightbox_content_position!"":""""}",,Content Position
+video,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 video-playlist,tabs_direction,hidden,content,section_playlist,,pro,pro,vertical,"[""horizontal"",""vertical""]",,,Position
 video-playlist,playlist_title,text,content,section_playlist,,pro,pro,Playlist,,,,Playlist Name
 video-playlist,playlist_title_tag,select,content,section_playlist,,pro,pro,h2,"[""h1"",""h2"",""h3"",""h4"",""h5"",""h6"",""div"",""span""]","{""playlist_title!"":""""}",,HTML Tag
@@ -9924,26 +10033,50 @@ video-playlist,inner_tab_show_more_typography_text_decoration,select,style,secti
 video-playlist,inner_tab_show_more_typography_line_height,slider,style,section_inner_tab_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""inner_tab_show_more_typography_typography!"":""""}",line-height,Line Height
 video-playlist,inner_tab_show_more_typography_letter_spacing,slider,style,section_inner_tab_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""inner_tab_show_more_typography_typography!"":""""}",letter-spacing,Letter Spacing
 video-playlist,inner_tab_show_more_typography_word_spacing,slider,style,section_inner_tab_style,mobile|tablet,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,"{""inner_tab_show_more_typography_typography!"":""""}",word-spacing,Word Spacing
+video-playlist,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,pro,pro,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-archives,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-archives,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-block,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-block,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-blog_subscription,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-blog_subscription,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-calendar,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-calendar,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-categories,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-categories,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-custom_html,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-custom_html,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-ez_toc_widget_sticky,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-ez_toc_widget_sticky,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-ezw_tco,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-ezw_tco,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-fluentform_widget,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-fluentform_widget,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-media_audio,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-media_audio,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-media_gallery,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-media_gallery,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-media_image,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-media_image,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-media_video,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-media_video,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-meta,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-meta,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-nav_menu,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-nav_menu,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-pages,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-pages,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-recent-comments,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-recent-comments,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-recent-posts,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-recent-posts,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-rss,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-rss,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-search,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-search,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-tag_cloud,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-tag_cloud,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-text,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-text,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow
 wp-widget-wpp,wp,wp_widget,content,,,free,free,,,,,Form
+wp-widget-wpp,_box_shadow_box_shadow,box_shadow,advanced,_section_border,,free,free,"{""horizontal"":0,""vertical"":0,""blur"":10,""spread"":0,""color"":""rgba(0,0,0,0.5)""}",,"{""_box_shadow_box_shadow_type!"":""""}",box-shadow,Box Shadow

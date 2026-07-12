@@ -22,29 +22,44 @@ is no error. A page that is 90% right looks exactly like a page that is 100% rig
 until someone notices the padding never applied.
 
 Everything in `data/` was extracted from a live Elementor install and then
-**rendered and checked, one control at a time**: 16,778 controls written into real
-pages, compiled by Elementor, and asserted against the stylesheet that came out.
-0 failures. Per-control results are in `data/control-verification.csv`. Your memory
-of Elementor has not been through that.
+**rendered and checked, one control at a time** - written into real pages, compiled
+by Elementor, and asserted against the stylesheet that came out. Each control got a
+value unique to it, so a pass means *that* control produced *that* value.
 
-## A control can be gated three different ways
+```
+DESKTOP     18,853 CSS-driving controls   99.1% covered   0 failures
+RESPONSIVE  25,404 _tablet/_mobile keys   96.7% verified by value
+```
+
+Where Elementor's own metadata turned out to be wrong, **the rendered result wins**:
+9 controls advertise a responsive breakpoint they never actually emit, and the
+schema now says so. Per-control results ship in `data/control-verification.csv`.
+Your memory of Elementor has not been through any of this.
+
+## A control can be gated four different ways
 
 Setting a control is not enough to make it do anything, and when it does nothing
-there is no error. Three separate mechanisms, and `el.py` prints all three:
+there is no error. `el.py` prints every gate it has:
 
 | Shown as | What it means |
 |---|---|
 | `needs:{...}` | the simple `condition` — another setting must have a given value |
 | `needs-adv:...` | the **advanced** `conditions` form — a boolean tree with `and`/`or` and operators (`>`, `!==`, `in`). **152 controls are gated only this way and have no `condition` at all** |
 | `needs-value-of:a,b` | not a condition. This control's CSS interpolates `a` and `b`, and **Elementor throws away the whole declaration if either is empty** — however satisfied the conditions are. 499 controls do this |
+| `rwd-BROKEN:tablet` | Elementor says the `_tablet` suffix is legal. Rendering says it emits nothing. Believe the rendering |
 
-The last one is the quiet killer. Set `background_background: "gradient"` plus
+The third is the quiet killer. Set `background_background: "gradient"` plus
 `background_gradient_angle`, satisfy every documented condition, and you still get
 no gradient — because the declaration interpolates `background_color`, which you
 never set.
 
+And **when you set `X_tablet`, set `_tablet` on everything X depends on too.** If a
+control and its dependency are both responsive, Elementor checks the dependency's
+*tablet* value when building the tablet rule. Miss it and desktop renders perfectly
+while tablet is silently blank.
+
 ```bash
-python tools/validate-page.py page.json     # catches all three before you write
+python tools/validate-page.py page.json     # catches all of them before you write
 ```
 
 Detail: [extraction-traps.md](references/extraction-traps.md).

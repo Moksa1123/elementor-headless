@@ -305,6 +305,16 @@ def walk(nodes, schema, rep: Report, seen_ids: set, target: str, path="") -> Non
                               f"Check: el.py widget {label} --grep {key.split('_')[0]}")
                 continue
             base, ctrl = resolved
+            # A responsive suffix Elementor promises and does not deliver. Measured
+            # by rendering, not inferred: `hotspot.width` has is_responsive=true and
+            # `width_tablet` emits no CSS at all, verified in isolation.
+            if key != base:
+                dev = key[len(base) + 1:]
+                if dev in (ctrl.get("responsive_broken") or []):
+                    rep.err(here, f"`{key}` looks legal - Elementor marks `{base}` responsive - "
+                                  f"but rendering proves it emits no CSS at the {dev} "
+                                  f"breakpoint on `{label}`. The key will be stored and "
+                                  f"ignored. Style it at desktop, or use a different control.")
             if ctrl.get("tier") == "pro" and owner.get("tier") != "pro":
                 msg = f"`{key}` is an Elementor PRO control on the free `{label}` widget"
                 (rep.err if target == "free" else rep.warn)(here, msg)
