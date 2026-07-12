@@ -344,7 +344,17 @@ def cmd_check(a) -> int:
                     try:
                         pg.locator(f".elementor-element-{w['element_id']}").first                           .screenshot(path=str(sweep / shot), timeout=6000)
                     except Exception:
-                        shot = ""
+                        # Floating/fixed widgets (the contact-buttons family), the
+                        # zero-height ones (menu-anchor) and hidden-until-triggered
+                        # ones defeat an ELEMENT screenshot - Playwright times out
+                        # scrolling to something that has no box. The page has
+                        # exactly one widget on it, so the viewport IS the widget's
+                        # portrait: 19 rendered widgets silently had no image at
+                        # all before this fallback.
+                        try:
+                            pg.screenshot(path=str(sweep / shot))
+                        except Exception:
+                            shot = ""
 
                 rows.append({
                     "widget": name, "status": status,
