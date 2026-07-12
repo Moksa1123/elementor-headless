@@ -222,7 +222,15 @@ def requires_of(owner: dict, gates: dict) -> dict | None:
         return None
     if g.get("plugin_class"):
         return {"plugin": g["plugin_class"], "gate": g["gate"]}
-    if g.get("experiment"):
+    # An experiment is a REQUIREMENT only if the gate actually checks it. The
+    # extractor also records a module's own EXPERIMENT_NAME const, and letting that
+    # override the real gate claimed 21 widgets (contact-buttons, link-in-bio,
+    # mega-menu variants) need experiments that are OFF on a site where every one
+    # of them is registered and rendering - the module merely DECLARES the
+    # experiment; its is_active() gates on class_exists. A schema that says
+    # "does not exist here" about a widget the site is happily serving fails in
+    # the REJECTING direction, which is the worse one.
+    if g.get("experiment") and "is_feature_active" in (g.get("gate") or ""):
         return {"experiment": g["experiment"], "gate": g["gate"]}
     return None
 

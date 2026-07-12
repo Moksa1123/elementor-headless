@@ -25,16 +25,16 @@ code-highlight,widget,pro,,Code Highlight,pro-elements,9,220,yes
 common,widget,free,,common,general,0,211,yes
 common-base,widget,free,,common-base,general,0,166,no
 common-optimized,widget,free,,common-optimized,general,0,211,yes
-contact-buttons,widget,free,experiment:floating-buttons,Single Chat,general,130,341,yes
-contact-buttons-var-1,widget,pro,experiment:floating-buttons,Multi Chat,general,115,326,yes
-contact-buttons-var-10,widget,pro,experiment:floating-buttons,Interactive,general,28,239,yes
-contact-buttons-var-3,widget,pro,experiment:floating-buttons,Info Button Box,general,82,293,yes
-contact-buttons-var-4,widget,pro,experiment:floating-buttons,Vertical Links,general,46,257,yes
-contact-buttons-var-5,widget,pro,experiment:floating-buttons,Classic,general,31,242,yes
-contact-buttons-var-6,widget,pro,experiment:floating-buttons,Quick Access Bar,general,15,226,yes
-contact-buttons-var-7,widget,pro,experiment:floating-buttons,Mobile Bar,general,39,250,yes
-contact-buttons-var-8,widget,pro,experiment:floating-buttons,Resource Box,general,85,296,yes
-contact-buttons-var-9,widget,pro,experiment:floating-buttons,Animated Classic,general,36,247,yes
+contact-buttons,widget,free,experiment:container,Single Chat,general,130,341,yes
+contact-buttons-var-1,widget,pro,experiment:container,Multi Chat,general,115,326,yes
+contact-buttons-var-10,widget,pro,experiment:container,Interactive,general,28,239,yes
+contact-buttons-var-3,widget,pro,experiment:container,Info Button Box,general,82,293,yes
+contact-buttons-var-4,widget,pro,experiment:container,Vertical Links,general,46,257,yes
+contact-buttons-var-5,widget,pro,experiment:container,Classic,general,31,242,yes
+contact-buttons-var-6,widget,pro,experiment:container,Quick Access Bar,general,15,226,yes
+contact-buttons-var-7,widget,pro,experiment:container,Mobile Bar,general,39,250,yes
+contact-buttons-var-8,widget,pro,experiment:container,Resource Box,general,85,296,yes
+contact-buttons-var-9,widget,pro,experiment:container,Animated Classic,general,36,247,yes
 countdown,widget,pro,,Countdown,pro-elements,74,285,yes
 counter,widget,free,,Counter,general,48,259,yes
 divider,widget,free,,Divider,basic,41,252,yes
@@ -62,9 +62,9 @@ facebook-comments,widget,pro,,Facebook Comments,pro-elements,5,216,yes
 facebook-embed,widget,pro,,Facebook Embed,pro-elements,9,220,yes
 facebook-page,widget,pro,,Facebook Page,pro-elements,7,218,yes
 flip-box,widget,pro,,Flip Box,pro-elements,271,482,yes
-floating-bars-var-1,widget,free,experiment:floating-buttons,Floating Bar CTA,general,125,336,yes
-floating-bars-var-2,widget,pro,experiment:floating-buttons,Ticker,general,106,317,yes
-floating-bars-var-3,widget,pro,experiment:floating-buttons,Coupon,general,122,333,yes
+floating-bars-var-1,widget,free,experiment:container,Floating Bar CTA,general,125,336,yes
+floating-bars-var-2,widget,pro,experiment:container,Ticker,general,106,317,yes
+floating-bars-var-3,widget,pro,experiment:container,Coupon,general,122,333,yes
 form,widget,pro,,Form,pro-elements,225,436,yes
 gallery,widget,pro,,Gallery,pro-elements,160,371,yes
 global,widget,pro,,Global,pro-elements,0,0,no
@@ -80,19 +80,19 @@ image-box,widget,free,,Image Box,general,70,281,yes
 image-carousel,widget,free,,Image Carousel,general,53,264,yes
 image-gallery,widget,free,,Basic Gallery,general,28,239,yes
 inner-section,widget,free,,Inner Section,basic,0,211,yes
-link-in-bio,widget,free,experiment:link-in-bio,Minimalist,link-in-bio,147,358,yes
-link-in-bio-var-2,widget,pro,experiment:link-in-bio,Classic,link-in-bio,147,358,yes
-link-in-bio-var-3,widget,pro,experiment:link-in-bio,Showcase,link-in-bio,144,355,yes
-link-in-bio-var-4,widget,pro,experiment:link-in-bio,Links,link-in-bio,141,352,yes
-link-in-bio-var-5,widget,pro,experiment:link-in-bio,Services,link-in-bio,144,355,yes
-link-in-bio-var-6,widget,pro,experiment:link-in-bio,Portfolio Bio,link-in-bio,134,345,yes
-link-in-bio-var-7,widget,pro,experiment:link-in-bio,Business Card,link-in-bio,189,400,yes
+link-in-bio,widget,free,,Minimalist,link-in-bio,147,358,yes
+link-in-bio-var-2,widget,pro,,Classic,link-in-bio,147,358,yes
+link-in-bio-var-3,widget,pro,,Showcase,link-in-bio,144,355,yes
+link-in-bio-var-4,widget,pro,,Links,link-in-bio,141,352,yes
+link-in-bio-var-5,widget,pro,,Services,link-in-bio,144,355,yes
+link-in-bio-var-6,widget,pro,,Portfolio Bio,link-in-bio,134,345,yes
+link-in-bio-var-7,widget,pro,,Business Card,link-in-bio,189,400,yes
 login,widget,pro,,Login,pro-elements,142,353,yes
 loop-carousel,widget,pro,,Loop Carousel,pro-elements,212,423,yes
 loop-grid,widget,pro,,Loop Grid,pro-elements,243,454,yes
 lottie,widget,pro,,Lottie,pro-elements,52,263,yes
 media-carousel,widget,pro,,Media Carousel,pro-elements,62,273,yes
-mega-menu,widget,pro,experiment:mega-menu,Menu,pro-elements|theme-elements,416,627,yes
+mega-menu,widget,pro,experiment:nested-elements,Menu,pro-elements|theme-elements,416,627,yes
 menu-anchor,widget,free,,Menu Anchor,general,1,212,yes
 nav-menu,widget,pro,,WordPress Menu,pro-elements|theme-elements,78,289,yes
 nested-accordion,widget,free,experiment:nested-elements,Accordion,general,189,400,yes

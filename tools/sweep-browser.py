@@ -197,6 +197,13 @@ def declared_map(css: str) -> dict[str, dict[str, str]]:
     return out
 
 HERE = Path(__file__).resolve().parent
+
+# A per-RUN cache-buster, not just a per-batch one. `?ehw=0` is a different page on
+# every run, but to an edge cache with a 3600s TTL it is the SAME url - so a re-run
+# inside the TTL gets served the PREVIOUS run's page for every batch, and scores 13
+# working widgets as NOT-IN-DOM. The number was the tell: everything absent at once.
+import time as _time
+RUN_NONCE = _time.strftime("%H%M%S")
 sys.path.insert(0, str(HERE))
 
 import importlib.util
@@ -310,7 +317,7 @@ def main() -> int:
             # we read computed styles, not network activity.
             for attempt in (1, 2):
                 try:
-                    pg.goto(f"{a.url}?ehsweep={bi}", wait_until="load", timeout=45000)
+                    pg.goto(f"{a.url}?ehsweep={RUN_NONCE}-{bi}", wait_until="load", timeout=45000)
                     break
                 except Exception as e:
                     if attempt == 2:

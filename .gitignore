@@ -4,3 +4,4 @@ __pycache__/
 build/
 *.zip
 _test_install/
+shots/

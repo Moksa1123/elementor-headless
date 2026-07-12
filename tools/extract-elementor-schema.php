@@ -192,10 +192,17 @@ function eh_module_gates() {
 			// Most gates read an EXPERIMENT. The experiment's name is usually a
 			// class constant (`self::EXPERIMENT_NAME`), so resolve it - "requires
 			// the experiment self::EXPERIMENT_NAME" helps nobody.
-			$experiment = $own_exp;
-			if ( $experiment !== null ) {
-				// already known from the module's own constant
-			} elseif ( preg_match( "#is_feature_active\(\s*'([^']+)'#", $gate, $e ) ) {
+			// PRIORITY MATTERS, and getting it backwards shipped 21 wrong
+			// requirements. The authoritative source is what the GATE actually
+			// checks: Pro's floating-buttons module declares
+			// EXPERIMENT_NAME='floating-buttons' but its is_active() gates on
+			// class_exists + is_feature_active('container'). Preferring the
+			// module's own constant claimed widgets need an experiment that is
+			// off on a site where all of them are registered and rendering.
+			// The own constant is a FALLBACK for modules whose gate could not
+			// be parsed (atomic-form's is_experiment_active), nothing more.
+			$experiment = null;
+			if ( preg_match( "#is_feature_active\(\s*'([^']+)'#", $gate, $e ) ) {
 				$experiment = $e[1];
 			} elseif ( preg_match( '#is_feature_active\(\s*(?:self::)?([A-Z_]+)#', $gate, $e )
 				&& preg_match( "#const\s+{$e[1]}\s*=\s*'([^']+)'#", $body, $c ) ) {
@@ -227,6 +234,11 @@ function eh_module_gates() {
 						break;
 					}
 				}
+			}
+			if ( $experiment === null && strpos( $gate, 'is_feature_active' ) === false ) {
+				$experiment = null;   // the gate does not check experiments at all
+			} elseif ( $experiment === null ) {
+				$experiment = $own_exp;   // gate checks one, unparseable: fall back
 			}
 			// An EXTERNAL plugin requirement, e.g. `class_exists( 'woocommerce' )`.
 			// Several modules also class_exists() their way to an Elementor class
