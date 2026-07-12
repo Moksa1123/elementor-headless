@@ -352,10 +352,27 @@ def walk(nodes, schema, rep: Report, seen_ids: set, target: str,
                           f"and cannot check it. `el.py widget {label}` shows its prop schema.")
             continue
 
+        # Nested widgets (nested-tabs, nested-accordion, mega-menu...) are the one
+        # place a WIDGET has children: each child is a CONTAINER, and the Nth child
+        # is the content of the Nth item in the widget's nested repeater. That is
+        # Elementor's own default structure (nested-tabs.php::tab_content_container),
+        # verified end-to-end on a live page. A widget with children and NO such
+        # repeater, though, is a broken tree.
+        if el_type == "widget" and el.get("elements"):
+            has_nested = any(c.get("type") == "nested-elements-repeater"
+                             for c in controls.values())
+            if not has_nested:
+                rep.err(here, f"`{label}` has child elements but no nested-elements "
+                              f"repeater - only nested widgets (nested-tabs, "
+                              f"nested-accordion, mega-menu...) may contain children")
+
         settings = el.get("settings") or {}
         for key, value in settings.items():
             if key in ("__globals__", "__dynamic__"):
                 continue  # global-value and dynamic-tag side-channels, not controls
+            if key == "_title":
+                continue  # the editor's own element label; Elementor writes it on
+                          # nested children itself and stores it anywhere
             resolved = base_control(key, controls, breakpoints)
             if resolved is None:
                 rep.err(here, f"`{key}` is not a control on {label}. "

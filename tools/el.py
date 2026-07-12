@@ -123,6 +123,10 @@ def fmt_control(c: dict, indent: str = "  ") -> str:
     if c.get("classes_dictionary"):
         bits.append("legacy:" + ",".join(
             f"{k}->{v}" for k, v in c["classes_dictionary"].items()))
+    # A repeater's value is a LIST of items; these are the item's keys. Without
+    # them "slides is a repeater" is the whole answer, which is no answer.
+    if c.get("fields"):
+        bits.append("item:{" + ",".join(f["name"] for f in c["fields"]) + "}")
     if c.get("condition"):
         cond = json.dumps(c["condition"], ensure_ascii=False, separators=(",", ":"))
         bits.append(f"needs:{cond}")

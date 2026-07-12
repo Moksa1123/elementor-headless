@@ -618,6 +618,9 @@ def main() -> int:
         # The Site Settings panel, saved on the KIT post. `__globals__` references
         # (globals/colors?id=primary) resolve into its repeaters.
         "kit_settings": raw.get("kit_settings"),
+        # The popup document's settings (Pro): layout, overlay, close button, open
+        # rules. Triggers/timing are a separate meta - see the note inside.
+        "popup_settings": raw.get("popup_settings"),
         # Theme Builder display conditions (Pro): the registry the condition strings
         # ('include/singular/post/123') are built from.
         "theme_builder_conditions": raw.get("theme_builder_conditions"),

@@ -75,6 +75,33 @@ them for backwards compatibility) but they are not where the platform is going,
 and they cannot do flex or grid. You will still meet them when reading existing
 pages, which is why they are in the schema.
 
+## Nested widgets: the one place a widget has children
+
+`nested-tabs`, `nested-accordion`, `mega-menu` (all gated on the `nested-elements`
+experiment) break rule 3's spirit: their `elements` is NOT empty. Each child is a
+**container**, and the Nth child is the content of the Nth item in the widget's
+repeater - the pairing is by INDEX, nothing in the child points back:
+
+```jsonc
+{
+  "elType": "widget", "widgetType": "nested-tabs",
+  "settings": { "tabs": [
+      { "_id": "a1b2c3d", "tab_title": "Alpha" },
+      { "_id": "b2c3d4e", "tab_title": "Beta" } ] },
+  "elements": [
+    { "elType": "container",                       // content of tab 1
+      "settings": { "_title": "Tab #1", "content_width": "full" },
+      "elements": [ ...widgets... ] },
+    { "elType": "container", ... }                 // content of tab 2
+  ]
+}
+```
+
+That is Elementor's own default structure (`nested-tabs.php::tab_content_container`),
+and a tree built exactly like this headlessly renders correctly on a live page -
+tab titles from the repeater, per-tab content from the child containers. `_title`
+is the editor's element label; Elementor writes it on these children itself.
+
 ## settings: the control values
 
 `settings` is a flat map of control name to value. Not nested by section, not

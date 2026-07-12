@@ -493,6 +493,46 @@ function eh_control_record( $name, $ctrl ) {
 	if ( isset( $ctrl['return_value'] ) ) {
 		$rec['return_value'] = $ctrl['return_value'];
 	}
+
+	// REPEATER FIELDS. A repeater's value is a LIST OF OBJECTS, and the objects'
+	// keys are defined per control - a form's `form_fields` item is nothing like an
+	// icon-list's `icon_list` item. Without capturing `fields`, the schema can say
+	// "slides is a repeater" and nothing else, and an agent building a slider, a
+	// form, tabs or a price list is back to guessing key names - the exact failure
+	// this project exists to prevent. (The editor also stamps a unique `_id` on
+	// every item; headlessly you write it yourself, 7 lowercase hex like element
+	// ids.)
+	if ( ! empty( $ctrl['fields'] ) && is_array( $ctrl['fields'] ) ) {
+		$fields = [];
+		foreach ( $ctrl['fields'] as $fname => $f ) {
+			if ( ! is_array( $f ) ) {
+				continue;
+			}
+			$fkey = is_string( $fname ) ? $fname : ( $f['name'] ?? null );
+			if ( ! $fkey ) {
+				continue;
+			}
+			$ftype = $f['type'] ?? '';
+			if ( in_array( $ftype, [ 'section', 'tab', 'tabs', 'divider', 'heading', 'raw_html', 'notice', 'alert' ], true ) ) {
+				continue;
+			}
+			$fr = [ 'name' => $fkey, 'type' => $ftype ];
+			$fopts = eh_option_keys( $f );
+			if ( $fopts ) {
+				$fr['options'] = $fopts;
+			}
+			if ( isset( $f['default'] ) && $f['default'] !== '' && $f['default'] !== [] ) {
+				$fr['default'] = $f['default'];
+			}
+			if ( ! empty( $f['condition'] ) ) {
+				$fr['condition'] = $f['condition'];
+			}
+			$fields[] = $fr;
+		}
+		if ( $fields ) {
+			$rec['fields'] = $fields;
+		}
+	}
 	// Which units this control will accept. Writing `"unit": "pt"` into a
 	// control that only allows px/%/em is another silent no-op.
 	if ( ! empty( $ctrl['size_units'] ) && is_array( $ctrl['size_units'] ) ) {
@@ -1071,6 +1111,37 @@ if ( $any_post ) {
 	}
 }
 
+// Popups (Pro): the display surface - triggers (on load / scroll / click / exit
+// intent), timing rules, advanced rules - is the popup DOCUMENT's own settings
+// stack, plus its layout (width, position, overlay, close button). It needs a
+// popup post to instantiate against; the extractor USES one if the site has one
+// and says so if not, rather than creating posts on someone's site as a side
+// effect.
+$popup_settings = null;
+if ( isset( $documents['popup'] ) ) {
+	$popup_posts = get_posts( [
+		'post_type'   => 'elementor_library',
+		'post_status' => [ 'publish', 'draft' ],
+		'numberposts' => 1,
+		'fields'      => 'ids',
+		'meta_key'    => '_elementor_template_type',
+		'meta_value'  => 'popup',
+	] );
+	if ( $popup_posts ) {
+		$doc = $plugin->documents->get( $popup_posts[0] );
+		if ( $doc ) {
+			$popup_settings = eh_document_settings( $doc, $device_suffixes, $anomalies, 'doc:popup' );
+			$popup_settings['note'] =
+				'The popup document settings: layout (width/height/position), style '
+				. '(overlay, close button), and under advanced the OPEN rules. Triggers '
+				. 'and timing are saved separately in _elementor_popup_display_settings '
+				. 'meta as {"triggers":{...},"timing":{...}} - the editor writes both.';
+		}
+	} else {
+		$popup_settings = [ 'note' => 'no popup exists on the extraction site; create one draft popup and re-extract to capture this surface' ];
+	}
+}
+
 $kit_settings = null;
 try {
 	$kit = $plugin->kits_manager->get_active_kit();
@@ -1139,6 +1210,7 @@ $out = [
 	'theme_builder_conditions' => $tb_conditions,
 	'documents'      => $documents,
 	'page_settings'  => $page_settings,
+	'popup_settings' => $popup_settings,
 	'kit_settings'   => $kit_settings,
 	'elements'       => $elements,
 	'widgets'        => $widgets,

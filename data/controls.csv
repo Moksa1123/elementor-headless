@@ -2497,7 +2497,7 @@ contact-buttons-var-9,advanced_vertical_offset,slider,advanced-tab-floating-butt
 contact-buttons-var-9,advanced_custom_css_id,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS ID
 contact-buttons-var-9,advanced_custom_css_classes,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS Classes
 countdown,countdown_type,select,content,section_countdown,,pro,pro,due_date,"[""due_date"",""evergreen""]",,,Type
-countdown,due_date,date_time,content,section_countdown,,pro,pro,2026-08-12 14:46,,"{""countdown_type"":""due_date""}",,Due Date
+countdown,due_date,date_time,content,section_countdown,,pro,pro,2026-08-12 15:00,,"{""countdown_type"":""due_date""}",,Due Date
 countdown,evergreen_counter_hours,number,content,section_countdown,,pro,pro,47,,"{""countdown_type"":""evergreen""}",,Hours
 countdown,evergreen_counter_minutes,number,content,section_countdown,,pro,pro,59,,"{""countdown_type"":""evergreen""}",,Minutes
 countdown,show_days,switcher,content,section_countdown,,pro,pro,yes,,,,Days
