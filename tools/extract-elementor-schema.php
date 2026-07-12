@@ -248,8 +248,21 @@ function eh_control_record( $name, $ctrl ) {
 	if ( $needs ) {
 		$rec['needs_value'] = $needs;
 	}
+	// PREFIX CLASS. The other way a control can act: instead of (or as well as)
+	// emitting CSS, it appends `prefix_class . value` to the element's wrapper
+	// class list. Gated by conditions just like CSS is (get_settings_for_display()
+	// nulls out any control whose condition is unmet), but it never appears in the
+	// stylesheet, so the CSS sweep is blind to it.
 	if ( ! empty( $ctrl['prefix_class'] ) ) {
 		$rec['prefix_class'] = $ctrl['prefix_class'];
+	}
+	// ...and the value that gets appended is NOT always the value you wrote.
+	// `classes_dictionary` remaps it first (element-base.php:800). It exists so
+	// that pages saved before Elementor moved to logical properties keep working:
+	// icon-box `position` accepts the legacy `top` and renders `block-start`.
+	// Miss this and you conclude `top` is an invalid option — it is not.
+	if ( ! empty( $ctrl['classes_dictionary'] ) && is_array( $ctrl['classes_dictionary'] ) ) {
+		$rec['classes_dictionary'] = $ctrl['classes_dictionary'];
 	}
 	if ( isset( $ctrl['return_value'] ) ) {
 		$rec['return_value'] = $ctrl['return_value'];
@@ -337,6 +350,24 @@ function eh_collapse_responsive( $records, $device_suffixes, &$anomalies, $eleme
 			$collapsed[ $base ] = $by_name[ $base ];
 		}
 		$collapsed[ $base ]['responsive'][] = $matched_device;
+
+		// A responsive control that emits a CLASS does not get one prefix — it gets
+		// one PER DEVICE, and they are different strings. add_responsive_control()
+		// refuses the single-control optimisation whenever `prefix_class` is set
+		// (controls-stack.php:909), so these controls really are duplicated per
+		// device, and each duplicate's prefix is sprintf'd with the device name:
+		//
+		//   'elementor%s-position-'  ->  desktop  elementor-position-
+		//                                tablet   elementor-tablet-position-
+		//                                mobile   elementor-mobile-position-
+		//
+		// Collapsing the variants and keeping only the base's prefix would throw
+		// that away and leave the schema quietly claiming the tablet class is
+		// `elementor-position-` too. Keep every device's real prefix.
+		if ( ! empty( $r['prefix_class'] )
+			&& ( $collapsed[ $base ]['prefix_class'] ?? null ) !== $r['prefix_class'] ) {
+			$collapsed[ $base ]['prefix_class_devices'][ $matched_device ] = $r['prefix_class'];
+		}
 	}
 
 	// Merge both mechanisms into one honest answer: the device suffixes you are
@@ -459,6 +490,32 @@ foreach ( $plugin->controls_manager->get_controls() as $type => $ctrl ) {
 	if ( method_exists( $ctrl, 'get_default_value' ) ) {
 		$entry['value_shape'] = $ctrl->get_default_value();
 	}
+
+	// Some controls carry their allowed values on the CONTROL CLASS, not in the
+	// control's args — so the per-control `options` we capture elsewhere is empty
+	// and the schema ends up with nothing to say about what is legal. The entrance
+	// and hover animations are the ones that matter: `_animation` and
+	// `hover_animation` are on every widget, and their values are camelCase CSS
+	// animation names from Animate.css (`fadeInUp`), not the kebab-case you would
+	// guess. Writing `fade-in-up` stores fine and animates nothing.
+	//
+	// The lists are grouped ('Fading' => [ 'fadeIn' => 'Fade In', ... ]), so flatten
+	// them; the group headings are editor UI, not values.
+	if ( method_exists( $ctrl, 'get_animations' ) ) {
+		$flat = [];
+		foreach ( (array) $ctrl::get_animations() as $group => $items ) {
+			if ( is_array( $items ) ) {
+				foreach ( array_keys( $items ) as $k ) {
+					$flat[] = (string) $k;
+				}
+			} else {
+				$flat[] = (string) $group;
+			}
+		}
+		if ( $flat ) {
+			$entry['options'] = array_values( array_unique( $flat ) );
+		}
+	}
 	$control_types[ $type ] = $entry;
 }
 
@@ -560,6 +617,27 @@ foreach ( $plugin->widgets_manager->get_widget_types() as $name => $w ) {
 	if ( $rec ) {
 		$widgets[ $name ] = $rec;
 	}
+}
+
+// CANARY 3 — the class-emitting surface. `icon-box/position` is the reference
+// case for BOTH of the things a naive extractor drops on the floor: its prefix is
+// per-device (`elementor%s-position-`) and its stored value is remapped through a
+// `classes_dictionary` before it becomes a class. Lose either and the schema still
+// looks complete while telling you the tablet class is `elementor-position-` (it
+// is not) and that `top` is an invalid option (it is not).
+$cls_ok = false;
+foreach ( $widgets['icon-box']['controls'] ?? [] as $c ) {
+	if ( $c['name'] !== 'position' ) {
+		continue;
+	}
+	$cls_ok = ( ( $c['prefix_class_devices']['tablet'] ?? null ) === 'elementor-tablet-position-' )
+		&& ! empty( $c['classes_dictionary'] );
+	break;
+}
+if ( ! $cls_ok ) {
+	fwrite( STDERR, "FATAL: canary failed — icon-box/position lost its per-device prefix_class or its\n" );
+	fwrite( STDERR, "classes_dictionary. The class-emitting surface is not being captured. Refusing to emit.\n" );
+	exit( 1 );
 }
 
 // ---------------------------------------------------------------------------

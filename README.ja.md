@@ -136,7 +136,7 @@ Border を Pro と誤ってラベル付けしたまま出荷しました。
 ## 本当に正確なのか。証明させてください。
 
 スキーマは Elementor 4.1.4 / Pro 4.1.2 から取得したものです。あなたの環境は違うかもしれません。
-信用せず、テストしてください。検証ツールは 3 つ、問いも 3 つとも違います。
+信用せず、テストしてください。検証は 5 つ、問いも 5 つとも違い、読む対象も 5 つとも違います。
 
 **1. スキーマはあなたのインストールと一致するか。**
 
@@ -186,15 +186,106 @@ python tools/sweep-controls.py check sweep/ --out data/control-verification.csv
 ```
 
 ```
-controls asserted     16,778
-  verified by value   15,508  (92.4%)   the exact value we wrote is in the CSS
-  property only        1,270  ( 7.6%)   right property, value not literally assertable
+DESKTOP  (18,853 CSS-driving controls)
+  verified by value   17,421  (92.4%)   the exact value we wrote is in the CSS
+  property only        1,270  ( 6.7%)   right property, value not literally assertable
   FAILED                   0  ( 0.0%)
+  skipped, untested      162  ( 0.9%)   no test could be built for these
+  covered                      99.1%
+
+RESPONSIVE SUFFIXES  (25,404 _tablet / _mobile keys, each asserted inside ITS
+                      breakpoint's media query, with a value distinct from
+                      desktop's, so a leak cannot pass)
+  verified by value   24,568  (96.7%)
+  FAILED                  17  ( 0.1%)
 ```
 
-コントロール単位の結果は `data/control-verification.csv` に同梱しています。
+コントロール単位の結果は `data/control-verification.csv` に同梱しています — `skipped` のものも
+含めてあるので、カバレッジの数字をそれらを抜きにして読むことはできません。
 
-**4. 実物を見る。** `examples/demo-page.json` は、このスキルだけで構築された実在の公開ページです。
+**そしてスイープは抽出ツールを訂正します。** `build-indexes.py --verification` は、レンダリング結果を
+スキーマに折り返します。9 個のコントロールは、決して出力しないレスポンシブブレークポイントを宣伝して
+います（`hotspot.width_tablet` は CSS を一切生成しないことを、単独で検証済み）。これらは現在
+`responsive_broken` としてフラグが立ち、`el.py` は `rwd-BROKEN:` と表示し、`validate-page.py` は
+それを書けばエラーにします。レンダリングしなければ、9 個すべてが動作するレスポンシブコントロールとして
+スキーマに残ったままだったでしょう。
+
+**4. CSS ではなくクラスを出力するすべてのコントロールをスイープする。** スタイルシートのスイープでは
+これらはまったく見えません — しかも 2,573 個あります（`_position`、`hide_tablet`、あらゆる `view` /
+`shape` / `align` コントロール、そして transform 系）。こちらは**レンダリング後の HTML** を読み、
+ラッパーに付いたクラスをアサートします。
+
+```bash
+python tools/sweep-classes.py plan --out classsweep/ --post-id <draft post>
+bash classsweep/RUN.sh
+python tools/sweep-classes.py check classsweep/ --out data/class-verification.csv
+```
+
+```
+CLASS-EMITTING CONTROLS  (2,573)
+  verified by class     2,042  (79.4%)   the class we predicted is on the wrapper
+  FAILED                    0  ( 0.0%)
+  host never rendered     523  (20.3%)   the WIDGET produces no markup on a bare page,
+                                         so there is no wrapper - not a pass, not a fail
+  skipped, untestable       8  ( 0.3%)
+PER-DEVICE CLASS PREFIXES  306    246 verified
+classes_dictionary REMAPS   10     10 verified
+```
+
+これを走らせて、他の何をもってしても見つけられなかったものが 3 つ出てきました。
+
+- **`apply-page.php` が、古いレンダリング済み HTML キャッシュを残していた。** Elementor は自身が
+  レンダリングしたマークアップを `_elementor_element_cache` という post meta に保持し、それをそのまま
+  返します。Elementor 自身の保存経路はこれをクリアしますが、meta を直接書き込む場合はクリアされません。
+  結果、投稿は更新され、CSS も正しく再構築され、`_elementor_data` を読み戻せば完全に正しいのに —
+  ページは**以前のマークアップ**を返し続け、エラーは一切出ませんでした。CSS スイープはこのバグが
+  生きたまま 17,421 個のコントロールを通してグリーンで走りました。CSS は常に再構築される別ファイル
+  だからです。最初の HTML スイープは 1 分で捕まえました。14 バッチすべてがバイト単位で同一だったのです。
+- **`validate-page.py` が、完璧にレンダリングされるページを却下していた。** `icon-box` の
+  `position: "top"` はオプションリストに存在せず、しかも Elementor の `classes_dictionary` はそれを
+  `block-start` に読み替えます。誤ったエラーであり、現在は注記に変更しました。
+- **スキーマが、タブレットで間違ったクラスを主張していた。** レスポンシブなクラス系コントロールは
+  *デバイスごとに異なる prefix* を持ちます（`_tablet` サフィックスではなく
+  `elementor-tablet-position-`）。抽出ツールはバリアントを潰し、デバイスの prefix を捨てていました。
+
+**5. 一般の訪問者が受け取るページを検証する。** ここまでのすべては、マシンの内側にあるアーティファクトを
+読んでいます — サーバのディスク上の CSS ファイル、PHP 呼び出しから出てきた HTML。**そのどれも、訪問者が
+受け取るものではありません。** テーマ、ページキャッシュ、Varnish、そして CDN がすべてあいだに挟まっており、
+どれもが別のものを配信しうるのに、サーバ側のチェックはすべてグリーンのままです。これは罠 9 を、もう
+1 層外側に押し出したものです。
+
+```bash
+python tools/verify-live.py examples/demo-page.json https://moksaweb.com/elementor-headless-demo/
+```
+
+```
+GET https://moksaweb.com/elementor-headless-demo/
+    113,397 bytes   x-cache=HIT  age=200
+GET .../elementor/css/post-11.css      1,238 bytes     <- the Kit's globals
+GET .../elementor/css/post-9176.css    5,411 bytes     <- the page
+GET .../elementor/css/post-47.css      9,009 bytes
+GET .../elementor/css/post-52.css     18,470 bytes
+    -> 4 stylesheet(s), 34,131 bytes total
+
+elements delivered      : 8/8
+CSS properties delivered: 94  (across 46 settings)
+  value-exact           : 43  (the exact value this tree asks for is in the delivered CSS)
+  property only         : 3  (Elementor rewrites the value; the sweep already proved which)
+wrapper-class assertions: 17 passed
+not assertable          : 24 settings drive neither CSS nor a class
+
+PASS - the page a visitor receives contains every element of the tree,
+       the stylesheet it links carries every property the schema promised,
+       and every wrapper carries the classes it should.
+```
+
+スタイルシートが 4 つあることに注目してください。**ページのスタイリングは複数のファイルに分割されます** —
+Kit がグローバルな色とフォントを、ページが自分自身の分を持ちます。ここにある他の検証ツールはどれも、
+ディスク上の単一の `post-<id>.css` を読んでおり、それは構造的に不完全な絵です。こちらは、ページが実際に
+*リンクしている*ものを、キャッシュ越しに（`x-cache=HIT`）読みます。訪問者が「動いている」と認めるであろう
+定義は、それだけです。
+
+**6. 実物を見る。** `examples/demo-page.json` は、このスキルだけで構築された実在の公開ページです。
 Elementor エディタは一度も開かれていません。
 
 **https://moksaweb.com/elementor-headless-demo/**
@@ -221,27 +312,30 @@ wp --user=1 eval-file tools/import-template.php hero-block.json <target_post_id>
 
 ```
 data/
-  elementor-schema.json    2.7 MB   オーサリング面の全体 - クエリするもので、読み込むものではない
+  elementor-schema.json    3.2 MB   オーサリング面の全体 - クエリするもので、読み込むものではない
   controls.csv             2.0 MB   ウィジェット/エレメント固有のコントロール全件
-  common-controls.csv       39 KB   全ウィジェットが共有する 211 個
+  common-controls.csv       39 KB   全ウィジェットが共有する 210 個
   pro-only-controls.csv     33 KB   安全確認用テーブル
   pro-only-widgets.csv     3.0 KB
   control-types.csv        4.6 KB   59 種類すべての JSON 値の形
   group-controls.csv       3.7 KB   16 グループと、それが展開されるフラットキー
-  widgets.csv              8.2 KB   135 ウィジェット + 3 エレメント
+  widgets.csv              8.3 KB   135 ウィジェット + 3 エレメント
   breakpoints.csv          0.2 KB
-  control-verification.csv          コントロール単位: 実際にレンダリングされるか?
+  control-verification.csv          コントロール単位: 主張どおりの CSS を出力するか?
+  class-verification.csv            コントロール単位: 主張どおりのクラスを出力するか?
   token-benchmark.csv               再現可能な計測結果
 
 tools/
   el.py                          スキーマにクエリする - 正面入口
   validate-page.py               ページツリーの事前チェック
-  apply-page.php                 書き込む: meta + CSS 再構築 + バックアップ
+  apply-page.php                 書き込む: meta + CSS 再構築 + HTML キャッシュ + バックアップ
   extract-elementor-schema.php   稼働中のインストールをダンプする
-  build-indexes.py               ダンプ -> 同梱データファイル
+  build-indexes.py               ダンプ + スイープ結果 -> 同梱データファイル
   verify-schema.py               スキーマはあなたのインストールと一致するか?
   verify-render.py               Elementor はスキーマが約束したものを出力するか?
-  sweep-controls.py              すべてのコントロールをレンダリングして動作をアサートする
+  verify-live.py                 CDN 越しの公開ページに、それは載っているか?
+  sweep-controls.py              CSS 系コントロールを全件レンダリングし、スタイルシートをアサートする
+  sweep-classes.py               クラス系コントロールを全件レンダリングし、HTML をアサートする
   export-template.php            Elementor 自身の JSON 形式でエクスポートする
   import-template.php            Elementor 自身の経路で、メディアごとインポートする
   benchmark-tokens.py            トークン数値を再現する
@@ -253,15 +347,16 @@ references/   data-model · control-types · containers-and-layout · responsive
 examples/     demo-page.json - 上記の公開ページ
 ```
 
-## 4 つの罠
+## 9 つの罠
 
-このデータを素朴に抽出すると、4 つの別々のかたちで間違えます。どれも、完全に見えて嘘をついている
-スキーマを生みます。4 つとも、発覚する前にこのリポジトリで実際に出荷されました。詳細は
+これを素朴にやると、9 つの別々のかたちで間違えます。どれも、完全に見えて嘘をつくスキルを生みます。
+**9 つとも、発覚する前にこのリポジトリで実際に出荷されました** — いくつかは Elementor のソースを
+読んで、残りはすべてのコントロールをレンダリングして出てきたものを見て、初めて分かりました。詳細は
 [extraction-traps.md](references/extraction-traps.md) に。
 
 1. **WP-CLI は Elementor からはフロントエンドに見える**ため、痩せたコントロールスタックが返ってきます。
    **コントロールの 46%、そしてタブ/ラベルのメタデータのほぼ 100% が消え**、しかもエラーは出ません。
-   抽出ツールはこの経路を無効化し、劣化したデータを出力するくらいなら中断する 2 つのカナリアを備えています。
+   抽出ツールはこの経路を無効化し、劣化したデータを出力するくらいなら中断する 3 つのカナリアを備えています。
 2. **レスポンシブは 2 つの機構**であり、素直なテストでは片方しか見つかりません。`padding_tablet` という
    コントロールオブジェクトは*どこにも存在しません* — それでも `padding_tablet` は動きます。
    サフィックス付きの兄弟を探してレスポンシブを検出する方法では、padding、margin、width、font size、
@@ -273,7 +368,31 @@ examples/     demo-page.json - 上記の公開ページ
    さらに 499 個のコントロールは、*別の*コントロールの値を自分の CSS に補間します — その別の値が
    空だと、Elementor は宣言全体を捨てます。文書化された条件はすべて満たされていて、エラーも出ないのに、
    です。グラデーションの色を指定せずにグラデーションの角度だけ設定すれば、何も出てきません。黙って。
-   これは 16,778 個すべてのコントロールをレンダリングして目で確かめて、初めて表に出ました。
+5. **レスポンシブコントロールの依存関係は、ブレークポイントで再チェックされます。** `X_tablet` を
+   設定して `Y_tablet` を設定しなければ、デスクトップは完璧に描画され、タブレットは黙って空になります。
+   1,433 個のレスポンシブサフィックスが、まさにこの理由で何も出力していませんでした。
+6. **`is_responsive` は過大な約束をします。** `hotspot.width` は `container.padding` と同じフラグを
+   持っています。`padding_tablet` は動き、`width_tablet` は何も出力しません。知っているのはレンダリング
+   だけです — だからスイープはその結果を折り返し、スキーマを訂正します。
+7. **CSS はコントロールができることの半分にすぎません。** 2,573 個のコントロールはラッパーに
+   **クラス**を付けることで作用し、そのうち 1,894 個は CSS を一切出力しません — つまりスタイルシートの
+   スイープは、どれだけグリーンで走ろうと、それらの存在すら見ることができません。ここではその全部が
+   「Elementor が `prefix_class` を登録しているのだから、おそらく動くだろう」という根拠だけで出荷されて
+   いました。
+8. **クラス系コントロールの値は読み替えられ、prefix はデバイスごとに変わります。**
+   `position: "top"` はオプションリストに存在しないのに `elementor-position-block-start` を
+   レンダリングします（`classes_dictionary`）。`position_tablet` は
+   `elementor-**tablet**-position-…` をレンダリングするのであって、クラスに `_tablet` サフィックスが
+   付くのではありません。switcher は `return_value` を保存するので、`hide_tablet: "yes"` は
+   `elementor-yes` をレンダリングし、何も隠しません。そして `"columns": 0` は何も出力せず、
+   `"columns": "0"` は動きます。
+9. **`_elementor_data` を書き込むと、古いレンダリング済み HTML キャッシュが残ります。** 投稿は更新され、
+   CSS は再構築され、meta を読み戻せば完全に正しい — それでもページは**以前のマークアップ**を、永遠に、
+   エラーも出さずに返し続けます。17,421 個のコントロールを通す CSS スイープが、このバグが生きたまま
+   グリーンで走りました。CSS は常に再構築される別ファイルだからです。
+
+罠 9 は、このプロジェクトの主張そのものを 1 行で表しています。**検証ツールは、自分が読むチャネルの
+バグしか見つけられません。** あるチャネルでグリーンだったことは、他のチャネルについて何も語りません。
 
 ## コントリビュート
 

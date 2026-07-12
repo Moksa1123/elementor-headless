@@ -149,10 +149,49 @@ Nothing else in Elementor will warn you about this.
 
 ## Caches, flushed inside-out
 
-Getting the tree right and still seeing the old page almost always means a cache:
+Getting the tree right and still seeing the old page almost always means a cache.
+There are **four** layers, and the innermost one is the one nobody expects:
 
 ```bash
-wp elementor flush-css --post-id=<id>   # Elementor's compiled CSS
-wp breeze purge --cache=all             # or your page cache
-                                        # then the CDN / Varnish layer
+# 1. the rendered HTML  <- a POST META, and the one that catches people out
+wp post meta delete <id> _elementor_element_cache
+
+# 2. the compiled CSS
+wp elementor flush-css --post-id=<id>
+
+# 3. the page cache
+wp breeze purge --cache=all
+
+# 4. the CDN / Varnish layer
 ```
+
+`apply-page.php` does 1 and 2. You still own 3 and 4.
+
+### `_elementor_element_cache` — the one that makes a correct tree render wrong
+
+Elementor stores **the HTML it rendered for each element** in a post meta
+(`Document::CACHE_META_KEY`) and serves it straight back out of
+`get_builder_content_for_display()`. Its own `Document::save()` deletes the meta on
+every save. Writing `_elementor_data` directly does not.
+
+So the headless failure looks like this:
+
+- the post updates
+- `_elementor_data` reads back exactly what you wrote
+- the compiled CSS file changes, and is correct
+- **and the page keeps serving the previous markup**
+
+No error, anywhere. It is the single most convincing way to conclude that your
+JSON is wrong when it is perfectly right.
+
+This project shipped that bug. An entire control-by-control verification sweep ran
+green against it, because that sweep read the compiled CSS — a separate file, which
+we always rebuilt. It surfaced the moment a sweep read the **HTML** instead, and
+every batch came back byte-identical to the first one.
+
+```php
+delete_post_meta( $post_id, \Elementor\Core\Base\Document::CACHE_META_KEY );
+```
+
+Reference the constant, not the string. If Elementor renames the key, that line
+should break loudly rather than quietly clear nothing.

@@ -77,6 +77,23 @@ def stable_hex(*parts: str) -> str:
     return f"#{r:02X}{g:02X}{b:02X}"
 
 
+# Options that live on the control CLASS rather than in any control's args, keyed
+# by control type. Populated from the schema's `control_types` (see load_schema).
+# Without this, `_animation` looks like a control with no legal values at all, and
+# every control conditional on it -- `animation_duration` on all 135 widgets --
+# becomes untestable for a reason that is an artefact of our own extraction.
+TYPE_OPTIONS: dict[str, list] = {}
+
+
+def load_schema(path: Path = SCHEMA_PATH) -> dict:
+    schema = json.loads(path.read_text(encoding="utf-8"))
+    TYPE_OPTIONS.clear()
+    for t, e in (schema.get("control_types") or {}).items():
+        if e.get("options"):
+            TYPE_OPTIONS[t] = e["options"]
+    return schema
+
+
 def first_option(ctrl: dict, forbidden: set[str] | None = None) -> str | None:
     """
     Pick a usable option, skipping any the caller says are off-limits.
@@ -93,6 +110,8 @@ def first_option(ctrl: dict, forbidden: set[str] | None = None) -> str | None:
     opts = ctrl.get("options")
     if isinstance(opts, dict):        # truncated giant option list (fonts)
         opts = opts.get("sample") or []
+    if not opts:
+        opts = TYPE_OPTIONS.get(ctrl.get("type", ""))
     if isinstance(opts, list):
         return next((str(o) for o in opts
                      if str(o) != "" and str(o) not in forbidden), None)
@@ -632,7 +651,7 @@ def build_node(schema: dict, owner: str, vi: int, assign: dict) -> dict:
 
 
 def cmd_plan(a) -> int:
-    schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
+    schema = load_schema()
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
     (out / "css").mkdir(exist_ok=True)
@@ -709,7 +728,7 @@ for f in "$SWEEP"/batch-*.json; do
 done
 echo "applied $ok, failed $fail"
 echo "now: python tools/sweep-controls.py check $SWEEP --out data/control-verification.csv"
-""", encoding="utf-8")
+""", encoding="utf-8", newline="\n")
 
     # Coverage, stated honestly. A sweep that only reports what it managed to test
     # can claim any pass rate it likes.
@@ -860,7 +879,7 @@ def cmd_check(a) -> int:
     plan = json.loads((sweep / "plan.json").read_text(encoding="utf-8"))
     css_dir = Path(a.css_dir) if a.css_dir else sweep / "css"
 
-    sch = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
+    sch = load_schema()
     breakpoints = {b: v for b, v in sch["breakpoints"].items()
                    if v.get("active") and v.get("suffix")}
 

@@ -23,18 +23,22 @@ until someone notices the padding never applied.
 
 Everything in `data/` was extracted from a live Elementor install and then
 **rendered and checked, one control at a time** - written into real pages, compiled
-by Elementor, and asserted against the stylesheet that came out. Each control got a
-value unique to it, so a pass means *that* control produced *that* value.
+by Elementor, and asserted against what came out. Each control got a value unique to
+it, so a pass means *that* control produced *that* value.
+
+A control can act two ways, and they are verified against two different artefacts:
 
 ```
-DESKTOP     18,853 CSS-driving controls   99.1% covered   0 failures
-RESPONSIVE  25,404 _tablet/_mobile keys   96.7% verified by value
+CSS         18,853 CSS-driving controls    99.1% covered   0 failures  (the stylesheet)
+RESPONSIVE  25,404 _tablet/_mobile keys    96.7% verified by value
+CLASS        2,573 wrapper-class controls  79.4% verified   0 failures  (the rendered HTML)
 ```
 
 Where Elementor's own metadata turned out to be wrong, **the rendered result wins**:
-9 controls advertise a responsive breakpoint they never actually emit, and the
-schema now says so. Per-control results ship in `data/control-verification.csv`.
-Your memory of Elementor has not been through any of this.
+9 controls advertise a responsive breakpoint they never emit, 29 widgets render no
+markup at all on a bare page, and the schema now says both. Per-control results ship
+in `data/control-verification.csv` and `data/class-verification.csv`. Your memory of
+Elementor has not been through any of this.
 
 ## A control can be gated four different ways
 
@@ -63,6 +67,22 @@ python tools/validate-page.py page.json     # catches all of them before you wri
 ```
 
 Detail: [extraction-traps.md](references/extraction-traps.md).
+
+## Half the controls do not emit CSS at all - they emit a CLASS
+
+2,573 controls act by appending a class to the element wrapper instead of styling
+it. `el.py` prints `class:` for those, and there are four ways to get them wrong:
+
+| | |
+|---|---|
+| **the value is remapped** | `classes_dictionary` rewrites it first. `icon-box` `position: "top"` is **not** in the option list and renders `elementor-position-block-start` anyway. `el.py` prints these as `legacy:top->block-start` |
+| **the device prefix is a different string** | there is no `_tablet` suffix on a class. `position_tablet` renders `elementor-TABLET-position-...`. `el.py` prints `class-rwd:` |
+| **a switcher stores its `return_value`** | not `true`, not always `"yes"`. `hide_tablet: "yes"` renders the class `elementor-yes` and hides nothing. The value is `"hidden-tablet"`. `el.py` prints `on:'hidden-tablet'` |
+| **zero must be a string** | `"columns": 0` emits nothing; `"columns": "0"` emits `elementor-grid-0`. PHP's `empty()` plus a strict `'0' !==` check |
+
+**29 widgets render no markup at all on a bare page** - `template`, `loop-grid`,
+`sidebar`, `post-comments`, every `wp-widget-*`. Place one and you get an invisible
+page with no error. `el.py widget <name>` warns you.
 
 ## Look it up like this
 
@@ -99,6 +119,9 @@ question completely. `data/*.csv` are there for `grep` when you want to scan.
 | padding / margin / motion FX / custom CSS | `el.py common` — they're on every widget |
 | whether `X_tablet` is legal | `el.py widget <name> --grep X` → look for `rwd:` |
 | which control changes a CSS property | `el.py css <property>` |
+| what class a control puts on the wrapper | `el.py widget <name> --grep X` → `class:` / `class-rwd:` / `legacy:` |
+| the legal values of an animation | `el.py type animation` — they are camelCase (`fadeInUp`), not kebab |
+| whether a widget renders on a bare page | `el.py widget <name>` — it says so if not |
 | **whether something needs Pro** | `el.py pro --check <controls>` · `data/pro-only-controls.csv` |
 
 ## Build a page
@@ -113,8 +136,13 @@ wp eval-file tools/apply-page.php <post_id> page.json   # writes meta + rebuilds
 
 `validate-page.py` is not optional. It catches what Elementor will not: unknown
 control names, wrong value shapes, illegal units, invalid select options, duplicate
-element ids, all three kinds of unmet dependency, and Pro-only controls on a Free
-target.
+element ids, all three kinds of unmet dependency, `0` written as a number into a
+class control, and Pro-only controls on a Free target.
+
+`apply-page.php` writes the 4 meta keys, rebuilds the compiled CSS **and deletes
+the rendered-HTML cache**. Skip that last one and the page serves its previous
+markup forever - correct tree, correct CSS, wrong page, no error
+([data-model.md](references/data-model.md#caches-flushed-inside-out)).
 
 ## Reuse a block across pages and across sites
 
@@ -198,7 +226,7 @@ Only **active** breakpoints exist (`el.py breakpoints`).
 | [responsive.md](references/responsive.md) | breakpoints, suffixes, why `padding_tablet` has no control object |
 | [templates-and-conditions.md](references/templates-and-conditions.md) | template CRUD, Display Conditions, priority resolution — **Pro** |
 | [import-export.md](references/import-export.md) | Elementor's JSON interchange format; moving blocks across sites without breaking media |
-| [extraction-traps.md](references/extraction-traps.md) | the three ways a schema goes silently wrong, and how this one is verified |
+| [extraction-traps.md](references/extraction-traps.md) | the nine ways a schema goes silently wrong, and how this one is verified |
 | [token-efficiency.md](references/token-efficiency.md) | the 89% figure, measured, with the script that reproduces it |
 
 ## Verify it rather than trusting it
@@ -213,11 +241,46 @@ python tools/verify-schema.py mine.json --free-dump mine-free.json    # exits 1 
 ```
 
 If it fails, re-extract: `build-indexes.py` regenerates every data file and the
-skill then describes *your* Elementor.
+skill then describes *your* Elementor. Feed both sweeps' results back in and the
+schema describes what your install actually *does*, not what it claims:
+
+```bash
+python tools/build-indexes.py mine.json --free-dump mine-free.json \
+    --verification data/control-verification.csv \
+    --class-verification data/class-verification.csv --out data/
+```
+
+### Verify the page the PUBLIC gets, not the one on the server
+
+Every check above reads something from inside the machine — a CSS file off the
+disk, HTML out of a PHP call. **None of them is what a visitor receives.** The
+theme, the page cache, Varnish and the CDN all sit in between, and any of them can
+serve something else while every server-side check stays green.
+
+```bash
+python tools/verify-live.py examples/demo-page.json https://your-site/your-page/
+```
+
+It fetches the public URL, fetches **every** Elementor stylesheet that page links
+(the Kit's globals and the page's own are different files — reading only
+`post-<id>.css` sees an incomplete picture), and asserts the tree, the CSS and the
+wrapper classes against what actually came down the wire. It prints the cache
+headers, so a stale edge is visible rather than silent.
 
 Live proof, built headlessly and published:
-**https://moksaweb.com/elementor-headless-demo/** — `examples/demo-page.json`,
-94/94 CSS assertions passed under `verify-render.py`.
+**https://moksaweb.com/elementor-headless-demo/**
+
+```
+elements delivered      : 8/8
+CSS properties delivered: 94  (across 46 settings)
+  value-exact           : 43  (the exact value this tree asks for is in the delivered CSS)
+  property only         : 3  (Elementor rewrites the value; the sweep already proved which)
+wrapper-class assertions: 17 passed
+not assertable          : 24 settings drive neither CSS nor a class
+PASS - the page a visitor receives contains every element of the tree,
+       the stylesheet it links carries every property the schema promised,
+       and every wrapper carries the classes it should.
+```
 
 ## Tools
 
@@ -230,7 +293,9 @@ Live proof, built headlessly and published:
 | `build-indexes.py` | turn a dump into the shipped data files |
 | `verify-schema.py` | does the schema match your install? |
 | `verify-render.py` | does Elementor emit the CSS the schema promised? |
-| `sweep-controls.py` | render EVERY control and assert it works (16,778 asserted, 0 failures) |
+| `verify-live.py` | does the page **the public gets** contain it, through the cache and the CDN? |
+| `sweep-controls.py` | render EVERY CSS control and assert it works (99.1% covered, 0 failures) |
+| `sweep-classes.py` | render every CLASS control and assert the wrapper class (0 failures) |
 | `export-template.php` | export a page/template to Elementor's own JSON format |
 | `import-template.php` | import one, with media, via Elementor's own import path |
 | `benchmark-tokens.py` | reproduce the token numbers |

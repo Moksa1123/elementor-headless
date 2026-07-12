@@ -39,8 +39,8 @@ the padding never applied. So: no claim about a control name, a value shape, an
 option, a unit, or a Free/Pro boundary goes into this repo unless it came out of
 an extraction or a verifier.
 
-This is not a stylistic preference. This repo has shipped wrong data three times,
-each time by reasoning instead of measuring:
+This is not a stylistic preference. This repo has shipped wrong data every single
+time it reasoned instead of measuring:
 
 - Border and Box Shadow were labelled **Pro** because they "feel" premium. They
   are core, free, and always have been.
@@ -49,9 +49,20 @@ each time by reasoning instead of measuring:
 - Responsive controls were detected by looking for `_tablet` siblings in the
   control stack. The common mechanism does not create any, so `padding_tablet` —
   which works fine — was being rejected as an unknown control.
+- 2,573 controls emit a wrapper **class** rather than CSS. They shipped unverified
+  for the entire life of the CSS sweep, on the reasoning that "Elementor registered
+  a `prefix_class`, so presumably it works". 1,894 of them emit no CSS at all, so
+  the sweep could not see them even in principle.
+- `apply-page.php` left Elementor's rendered-HTML cache in place, so a correct tree
+  served the **previous page**. A 17,421-control sweep ran green with that bug live.
 
-All three are written up in `references/extraction-traps.md`. Read it before
-touching the extractor.
+All nine are written up in `references/extraction-traps.md`. Read it before touching
+the extractor.
+
+**The generalisable lesson, and the one that keeps being re-learned here: a verifier
+only finds bugs in the channel it reads.** Green in one channel says nothing about
+the others. Before adding a "verified" claim anywhere, ask what artefact it was read
+out of, and what an identical bug in a different artefact would look like.
 
 ## Regenerating data/
 
@@ -60,7 +71,9 @@ touching the extractor.
 ```bash
 wp eval-file tools/extract-elementor-schema.php core+pro > raw.json
 wp --skip-plugins=elementor-pro eval-file tools/extract-elementor-schema.php core+pro > free.json
-python tools/build-indexes.py raw.json --free-dump free.json --out data/
+python tools/build-indexes.py raw.json --free-dump free.json \
+    --verification data/control-verification.csv \
+    --class-verification data/class-verification.csv --out data/
 python tools/verify-schema.py raw.json --free-dump free.json     # must exit 0
 ```
 
@@ -70,8 +83,27 @@ production site. Without `--free-dump`, `build-indexes.py` marks every control
 `tier: unknown` rather than guessing, and that is the correct behaviour: leave it
 that way.
 
+The two `--*-verification` files are what let the RENDERED result override
+Elementor's own metadata (`responsive_broken`, `class_verified`, `renders_bare`).
+Without them the schema falls back to what Elementor claims, which is wrong in at
+least 9 + 29 known places.
+
 `build-indexes.py` refuses a dump taken with control optimisation on. Do not
 "fix" that by loosening the check.
+
+### The ordering rule
+
+**Anything measured PER WIDGET is stamped onto controls AFTER `compute_common()`,
+never before.** A shared control stays in the common set only while it is
+byte-identical across all 135 widgets. Stamp a per-widget measurement on it first
+and the set shatters — 210 shared controls became 192, and the schema grew half a
+megabyte. This has now happened with `tier` and again with `class_verified`. It will
+happen a third time to whoever ignores this paragraph.
+
+`extract-elementor-schema.php` has **three canaries** that abort rather than emit
+degraded data (control stack intact / `container.padding` responsive /
+`icon-box.position` keeps its per-device prefix and its `classes_dictionary`). Do
+not weaken them to make a build pass.
 
 ## Free vs Pro
 
@@ -99,19 +131,32 @@ wp --skip-plugins=elementor-pro eval-file tools/…      # fine: a real WP-CLI g
 ## Local checks before committing
 
 ```bash
-php -l tools/extract-elementor-schema.php
-php -l tools/apply-page.php
+for f in tools/*.php; do php -l "$f"; done
 python tools/el.py stats
 python tools/validate-page.py examples/demo-page.json --target free   # must be clean
 python tools/benchmark-tokens.py --elementor-src /path/to/plugins/elementor
 ```
 
+Anything generated for the SERVER (`RUN.sh`, `render.php`) must be written with
+`newline="\n"`. Python's `write_text()` on Windows emits CRLF, and bash reads
+`set -u\r` as an invalid option.
+
 Any change to the extractor must be run against a live WordPress + Elementor at
 least once. `php -l` only proves it parses.
 
-If you change `examples/demo-page.json`, re-verify it end to end — apply it, read
-back the compiled CSS, and run `verify-render.py`. It is the repo's proof that the
-data is real; a demo that renders wrong is worse than no demo.
+If you change `examples/demo-page.json`, re-verify it end to end — apply it, then
+run **`verify-live.py` against the public URL**. It is the repo's proof that the data
+is real; a demo that renders wrong is worse than no demo.
+
+```bash
+python tools/verify-live.py examples/demo-page.json https://moksaweb.com/elementor-headless-demo/
+```
+
+Prefer `verify-live.py` over `verify-render.py` for the demo. `verify-render.py`
+reads one CSS file you hand it off the disk, and a page's styling is spread across
+several (the Kit's globals live in a different file from the page's own). The live
+check reads what the page actually links, through the cache, which is the only
+definition of "it works" a visitor would recognise.
 
 ## Sanitisation
 

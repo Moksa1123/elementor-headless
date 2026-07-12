@@ -137,7 +137,7 @@ once, by reasoning instead of measuring.
 ## Is it accurate? Make it prove it.
 
 The schema came from Elementor 4.1.4 / Pro 4.1.2. Yours may differ. Don't trust it
-— test it. Three verifiers, three different questions.
+— test it. Five checks, five different questions, read out of five different artefacts.
 
 **1. Does the schema match your install?**
 
@@ -212,7 +212,85 @@ in isolation). They are now flagged `responsive_broken`, `el.py` prints
 `rwd-BROKEN:`, and `validate-page.py` errors if you write one. Without rendering,
 all 9 would still be in the schema as working responsive controls.
 
-**4. Look at it.** `examples/demo-page.json` is a real published page, built with
+**4. Sweep every control that emits a CLASS instead of CSS.** A stylesheet sweep
+cannot see these at all — and there are 2,573 of them (`_position`, `hide_tablet`,
+every `view` / `shape` / `align` control, the transforms). This one reads the
+**rendered HTML** and asserts the class on the wrapper.
+
+```bash
+python tools/sweep-classes.py plan --out classsweep/ --post-id <draft post>
+bash classsweep/RUN.sh
+python tools/sweep-classes.py check classsweep/ --out data/class-verification.csv
+```
+
+```
+CLASS-EMITTING CONTROLS  (2,573)
+  verified by class     2,042  (79.4%)   the class we predicted is on the wrapper
+  FAILED                    0  ( 0.0%)
+  host never rendered     523  (20.3%)   the WIDGET produces no markup on a bare page,
+                                         so there is no wrapper - not a pass, not a fail
+  skipped, untestable       8  ( 0.3%)
+PER-DEVICE CLASS PREFIXES  306    246 verified
+classes_dictionary REMAPS   10     10 verified
+```
+
+Running it found three things nothing else could:
+
+- **`apply-page.php` was leaving a stale rendered-HTML cache.** Elementor keeps the
+  markup it rendered in a `_elementor_element_cache` post meta and serves it straight
+  back. Its own save path clears it; writing the meta directly does not. So the post
+  updated, the CSS rebuilt correctly, `_elementor_data` read back exactly right — and
+  the page kept serving the **previous markup**, with no error. The CSS sweep ran green
+  across 17,421 controls with this bug live, because CSS is a separate file we always
+  rebuilt. The first HTML sweep caught it in a minute: all 14 batches came back
+  byte-identical.
+- **`validate-page.py` was rejecting a page that renders perfectly.** `icon-box`
+  `position: "top"` is not in the option list, and Elementor's `classes_dictionary`
+  remaps it to `block-start` anyway. A false error, now a note.
+- **The schema was claiming the wrong class on tablet.** A responsive class control
+  has a *different prefix per device* (`elementor-tablet-position-`, not a `_tablet`
+  suffix), and the extractor had been collapsing the variants and throwing the device
+  prefixes away.
+
+**5. Verify the page the PUBLIC gets.** Everything above reads an artefact from
+inside the machine — a CSS file off the server's disk, HTML out of a PHP call.
+**None of it is what a visitor receives.** The theme, the page cache, Varnish and
+the CDN all sit in between, and any of them can serve something else while every
+server-side check stays green. That is Trap 9 one layer further out.
+
+```bash
+python tools/verify-live.py examples/demo-page.json https://moksaweb.com/elementor-headless-demo/
+```
+
+```
+GET https://moksaweb.com/elementor-headless-demo/
+    113,397 bytes   x-cache=HIT  age=200
+GET .../elementor/css/post-11.css      1,238 bytes     <- the Kit's globals
+GET .../elementor/css/post-9176.css    5,411 bytes     <- the page
+GET .../elementor/css/post-47.css      9,009 bytes
+GET .../elementor/css/post-52.css     18,470 bytes
+    -> 4 stylesheet(s), 34,131 bytes total
+
+elements delivered      : 8/8
+CSS properties delivered: 94  (across 46 settings)
+  value-exact           : 43  (the exact value this tree asks for is in the delivered CSS)
+  property only         : 3  (Elementor rewrites the value; the sweep already proved which)
+wrapper-class assertions: 17 passed
+not assertable          : 24 settings drive neither CSS nor a class
+
+PASS - the page a visitor receives contains every element of the tree,
+       the stylesheet it links carries every property the schema promised,
+       and every wrapper carries the classes it should.
+```
+
+Note the four stylesheets. **A page's styling is split across several files** — the
+Kit carries the global colours and fonts, the page carries its own. Every other
+verifier here reads a single `post-<id>.css` off the disk, which is an incomplete
+picture by construction. This one reads whatever the page actually *links*, through
+the cache (`x-cache=HIT`), which is the only definition of "it works" that a visitor
+would recognise.
+
+**6. Look at it.** `examples/demo-page.json` is a real published page, built with
 nothing but this skill. The Elementor editor has never been opened on it.
 
 **https://moksaweb.com/elementor-headless-demo/**
@@ -239,27 +317,30 @@ lost, 0 changed.
 
 ```
 data/
-  elementor-schema.json    2.7 MB   the full surface - queried, never loaded
+  elementor-schema.json    3.2 MB   the full surface - queried, never loaded
   controls.csv             2.0 MB   every widget/element-specific control
-  common-controls.csv       39 KB   the 211 shared by every widget
+  common-controls.csv       39 KB   the 210 shared by every widget
   pro-only-controls.csv     33 KB   the safety table
   pro-only-widgets.csv     3.0 KB
   control-types.csv        4.6 KB   all 59 JSON value shapes
   group-controls.csv       3.7 KB   16 groups, and the flat keys they expand to
-  widgets.csv              8.2 KB   135 widgets + 3 elements
+  widgets.csv              8.3 KB   135 widgets + 3 elements
   breakpoints.csv          0.2 KB
-  control-verification.csv          per-control: does it actually render?
+  control-verification.csv          per-control: does it emit the CSS it claims?
+  class-verification.csv            per-control: does it emit the CLASS it claims?
   token-benchmark.csv               reproducible measurements
 
 tools/
   el.py                          query the schema - the front door
   validate-page.py               pre-flight a page tree
-  apply-page.php                 write it: meta + CSS rebuild + backup
+  apply-page.php                 write it: meta + CSS rebuild + HTML cache + backup
   extract-elementor-schema.php   dump a live install
-  build-indexes.py               dump -> shipped data files
+  build-indexes.py               dump + sweep results -> shipped data files
   verify-schema.py               does the schema match your install?
   verify-render.py               does Elementor emit what the schema promised?
-  sweep-controls.py              render EVERY control and assert it works
+  verify-live.py                 does the PUBLIC page have it, through the CDN?
+  sweep-controls.py              render every CSS control, assert the stylesheet
+  sweep-classes.py               render every CLASS control, assert the HTML
   export-template.php            export to Elementor's own JSON format
   import-template.php            import one, with media, via Elementor's own path
   benchmark-tokens.py            reproduce the token numbers
@@ -271,17 +352,17 @@ references/   data-model · control-types · containers-and-layout · responsive
 examples/     demo-page.json - the published page above
 ```
 
-## The six traps
+## The nine traps
 
-The naive way to extract this data is wrong in six separate ways, each producing a
-schema that looks complete and lies. All six were shipped in this repo before being
-caught - three found by reading Elementor's source, three only by rendering every
-control and looking. Write-ups in
+The naive way to do this is wrong in nine separate ways, each producing a skill that
+looks complete and lies. **All nine were shipped in this repo before being caught** —
+some by reading Elementor's source, the rest only by rendering every control and
+looking at what came out. Write-ups in
 [extraction-traps.md](references/extraction-traps.md):
 
 1. **WP-CLI looks like the front end to Elementor**, so it hands back the lean
    control stack: **46% of controls and ~100% of tab/label metadata vanish**, with
-   no error. The extractor disables that path, and has two canaries that abort
+   no error. The extractor disables that path, and has three canaries that abort
    rather than emit degraded data.
 2. **Responsive is two mechanisms**, and the obvious test finds only one. There is
    no `padding_tablet` control object *anywhere* — and `padding_tablet` works.
@@ -294,8 +375,32 @@ control and looking. Write-ups in
    operators. And 499 controls interpolate *another* control's value into their CSS
    — Elementor throws away the whole declaration if that other value is empty, with
    every documented condition satisfied and no error. Set a gradient angle without a
-   gradient colour and you get nothing, silently. This one only surfaced by
-   rendering all 16,778 controls and looking.
+   gradient colour and you get nothing, silently.
+5. **A responsive control's dependencies are re-checked at the breakpoint.** Set
+   `X_tablet` but not `Y_tablet` and desktop renders perfectly while tablet is
+   silently blank. 1,433 responsive suffixes emitted nothing for exactly this reason.
+6. **`is_responsive` over-promises.** `hotspot.width` carries the same flag as
+   `container.padding`; `padding_tablet` works and `width_tablet` emits nothing at
+   all. Only rendering knows — so the sweep feeds its result back and corrects the
+   schema.
+7. **CSS is only half of what a control can do.** 2,573 controls act by putting a
+   **class** on the wrapper, and 1,894 of them emit no CSS at all — so a stylesheet
+   sweep cannot see they exist, however green it runs. They were all shipped here on
+   the strength of "Elementor registered a `prefix_class`, so presumably it works".
+8. **A class control's value is remapped, and its prefix changes per device.**
+   `position: "top"` is not in the option list and renders `elementor-position-block-start`
+   anyway (`classes_dictionary`). `position_tablet` renders
+   `elementor-**tablet**-position-…`, not a `_tablet` suffix on the class. A switcher
+   stores its `return_value`, so `hide_tablet: "yes"` renders `elementor-yes` and hides
+   nothing. And `"columns": 0` emits nothing while `"columns": "0"` works.
+9. **Writing `_elementor_data` leaves a stale rendered-HTML cache.** The post updates,
+   the CSS rebuilds, the meta reads back exactly right — and the page serves its
+   **previous markup**, forever, with no error. A 17,421-control CSS sweep ran green
+   with this bug live, because CSS is a separate file we always rebuilt.
+
+Trap 9 is the whole argument for this project in one line: **a verifier only finds
+bugs in the channel it reads.** A green run in one channel says nothing about the
+others.
 
 ## Contributing
 

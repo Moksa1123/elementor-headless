@@ -135,7 +135,8 @@ Border를 Pro로 잘못 표시한 채 배포한 적이 한 번 있습니다.
 ## 정확한가? 직접 증명하게 하십시오.
 
 이 스키마는 Elementor 4.1.4 / Pro 4.1.2에서 나왔습니다. 당신의 환경은 다를 수 있습니다.
-믿지 말고 검사하십시오. 검증기는 세 개이고, 서로 다른 세 가지 질문에 답합니다.
+믿지 말고 검사하십시오. 검사는 다섯 개이고, 서로 다른 다섯 가지 질문에, 서로 다른 다섯 가지 산출물을
+읽어 답합니다.
 
 **1. 스키마가 내 설치 환경과 일치하는가?**
 
@@ -185,15 +186,107 @@ python tools/sweep-controls.py check sweep/ --out data/control-verification.csv
 ```
 
 ```
-controls asserted     16,778
-  verified by value   15,508  (92.4%)   the exact value we wrote is in the CSS
-  property only        1,270  ( 7.6%)   right property, value not literally assertable
+DESKTOP  (18,853 CSS-driving controls)
+  verified by value   17,421  (92.4%)   the exact value we wrote is in the CSS
+  property only        1,270  ( 6.7%)   right property, value not literally assertable
   FAILED                   0  ( 0.0%)
+  skipped, untested      162  ( 0.9%)   no test could be built for these
+  covered                      99.1%
+
+RESPONSIVE SUFFIXES  (25,404 _tablet / _mobile keys, each asserted inside ITS
+                      breakpoint's media query, with a value distinct from
+                      desktop's, so a leak cannot pass)
+  verified by value   24,568  (96.7%)
+  FAILED                  17  ( 0.1%)
 ```
 
-컨트롤별 결과는 `data/control-verification.csv`로 함께 제공됩니다.
+컨트롤별 결과는 `data/control-verification.csv`로 함께 제공됩니다. `skipped`인 것들까지
+포함하므로, 커버리지 수치를 그것들 없이 읽는 일은 있을 수 없습니다.
 
-**4. 직접 보십시오.** `examples/demo-page.json`은 오직 이 스킬만으로 만들어 실제로 발행한
+**그리고 스윕은 추출기를 교정합니다.** `build-indexes.py --verification`은 렌더링 결과를 다시
+스키마에 반영합니다. 9개 컨트롤은 실제로는 내보내지 않는 반응형 브레이크포인트를 광고하고
+있었습니다(`hotspot.width_tablet`은 CSS를 아예 만들어내지 않으며, 이를 격리해서 확인했습니다).
+이들은 이제 `responsive_broken`으로 표시되고, `el.py`는 `rwd-BROKEN:`을 출력하며,
+`validate-page.py`는 그런 컨트롤을 쓰면 오류를 냅니다. 렌더링하지 않았다면 9개 전부 정상
+동작하는 반응형 컨트롤로 스키마에 남아 있었을 것입니다.
+
+**4. CSS가 아니라 CLASS를 내보내는 모든 컨트롤을 스윕한다.** 스타일시트 스윕으로는 이들을
+아예 볼 수 없습니다 — 그리고 그 수가 2,573개입니다(`_position`, `hide_tablet`, 모든 `view` /
+`shape` / `align` 컨트롤, 그리고 transform 계열). 이 스윕은 **렌더링된 HTML**을 읽어서 래퍼에
+클래스가 붙었는지 단언합니다.
+
+```bash
+python tools/sweep-classes.py plan --out classsweep/ --post-id <draft post>
+bash classsweep/RUN.sh
+python tools/sweep-classes.py check classsweep/ --out data/class-verification.csv
+```
+
+```
+CLASS-EMITTING CONTROLS  (2,573)
+  verified by class     2,042  (79.4%)   the class we predicted is on the wrapper
+  FAILED                    0  ( 0.0%)
+  host never rendered     523  (20.3%)   the WIDGET produces no markup on a bare page,
+                                         so there is no wrapper - not a pass, not a fail
+  skipped, untestable       8  ( 0.3%)
+PER-DEVICE CLASS PREFIXES  306    246 verified
+classes_dictionary REMAPS   10     10 verified
+```
+
+이걸 돌려보고 나서야 다른 무엇으로도 찾을 수 없던 세 가지가 드러났습니다.
+
+- **`apply-page.php`가 렌더링된 HTML 캐시를 오래된 채로 남겨두고 있었습니다.** Elementor는
+  렌더링한 마크업을 `_elementor_element_cache` post meta에 보관해 두고 그대로 다시 내보냅니다.
+  Elementor 자신의 저장 경로는 이 캐시를 지우지만, meta를 직접 쓰는 방식은 지우지 않습니다. 그래서
+  글은 갱신되고, CSS는 올바르게 재빌드되고, `_elementor_data`도 정확히 그대로 읽혔는데 — 페이지는
+  계속 **이전 마크업**을 내보내고 있었습니다. 오류는 없었습니다. 이 버그가 살아 있는 상태에서도
+  CSS 스윕은 17,421개 컨트롤에 걸쳐 전부 초록불이었습니다. CSS는 우리가 항상 재빌드하는 별도의
+  파일이기 때문입니다. 첫 HTML 스윕은 이걸 1분 만에 잡아냈습니다. 14개 배치가 전부 바이트 단위로
+  동일하게 돌아왔던 것입니다.
+- **`validate-page.py`가 멀쩡하게 렌더링되는 페이지를 거부하고 있었습니다.** `icon-box`의
+  `position: "top"`은 옵션 목록에 없지만, Elementor의 `classes_dictionary`가 어차피
+  `block-start`로 다시 매핑합니다. 거짓 오류였고, 지금은 안내 메시지로 바뀌었습니다.
+- **스키마가 태블릿에서 잘못된 클래스를 주장하고 있었습니다.** 반응형 클래스 컨트롤은 *기기마다
+  접두사가 다릅니다*(`_tablet` 접미사가 아니라 `elementor-tablet-position-`). 그런데 추출기는
+  그 변형들을 뭉뚱그리면서 기기별 접두사를 버리고 있었습니다.
+
+**5. 일반 방문자가 받는 페이지를 검증한다.** 위의 모든 것은 머신 내부에서 산출물을 읽습니다.
+서버 디스크에 있는 CSS 파일, PHP 호출이 뱉어낸 HTML 같은 것들입니다. **그 어느 것도 방문자가
+실제로 받는 것이 아닙니다.** 테마, 페이지 캐시, Varnish, CDN이 그 사이에 전부 끼어 있고, 이들
+중 무엇이든 서버 쪽 검사가 전부 초록불인 채로 다른 것을 내보낼 수 있습니다. 함정 9를 한 겹 더
+바깥에서 본 것입니다.
+
+```bash
+python tools/verify-live.py examples/demo-page.json https://moksaweb.com/elementor-headless-demo/
+```
+
+```
+GET https://moksaweb.com/elementor-headless-demo/
+    113,397 bytes   x-cache=HIT  age=200
+GET .../elementor/css/post-11.css      1,238 bytes     <- the Kit's globals
+GET .../elementor/css/post-9176.css    5,411 bytes     <- the page
+GET .../elementor/css/post-47.css      9,009 bytes
+GET .../elementor/css/post-52.css     18,470 bytes
+    -> 4 stylesheet(s), 34,131 bytes total
+
+elements delivered      : 8/8
+CSS properties delivered: 94  (across 46 settings)
+  value-exact           : 43  (the exact value this tree asks for is in the delivered CSS)
+  property only         : 3  (Elementor rewrites the value; the sweep already proved which)
+wrapper-class assertions: 17 passed
+not assertable          : 24 settings drive neither CSS nor a class
+
+PASS - the page a visitor receives contains every element of the tree,
+       the stylesheet it links carries every property the schema promised,
+       and every wrapper carries the classes it should.
+```
+
+스타일시트가 네 개라는 점에 주목하십시오. **한 페이지의 스타일링은 여러 파일에 나뉘어 있습니다.**
+Kit이 전역 색상과 폰트를 담고, 페이지는 자기 것을 담습니다. 여기 있는 다른 검증기들은 디스크에서
+`post-<id>.css` 하나만 읽는데, 이는 구조적으로 불완전한 그림입니다. 이 검증기는 페이지가 실제로
+*링크하는* 것을 캐시를 통해(`x-cache=HIT`) 전부 읽습니다. 방문자가 "동작한다"고 인정할 만한
+정의는 그것뿐입니다.
+
+**6. 직접 보십시오.** `examples/demo-page.json`은 오직 이 스킬만으로 만들어 실제로 발행한
 페이지입니다. Elementor 에디터는 한 번도 연 적이 없습니다.
 
 **https://moksaweb.com/elementor-headless-demo/**
@@ -219,27 +312,30 @@ id를 저장하는데, 그 id는 다른 사이트에서 *전혀 다른 이미지
 
 ```
 data/
-  elementor-schema.json    2.7 MB   전체 표면 - 질의할 뿐, 절대 로드하지 않음
+  elementor-schema.json    3.2 MB   전체 표면 - 질의할 뿐, 절대 로드하지 않음
   controls.csv             2.0 MB   위젯/요소 고유 컨트롤 전부
-  common-controls.csv       39 KB   모든 위젯이 공유하는 211개
+  common-controls.csv       39 KB   모든 위젯이 공유하는 210개
   pro-only-controls.csv     33 KB   안전장치 테이블
   pro-only-widgets.csv     3.0 KB
   control-types.csv        4.6 KB   59가지 JSON 값 형태 전부
   group-controls.csv       3.7 KB   16개 그룹과 그것이 펼쳐지는 평탄한 키들
-  widgets.csv              8.2 KB   위젯 135개 + 요소 3개
+  widgets.csv              8.3 KB   위젯 135개 + 요소 3개
   breakpoints.csv          0.2 KB
-  control-verification.csv          컨트롤별: 실제로 렌더링되는가?
+  control-verification.csv          컨트롤별: 주장하는 CSS를 실제로 내보내는가?
+  class-verification.csv            컨트롤별: 주장하는 CLASS를 실제로 내보내는가?
   token-benchmark.csv               재현 가능한 측정값
 
 tools/
   el.py                          스키마 질의 - 정문
   validate-page.py               페이지 트리 사전 점검
-  apply-page.php                 쓰기: meta + CSS 재빌드 + 백업
+  apply-page.php                 쓰기: meta + CSS 재빌드 + HTML 캐시 + 백업
   extract-elementor-schema.php   실제 설치 환경 덤프
-  build-indexes.py               덤프 -> 배포용 데이터 파일
+  build-indexes.py               덤프 + 스윕 결과 -> 배포용 데이터 파일
   verify-schema.py               스키마가 내 설치 환경과 일치하는가?
   verify-render.py               Elementor가 스키마의 약속대로 출력하는가?
-  sweep-controls.py              모든 컨트롤을 렌더링해서 동작을 단언
+  verify-live.py                 CDN을 거친 공개 페이지에도 그것이 들어 있는가?
+  sweep-controls.py              모든 CSS 컨트롤을 렌더링해서 스타일시트를 단언
+  sweep-classes.py               모든 CLASS 컨트롤을 렌더링해서 HTML을 단언
   export-template.php            Elementor 자체 JSON 형식으로 내보내기
   import-template.php            미디어까지 포함해 Elementor 자체 경로로 가져오기
   benchmark-tokens.py            토큰 수치 재현
@@ -251,16 +347,18 @@ references/   data-model · control-types · containers-and-layout · responsive
 examples/     demo-page.json - 위에 있는 발행된 페이지
 ```
 
-## 네 가지 함정
+## 아홉 가지 함정
 
-이 데이터를 순진하게 추출하면 서로 다른 네 가지 방식으로 틀리며, 각각 완전해 보이지만 거짓말을
-하는 스키마를 만들어냅니다. 넷 다 잡아내기 전에 이 저장소에서 실제로 배포된 적이 있습니다.
-정리한 글은 [extraction-traps.md](references/extraction-traps.md)에 있습니다.
+이 데이터를 순진하게 추출하면 서로 다른 아홉 가지 방식으로 틀리며, 각각 완전해 보이지만 거짓말을
+하는 스킬을 만들어냅니다. **아홉 개 전부 잡아내기 전에 이 저장소에서 실제로 배포된 적이
+있습니다.** 일부는 Elementor 소스를 읽어서 찾았고, 나머지는 모든 컨트롤을 렌더링해서 무엇이
+나오는지 들여다본 뒤에야 찾았습니다. 정리한 글은
+[extraction-traps.md](references/extraction-traps.md)에 있습니다.
 
 1. **WP-CLI는 Elementor에게 프런트엔드처럼 보입니다.** 그래서 Elementor는 축약된 컨트롤 스택을
    돌려줍니다. **컨트롤의 46%와 탭/라벨 메타데이터의 약 100%가 사라지는데**, 오류는 나지
    않습니다. 추출기는 그 경로를 비활성화하고, 품질이 저하된 데이터를 내보내느니 차라리 중단하도록
-   카나리아 두 개를 둡니다.
+   카나리아 세 개를 둡니다.
 2. **반응형은 두 가지 메커니즘입니다.** 그리고 뻔한 방식으로 테스트하면 하나만 발견됩니다.
    `padding_tablet`이라는 컨트롤 객체는 *어디에도* 존재하지 않습니다 — 그런데 `padding_tablet`은
    동작합니다. 접미사가 붙은 형제 컨트롤을 찾는 방식으로 반응형을 감지하면 padding, margin,
@@ -272,7 +370,30 @@ examples/     demo-page.json - 위에 있는 발행된 페이지
    499개 컨트롤은 *다른* 컨트롤의 값을 자신의 CSS에 보간합니다. 그 다른 값이 비어 있으면
    Elementor는 선언 전체를 버립니다. 문서화된 조건은 전부 충족되어 있고 오류도 나지 않습니다.
    그라디언트 색상 없이 그라디언트 각도만 설정하면 아무것도 나오지 않습니다. 조용히 말입니다.
-   이 함정은 16,778개 컨트롤을 전부 렌더링해서 들여다본 끝에야 드러났습니다.
+5. **반응형 컨트롤의 의존성은 해당 브레이크포인트에서 다시 검사됩니다.** `X_tablet`은 설정하고
+   `Y_tablet`은 설정하지 않으면 데스크톱은 완벽하게 렌더링되는데 태블릿은 조용히 비어 있습니다.
+   정확히 이 이유로 1,433개의 반응형 접미사가 아무것도 내보내지 않았습니다.
+6. **`is_responsive`는 과잉 약속을 합니다.** `hotspot.width`는 `container.padding`과 똑같은
+   플래그를 달고 있습니다. 그런데 `padding_tablet`은 동작하고 `width_tablet`은 아무것도 내보내지
+   않습니다. 오직 렌더링만이 알 수 있습니다 — 그래서 스윕이 그 결과를 되먹여 스키마를 교정합니다.
+7. **CSS는 컨트롤이 할 수 있는 일의 절반에 불과합니다.** 2,573개 컨트롤은 래퍼에 **클래스**를
+   붙이는 방식으로 동작하고, 그중 1,894개는 CSS를 아예 내보내지 않습니다. 그러니 스타일시트
+   스윕은 아무리 초록불이 나와도 이들이 존재한다는 사실조차 볼 수 없습니다. 이것들은 전부
+   "Elementor가 `prefix_class`를 등록했으니 아마 동작하겠지"라는 근거만으로 여기에 배포되어
+   있었습니다.
+8. **클래스 컨트롤의 값은 다시 매핑되고, 접두사는 기기마다 바뀝니다.** `position: "top"`은 옵션
+   목록에 없지만 그래도 `elementor-position-block-start`로 렌더링됩니다(`classes_dictionary`).
+   `position_tablet`은 클래스에 `_tablet` 접미사가 붙는 게 아니라
+   `elementor-**tablet**-position-…`으로 렌더링됩니다. switcher는 자신의 `return_value`를
+   저장하므로 `hide_tablet: "yes"`는 `elementor-yes`로 렌더링되고 아무것도 숨기지 않습니다.
+   그리고 `"columns": 0`은 아무것도 내보내지 않지만 `"columns": "0"`은 동작합니다.
+9. **`_elementor_data`를 쓰면 렌더링된 HTML 캐시가 오래된 채로 남습니다.** 글은 갱신되고, CSS는
+   재빌드되고, meta도 정확히 그대로 읽히는데 — 페이지는 **이전 마크업**을 계속, 영원히, 오류
+   하나 없이 내보냅니다. 이 버그가 살아 있는 상태에서 17,421개 컨트롤짜리 CSS 스윕이 전부
+   초록불로 돌았습니다. CSS는 우리가 항상 재빌드하는 별도의 파일이기 때문입니다.
+
+함정 9는 이 프로젝트의 존재 이유를 한 줄로 요약합니다. **검증기는 자신이 읽는 채널 안의 버그만
+찾아냅니다.** 한 채널이 초록불이라는 사실은 다른 채널에 대해 아무것도 말해주지 않습니다.
 
 ## 기여하기
 

@@ -175,6 +175,26 @@ def load_verification(path: Path | None) -> dict:
     return out
 
 
+def load_class_verification(path: Path | None) -> dict:
+    """
+    Fold the HTML sweep's results in, the same way the CSS sweep's are folded.
+
+    A control can act by emitting CSS or by appending a class to the wrapper, and
+    the two are verified by reading two different things - the compiled stylesheet
+    and the rendered markup. A control with `prefix_class` and no `css` was
+    completely unverified until this sweep existed, however green the CSS run was.
+    """
+    if not path or not path.exists():
+        return {}
+    out: dict = {}
+    with path.open(encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            if r["device"] or r["legacy_value"]:
+                continue        # scored separately; the base row is what stamps
+            out[(r["owner"], r["control"])] = r["status"]
+    return out
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("raw", help="raw dump from extract-elementor-schema.php (Pro active)")
@@ -185,6 +205,10 @@ def main() -> int:
                     help="control-verification.csv from sweep-controls.py. Folds the "
                          "RENDERED result back in, so the schema stops claiming a control "
                          "or a breakpoint works when it demonstrably does not.")
+    ap.add_argument("--class-verification",
+                    help="class-verification.csv from sweep-classes.py. The same, for the "
+                         "controls that emit a wrapper CLASS instead of CSS - which the "
+                         "stylesheet sweep cannot see at all.")
     ap.add_argument("--out", default="data", help="output directory (default: data)")
     args = ap.parse_args()
 
@@ -218,6 +242,8 @@ def main() -> int:
     # renders on one widget and not another is not the same control, and the shared
     # set should not pretend otherwise.
     verif = load_verification(Path(args.verification) if args.verification else None)
+    classv = load_class_verification(
+        Path(args.class_verification) if args.class_verification else None)
     n_broken_rwd = 0
     for owner, w in {**elements, **widgets}.items():
         for c in w["controls"]:
@@ -235,6 +261,18 @@ def main() -> int:
                     c["responsive_broken"] = broken
                     n_broken_rwd += 1
                 c["responsive_verified"] = sorted(claimed & v["rwd_ok"])
+
+    # A widget that renders no markup at all has no wrapper, so none of its class
+    # controls can do anything - `_position`, `hide_tablet`, the transforms, all
+    # inert. Three of these are not really widgets (`common`, `common-base`,
+    # `common-optimized` are the registries Elementor injects the shared controls
+    # from, and they are not placeable at all); the rest need real site content -
+    # a template, a loop, a sidebar, a configured WP widget. Either way, saying so
+    # is the difference between "this control is fine" and "this control cannot be
+    # observed here", and only the render knows which.
+    for owner in {o for (o, _), s in classv.items() if s == "no-element"}:
+        if owner in widgets:
+            widgets[owner]["renders_bare"] = False
 
     common, common_missing = compute_common(widgets)
     common_names = {c["name"] for c in common}
@@ -266,6 +304,33 @@ def main() -> int:
                     missing.append(key)
             if missing:
                 c["dead_dep"] = sorted(set(missing))
+
+    # CLASS VERIFICATION — stamped AFTER the common set, for the same reason `tier`
+    # is. The result is per (owner, control), but a shared control is shared: it is
+    # byte-identical on every widget, and only stays in the common set if it STAYS
+    # byte-identical. 29 widgets render no markup at all, so `_position` came back
+    # `verified` on 106 of them and unobservable on 29 — stamp that per widget and
+    # the shared control is no longer shared. All 18 class controls fall out of the
+    # common set (210 -> 192) and get copied into all 135 widgets instead.
+    #
+    # This is the third time this exact ordering has bitten this file. The rule:
+    # anything measured PER WIDGET gets stamped after compute_common, never before.
+    #
+    # "no-element" is dropped entirely — it is a fact about the widget (recorded as
+    # `renders_bare: false`), not about the control.
+    for owner, w in {**elements, **widgets}.items():
+        for c in w["controls"]:
+            if classv.get((owner, c["name"])) in ("verified", "FAILED"):
+                c["class_verified"] = classv[(owner, c["name"])]
+    # A shared control's verdict is the aggregate over the widgets where it could be
+    # observed at all: FAILED anywhere is a failure; otherwise verified if it was
+    # ever verified.
+    for c in common:
+        seen = {s for (o, n), s in classv.items() if n == c["name"] and o in widgets}
+        if "FAILED" in seen:
+            c["class_verified"] = "FAILED"
+        elif "verified" in seen:
+            c["class_verified"] = "verified"
 
     tiers = tier_map(raw, free)
 
@@ -309,6 +374,12 @@ def main() -> int:
         }
         if name in common_missing:
             entry["common_missing"] = common_missing[name]
+        # Measured, not assumed: dropped on a bare page with settings and nothing
+        # else, this widget produced no markup. Its wrapper-class controls have
+        # nothing to attach to, and an agent reaching for it needs to know it will
+        # render empty until the site supplies a template / loop / sidebar / post.
+        if w.get("renders_bare") is False:
+            entry["renders_bare"] = False
         slim_widgets[name] = entry
 
     # Control types and group controls: tier by presence, same method.

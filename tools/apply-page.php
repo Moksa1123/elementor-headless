@@ -17,14 +17,19 @@
  *   _elementor_template_type  'wp-page' / 'wp-post', or the editor mis-handles it
  *   _elementor_version        stamped so Elementor knows which upgrades to run
  *
- * Then the CSS has to be regenerated. Elementor compiles each post's styling into
- * its own file (uploads/elementor/css/post-<id>.css); until that is rebuilt the
- * page ships with the OLD css, so a correct tree still renders wrong:
+ * Then TWO caches have to be dropped, and each one independently makes a correct
+ * tree render wrong:
  *
- *   wp elementor flush-css --post-id=<id>
+ *   the compiled CSS   uploads/elementor/css/post-<id>.css - the page keeps the
+ *                      OLD styling until it is rebuilt (`wp elementor flush-css`)
+ *   the rendered HTML  the `_elementor_element_cache` post meta - the page keeps
+ *                      the OLD markup, served straight back by Elementor
  *
- * This script does the meta and triggers the CSS rebuild for that post. Any page
- * cache (Breeze/Varnish/Cloudflare) still has to be purged on top.
+ * Elementor's own Document::save() clears both. Writing the meta directly clears
+ * neither, and nothing warns you.
+ *
+ * This script does the meta, the CSS rebuild and the HTML cache. Any page cache
+ * (Breeze/Varnish/Cloudflare) still has to be purged on top.
  */
 
 if ( ! class_exists( '\Elementor\Plugin' ) ) {
@@ -107,6 +112,26 @@ $css = \Elementor\Core\Files\CSS\Post::create( $post_id );
 $css->delete();
 $css->update();
 
+// AND drop the rendered-HTML cache, or the page renders with the previous MARKUP.
+//
+// Elementor stores the HTML it rendered for each element in a `_elementor_element_cache`
+// post meta and serves that straight back from get_builder_content_for_display().
+// Its own Document::save() drops the meta; writing `_elementor_data` directly does
+// not, so the new tree is stored, the CSS is rebuilt around it, and the front end
+// keeps serving the OLD markup until the cache TTL expires.
+//
+// This is the worst class of failure this project has: it looks like it worked.
+// The post updates, the css file changes, `wp post meta get _elementor_data` reads
+// back exactly what you wrote - and the page is unchanged. It went unnoticed here
+// through an entire CSS-level verification sweep, because CSS is a separate file
+// that we always rebuilt. It only surfaced on the first sweep that read the HTML.
+//
+// Referenced through the class constant on purpose: if Elementor renames the meta
+// key, this line fails loudly instead of silently clearing nothing.
+$cache_key = \Elementor\Core\Base\Document::CACHE_META_KEY;
+$had_cache = (bool) get_post_meta( $post_id, $cache_key, true );
+delete_post_meta( $post_id, $cache_key );
+
 $count = 0;
 $walk  = function ( $nodes ) use ( &$walk, &$count ) {
 	foreach ( $nodes as $el ) {
@@ -121,6 +146,7 @@ echo json_encode( [
 	'elements'       => $count,
 	'unique_ids'     => count( $ids ),
 	'backed_up'      => (bool) $previous,
+	'html_cache_cleared' => $had_cache,
 	'css_file'       => $css->get_url(),
 	'permalink'      => get_permalink( $post_id ),
 	'post_status'    => get_post_status( $post_id ),

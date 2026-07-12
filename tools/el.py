@@ -98,8 +98,31 @@ def fmt_control(c: dict, indent: str = "  ") -> str:
         bits.append(f"def:{d}")
     if c.get("units"):
         bits.append("units:" + ",".join(c["units"]))
+    # A switcher does not store true, and it does not always store "yes". It stores
+    # its own `return_value`, and that value is what gets concatenated onto a
+    # prefix_class. Write "yes" into `hide_tablet` and Elementor renders the class
+    # `elementor-yes`, which hides nothing.
+    if c.get("type") == "switcher":
+        bits.append(f"on:{c.get('return_value', 'yes')!r}  off:''")
     if c.get("css"):
         bits.append("css:" + ",".join(c["css"]))
+    # The OTHER thing a control can do. `css:` is only half the story - 2,573
+    # (owner, control) pairs act by putting a class on the element wrapper instead
+    # of, or as well as, emitting CSS. Without this line a reader sees a control
+    # with no `css:` and concludes it does nothing.
+    if c.get("prefix_class"):
+        bits.append(f"class:{c['prefix_class']}<value>")
+        # The device prefixes are DIFFERENT STRINGS, not a `_tablet` suffix on the
+        # class. Elementor sprintf()s the device into the prefix at registration.
+        pcd = c.get("prefix_class_devices") or {}
+        if pcd:
+            bits.append("class-rwd:" + " ".join(
+                f"{d}={p}<value>" for d, p in sorted(pcd.items())))
+    # Values that are NOT in `opts:` but are legal anyway: Elementor remaps them
+    # before building the class, so they render as something else entirely.
+    if c.get("classes_dictionary"):
+        bits.append("legacy:" + ",".join(
+            f"{k}->{v}" for k, v in c["classes_dictionary"].items()))
     if c.get("condition"):
         cond = json.dumps(c["condition"], ensure_ascii=False, separators=(",", ":"))
         bits.append(f"needs:{cond}")
@@ -180,6 +203,16 @@ def cmd_widget(a) -> None:
     if w["tier"] == "pro":
         lines.append("")
         lines.append("!! This whole widget requires Elementor Pro. Everything below is Pro.")
+    # Measured by rendering it: dropped on a page with nothing but its settings,
+    # this widget produced no markup at all. Not a bug - it has nothing to show
+    # until the site gives it something. But an agent that places it and walks away
+    # has built an invisible page, and no error was raised anywhere.
+    if w.get("renders_bare") is False:
+        lines.append("")
+        lines.append("!! This widget renders NOTHING on a bare page. It needs real site "
+                     "content (a template, a loop, a sidebar, a post context, a configured "
+                     "WP widget). Its wrapper-class controls have no wrapper to attach to "
+                     "until then.")
     lines.append("")
     by_sec: dict[str, list] = {}
     for c in ctrls:
@@ -252,9 +285,18 @@ def cmd_type(a) -> None:
         "",
         "JSON value shape (what you write into _elementor_data settings):",
         "  " + json.dumps(shape, ensure_ascii=False),
-        "",
-        f"php class: {c['class']}",
     ]
+    # Some control types carry their allowed values on the CONTROL CLASS, so no
+    # individual control lists them and the value shape above is just "". The
+    # animations are the ones that bite: they are camelCase Animate.css names
+    # (`fadeInUp`), and a guessed `fade-in-up` stores fine and animates nothing.
+    if c.get("options"):
+        lines += ["", f"allowed values ({len(c['options'])}) - these live on the "
+                      f"control class, not on any one control:"]
+        opts = [str(o) for o in c["options"]]
+        for i in range(0, len(opts), 6):
+            lines.append("  " + "  ".join(f"{o:<18}" for o in opts[i:i + 6]).rstrip())
+    lines += ["", f"php class: {c['class']}"]
     emit(c, a.json, lines)
 
 

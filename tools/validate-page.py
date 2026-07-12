@@ -126,7 +126,18 @@ def check_shape(value, ctrl: dict, where: str, key: str, rep: Report) -> None:
         # or every numeric select produces a false error.
         if isinstance(opts, list) and opts and value not in (None, ""):
             allowed = {str(o) for o in opts}
-            if str(value) not in allowed:
+            # `classes_dictionary` keys are legal values that are NOT in the option
+            # list. They are the names this control used before Elementor moved to
+            # logical properties, and the render path still maps them
+            # (element-base.php:800) - `position: "top"` really does come out as
+            # `elementor-position-block-start`. Rejecting them was a false error
+            # that this validator shipped: it failed a page that renders correctly.
+            legacy = {str(k): str(v) for k, v in (ctrl.get("classes_dictionary") or {}).items()}
+            if str(value) in legacy and str(value) not in allowed:
+                rep.warn(where, f"`{key}` = {value!r} is a legacy alias; Elementor "
+                                f"remaps it to {legacy[str(value)]!r}. It works - the "
+                                f"current name is {legacy[str(value)]!r}")
+            elif str(value) not in allowed:
                 rep.err(where, f"`{key}` = {value!r} is not one of its options: "
                                f"{sorted(allowed)}")
 
@@ -135,6 +146,21 @@ def check_shape(value, ctrl: dict, where: str, key: str, rep: Report) -> None:
         if value["unit"] not in units:
             rep.err(where, f"`{key}` unit {value['unit']!r} is not accepted by this control. "
                            f"Allowed: {units}")
+
+    # A control that emits a CLASS rather than CSS has one value that behaves
+    # differently in JSON than it does in the editor: zero.
+    #
+    #   element-base.php:809   if ( empty( $setting ) && '0' !== $setting ) continue;
+    #
+    # PHP's empty() is true for both 0 and "0", and the escape hatch is a STRICT
+    # comparison against the string. So `"columns": "0"` emits `elementor-grid-0`
+    # and `"columns": 0` emits nothing whatsoever. The editor only ever stores
+    # strings, so this failure exists solely for anyone writing the JSON directly -
+    # which is everyone using this skill.
+    if ctrl.get("prefix_class") and value == 0 and not isinstance(value, bool):
+        rep.err(where, f"`{key}` = 0 as a JSON number emits NO class. Elementor "
+                       f"special-cases the STRING \"0\" only "
+                       f"(`empty($v) && '0' !== $v`). Write \"0\".")
 
 
 COND_RE = re.compile(r"^(?P<key>[^\[!]+)(?:\[(?P<sub>[^\]]+)\])?(?P<neg>!)?$")
