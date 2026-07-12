@@ -290,6 +290,75 @@ function eh_css_props( $ctrl ) {
 }
 
 /**
+ * WHERE the CSS lands. Not the same question as WHICH property it sets.
+ *
+ * The keys of the `selectors` map are selector templates:
+ *
+ *     '{{WRAPPER}} .elementor-heading-title' => 'color: {{VALUE}};'
+ *
+ * so `title_color` does NOT style the element wrapper — it styles a node INSIDE it.
+ * Knowing only the property name is enough to grep the compiled stylesheet and see
+ * the rule is present, which is what every text-level check in this repo did. It is
+ * NOT enough to ask a browser what the element actually computes: query the wrapper
+ * for `color` and you get the inherited value, and a page that renders perfectly
+ * looks broken.
+ *
+ * `{{WRAPPER}}` is the element's own `.elementor-element-<id>`; what remains is the
+ * path from it to the node the rule really targets.
+ */
+function eh_css_selectors( $ctrl ) {
+	if ( empty( $ctrl['selectors'] ) || ! is_array( $ctrl['selectors'] ) ) {
+		return [];
+	}
+	$out = [];
+	foreach ( $ctrl['selectors'] as $sel => $decl ) {
+		if ( ! is_string( $sel ) ) {
+			continue;
+		}
+		$sel = trim( preg_replace( '/\s+/', ' ', $sel ) );
+		// VERBATIM, with `{{WRAPPER}}` left in place. It is not always a prefix
+		// followed by a space, and treating it as one is lossy:
+		//
+		//     {{WRAPPER}} .elementor-heading-title                 descendant
+		//     {{WRAPPER}}.elementor-view-stacked .elementor-icon   compound - NO space
+		//     {{WRAPPER}}:not(.elementor-motion-effects-element…)  pseudo, attached
+		//     {{WRAPPER}}:hover .elementor-button                  a hover state
+		//     (desktop+){{WRAPPER}} > .elementor-widget-container  device-scoped
+		//     a, b                                                 a comma-separated LIST
+		//
+		// Stripping "{{WRAPPER}} " turned the compound ones into descendant ones,
+		// which match nothing. The consumer substitutes `.elementor-element-<id>`
+		// for `{{WRAPPER}}` and gets a selector that is exactly what Elementor
+		// compiled. Nothing is thrown away for the sake of a few bytes in a file
+		// that is not loaded into context anyway.
+		if ( $sel === '' ) {
+			continue;
+		}
+		// EACH SELECTOR WITH THE PROPERTIES IT SETS, kept paired.
+		//
+		// Flattening a control's properties into one list and its selectors into
+		// another THROWS THE PAIRING AWAY, and the pairing is the whole answer for
+		// half these controls. icon-box `primary_color`:
+		//
+		//   {{WRAPPER}}.elementor-view-stacked .elementor-icon -> background-color
+		//   {{WRAPPER}}.elementor-view-framed  .elementor-icon -> color, border-color
+		//
+		// Two selectors, DIFFERENT properties, and which pair applies depends on
+		// another control (`view`). Flattened, the schema says primary_color sets
+		// `color` on `.elementor-view-stacked .elementor-icon` - and it does not;
+		// `secondary_color` does. A text check never notices, because `color:` IS in
+		// that element's rules. A browser notices immediately: it computes white.
+		$props = [];
+		if ( is_string( $decl ) && preg_match_all(
+			'/(?:^|;)\s*([a-zA-Z\-]+(?:--[a-zA-Z0-9\-]+)?)\s*:/', $decl, $m ) ) {
+			$props = array_values( array_unique( $m[1] ) );
+		}
+		$out[] = [ 'sel' => $sel, 'props' => $props ];
+	}
+	return $out;
+}
+
+/**
  * The OTHER controls whose values this control's CSS interpolates.
  *
  * This is a second, hidden dependency layer that `condition` does not describe,
@@ -396,6 +465,10 @@ function eh_control_record( $name, $ctrl ) {
 	$css = eh_css_props( $ctrl );
 	if ( $css ) {
 		$rec['css'] = $css;
+		$sel = eh_css_selectors( $ctrl );
+		if ( $sel ) {
+			$rec['css_selectors'] = $sel;
+		}
 	}
 	$needs = eh_needs_value( $ctrl );
 	if ( $needs ) {

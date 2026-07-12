@@ -388,6 +388,38 @@ def main() -> int:
     n_v4 = sum(1 for o in list(widgets.values()) + list(elements.values())
                if o.get("control_system") == "v4-atomic")
 
+    # WHERE each control's CSS lands. A SEPARATE FILE, on purpose.
+    #
+    # A control's `css` says WHICH property it sets. It does not say WHERE:
+    # `title_color` on the heading targets `{{WRAPPER}} .elementor-heading-title`,
+    # a node INSIDE the element. Grep the compiled stylesheet and the rule is right
+    # there, so every text-level check in this repo passed without ever knowing
+    # this. Ask a BROWSER what the element computes and you must query the node the
+    # rule actually targets - ask the wrapper for `color` and you get the inherited
+    # value, and a page that renders perfectly reads as broken.
+    #
+    # It does not go in the schema for two measured reasons:
+    #
+    #  1. 18,842 references over 1,070 distinct strings. Inlining them took the
+    #     schema from 4.3 MB to 10.4 MB, and the schema's whole purpose is to be the
+    #     thing you never load.
+    #
+    #  2. 569 of the SHARED controls have a DIFFERENT selector depending on the
+    #     widget: `_background_color` lands on `{{WRAPPER}}` for some and on
+    #     `{{WRAPPER}} > .elementor-widget-container` for others, because Elementor
+    #     drops that inner div on some widgets and not others. Same property,
+    #     different node. Putting it on the control makes those 569 controls
+    #     non-identical across widgets and the shared set collapses (211 -> 135).
+    #
+    # So: `data/css-selectors.csv`, keyed by (owner, control), loaded only by the
+    # tools that need to query a real DOM.
+    sel_rows: list[tuple[str, str, str, str]] = []
+    for oname, o in list(widgets.items()) + list(elements.items()):
+        for c in o["controls"]:
+            for entry in c.pop("css_selectors", None) or []:
+                sel_rows.append((oname, c["name"], entry["sel"],
+                                 " ".join(entry.get("props") or [])))
+
     common, common_missing, participants = compute_common(widgets)
     common_names = {c["name"] for c in common}
 
@@ -594,6 +626,14 @@ def main() -> int:
     (out / "elementor-schema.json").write_text(
         json.dumps(schema, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
     )
+
+    # ---- css-selectors.csv -------------------------------------------------
+    # (owner, control) -> the selector path relative to `.elementor-element-<id>`.
+    # A control with NO row here styles the element itself.
+    with (out / "css-selectors.csv").open("w", newline="", encoding="utf-8") as f:
+        w_ = csv.writer(f)
+        w_.writerow(["owner", "control", "selector_template", "properties"])
+        w_.writerows(sorted(sel_rows))
 
     # ---- widgets.csv -------------------------------------------------------
     def req_str(e: dict) -> str:

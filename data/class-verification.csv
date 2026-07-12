@@ -75,26 +75,6 @@ nested-accordion,animation_duration,select,,,animated-slow,verified,
 nested-accordion,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
 nested-accordion,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
 nested-accordion,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
-common-base,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
-common-base,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
-common-base,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
-common-base,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
-common-base,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
-common-base,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
-common-base,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
-common-base,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
-common-base,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-common-base,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-common-base,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-common-base,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-common-base,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-common-base,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-common-base,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-common-base,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-common-base,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
-common-base,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
-common-base,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
-common-base,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
 common,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
 common,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
 common,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
@@ -787,86 +767,86 @@ read-more,animation_duration,select,,,animated-slow,verified,
 read-more,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
 read-more,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
 read-more,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
-rating,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
-rating,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
-rating,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
-rating,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
-rating,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
-rating,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
-rating,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
-rating,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
-rating,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-rating,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-rating,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-rating,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-rating,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-rating,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-rating,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-rating,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-rating,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
-rating,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
-rating,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
-rating,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
-wp-widget-pages,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
-wp-widget-pages,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
-wp-widget-pages,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
-wp-widget-pages,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
-wp-widget-pages,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-pages,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-pages,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-pages,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-pages,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-pages,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-pages,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-pages,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-pages,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-pages,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-pages,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-pages,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-pages,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
-wp-widget-pages,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
-wp-widget-pages,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
-wp-widget-pages,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
-wp-widget-calendar,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
-wp-widget-calendar,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
-wp-widget-calendar,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
-wp-widget-calendar,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
-wp-widget-calendar,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-calendar,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-calendar,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-calendar,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-calendar,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-calendar,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-calendar,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-calendar,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-calendar,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-calendar,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-calendar,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-calendar,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-calendar,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
-wp-widget-calendar,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
-wp-widget-calendar,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
-wp-widget-calendar,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
-wp-widget-archives,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
-wp-widget-archives,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
-wp-widget-archives,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
-wp-widget-archives,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
-wp-widget-archives,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-archives,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-archives,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-archives,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-archives,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-archives,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-archives,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-archives,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-archives,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-archives,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-archives,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-archives,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-archives,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
-wp-widget-archives,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
-wp-widget-archives,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
-wp-widget-archives,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+rating,_element_width,select,,,elementor-widget__width-inherit,verified,
+rating,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+rating,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+rating,_position,select,,,elementor-absolute,verified,
+rating,_transform_flipX_effect,choose,,,e-transform,verified,
+rating,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+rating,_transform_flipY_effect,choose,,,e-transform,verified,
+rating,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+rating,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+rating,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+rating,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+rating,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+rating,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+rating,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+rating,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+rating,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+rating,animation_duration,select,,,animated-slow,verified,
+rating,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+rating,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+rating,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+wp-widget-pages,_element_width,select,,,elementor-widget__width-inherit,verified,
+wp-widget-pages,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+wp-widget-pages,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+wp-widget-pages,_position,select,,,elementor-absolute,verified,
+wp-widget-pages,_transform_flipX_effect,choose,,,e-transform,verified,
+wp-widget-pages,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+wp-widget-pages,_transform_flipY_effect,choose,,,e-transform,verified,
+wp-widget-pages,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+wp-widget-pages,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+wp-widget-pages,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-pages,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+wp-widget-pages,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-pages,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+wp-widget-pages,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-pages,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+wp-widget-pages,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-pages,animation_duration,select,,,animated-slow,verified,
+wp-widget-pages,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+wp-widget-pages,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+wp-widget-pages,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+wp-widget-calendar,_element_width,select,,,elementor-widget__width-inherit,verified,
+wp-widget-calendar,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+wp-widget-calendar,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+wp-widget-calendar,_position,select,,,elementor-absolute,verified,
+wp-widget-calendar,_transform_flipX_effect,choose,,,e-transform,verified,
+wp-widget-calendar,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+wp-widget-calendar,_transform_flipY_effect,choose,,,e-transform,verified,
+wp-widget-calendar,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+wp-widget-calendar,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+wp-widget-calendar,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-calendar,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+wp-widget-calendar,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-calendar,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+wp-widget-calendar,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-calendar,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+wp-widget-calendar,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-calendar,animation_duration,select,,,animated-slow,verified,
+wp-widget-calendar,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+wp-widget-calendar,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+wp-widget-calendar,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+wp-widget-archives,_element_width,select,,,elementor-widget__width-inherit,verified,
+wp-widget-archives,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+wp-widget-archives,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+wp-widget-archives,_position,select,,,elementor-absolute,verified,
+wp-widget-archives,_transform_flipX_effect,choose,,,e-transform,verified,
+wp-widget-archives,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+wp-widget-archives,_transform_flipY_effect,choose,,,e-transform,verified,
+wp-widget-archives,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+wp-widget-archives,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+wp-widget-archives,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-archives,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+wp-widget-archives,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-archives,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+wp-widget-archives,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-archives,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+wp-widget-archives,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-archives,animation_duration,select,,,animated-slow,verified,
+wp-widget-archives,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+wp-widget-archives,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+wp-widget-archives,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
 wp-widget-media_audio,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
 wp-widget-media_audio,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
 wp-widget-media_audio,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
@@ -1167,106 +1147,306 @@ wp-widget-block,animation_duration,select,,,animated-slow,no-element,the element
 wp-widget-block,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
 wp-widget-block,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
 wp-widget-block,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
-wp-widget-fluentform_widget,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
-wp-widget-fluentform_widget,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
-wp-widget-fluentform_widget,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
-wp-widget-fluentform_widget,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
-wp-widget-fluentform_widget,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-fluentform_widget,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-fluentform_widget,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-fluentform_widget,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-fluentform_widget,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-fluentform_widget,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-fluentform_widget,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-fluentform_widget,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-fluentform_widget,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-fluentform_widget,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-fluentform_widget,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-fluentform_widget,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-fluentform_widget,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
-wp-widget-fluentform_widget,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
-wp-widget-fluentform_widget,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
-wp-widget-fluentform_widget,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
-wp-widget-ezw_tco,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
-wp-widget-ezw_tco,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
-wp-widget-ezw_tco,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
-wp-widget-ezw_tco,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
-wp-widget-ezw_tco,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ezw_tco,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ezw_tco,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ezw_tco,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ezw_tco,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ezw_tco,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ezw_tco,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ezw_tco,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ezw_tco,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ezw_tco,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ezw_tco,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ezw_tco,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ezw_tco,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
-wp-widget-ezw_tco,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
-wp-widget-ezw_tco,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
-wp-widget-ezw_tco,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
-wp-widget-ez_toc_widget_sticky,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
-wp-widget-ez_toc_widget_sticky,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
-wp-widget-ez_toc_widget_sticky,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
-wp-widget-ez_toc_widget_sticky,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
-wp-widget-ez_toc_widget_sticky,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ez_toc_widget_sticky,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ez_toc_widget_sticky,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ez_toc_widget_sticky,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ez_toc_widget_sticky,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ez_toc_widget_sticky,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ez_toc_widget_sticky,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ez_toc_widget_sticky,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ez_toc_widget_sticky,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ez_toc_widget_sticky,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ez_toc_widget_sticky,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ez_toc_widget_sticky,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-wp-widget-ez_toc_widget_sticky,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
-wp-widget-ez_toc_widget_sticky,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
-wp-widget-ez_toc_widget_sticky,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
-wp-widget-ez_toc_widget_sticky,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
-wp-widget-wpp,_element_width,select,,,elementor-widget__width-inherit,verified,
-wp-widget-wpp,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
-wp-widget-wpp,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
-wp-widget-wpp,_position,select,,,elementor-absolute,verified,
-wp-widget-wpp,_transform_flipX_effect,choose,,,e-transform,verified,
-wp-widget-wpp,_transform_flipX_effect_hover,choose,,,e-transform,verified,
-wp-widget-wpp,_transform_flipY_effect,choose,,,e-transform,verified,
-wp-widget-wpp,_transform_flipY_effect_hover,choose,,,e-transform,verified,
-wp-widget-wpp,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
-wp-widget-wpp,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
-wp-widget-wpp,_transform_scale_popover,popover_toggle,,,e-transform,verified,
-wp-widget-wpp,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
-wp-widget-wpp,_transform_skew_popover,popover_toggle,,,e-transform,verified,
-wp-widget-wpp,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
-wp-widget-wpp,_transform_translate_popover,popover_toggle,,,e-transform,verified,
-wp-widget-wpp,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
-wp-widget-wpp,animation_duration,select,,,animated-slow,verified,
-wp-widget-wpp,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
-wp-widget-wpp,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
-wp-widget-wpp,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
-wp-widget-blog_subscription,_element_width,select,,,elementor-widget__width-inherit,verified,
-wp-widget-blog_subscription,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
-wp-widget-blog_subscription,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
-wp-widget-blog_subscription,_position,select,,,elementor-absolute,verified,
-wp-widget-blog_subscription,_transform_flipX_effect,choose,,,e-transform,verified,
-wp-widget-blog_subscription,_transform_flipX_effect_hover,choose,,,e-transform,verified,
-wp-widget-blog_subscription,_transform_flipY_effect,choose,,,e-transform,verified,
-wp-widget-blog_subscription,_transform_flipY_effect_hover,choose,,,e-transform,verified,
-wp-widget-blog_subscription,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
-wp-widget-blog_subscription,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
-wp-widget-blog_subscription,_transform_scale_popover,popover_toggle,,,e-transform,verified,
-wp-widget-blog_subscription,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
-wp-widget-blog_subscription,_transform_skew_popover,popover_toggle,,,e-transform,verified,
-wp-widget-blog_subscription,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
-wp-widget-blog_subscription,_transform_translate_popover,popover_toggle,,,e-transform,verified,
-wp-widget-blog_subscription,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
-wp-widget-blog_subscription,animation_duration,select,,,animated-slow,verified,
-wp-widget-blog_subscription,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
-wp-widget-blog_subscription,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
-wp-widget-blog_subscription,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+wp-widget-woocommerce_widget_cart,_element_width,select,,,elementor-widget__width-inherit,verified,
+wp-widget-woocommerce_widget_cart,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+wp-widget-woocommerce_widget_cart,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+wp-widget-woocommerce_widget_cart,_position,select,,,elementor-absolute,verified,
+wp-widget-woocommerce_widget_cart,_transform_flipX_effect,choose,,,e-transform,verified,
+wp-widget-woocommerce_widget_cart,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+wp-widget-woocommerce_widget_cart,_transform_flipY_effect,choose,,,e-transform,verified,
+wp-widget-woocommerce_widget_cart,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+wp-widget-woocommerce_widget_cart,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_widget_cart,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_widget_cart,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_widget_cart,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_widget_cart,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_widget_cart,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_widget_cart,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_widget_cart,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_widget_cart,animation_duration,select,,,animated-slow,verified,
+wp-widget-woocommerce_widget_cart,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+wp-widget-woocommerce_widget_cart,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+wp-widget-woocommerce_widget_cart,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+wp-widget-woocommerce_layered_nav_filters,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav_filters,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav_filters,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav_filters,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav_filters,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav_filters,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav_filters,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav_filters,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav_filters,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav_filters,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav_filters,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav_filters,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav_filters,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav_filters,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav_filters,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav_filters,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav_filters,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav_filters,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav_filters,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav_filters,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+wp-widget-woocommerce_layered_nav,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+wp-widget-woocommerce_price_filter,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+wp-widget-woocommerce_price_filter,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+wp-widget-woocommerce_price_filter,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+wp-widget-woocommerce_price_filter,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+wp-widget-woocommerce_price_filter,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_price_filter,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_price_filter,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_price_filter,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_price_filter,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_price_filter,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_price_filter,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_price_filter,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_price_filter,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_price_filter,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_price_filter,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_price_filter,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_price_filter,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+wp-widget-woocommerce_price_filter,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+wp-widget-woocommerce_price_filter,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+wp-widget-woocommerce_price_filter,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+wp-widget-woocommerce_product_categories,_element_width,select,,,elementor-widget__width-inherit,verified,
+wp-widget-woocommerce_product_categories,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+wp-widget-woocommerce_product_categories,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+wp-widget-woocommerce_product_categories,_position,select,,,elementor-absolute,verified,
+wp-widget-woocommerce_product_categories,_transform_flipX_effect,choose,,,e-transform,verified,
+wp-widget-woocommerce_product_categories,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+wp-widget-woocommerce_product_categories,_transform_flipY_effect,choose,,,e-transform,verified,
+wp-widget-woocommerce_product_categories,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+wp-widget-woocommerce_product_categories,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_categories,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_categories,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_categories,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_categories,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_categories,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_categories,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_categories,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_categories,animation_duration,select,,,animated-slow,verified,
+wp-widget-woocommerce_product_categories,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+wp-widget-woocommerce_product_categories,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+wp-widget-woocommerce_product_categories,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+wp-widget-woocommerce_product_search,_element_width,select,,,elementor-widget__width-inherit,verified,
+wp-widget-woocommerce_product_search,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+wp-widget-woocommerce_product_search,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+wp-widget-woocommerce_product_search,_position,select,,,elementor-absolute,verified,
+wp-widget-woocommerce_product_search,_transform_flipX_effect,choose,,,e-transform,verified,
+wp-widget-woocommerce_product_search,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+wp-widget-woocommerce_product_search,_transform_flipY_effect,choose,,,e-transform,verified,
+wp-widget-woocommerce_product_search,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+wp-widget-woocommerce_product_search,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_search,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_search,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_search,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_search,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_search,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_search,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_search,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_search,animation_duration,select,,,animated-slow,verified,
+wp-widget-woocommerce_product_search,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+wp-widget-woocommerce_product_search,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+wp-widget-woocommerce_product_search,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+wp-widget-woocommerce_product_tag_cloud,_element_width,select,,,elementor-widget__width-inherit,verified,
+wp-widget-woocommerce_product_tag_cloud,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+wp-widget-woocommerce_product_tag_cloud,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+wp-widget-woocommerce_product_tag_cloud,_position,select,,,elementor-absolute,verified,
+wp-widget-woocommerce_product_tag_cloud,_transform_flipX_effect,choose,,,e-transform,verified,
+wp-widget-woocommerce_product_tag_cloud,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+wp-widget-woocommerce_product_tag_cloud,_transform_flipY_effect,choose,,,e-transform,verified,
+wp-widget-woocommerce_product_tag_cloud,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+wp-widget-woocommerce_product_tag_cloud,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_tag_cloud,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_tag_cloud,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_tag_cloud,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_tag_cloud,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_tag_cloud,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_tag_cloud,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_tag_cloud,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_product_tag_cloud,animation_duration,select,,,animated-slow,verified,
+wp-widget-woocommerce_product_tag_cloud,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+wp-widget-woocommerce_product_tag_cloud,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+wp-widget-woocommerce_product_tag_cloud,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+wp-widget-woocommerce_products,_element_width,select,,,elementor-widget__width-inherit,verified,
+wp-widget-woocommerce_products,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+wp-widget-woocommerce_products,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+wp-widget-woocommerce_products,_position,select,,,elementor-absolute,verified,
+wp-widget-woocommerce_products,_transform_flipX_effect,choose,,,e-transform,verified,
+wp-widget-woocommerce_products,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+wp-widget-woocommerce_products,_transform_flipY_effect,choose,,,e-transform,verified,
+wp-widget-woocommerce_products,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+wp-widget-woocommerce_products,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_products,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_products,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_products,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_products,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_products,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_products,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_products,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_products,animation_duration,select,,,animated-slow,verified,
+wp-widget-woocommerce_products,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+wp-widget-woocommerce_products,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+wp-widget-woocommerce_products,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+wp-widget-woocommerce_recently_viewed_products,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recently_viewed_products,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recently_viewed_products,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recently_viewed_products,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recently_viewed_products,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recently_viewed_products,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recently_viewed_products,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recently_viewed_products,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recently_viewed_products,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recently_viewed_products,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recently_viewed_products,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recently_viewed_products,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recently_viewed_products,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recently_viewed_products,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recently_viewed_products,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recently_viewed_products,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recently_viewed_products,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recently_viewed_products,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recently_viewed_products,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recently_viewed_products,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+wp-widget-woocommerce_top_rated_products,_element_width,select,,,elementor-widget__width-inherit,verified,
+wp-widget-woocommerce_top_rated_products,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+wp-widget-woocommerce_top_rated_products,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+wp-widget-woocommerce_top_rated_products,_position,select,,,elementor-absolute,verified,
+wp-widget-woocommerce_top_rated_products,_transform_flipX_effect,choose,,,e-transform,verified,
+wp-widget-woocommerce_top_rated_products,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+wp-widget-woocommerce_top_rated_products,_transform_flipY_effect,choose,,,e-transform,verified,
+wp-widget-woocommerce_top_rated_products,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+wp-widget-woocommerce_top_rated_products,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_top_rated_products,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_top_rated_products,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_top_rated_products,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_top_rated_products,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_top_rated_products,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_top_rated_products,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_top_rated_products,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+wp-widget-woocommerce_top_rated_products,animation_duration,select,,,animated-slow,verified,
+wp-widget-woocommerce_top_rated_products,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+wp-widget-woocommerce_top_rated_products,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+wp-widget-woocommerce_top_rated_products,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+wp-widget-woocommerce_recent_reviews,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recent_reviews,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recent_reviews,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recent_reviews,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recent_reviews,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recent_reviews,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recent_reviews,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recent_reviews,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recent_reviews,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recent_reviews,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recent_reviews,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recent_reviews,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recent_reviews,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recent_reviews,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recent_reviews,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recent_reviews,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recent_reviews,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recent_reviews,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recent_reviews,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+wp-widget-woocommerce_recent_reviews,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+wp-widget-woocommerce_rating_filter,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+wp-widget-woocommerce_rating_filter,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+wp-widget-woocommerce_rating_filter,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+wp-widget-woocommerce_rating_filter,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+wp-widget-woocommerce_rating_filter,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_rating_filter,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_rating_filter,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_rating_filter,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_rating_filter,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_rating_filter,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_rating_filter,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_rating_filter,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_rating_filter,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_rating_filter,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_rating_filter,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_rating_filter,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_rating_filter,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+wp-widget-woocommerce_rating_filter,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+wp-widget-woocommerce_rating_filter,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+wp-widget-woocommerce_rating_filter,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_description,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_description,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_description,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_description,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_description,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_description,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_description,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_description,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_description,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_description,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_description,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_description,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_description,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_description,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_description,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_description,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_description,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_description,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_description,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_description,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+wp-widget-woocommerce_brand_nav,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+wp-widget-woocommerce_brand_nav,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+wp-widget-woocommerce_brand_nav,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+wp-widget-woocommerce_brand_nav,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+wp-widget-woocommerce_brand_nav,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_brand_nav,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_brand_nav,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_brand_nav,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_brand_nav,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_brand_nav,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_brand_nav,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_brand_nav,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_brand_nav,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_brand_nav,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_brand_nav,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_brand_nav,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-woocommerce_brand_nav,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+wp-widget-woocommerce_brand_nav,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+wp-widget-woocommerce_brand_nav,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+wp-widget-woocommerce_brand_nav,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_thumbnails,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_thumbnails,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_thumbnails,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_thumbnails,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_thumbnails,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_thumbnails,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_thumbnails,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_thumbnails,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_thumbnails,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_thumbnails,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_thumbnails,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_thumbnails,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_thumbnails,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_thumbnails,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_thumbnails,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_thumbnails,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_thumbnails,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_thumbnails,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_thumbnails,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+wp-widget-wc_brands_brand_thumbnails,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
 text-path,_element_width,select,,,elementor-widget__width-inherit,verified,
 text-path,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
 text-path,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
@@ -1450,26 +1630,26 @@ theme-post-excerpt,animation_duration,select,,,animated-slow,no-element,the elem
 theme-post-excerpt,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
 theme-post-excerpt,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
 theme-post-excerpt,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
-theme-post-content,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
-theme-post-content,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
-theme-post-content,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
-theme-post-content,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
-theme-post-content,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
-theme-post-content,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
-theme-post-content,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
-theme-post-content,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
-theme-post-content,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-theme-post-content,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-theme-post-content,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-theme-post-content,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-theme-post-content,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-theme-post-content,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-theme-post-content,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-theme-post-content,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-theme-post-content,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
-theme-post-content,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
-theme-post-content,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
-theme-post-content,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+theme-post-content,_element_width,select,,,elementor-widget__width-inherit,verified,
+theme-post-content,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+theme-post-content,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+theme-post-content,_position,select,,,elementor-absolute,verified,
+theme-post-content,_transform_flipX_effect,choose,,,e-transform,verified,
+theme-post-content,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+theme-post-content,_transform_flipY_effect,choose,,,e-transform,verified,
+theme-post-content,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+theme-post-content,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+theme-post-content,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+theme-post-content,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+theme-post-content,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+theme-post-content,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+theme-post-content,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+theme-post-content,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+theme-post-content,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+theme-post-content,animation_duration,select,,,animated-slow,verified,
+theme-post-content,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+theme-post-content,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+theme-post-content,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
 theme-post-featured-image,_element_width,select,,,elementor-widget__width-inherit,verified,
 theme-post-featured-image,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
 theme-post-featured-image,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
@@ -1754,33 +1934,33 @@ slides,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
 slides,slides_horizontal_position,choose,,,elementor--h-position-left,verified,
 slides,slides_vertical_position,choose,,,elementor--v-position-top,verified,
 slides,dots_position,select,,,elementor-pagination-position-outside,verified,
-nav-menu,_element_width,select,,,elementor-widget__width-inherit,verified,
-nav-menu,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
-nav-menu,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
-nav-menu,_position,select,,,elementor-absolute,verified,
-nav-menu,_transform_flipX_effect,choose,,,e-transform,verified,
-nav-menu,_transform_flipX_effect_hover,choose,,,e-transform,verified,
-nav-menu,_transform_flipY_effect,choose,,,e-transform,verified,
-nav-menu,_transform_flipY_effect_hover,choose,,,e-transform,verified,
-nav-menu,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
-nav-menu,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
-nav-menu,_transform_scale_popover,popover_toggle,,,e-transform,verified,
-nav-menu,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
-nav-menu,_transform_skew_popover,popover_toggle,,,e-transform,verified,
-nav-menu,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
-nav-menu,_transform_translate_popover,popover_toggle,,,e-transform,verified,
-nav-menu,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
-nav-menu,align_items,choose,,,elementor-nav-menu__align-start,verified,
-nav-menu,animation_duration,select,,,animated-slow,verified,
-nav-menu,dropdown,select,,,elementor-nav-menu--dropdown-mobile,verified,
-nav-menu,full_width,switcher,,,elementor-nav-menu--stretch,verified,
-nav-menu,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
-nav-menu,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
-nav-menu,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
-nav-menu,text_align,select,,,elementor-nav-menu__text-align-aside,verified,
-nav-menu,toggle,select,,,elementor-nav-menu--toggle elementor-nav-menu--burger,verified,
-nav-menu,align_items,choose,,left,elementor-nav-menu__align-start,verified,
-nav-menu,align_items,choose,,right,elementor-nav-menu__align-end,verified,
+nav-menu,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+nav-menu,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+nav-menu,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+nav-menu,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+nav-menu,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+nav-menu,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+nav-menu,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+nav-menu,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+nav-menu,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+nav-menu,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+nav-menu,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+nav-menu,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+nav-menu,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+nav-menu,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+nav-menu,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+nav-menu,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+nav-menu,align_items,choose,,,elementor-nav-menu__align-start,no-element,the element renders nothing without site content
+nav-menu,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+nav-menu,dropdown,select,,,elementor-nav-menu--dropdown-mobile,no-element,the element renders nothing without site content
+nav-menu,full_width,switcher,,,elementor-nav-menu--stretch,no-element,the element renders nothing without site content
+nav-menu,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+nav-menu,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+nav-menu,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+nav-menu,text_align,select,,,elementor-nav-menu__text-align-aside,no-element,the element renders nothing without site content
+nav-menu,toggle,select,,,elementor-nav-menu--toggle elementor-nav-menu--burger,no-element,the element renders nothing without site content
+nav-menu,align_items,choose,,left,elementor-nav-menu__align-start,no-element,the element renders nothing without site content
+nav-menu,align_items,choose,,right,elementor-nav-menu__align-end,no-element,the element renders nothing without site content
 animated-headline,_element_width,select,,,elementor-widget__width-inherit,verified,
 animated-headline,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
 animated-headline,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
@@ -2105,26 +2285,26 @@ author-box,show_avatar,switcher,,,elementor-author-box--avatar-yes,verified,
 author-box,show_biography,switcher,,,elementor-author-box--biography-yes,verified,
 author-box,show_link,switcher,,,elementor-author-box--link-yes,verified,
 author-box,show_name,switcher,,,elementor-author-box--name-yes,verified,
-post-comments,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
-post-comments,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
-post-comments,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
-post-comments,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
-post-comments,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
-post-comments,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
-post-comments,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
-post-comments,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
-post-comments,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-post-comments,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-post-comments,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-post-comments,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-post-comments,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-post-comments,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-post-comments,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-post-comments,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
-post-comments,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
-post-comments,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
-post-comments,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
-post-comments,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+post-comments,_element_width,select,,,elementor-widget__width-inherit,verified,
+post-comments,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+post-comments,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+post-comments,_position,select,,,elementor-absolute,verified,
+post-comments,_transform_flipX_effect,choose,,,e-transform,verified,
+post-comments,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+post-comments,_transform_flipY_effect,choose,,,e-transform,verified,
+post-comments,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+post-comments,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+post-comments,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+post-comments,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+post-comments,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+post-comments,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+post-comments,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+post-comments,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+post-comments,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+post-comments,animation_duration,select,,,animated-slow,verified,
+post-comments,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+post-comments,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+post-comments,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
 post-navigation,_element_width,select,,,elementor-widget__width-inherit,verified,
 post-navigation,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
 post-navigation,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
@@ -2213,6 +2393,651 @@ blockquote,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
 blockquote,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
 blockquote,tweet_button_skin,select,,,elementor-blockquote--button-skin-classic,verified,
 blockquote,tweet_button_view,select,,,elementor-blockquote--button-view-icon-text,verified,
+woocommerce-products,_element_width,select,,,elementor-widget__width-inherit,verified,
+woocommerce-products,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+woocommerce-products,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+woocommerce-products,_position,select,,,elementor-absolute,verified,
+woocommerce-products,_transform_flipX_effect,choose,,,e-transform,verified,
+woocommerce-products,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+woocommerce-products,_transform_flipY_effect,choose,,,e-transform,verified,
+woocommerce-products,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+woocommerce-products,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+woocommerce-products,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-products,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+woocommerce-products,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-products,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+woocommerce-products,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-products,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+woocommerce-products,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-products,align,choose,,,elementor-product-loop-item--align-left,verified,
+woocommerce-products,animation_duration,select,,,animated-slow,verified,
+woocommerce-products,columns,number,,,elementor-grid-3,verified,
+woocommerce-products,columns_mobile,number,mobile,,elementor-grid-mobile-2,verified,
+woocommerce-products,columns_tablet,number,tablet,,elementor-grid-tablet-7,verified,
+woocommerce-products,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+woocommerce-products,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+woocommerce-products,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+woocommerce-products,products_class,hidden,,,elementor-products-grid elementor-eh#B2D,verified,
+woocommerce-products,products_title_show,switcher,,,products-heading-show,verified,
+woocommerce-products,show_pagination_border,switcher,,,elementor-show-pagination-border-yes,verified,
+wc-products,_element_width,select,,,elementor-widget__width-inherit,verified,
+wc-products,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+wc-products,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+wc-products,_position,select,,,elementor-absolute,verified,
+wc-products,_transform_flipX_effect,choose,,,e-transform,verified,
+wc-products,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+wc-products,_transform_flipY_effect,choose,,,e-transform,verified,
+wc-products,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+wc-products,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+wc-products,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+wc-products,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+wc-products,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+wc-products,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+wc-products,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+wc-products,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+wc-products,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+wc-products,align,choose,,,elementor-product-loop-item--align-left,verified,
+wc-products,animation_duration,select,,,animated-slow,verified,
+wc-products,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+wc-products,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+wc-products,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+wc-products,products_class,hidden,,,elementor-products-grid elementor-eh#433,verified,
+wc-products,show_pagination_border,switcher,,,elementor-show-pagination-border-yes,verified,
+woocommerce-product-add-to-cart,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,alignment,choose,,,elementor-add-to-cart--align-left,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,alignment_mobile,choose,mobile,,elementor-add-to-cart-mobile--align-center,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,alignment_tablet,choose,tablet,,elementor-add-to-cart-tablet--align-right,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,layout,select,,,elementor-add-to-cart--layout-stacked,no-element,the element renders nothing without site content
+woocommerce-product-add-to-cart,show_quantity,switcher,,,e-add-to-cart--show-quantity-yes,no-element,the element renders nothing without site content
+wc-elements,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+wc-elements,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+wc-elements,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+wc-elements,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+wc-elements,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wc-elements,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wc-elements,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wc-elements,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wc-elements,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wc-elements,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wc-elements,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wc-elements,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wc-elements,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wc-elements,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wc-elements,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wc-elements,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wc-elements,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+wc-elements,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+wc-elements,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+wc-elements,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+wc-categories,_element_width,select,,,elementor-widget__width-inherit,verified,
+wc-categories,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+wc-categories,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+wc-categories,_position,select,,,elementor-absolute,verified,
+wc-categories,_transform_flipX_effect,choose,,,e-transform,verified,
+wc-categories,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+wc-categories,_transform_flipY_effect,choose,,,e-transform,verified,
+wc-categories,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+wc-categories,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+wc-categories,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+wc-categories,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+wc-categories,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+wc-categories,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+wc-categories,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+wc-categories,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+wc-categories,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+wc-categories,align,choose,,,elementor-product-loop-item--align-left,verified,
+wc-categories,animation_duration,select,,,animated-slow,verified,
+wc-categories,columns,number,,,elementor-grid-1,verified,
+wc-categories,columns_mobile,number,mobile,,elementor-grid-mobile-4,verified,
+wc-categories,columns_tablet,number,tablet,,elementor-grid-tablet-5,verified,
+wc-categories,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+wc-categories,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+wc-categories,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+wc-categories,products_class,hidden,,,elementor-products-grid elementor-eh#58A,verified,
+woocommerce-product-price,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+woocommerce-product-price,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+woocommerce-product-price,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+woocommerce-product-price,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+woocommerce-product-price,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-price,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-price,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-price,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-price,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-price,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-price,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-price,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-price,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-price,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-price,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-price,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-price,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+woocommerce-product-price,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+woocommerce-product-price,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+woocommerce-product-price,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+woocommerce-product-price,price_block,switcher,,,elementor-product-price-block-yes,no-element,the element renders nothing without site content
+woocommerce-product-title,_element_width,select,,,elementor-widget__width-inherit,verified,
+woocommerce-product-title,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+woocommerce-product-title,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+woocommerce-product-title,_position,select,,,elementor-absolute,verified,
+woocommerce-product-title,_transform_flipX_effect,choose,,,e-transform,verified,
+woocommerce-product-title,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+woocommerce-product-title,_transform_flipY_effect,choose,,,e-transform,verified,
+woocommerce-product-title,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+woocommerce-product-title,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+woocommerce-product-title,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-product-title,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+woocommerce-product-title,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-product-title,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+woocommerce-product-title,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-product-title,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+woocommerce-product-title,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-product-title,animation_duration,select,,,animated-slow,verified,
+woocommerce-product-title,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+woocommerce-product-title,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+woocommerce-product-title,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+woocommerce-product-images,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+woocommerce-product-images,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+woocommerce-product-images,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+woocommerce-product-images,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+woocommerce-product-images,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-images,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-images,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-images,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-images,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-images,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-images,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-images,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-images,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-images,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-images,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-images,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-images,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+woocommerce-product-images,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+woocommerce-product-images,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+woocommerce-product-images,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+woocommerce-product-upsell,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+woocommerce-product-upsell,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+woocommerce-product-upsell,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+woocommerce-product-upsell,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+woocommerce-product-upsell,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-upsell,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-upsell,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-upsell,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-upsell,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-upsell,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-upsell,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-upsell,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-upsell,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-upsell,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-upsell,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-upsell,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-upsell,align,choose,,,elementor-product-loop-item--align-left,no-element,the element renders nothing without site content
+woocommerce-product-upsell,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+woocommerce-product-upsell,columns,number,,,elementor-grid-8,no-element,the element renders nothing without site content
+woocommerce-product-upsell,columns_mobile,number,mobile,,elementor-grid-mobile-2,no-element,the element renders nothing without site content
+woocommerce-product-upsell,columns_tablet,number,tablet,,elementor-grid-tablet-7,no-element,the element renders nothing without site content
+woocommerce-product-upsell,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+woocommerce-product-upsell,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+woocommerce-product-upsell,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+woocommerce-product-upsell,products_class,hidden,,,elementor-products-grid elementor-eh#5DD,no-element,the element renders nothing without site content
+woocommerce-product-upsell,show_heading,switcher,,,show-heading-yes,no-element,the element renders nothing without site content
+woocommerce-product-upsell,show_pagination_border,switcher,,,elementor-show-pagination-border-yes,no-element,the element renders nothing without site content
+woocommerce-product-short-description,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+woocommerce-product-short-description,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+woocommerce-product-short-description,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+woocommerce-product-short-description,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+woocommerce-product-short-description,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-short-description,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-short-description,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-short-description,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-short-description,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-short-description,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-short-description,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-short-description,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-short-description,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-short-description,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-short-description,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-short-description,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-short-description,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+woocommerce-product-short-description,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+woocommerce-product-short-description,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+woocommerce-product-short-description,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+woocommerce-product-meta,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+woocommerce-product-meta,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+woocommerce-product-meta,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+woocommerce-product-meta,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+woocommerce-product-meta,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-meta,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-meta,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-meta,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-meta,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-meta,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-meta,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-meta,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-meta,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-meta,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-meta,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-meta,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-meta,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+woocommerce-product-meta,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+woocommerce-product-meta,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+woocommerce-product-meta,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+woocommerce-product-meta,view,select,,,elementor-woo-meta--view-table,no-element,the element renders nothing without site content
+woocommerce-product-stock,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+woocommerce-product-stock,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+woocommerce-product-stock,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+woocommerce-product-stock,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+woocommerce-product-stock,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-stock,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-stock,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-stock,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-stock,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-stock,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-stock,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-stock,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-stock,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-stock,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-stock,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-stock,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-stock,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+woocommerce-product-stock,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+woocommerce-product-stock,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+woocommerce-product-stock,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+woocommerce-product-rating,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+woocommerce-product-rating,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+woocommerce-product-rating,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+woocommerce-product-rating,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+woocommerce-product-rating,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-rating,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-rating,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-rating,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-rating,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-rating,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-rating,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-rating,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-rating,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-rating,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-rating,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-rating,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-rating,alignment,choose,,,elementor-product-rating--align-left,no-element,the element renders nothing without site content
+woocommerce-product-rating,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+woocommerce-product-rating,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+woocommerce-product-rating,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+woocommerce-product-rating,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+woocommerce-product-data-tabs,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+woocommerce-product-data-tabs,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+woocommerce-product-data-tabs,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+woocommerce-product-data-tabs,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+woocommerce-product-data-tabs,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-data-tabs,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-data-tabs,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-data-tabs,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-data-tabs,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-data-tabs,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-data-tabs,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-data-tabs,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-data-tabs,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-data-tabs,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-data-tabs,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-data-tabs,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-data-tabs,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+woocommerce-product-data-tabs,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+woocommerce-product-data-tabs,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+woocommerce-product-data-tabs,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+woocommerce-product-related,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+woocommerce-product-related,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+woocommerce-product-related,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+woocommerce-product-related,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+woocommerce-product-related,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-related,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-related,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-related,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-related,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-related,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-related,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-related,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-related,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-related,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-related,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-related,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-related,align,choose,,,elementor-product-loop-item--align-left,no-element,the element renders nothing without site content
+woocommerce-product-related,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+woocommerce-product-related,columns,number,,,elementor-grid-2,no-element,the element renders nothing without site content
+woocommerce-product-related,columns_mobile,number,mobile,,elementor-grid-mobile-8,no-element,the element renders nothing without site content
+woocommerce-product-related,columns_tablet,number,tablet,,elementor-grid-tablet-2,no-element,the element renders nothing without site content
+woocommerce-product-related,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+woocommerce-product-related,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+woocommerce-product-related,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+woocommerce-product-related,products_class,hidden,,,elementor-products-grid elementor-eh#DE6,no-element,the element renders nothing without site content
+woocommerce-product-related,show_heading,switcher,,,show-heading-yes,no-element,the element renders nothing without site content
+woocommerce-product-related,show_pagination_border,switcher,,,elementor-show-pagination-border-yes,no-element,the element renders nothing without site content
+woocommerce-breadcrumb,_element_width,select,,,elementor-widget__width-inherit,verified,
+woocommerce-breadcrumb,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+woocommerce-breadcrumb,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+woocommerce-breadcrumb,_position,select,,,elementor-absolute,verified,
+woocommerce-breadcrumb,_transform_flipX_effect,choose,,,e-transform,verified,
+woocommerce-breadcrumb,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+woocommerce-breadcrumb,_transform_flipY_effect,choose,,,e-transform,verified,
+woocommerce-breadcrumb,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+woocommerce-breadcrumb,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+woocommerce-breadcrumb,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-breadcrumb,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+woocommerce-breadcrumb,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-breadcrumb,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+woocommerce-breadcrumb,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-breadcrumb,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+woocommerce-breadcrumb,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-breadcrumb,animation_duration,select,,,animated-slow,verified,
+woocommerce-breadcrumb,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+woocommerce-breadcrumb,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+woocommerce-breadcrumb,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+wc-add-to-cart,_element_width,select,,,elementor-widget__width-inherit,verified,
+wc-add-to-cart,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+wc-add-to-cart,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+wc-add-to-cart,_position,select,,,elementor-absolute,verified,
+wc-add-to-cart,_transform_flipX_effect,choose,,,e-transform,verified,
+wc-add-to-cart,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+wc-add-to-cart,_transform_flipY_effect,choose,,,e-transform,verified,
+wc-add-to-cart,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+wc-add-to-cart,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+wc-add-to-cart,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+wc-add-to-cart,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+wc-add-to-cart,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+wc-add-to-cart,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+wc-add-to-cart,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+wc-add-to-cart,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+wc-add-to-cart,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+wc-add-to-cart,align,choose,,,elementor-add-to-cart--align-left,verified,
+wc-add-to-cart,align_mobile,choose,mobile,,elementor-add-to-cart-mobile--align-center,verified,
+wc-add-to-cart,align_tablet,choose,tablet,,elementor-add-to-cart-tablet--align-right,verified,
+wc-add-to-cart,animation_duration,select,,,animated-slow,verified,
+wc-add-to-cart,button_type,select,,,elementor-button-info,verified,
+wc-add-to-cart,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+wc-add-to-cart,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+wc-add-to-cart,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+wc-add-to-cart,layout,select,,,elementor-add-to-cart--layout-stacked,verified,
+wc-archive-products,_element_width,select,,,elementor-widget__width-inherit,verified,
+wc-archive-products,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+wc-archive-products,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+wc-archive-products,_position,select,,,elementor-absolute,verified,
+wc-archive-products,_transform_flipX_effect,choose,,,e-transform,verified,
+wc-archive-products,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+wc-archive-products,_transform_flipY_effect,choose,,,e-transform,verified,
+wc-archive-products,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+wc-archive-products,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+wc-archive-products,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+wc-archive-products,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+wc-archive-products,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+wc-archive-products,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+wc-archive-products,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+wc-archive-products,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+wc-archive-products,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+wc-archive-products,align,choose,,,elementor-product-loop-item--align-left,verified,
+wc-archive-products,animation_duration,select,,,animated-slow,verified,
+wc-archive-products,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+wc-archive-products,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+wc-archive-products,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+wc-archive-products,products_class,hidden,,,elementor-products-grid elementor-eh#A4D,verified,
+wc-archive-products,products_title_show,switcher,,,products-heading-show,verified,
+wc-archive-products,show_pagination_border,switcher,,,elementor-show-pagination-border-yes,verified,
+woocommerce-archive-products,_element_width,select,,,elementor-widget__width-inherit,verified,
+woocommerce-archive-products,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+woocommerce-archive-products,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+woocommerce-archive-products,_position,select,,,elementor-absolute,verified,
+woocommerce-archive-products,_transform_flipX_effect,choose,,,e-transform,verified,
+woocommerce-archive-products,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+woocommerce-archive-products,_transform_flipY_effect,choose,,,e-transform,verified,
+woocommerce-archive-products,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+woocommerce-archive-products,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+woocommerce-archive-products,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-archive-products,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+woocommerce-archive-products,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-archive-products,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+woocommerce-archive-products,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-archive-products,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+woocommerce-archive-products,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-archive-products,align,choose,,,elementor-product-loop-item--align-left,verified,
+woocommerce-archive-products,animation_duration,select,,,animated-slow,verified,
+woocommerce-archive-products,columns,number,,,elementor-grid-9,verified,
+woocommerce-archive-products,columns_mobile,number,mobile,,elementor-grid-mobile-2,verified,
+woocommerce-archive-products,columns_tablet,number,tablet,,elementor-grid-tablet-1,verified,
+woocommerce-archive-products,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+woocommerce-archive-products,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+woocommerce-archive-products,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+woocommerce-archive-products,products_class,hidden,,,elementor-products-grid elementor-eh#D93,verified,
+woocommerce-archive-products,products_title_show,switcher,,,products-heading-show,verified,
+woocommerce-archive-products,show_pagination_border,switcher,,,elementor-show-pagination-border-yes,verified,
+woocommerce-product-additional-information,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+woocommerce-product-additional-information,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+woocommerce-product-additional-information,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+woocommerce-product-additional-information,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+woocommerce-product-additional-information,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-additional-information,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-additional-information,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-additional-information,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-additional-information,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-additional-information,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-additional-information,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-additional-information,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-additional-information,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-additional-information,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-additional-information,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-additional-information,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-product-additional-information,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+woocommerce-product-additional-information,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+woocommerce-product-additional-information,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+woocommerce-product-additional-information,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+woocommerce-product-additional-information,show_heading,switcher,,,elementor-show-heading-yes,no-element,the element renders nothing without site content
+woocommerce-menu-cart,_element_width,select,,,elementor-widget__width-inherit,verified,
+woocommerce-menu-cart,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+woocommerce-menu-cart,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+woocommerce-menu-cart,_position,select,,,elementor-absolute,verified,
+woocommerce-menu-cart,_transform_flipX_effect,choose,,,e-transform,verified,
+woocommerce-menu-cart,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+woocommerce-menu-cart,_transform_flipY_effect,choose,,,e-transform,verified,
+woocommerce-menu-cart,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+woocommerce-menu-cart,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+woocommerce-menu-cart,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-menu-cart,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+woocommerce-menu-cart,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-menu-cart,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+woocommerce-menu-cart,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-menu-cart,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+woocommerce-menu-cart,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-menu-cart,animation_duration,select,,,animated-slow,verified,
+woocommerce-menu-cart,cart_type,select,,,elementor-menu-cart--cart-type-side-cart,verified,
+woocommerce-menu-cart,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+woocommerce-menu-cart,hide_empty_indicator,switcher,,,elementor-menu-cart--empty-indicator-hide,verified,
+woocommerce-menu-cart,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+woocommerce-menu-cart,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+woocommerce-menu-cart,icon,select,,,toggle-icon--cart-light,verified,
+woocommerce-menu-cart,remove_item_button_position,choose,,,remove-item-position--top,verified,
+woocommerce-menu-cart,show_remove_icon,switcher,,,elementor-menu-cart--show-remove-button-yes,verified,
+woocommerce-menu-cart,show_subtotal,switcher,,,elementor-menu-cart--show-subtotal-yes,verified,
+woocommerce-menu-cart,items_indicator,select,,,elementor-menu-cart--items-indicator-none,verified,
+woocommerce-product-content,_element_width,select,,,elementor-widget__width-inherit,verified,
+woocommerce-product-content,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+woocommerce-product-content,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+woocommerce-product-content,_position,select,,,elementor-absolute,verified,
+woocommerce-product-content,_transform_flipX_effect,choose,,,e-transform,verified,
+woocommerce-product-content,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+woocommerce-product-content,_transform_flipY_effect,choose,,,e-transform,verified,
+woocommerce-product-content,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+woocommerce-product-content,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+woocommerce-product-content,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-product-content,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+woocommerce-product-content,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-product-content,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+woocommerce-product-content,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-product-content,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+woocommerce-product-content,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-product-content,animation_duration,select,,,animated-slow,verified,
+woocommerce-product-content,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+woocommerce-product-content,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+woocommerce-product-content,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+woocommerce-archive-description,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+woocommerce-archive-description,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+woocommerce-archive-description,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+woocommerce-archive-description,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+woocommerce-archive-description,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-archive-description,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-archive-description,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-archive-description,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-archive-description,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-archive-description,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-archive-description,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-archive-description,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-archive-description,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-archive-description,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-archive-description,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-archive-description,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-archive-description,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+woocommerce-archive-description,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+woocommerce-archive-description,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+woocommerce-archive-description,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+woocommerce-checkout-page,_element_width,select,,,elementor-widget__width-inherit,verified,
+woocommerce-checkout-page,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+woocommerce-checkout-page,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+woocommerce-checkout-page,_position,select,,,elementor-absolute,verified,
+woocommerce-checkout-page,_transform_flipX_effect,choose,,,e-transform,verified,
+woocommerce-checkout-page,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+woocommerce-checkout-page,_transform_flipY_effect,choose,,,e-transform,verified,
+woocommerce-checkout-page,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+woocommerce-checkout-page,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+woocommerce-checkout-page,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-checkout-page,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+woocommerce-checkout-page,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-checkout-page,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+woocommerce-checkout-page,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-checkout-page,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+woocommerce-checkout-page,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-checkout-page,animation_duration,select,,,animated-slow,verified,
+woocommerce-checkout-page,checkout_layout,select,,,e-checkout-layout-two-column,verified,
+woocommerce-checkout-page,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+woocommerce-checkout-page,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+woocommerce-checkout-page,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+woocommerce-cart,_element_width,select,,,elementor-widget__width-inherit,verified,
+woocommerce-cart,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+woocommerce-cart,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+woocommerce-cart,_position,select,,,elementor-absolute,verified,
+woocommerce-cart,_transform_flipX_effect,choose,,,e-transform,verified,
+woocommerce-cart,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+woocommerce-cart,_transform_flipY_effect,choose,,,e-transform,verified,
+woocommerce-cart,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+woocommerce-cart,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+woocommerce-cart,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-cart,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+woocommerce-cart,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-cart,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+woocommerce-cart,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-cart,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+woocommerce-cart,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-cart,additional_template_switch,switcher,,,e-cart-empty-template-active,verified,
+woocommerce-cart,animation_duration,select,,,animated-slow,verified,
+woocommerce-cart,cart_layout,select,,,e-cart-layout-two-column,verified,
+woocommerce-cart,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+woocommerce-cart,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+woocommerce-cart,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+woocommerce-my-account,_element_width,select,,,elementor-widget__width-inherit,verified,
+woocommerce-my-account,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+woocommerce-my-account,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+woocommerce-my-account,_position,select,,,elementor-absolute,verified,
+woocommerce-my-account,_transform_flipX_effect,choose,,,e-transform,verified,
+woocommerce-my-account,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+woocommerce-my-account,_transform_flipY_effect,choose,,,e-transform,verified,
+woocommerce-my-account,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+woocommerce-my-account,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+woocommerce-my-account,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-my-account,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+woocommerce-my-account,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-my-account,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+woocommerce-my-account,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-my-account,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+woocommerce-my-account,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-my-account,animation_duration,select,,,animated-slow,verified,
+woocommerce-my-account,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+woocommerce-my-account,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+woocommerce-my-account,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+woocommerce-my-account,tabs_layout,select,,,e-my-account-tabs-vertical,verified,
+woocommerce-purchase-summary,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+woocommerce-purchase-summary,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+woocommerce-purchase-summary,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+woocommerce-purchase-summary,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+woocommerce-purchase-summary,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-purchase-summary,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-purchase-summary,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-purchase-summary,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-purchase-summary,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-purchase-summary,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-purchase-summary,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-purchase-summary,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-purchase-summary,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-purchase-summary,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-purchase-summary,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-purchase-summary,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+woocommerce-purchase-summary,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+woocommerce-purchase-summary,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+woocommerce-purchase-summary,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+woocommerce-purchase-summary,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
+woocommerce-notices,_element_width,select,,,elementor-widget__width-inherit,verified,
+woocommerce-notices,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
+woocommerce-notices,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
+woocommerce-notices,_position,select,,,elementor-absolute,verified,
+woocommerce-notices,_transform_flipX_effect,choose,,,e-transform,verified,
+woocommerce-notices,_transform_flipX_effect_hover,choose,,,e-transform,verified,
+woocommerce-notices,_transform_flipY_effect,choose,,,e-transform,verified,
+woocommerce-notices,_transform_flipY_effect_hover,choose,,,e-transform,verified,
+woocommerce-notices,_transform_rotate_popover,popover_toggle,,,e-transform,verified,
+woocommerce-notices,_transform_rotate_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-notices,_transform_scale_popover,popover_toggle,,,e-transform,verified,
+woocommerce-notices,_transform_scale_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-notices,_transform_skew_popover,popover_toggle,,,e-transform,verified,
+woocommerce-notices,_transform_skew_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-notices,_transform_translate_popover,popover_toggle,,,e-transform,verified,
+woocommerce-notices,_transform_translate_popover_hover,popover_toggle,,,e-transform,verified,
+woocommerce-notices,animation_duration,select,,,animated-slow,verified,
+woocommerce-notices,hide_desktop,switcher,,,elementor-hidden-desktop,verified,
+woocommerce-notices,hide_mobile,switcher,,,elementor-hidden-mobile,verified,
+woocommerce-notices,hide_tablet,switcher,,,elementor-hidden-tablet,verified,
+wc-single-elements,_element_width,select,,,elementor-widget__width-inherit,no-element,the element renders nothing without site content
+wc-single-elements,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,no-element,the element renders nothing without site content
+wc-single-elements,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,no-element,the element renders nothing without site content
+wc-single-elements,_position,select,,,elementor-absolute,no-element,the element renders nothing without site content
+wc-single-elements,_transform_flipX_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wc-single-elements,_transform_flipX_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wc-single-elements,_transform_flipY_effect,choose,,,e-transform,no-element,the element renders nothing without site content
+wc-single-elements,_transform_flipY_effect_hover,choose,,,e-transform,no-element,the element renders nothing without site content
+wc-single-elements,_transform_rotate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wc-single-elements,_transform_rotate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wc-single-elements,_transform_scale_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wc-single-elements,_transform_scale_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wc-single-elements,_transform_skew_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wc-single-elements,_transform_skew_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wc-single-elements,_transform_translate_popover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wc-single-elements,_transform_translate_popover_hover,popover_toggle,,,e-transform,no-element,the element renders nothing without site content
+wc-single-elements,animation_duration,select,,,animated-slow,no-element,the element renders nothing without site content
+wc-single-elements,hide_desktop,switcher,,,elementor-hidden-desktop,no-element,the element renders nothing without site content
+wc-single-elements,hide_mobile,switcher,,,elementor-hidden-mobile,no-element,the element renders nothing without site content
+wc-single-elements,hide_tablet,switcher,,,elementor-hidden-tablet,no-element,the element renders nothing without site content
 facebook-button,_element_width,select,,,elementor-widget__width-inherit,verified,
 facebook-button,_element_width_mobile,select,mobile,,elementor-widget-mobile__width-auto,verified,
 facebook-button,_element_width_tablet,select,tablet,,elementor-widget-tablet__width-initial,verified,
