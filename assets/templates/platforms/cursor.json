@@ -16,7 +16,7 @@
     "examples": false
   },
   "frontmatter": {
-    "description": "Build and modify Elementor pages by writing the underlying JSON directly - no visual editor, no DOM. Query the full control surface (37,964 controls across 135 widgets and 3 elements) instead of reading Elementor's source, with every Elementor Pro-only control explicitly labeled from a measured Free-vs-Pro diff.",
+    "description": "Build and modify Elementor pages by writing the underlying JSON directly - no visual editor, no DOM. Query the full control surface (49,857 controls across 192 widgets and 13 elements) instead of reading Elementor's source, with every Elementor Pro-only control explicitly labeled from a measured Free-vs-Pro diff.",
     "globs": [
       "**/*.php",
       "**/wp-content/**",

@@ -137,7 +137,7 @@ function eh_module_of( $object ) {
  *   nested-carousel  experiment 'nested-elements'
  *   off-canvas       experiment 'nested-elements'
  *
- * A schema extracted on a site without WooCommerce says "135 widgets" and contains
+ * A schema extracted on a site without WooCommerce says "163 widgets" and contains
  * no `woocommerce-product-price`. Ask it and it will tell you, with total
  * confidence, that no such widget exists. That is not a missing feature; it is the
  * schema asserting something false about Elementor.

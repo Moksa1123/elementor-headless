@@ -189,8 +189,8 @@ Diff the two and the boundary falls out — measured, not argued:
 | | Free 4.1.4 | + Pro 4.1.2 |
 |---|---|---|
 | controls on every widget | 165 | **211** (+46) |
-| controls on `container` | 277 | **356** (+79) |
-| control types | 52 | **59** (+8, −1) |
+| controls on `container` | 275 | **354** (+79) |
+| control types | 49 | **56** (+8, −1) |
 | group controls | 11 | **16** (+5) |
 
 The 46 injected into **every** widget:
@@ -210,21 +210,20 @@ Pro-only control types: `query`, `template_query`, `conditions_repeater`,
 
 ### The counting quirk you will hit, and what it means
 
-The Pro-less build reports **more** widgets than the Pro build (145 vs 135), and
-the extras are all WooCommerce ones. That is not a bug in the diff.
-
-When Pro is inactive, **Elementor core registers stub "upgrade to Pro" widgets**
-so the editor can advertise them. They carry exactly the shared common controls
-and nothing of their own, and they are identifiable by a control type that exists
-*only* when Pro is absent: **`promotion_control`**
+The Pro-less build is full of widgets that are not free: of its 164 widgets,
+**82 are stub "upgrade to Pro" widgets** that Elementor core registers so the
+editor can advertise them — named exactly like the real thing
+(`woocommerce-product-price`). They carry the shared common controls and nothing
+of their own, and they are identifiable by their module (`promotions`) and by a
+control type that exists *only* when Pro is absent: **`promotion_control`**
 (`Elementor\Modules\Promotions\Controls\Promotion_Control`).
 
 So a widget merely *existing* in the Pro-less build does not make it free. The
-tier logic recognises the stubs (zero controls of their own) and does not treat
-their controls as free. Once that is accounted for, the books balance exactly:
+tier logic recognises the stubs and does not treat their controls as free. Once
+that is accounted for, the books balance exactly:
 
 ```
-52 free control types  −  1 (promotion_control, free-only)  +  8 (Pro-only)  =  59
+49 free control types  −  1 (promotion_control, free-only)  +  8 (Pro-only)  =  56
 ```
 
 and the two independent methods — tier-by-filepath and tier-by-presence — agree on
@@ -232,12 +231,39 @@ every user-facing widget. The only five they disagree on (`common`, `common-base
 `common-optimized`, `e-component`, `inner-section`) are Elementor's internal base
 classes, which have no controls of their own and are not widgets anyone places.
 
+### How `_margin` shipped as Pro anyway
+
+The per-widget tier is presence-diffed and has been solid. The **shared**
+controls' tier went through a different code path, and that path shipped
+`_margin`, `_padding`, `_border_*`, `_box_shadow_*`, `_background_*` and
+`_mask_*` — 74 of Elementor's most obviously free controls — labelled **Pro**.
+
+The bug: the shared set's tier was derived from *membership in the free dump's
+own common set*, and the free dump's common set was computed **without first
+stripping the per-widget CSS selector maps** (the main dump strips them into
+`css-selectors.csv` before ITS common set is computed). 569 shared controls
+carry a selector that differs per widget, so they failed byte-identity, the free
+common set collapsed from 211 controls to 91, and everything that fell out was
+"not free" — hence Pro.
+
+Two lessons, both already written elsewhere in this file and ignored anyway:
+
+1. **Measure the question you are asking.** "Does this control disappear when
+   Pro is off?" is a *presence* question. Common-set membership adds a
+   byte-identity requirement the question never asked for, and the extra
+   requirement is what broke.
+2. **A verifier only finds bugs in the channel it reads.** `verify-schema.py`
+   classifies "schema says Pro, install says free" as safe-direction drift, not
+   failure — so 74 false Pro labels sailed through a PASS. The number that
+   exposed it was the drift count itself: 5,494 "newer things", where a correct
+   schema shows 166.
+
 ### One more piece of semantics
 
 A control's tier answers: *"assuming I can use this widget at all, does **this
 control** additionally require Pro?"* On a widget that is itself Pro the question
 is circular, so per-control tier there carries no information and is not checked.
-What matters — and what is checked, on all 15,969 of them — is a Pro-only control
+What matters — and what is checked, on all 17,917 of them — is a Pro-only control
 sitting on a **free** widget.
 
 ---
@@ -864,8 +890,8 @@ site with the same type, and that every Free/Pro claim holds. Exits non-zero if
 not, so it can gate a deploy. Against the install it was extracted from:
 
 ```
-checked 37,964 (owner, control) pairs
-Free/Pro claims checked on free widgets/elements: 15,969
+checked 49,691 (owner, control) pairs
+Free/Pro claims checked on free widgets/elements: 17,917
 FAILURES: 0
 ```
 

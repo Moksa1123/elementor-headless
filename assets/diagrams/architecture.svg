@@ -65,7 +65,7 @@
   <text class="tb" x="776" y="60">build-indexes.py</text>
   <text class="t"  x="776" y="80">factors 211 shared controls</text>
   <text class="t"  x="776" y="97">measures Free/Pro per control</text>
-  <text class="ts" x="776" y="116">37,964 rows -&gt; 10,157  (-73%)</text>
+  <text class="ts" x="776" y="116">49,857 rows -&gt; 13,821  (-72%)</text>
   <text class="ts" x="776" y="129">tier is measured, never guessed</text>
 
   <path class="arrow" d="M910,138 L910,164"/>
@@ -132,8 +132,8 @@
   <text class="tb" x="44" y="544">verify-schema.py</text>
   <text class="t"  x="44" y="566">does the schema match</text>
   <text class="t"  x="44" y="583">YOUR install?</text>
-  <text class="ts" x="44" y="602">37,964 (owner, control) pairs</text>
-  <text class="ts" x="44" y="615">15,969 Free/Pro claims -&gt; 0 fail</text>
+  <text class="ts" x="44" y="602">49,691 (owner, control) pairs</text>
+  <text class="ts" x="44" y="615">17,917 Free/Pro claims -&gt; 0 fail</text>
 
   <rect class="box" x="380" y="522" width="332" height="100" rx="3"/>
   <text class="tb" x="392" y="544">verify-render.py</text>

@@ -1,6 +1,6 @@
 # Where the token savings come from
 
-The claim is **89% fewer tokens than reading Elementor's source**. Here is the
+The claim is **86.8% fewer tokens than reading Elementor's source**. Here is the
 whole argument, and the script that reproduces it.
 
 ```bash
@@ -18,8 +18,8 @@ expensive, and it leaves you converting PHP control definitions into JSON value
 shapes in your head.
 
 **B — load the schema.** Put `data/elementor-schema.json` in context. Complete,
-and completely impractical: **583,555 tokens**. It does not fit in most context
-windows, and you pay for 100% of it to use 0.1% of it.
+and completely impractical: **1,082,477 tokens**. It does not fit in any context
+window, and you pay for 100% of it to use 0.1% of it.
 
 **C — query the schema.** Run `tools/el.py` and read back the answer.
 
@@ -27,14 +27,19 @@ windows, and you pay for 100% of it to use 0.1% of it.
 
 | Task | A: read source | B: load schema | C: query | saving vs A |
 |---|---|---|---|---|
-| Lay out a hero container (flex, boxed, responsive padding) | 20,182 | 583,555 | **964** | 95.2% |
-| Style a heading (colour, typography, alignment) | 8,329 | 583,555 | **730** | 91.2% |
-| Style a button (colour, padding, radius, hover) | 7,803 | 583,555 | **2,935** | 62.4% |
-| Make any widget's spacing responsive | 11,800 | 583,555 | **243** | 97.9% |
-| Find which control drives a CSS property | — | 583,555 | **363** | — |
-| **Total** | **48,114** | **583,555** | **5,235** | **89.1%** |
+| Lay out a hero container (flex, boxed, responsive padding) | 20,182 | 1,082,477 | **1,209** | 94.0% |
+| Style a heading (colour, typography, alignment) | 8,329 | 1,082,477 | **836** | 90.0% |
+| Style a button (colour, padding, radius, hover) | 7,803 | 1,082,477 | **3,664** | 53.0% |
+| Make any widget's spacing responsive | 11,800 | 1,082,477 | **264** | 97.8% |
+| Find which control drives a CSS property | — | 1,082,477 | **363** | — |
+| **Total** | **48,114** | **1,082,477** | **6,336** | **86.8%** |
 
-C vs B: **99.10% fewer** (583,555 → 5,235).
+C vs B: **99.41% fewer** (1,082,477 → 6,336).
+
+The saving is smaller than it was when the schema was smaller (89.1% at 583k
+tokens). Growing the surface — WooCommerce widgets, experiments, V4 atomics,
+per-selector CSS pairing — made the queries slightly heavier too. The honest
+number moved, so this file moved with it.
 
 ## The two things that make it work
 
@@ -44,34 +49,42 @@ Nothing in `data/` is ever loaded into context. `el.py` is the query, and the
 answer is the only thing you pay for:
 
 ```
-data/elementor-schema.json      2.7 MB    583,555 tokens   never read
-data/controls.csv               2.0 MB    531,357 tokens   grep target
-data/common-controls.csv         39 KB     11,149 tokens
-data/widgets.csv                8.2 KB      2,732 tokens
-data/control-types.csv          4.6 KB      1,317 tokens
+data/elementor-schema.json      4.8 MB  1,082,477 tokens   never read
+data/controls.csv               2.8 MB    772,302 tokens   grep target
+data/css-selectors.csv          2.6 MB    615,791 tokens   grep target
+data/common-controls.csv         40 KB     11,809 tokens
+data/widgets.csv                 15 KB      4,597 tokens
+data/control-types.csv          4.3 KB      1,248 tokens
+data/dynamic-tags.csv           4.1 KB        940 tokens
 data/group-controls.csv         3.7 KB        972 tokens
 data/breakpoints.csv            0.2 KB         72 tokens
 ```
 
-`el.py widget heading --tab style` returns ~700 tokens. Reading `heading.php`
+The heading task's two queries return 836 tokens total. Reading `heading.php`
 plus `typography.php` costs 8,329 and still does not tell you that
 `typography_font_size` takes `{"unit":"px","size":46,"sizes":[]}`.
 
-### 2. The Advanced tab is stored once, not 135 times
+### 2. The Advanced tab is stored once, not 172 times
 
-Every widget inherits the same 211 Advanced-tab controls — margin, padding, motion
-effects, transform, masking, custom CSS. Elementor registers them into each
-widget's own stack, so a raw dump repeats them 135 times. Measured on 4.1.4 they
-occupy **75.6% of all control rows** (28,018 of 37,054).
+Every classic widget inherits the same 211 Advanced-tab controls — margin, padding,
+motion effects, transform, masking, custom CSS. Elementor registers them into each
+widget's own stack, so a raw dump repeats them 172 times. Measured on 4.1.4 they
+occupy **72.7% of all control rows** (36,247 of 49,857).
 
-Storing them once shrinks the schema from 37,964 rows to 10,157 — **73.2%
+Storing them once shrinks the schema from 49,857 rows to 13,821 — **72.3%
 smaller** — and it is *more* truthful, not less: "padding works the same on every
-widget" is a fact about Elementor, not 135 coincidences.
+widget" is a fact about Elementor, not 172 coincidences.
 
-The rule is mechanical, never hand-picked: a control joins the shared set only if
-it is **byte-identical everywhere it appears** and appears in **≥90% of widgets**.
-The three widgets that deviate (`common-base`, `e-component`, `global`) are listed
-explicitly in `common_missing` rather than being forced into the pattern.
+The rule is mechanical, never hand-picked, and it is measured rather than
+thresholded: candidates are the controls byte-identical on more than half the
+widgets, participants are the widgets carrying at least 90% of those candidates,
+and the shared set is what every participant carries. A fixed "appears on ≥90%
+of all widgets" cutoff broke the day Elementor's 20 V4 atomic widgets entered
+the surface — they register none of the Advanced tab, `_margin` fell to 89.58%,
+and the whole shared set silently evaluated to empty. Widgets outside the
+participant set (the V4 atomics, `global`) keep their own controls and are
+marked `has_common: false` — which is the truth about them, not a rounding
+error.
 
 ## Honesty about the measurement
 

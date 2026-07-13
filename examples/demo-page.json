@@ -132,7 +132,7 @@
               },
               "view": "stacked",
               "shape": "circle",
-              "title_text": "37,964 controls",
+              "title_text": "49,857 controls",
               "description_text": "Every control of every widget, extracted from a live install, not from memory.",
               "title_size": "h4",
               "position": "block-start",

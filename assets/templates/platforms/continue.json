@@ -17,7 +17,7 @@
   },
   "frontmatter": {
     "name": "elementor-headless",
-    "description": "Build and modify Elementor pages by writing the underlying JSON directly - no visual editor, no DOM. Query the full control surface (37,964 controls across 135 widgets and 3 elements) instead of reading Elementor's source, with every Elementor Pro-only control explicitly labeled from a measured Free-vs-Pro diff.",
+    "description": "Build and modify Elementor pages by writing the underlying JSON directly - no visual editor, no DOM. Query the full control surface (49,857 controls across 192 widgets and 13 elements) instead of reading Elementor's source, with every Elementor Pro-only control explicitly labeled from a measured Free-vs-Pro diff.",
     "alwaysApply": false
   },
   "loaderBehaviour": "Continue reads .continue/rules/*.md as Rules. Set alwaysApply: true to attach to every chat, or leave false and rely on the description for relevance matching. Rule files load in lexicographic order if you split this into several numbered files. References must be embedded inline; the installer concatenates key reference files into the rule body.",

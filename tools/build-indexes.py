@@ -8,18 +8,19 @@ skill's shipped data files.
 Two things happen here, and both are load-bearing.
 
 1. FACTORING OUT THE COMMON CONTROLS
-   Every Elementor widget inherits the same ~211 Advanced-tab controls
+   Every classic Elementor widget inherits the same ~211 Advanced-tab controls
    (margin, padding, motion effects, transform, masking, custom CSS…). They are
    registered separately into each widget's own stack, so a raw dump repeats
-   them 135 times: measured on Elementor 4.1.4 they occupy 75.6% of all control
-   rows (28,018 of 37,054). Storing them once and marking each widget
+   them 172 times: measured on Elementor 4.1.4 they occupy 72.7% of all control
+   rows (36,247 of 49,857). Storing them once and marking each widget
    `has_common: true` is both smaller and more truthful — "padding works the
-   same on every widget" is a fact about Elementor, not 135 coincidences.
+   same on every widget" is a fact about Elementor, not 172 coincidences.
 
-   The rule is mechanical, not hand-picked: a control joins the common set only
-   if it is byte-identical everywhere it appears AND appears in >=90% of
-   widgets. Widgets that deviate are recorded explicitly in `common_missing`
-   rather than being quietly forced into the pattern.
+   The rule is mechanical, not hand-picked, and who participates is measured
+   rather than thresholded — see compute_common() for the rule and for why a
+   fixed >=90%-of-all-widgets cutoff did not survive the V4 atomic widgets.
+   Widgets outside the participant set keep their own controls and are marked
+   `has_common: false` rather than being quietly forced into the pattern.
 
 2. PER-CONTROL FREE/PRO TIER, DERIVED EMPIRICALLY
    A widget's tier can be read off the filesystem (which plugin defines the
@@ -311,6 +312,21 @@ def main() -> int:
 
     raw = json.loads(Path(args.raw).read_text(encoding="utf-8"))
     free = json.loads(Path(args.free_dump).read_text(encoding="utf-8")) if args.free_dump else None
+
+    # Strip per-widget selector maps from the free dump immediately, so every
+    # compute_common() sees the same control shape as the main dump does (whose
+    # selectors are popped into css-selectors.csv before ITS compute_common call).
+    # 569 shared controls carry a selector that differs per widget; leave them in
+    # and the free dump's common set collapses from 211 controls to 91, and the
+    # 120 shared controls that fell out get tier=pro when only 46 actually vanish
+    # without Pro. `_margin` was labelled Pro by exactly this — margin, the most
+    # obviously free control Elementor has — and verify-schema agreed, because it
+    # derives the free common set the same way. Same channel, same blind spot.
+    if free:
+        for group in ("widgets", "elements"):
+            for w in free.get(group, {}).values():
+                for c in w["controls"]:
+                    c.pop("css_selectors", None)
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
 
@@ -465,7 +481,7 @@ def main() -> int:
     # byte-identical. 29 widgets render no markup at all, so `_position` came back
     # `verified` on 106 of them and unobservable on 29 — stamp that per widget and
     # the shared control is no longer shared. All 18 class controls fall out of the
-    # common set (210 -> 192) and get copied into all 135 widgets instead.
+    # common set (210 -> 192) and get copied into every widget instead.
     #
     # This is the third time this exact ordering has bitten this file. The rule:
     # anything measured PER WIDGET gets stamped after compute_common, never before.
@@ -532,11 +548,21 @@ def main() -> int:
     # The shared controls get their tier from the *free* widgets, where the
     # question is meaningful: "does this control disappear when Pro is off?"
     # Asking it of a Pro-only widget is circular.
+    #
+    # That question is about PRESENCE, so presence is what gets measured — is the
+    # control on a majority of the free build's widgets? — not membership in the
+    # free dump's own common set. Common-set membership additionally requires
+    # byte-identity across widgets, and a control can fail that while sitting on
+    # every free widget (that is how `_margin` briefly shipped as Pro).
     if free:
-        free_common, _, _ = compute_common(free["widgets"])
-        free_common_names = {c["name"] for c in free_common}
+        free_widgets = free["widgets"]
+        free_presence: Counter = Counter()
+        for w in free_widgets.values():
+            for c in w["controls"]:
+                free_presence[c["name"]] += 1
+        nfw = len(free_widgets)
         for c in common:
-            c["tier"] = "free" if c["name"] in free_common_names else "pro"
+            c["tier"] = "free" if free_presence.get(c["name"], 0) > nfw * 0.5 else "pro"
     else:
         for c in common:
             c["tier"] = "unknown"

@@ -55,6 +55,11 @@ time it reasoned instead of measuring:
   the sweep could not see them even in principle.
 - `apply-page.php` left Elementor's rendered-HTML cache in place, so a correct tree
   served the **previous page**. A 17,421-control sweep ran green with that bug live.
+- The shared controls' tier was derived from membership in the free dump's common
+  set instead of from presence, and the free dump was not normalised the way the
+  main dump is — so `_margin` and 73 other unambiguously free controls shipped
+  labelled **Pro**, and verify-schema PASSed, because "Pro claimed, actually free"
+  is filed as safe-direction drift. Watch the drift count, not just the verdict.
 
 All nine are written up in `references/extraction-traps.md`. Read it before touching
 the extractor.
@@ -121,7 +126,7 @@ least 9 + 29 known places.
 
 **Anything measured PER WIDGET is stamped onto controls AFTER `compute_common()`,
 never before.** A shared control stays in the common set only while it is
-byte-identical across all 135 widgets. Stamp a per-widget measurement on it first
+byte-identical across all participating widgets. Stamp a per-widget measurement on it first
 and the set shatters — 210 shared controls became 192, and the schema grew half a
 megabyte. This has now happened with `tier` and again with `class_verified`. It will
 happen a third time to whoever ignores this paragraph.

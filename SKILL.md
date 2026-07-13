@@ -177,9 +177,10 @@ python tools/el.py kit --section section_global_colors   # Site Settings: global
 
 Add `--json` to any of them for machine-readable output.
 
-**Never read `data/elementor-schema.json` into context.** It is 583,555 tokens. It
-is a database; `el.py` is the query. One query is ~700 tokens and answers the
-question completely. `data/*.csv` are there for `grep` when you want to scan.
+**Never read `data/elementor-schema.json` into context.** It is 1,082,477 tokens.
+It is a database; `el.py` is the query. One query is a few hundred tokens and
+answers the question completely. `data/*.csv` are there for `grep` when you want
+to scan.
 
 ## Which lookup answers which question
 

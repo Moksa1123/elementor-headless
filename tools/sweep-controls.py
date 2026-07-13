@@ -80,7 +80,7 @@ def stable_hex(*parts: str) -> str:
 # Options that live on the control CLASS rather than in any control's args, keyed
 # by control type. Populated from the schema's `control_types` (see load_schema).
 # Without this, `_animation` looks like a control with no legal values at all, and
-# every control conditional on it -- `animation_duration` on all 135 widgets --
+# every control conditional on it -- `animation_duration` on every widget --
 # becomes untestable for a reason that is an artefact of our own extraction.
 TYPE_OPTIONS: dict[str, list] = {}
 
