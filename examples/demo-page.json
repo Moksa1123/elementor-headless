@@ -196,7 +196,7 @@
               },
               "view": "stacked",
               "shape": "circle",
-              "title_text": "89% fewer tokens",
+              "title_text": "86.8% fewer tokens",
               "description_text": "Query the schema instead of reading Elementor's PHP source. Measured, reproducible.",
               "title_size": "h4",
               "position": "block-start",
