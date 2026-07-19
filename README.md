@@ -235,9 +235,9 @@ advertise a responsive breakpoint they never emit, and the schema now says
 
 **3. Does every class-emitting control put its class on the wrapper?**
 
-2,573 controls act by appending a wrapper class instead of emitting CSS — a
+3,308 controls act by appending a wrapper class instead of emitting CSS — a
 stylesheet check is structurally blind to all of them. Read out of the delivered
-HTML: 98.2% swept, 0 failures, including the `classes_dictionary` legacy remaps
+HTML: 99.8% swept, 0 failures, including the `classes_dictionary` legacy remaps
 (`position: "top"` renders `elementor-position-block-start`) and the per-device
 prefixes (`elementor-tablet-position-`, not a `_tablet` suffix).
 
@@ -330,10 +330,10 @@ a data field. Full write-ups in
 1. WP-CLI gets a stripped control stack — 46% of controls vanish silently
 2. Responsive is two mechanisms; `padding_tablet` has no control object and works
 3. A control's tier is not its widget's tier — Pro injects into free widgets
-4. A control is gated three ways; 499 controls die on an empty interpolated value
+4. A control is gated three ways; 661 controls die on an empty interpolated value
 5. Responsive dependencies are re-checked at the breakpoint
 6. `is_responsive` over-promises — only rendering knows
-7. CSS is only half of what a control can do — 2,573 emit classes instead
+7. CSS is only half of what a control can do — 3,308 emit classes instead
 8. A class value is remapped, and its device prefix is a different string
 9. Writing `_elementor_data` leaves a stale rendered-HTML cache — a correct tree
    serves the previous page, and a 17k-control sweep ran green over it

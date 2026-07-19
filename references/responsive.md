@@ -10,7 +10,7 @@ structure. Desktop is the bare control; every other breakpoint appends a suffix.
 ```
 
 That is the whole mechanism. It works on any control the schema marks responsive
-(30.1% of them), and it works the same way for group-control fields:
+(30.8% of them), and it works the same way for group-control fields:
 `typography_font_size_mobile`, `_element_custom_width_tablet`.
 
 ```bash

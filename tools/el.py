@@ -3,7 +3,7 @@
 el.py — keyword lookup into the Elementor schema. This is the skill's front door.
 
 The point is token economy. data/elementor-schema.json holds every control of
-every widget (~2.6 MB, roughly 800k tokens). No agent should ever read it. Ask
+every widget (~4.8 MB, roughly 1.08M tokens). No agent should ever read it. Ask
 it a question instead and get back the few lines that actually answer it:
 
     python tools/el.py widget heading --tab style     # style controls of one widget

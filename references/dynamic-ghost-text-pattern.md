@@ -51,7 +51,7 @@ to animate continuously.
 If this lives inside a normal page's content, hardcoding the text is fine —
 that page only ever shows one thing. If it lives inside a **shared Theme
 Builder template** (a template that renders for every post of a type — see
-`elementor-safe-edit.md`), a hardcoded `<text>TEXT</text>` renders identically
+`templates-and-conditions.md`), a hardcoded `<text>TEXT</text>` renders identically
 for every post that uses the template. There is no way to make one static
 HTML/SVG widget say something different depending on which post is currently
 being viewed.

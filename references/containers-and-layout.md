@@ -1,6 +1,6 @@
-# Containers: flex, grid, and the 356 controls
+# Containers: flex, grid, and the 354 controls
 
-The container is the biggest single element in Elementor — **356 settable
+The container is the biggest single element in Elementor — **354 settable
 controls**, more than any widget — and it is where layout actually happens. It is
 also the thing most likely to be missing from a schema, because it is not a widget
 and does not come back from `get_widget_types()`. You have to ask
@@ -144,7 +144,7 @@ border, border radius, box shadow, shape dividers, responsive — is **free**.
 
 ## section and column: legacy
 
-`section` (292 controls) and `column` (262) predate the container. They still
+`section` (290 controls) and `column` (262) predate the container. They still
 render, and you will meet them in existing pages, but they cannot do flex or grid
 and Elementor is not investing in them. Build new pages with containers.
 

@@ -65,7 +65,9 @@ introspection. Two things then happen:
 | `includes/base/controls-stack.php` | UI controls (heading, divider, raw_html, button, alert, notice) are cut down to `['type', 'section']` — labels gone |
 | `includes/managers/controls.php` | Every control with `selectors` (i.e. every *style* control) is diverted into a separate `style_controls` stack, and section markers lose their `label` and their real `tab`, defaulting to `'content'` |
 
-Measured on Elementor 4.1.4:
+Measured on Elementor 4.1.4, on the original extraction machine (pre-WooCommerce,
+so the full surface there was 37,964 raw rows; today's is 49,857 — the *ratio* is
+the point):
 
 ```
                         optimised    full     lost
@@ -276,7 +278,7 @@ set a control, render the page, and notice nothing happened.
 A control emits its CSS only if **all three** of these hold. Handle one or two of
 them and a large fraction of Elementor looks broken when it is merely gated.
 
-### 4a. `condition` — the simple form (7,946 controls)
+### 4a. `condition` — the simple form (10,765 controls)
 
 A flat map, checked with equality or membership. Three syntaxes, all of which
 appear in real controls:
@@ -299,7 +301,7 @@ option" lands you on `"none"`, which is precisely the value that switches the
 border off — so the colour and the width never emit and the control looks broken
 when it is not. This cost 3,123 false failures in the first sweep run.
 
-### 4b. `conditions` — the advanced form (152 controls)
+### 4b. `conditions` — the advanced form (82 controls)
 
 A completely separate mechanism with its own syntax: a boolean tree with `relation`
 (and/or), nested `terms`, and comparison operators.
@@ -317,7 +319,7 @@ The operators are exactly Elementor's (`includes/conditions.php::compare`):
 
 **Controls gated this way have an empty `condition`.** Check only `condition` and
 they read as unconditional — so you set one, nothing happens, and there is nothing
-in the schema to explain why. 152 controls, including `counter.number_gap`,
+in the schema to explain why. 82 controls, including `counter.number_gap`,
 `off-canvas.offcanvas_animation_duration` and every `motion_fx` transform-origin.
 
 ### 4c. `needs_value` — not a condition at all
@@ -351,7 +353,7 @@ every documented condition, and you get **no gradient** — because
 `background_color` and `background_color_b` are empty. There is no error. There is
 nothing in `condition` to warn you.
 
-**499 controls (4.9%) have one of these hidden cross-control dependencies.** The
+**661 controls (4.9%) have one of these hidden cross-control dependencies.** The
 extractor now parses them out of the `selectors` map and stores them as
 `needs_value`; `el.py` prints them as `needs-value-of:`; and `validate-page.py`
 makes it an error rather than letting you ship a gradient that does nothing.
@@ -362,7 +364,7 @@ makes it an error rather than letting you ship a gradient that does nothing.
 
 `verify-render.py` checks a page you wrote. That only ever covers the controls you
 happened to use — 94 of them, on the demo page. It says nothing about the other
-16,000.
+25,000.
 
 `tools/sweep-controls.py` closes that gap. For **every** control in the schema that
 claims to drive CSS, it synthesises a legal value, solves the dependency chain
@@ -380,21 +382,21 @@ python tools/sweep-controls.py plan --out sweep/ --post-id <a draft post>
 python tools/sweep-controls.py check sweep/ --out data/control-verification.csv
 ```
 
-Result on Elementor 4.1.4 / Pro 4.1.2 — 550 element variants across 55 pages:
+Result on Elementor 4.1.4 / Pro 4.1.2, full surface including WooCommerce:
 
 ```
-DESKTOP  (18,853 CSS-driving controls)
-  verified by value   17,421  (92.4%)   the exact value we wrote is in the CSS
-  property only        1,270  ( 6.7%)   right property, value not literally assertable
+DESKTOP  (25,259 CSS-driving controls)
+  verified by value   23,462  (92.9%)   the exact value we wrote is in the CSS
+  property only        1,640  ( 6.5%)   right property, value not literally assertable
   FAILED                   0  ( 0.0%)
-  skipped, untested      162  ( 0.9%)   no test could be built for these
-  covered                      99.1%
+  skipped, untested      157  ( 0.6%)   no test could be built for these
+  covered                      99.4%
 
-RESPONSIVE SUFFIXES  (25,404 _tablet / _mobile keys, each asserted inside ITS
+RESPONSIVE SUFFIXES  (33,448 _tablet / _mobile keys, each asserted inside ITS
                       breakpoint's media query, with a value distinct from desktop's
                       so a leak cannot pass)
-  verified by value   24,568  (96.7%)
-  property only          819  ( 3.2%)
+  verified by value   32,374  (96.8%)
+  property only        1,057  ( 3.2%)
   FAILED                  17  ( 0.1%)   <- all 9 controls behind them are now
                                            flagged `responsive_broken` in the schema
 ```
@@ -540,10 +542,10 @@ $this->add_render_attribute( '_wrapper', 'class',
     $controls[ $setting_key ]['prefix_class'] . $setting );
 ```
 
-**2,573 `(owner, control)` pairs act by putting a class on the element's wrapper**,
+**3,308 `(owner, control)` pairs act by putting a class on the element's wrapper**,
 not by emitting CSS. `_position`, `hide_tablet`, `hide_mobile`, every `view` /
 `shape` / `align` / `position` choose control, the entire transform popover set —
-and 1,894 of them have no `css` mapping at all, so a stylesheet sweep cannot even
+and 2,432 of them have no `css` mapping at all, so a stylesheet sweep cannot even
 see that they exist.
 
 They were all shipped in this repo on the strength of *"Elementor registered a
@@ -554,22 +556,22 @@ schema that has verified nothing about half its surface.
 `sweep-classes.py` renders each one and asserts the class on the wrapper:
 
 ```
-CLASS-EMITTING CONTROLS   2,573
-  verified by class       2,042  (79.4%)   FAILED 0
-  host never rendered       523  (20.3%)   the widget produces no markup on a bare page
-  skipped, untestable         8  ( 0.3%)
-PER-DEVICE CLASS PREFIXES   306   246 verified, 0 failed
-classes_dictionary REMAPS    10    10 verified, 0 failed
+CLASS-EMITTING CONTROLS   3,308
+  verified by class       2,493  (75.4%)   FAILED 0
+  host never rendered       817  (24.7%)   the widget produces no markup on a bare page
+  skipped, untestable         8  ( 0.2%)
+PER-DEVICE CLASS PREFIXES   396   300 verified, 0 failed
+classes_dictionary REMAPS    10     8 verified, 0 failed, 2 on hosts that never render
 ```
 
-The 523 are not a pass and not a failure: **29 widgets render no markup at all** on
-a bare page (`template`, `loop-grid`, `sidebar`, `post-comments`, every
-`wp-widget-*`, …), so there is no wrapper for a class to land on. They are flagged
+The 817 are not a pass and not a failure: **44 widgets render no markup at all** on
+a bare page (`template`, `loop-grid`, `sidebar`, half the `wp-widget-*` bridges, …),
+so there is no wrapper for a class to land on. They are flagged
 `renders_bare: false` in the schema and `el.py widget <name>` says so, because an
 agent that places `loop-grid` and walks away has built an invisible page and been
-told nothing. Three of them (`common`, `common-base`, `common-optimized`) are not
-placeable widgets at all — they are the registries Elementor injects the shared
-controls from.
+told nothing. Five registry entries (`common`, `common-base`, `common-optimized`,
+`global`, `inner-section`) are not placeable widgets at all — they are the base
+classes Elementor injects the shared controls from.
 
 ## Trap 8 — a class control's value is remapped, and its prefix changes per device
 
@@ -589,8 +591,9 @@ Write the legacy `top` — which is *not* in the option list — and it renders
 `elementor-position-block-start`. The dictionary exists so pages saved before
 Elementor moved to logical properties keep working, and it means **the option list
 is not the list of legal values**. A validator that only knows the options rejects a
-page that renders perfectly; this repo's did, until the sweep proved otherwise. All
-10 remaps are now verified by rendering them.
+page that renders perfectly; this repo's did, until the sweep proved otherwise. 8 of
+the 10 remaps are verified by rendering them; the other 2 sit on widgets that render
+no markup on a bare page, so there is no wrapper to read.
 
 **(b) a responsive class control has a different PREFIX per device — there is no
 `_tablet` suffix on the class.**
@@ -693,12 +696,14 @@ and you get **192 widgets, 13 elements**. Nothing is broken. The extra ones were
 never there to find.
 
 ```
-requires nothing (always present)                     104 widgets
-requires plugin:woocommerce                            29     class_exists('woocommerce')
+requires nothing (always present)                      93 widgets
 requires a WP legacy widget some plugin registers      33
+requires plugin:woocommerce                            29     class_exists('woocommerce')
 requires experiment:container                          13
-requires experiment:e_atomic_elements  (Elementor V4)  18
+requires experiment:e_pro_atomic_form  (Elementor V4)  10
+requires experiment:e_atomic_elements  (Elementor V4)   8
 requires experiment:nested-elements                     5
+requires experiment:e_components                        1
 ```
 
 A module that does not load registers nothing:
@@ -770,19 +775,19 @@ So `woocommerce-product-price` is *present* in the Pro-less dump. Take that at f
 value — "it exists without Pro, therefore it is free" — and 26 Pro widgets get
 labelled free. They are recognised by their module (`promotions`) and excluded.
 
-### What this costs, stated plainly
+### What this cost, stated plainly
 
-The sweeps ran on the site that had no WooCommerce. So of the corrected surface:
+When WooCommerce first entered the schema, the sweeps had run on the site that had
+no WooCommerce, so 2,766 CSS controls (the WooCommerce and V4 widgets) were marked
+unverified in `data/control-verification.csv` rather than being quietly counted as
+passes — and the coverage number went **down** from 99.1% when the schema got more
+honest, which is the correct direction for it to move. The sweeps have since been
+re-run over the full surface:
 
 ```
-CSS-driving controls   25,259     22,493 swept (89.0%)     2,766 NOT swept
-class-emitting         3,308       3,248 swept (98.2%)
+CSS-driving controls   25,259     25,102 swept (99.4%)     157 skipped
+class-emitting         3,308       3,300 swept (99.8%)       8 skipped
 ```
-
-The 2,766 are on the WooCommerce and V4 widgets. They are marked unverified in
-`data/control-verification.csv` rather than being quietly counted as passes, and the
-coverage number went **down** from 99.1% when the schema got more honest. That is the
-correct direction for it to move.
 
 ---
 
@@ -917,8 +922,8 @@ python tools/sweep-controls.py check sweep/ --out data/control-verification.csv
 ```
 
 ```
-DESKTOP     18,853 controls   99.1% covered, 0 failures
-RESPONSIVE  25,404 suffixes   96.7% verified by value
+DESKTOP     25,259 controls   99.4% covered, 0 failures
+RESPONSIVE  33,448 suffixes   96.8% verified by value
 ```
 
 **Does every control that emits a CLASS actually work?** A different question, read
@@ -930,9 +935,9 @@ python tools/sweep-classes.py check classsweep/ --out data/class-verification.cs
 ```
 
 ```
-CLASS-EMITTING CONTROLS   2,573   79.4% verified, 0 failures
-PER-DEVICE PREFIXES         306   246 verified
-classes_dictionary REMAPS    10    10 verified
+CLASS-EMITTING CONTROLS   3,308   75.4% verified, 0 failures
+PER-DEVICE PREFIXES         396   300 verified
+classes_dictionary REMAPS    10     8 verified
 ```
 
 The render sweep catches Trap 2, because it is the only check that can see a
@@ -986,7 +991,7 @@ things the schema *knows* rather than things a human remembers.
 
 > **Ordering rule, learned three times the hard way:** anything measured PER WIDGET
 > gets stamped onto controls **after** `compute_common()`, never before. A shared
-> control stays in the common set only while it is byte-identical across all 135
-> widgets; stamp a per-widget measurement on it first and the set shatters (210
-> shared controls collapsed to 192, and the schema grew half a megabyte). It has
-> now happened with `tier`, and again with `class_verified`.
+> control stays in the common set only while it is byte-identical across every
+> participating widget; stamp a per-widget measurement on it first and the set
+> shatters (210 shared controls collapsed to 192, and the schema grew half a
+> megabyte). It has now happened with `tier`, and again with `class_verified`.

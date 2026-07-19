@@ -79,7 +79,7 @@ The rule is mechanical, never hand-picked, and it is measured rather than
 thresholded: candidates are the controls byte-identical on more than half the
 widgets, participants are the widgets carrying at least 90% of those candidates,
 and the shared set is what every participant carries. A fixed "appears on ≥90%
-of all widgets" cutoff broke the day Elementor's 20 V4 atomic widgets entered
+of all widgets" cutoff broke the day Elementor's 19 V4 atomic widgets entered
 the surface — they register none of the Advanced tab, `_margin` fell to 89.58%,
 and the whole shared set silently evaluated to empty. Widgets outside the
 participant set (the V4 atomics, `global`) keep their own controls and are

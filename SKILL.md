@@ -30,7 +30,7 @@ A control can act two ways, and they are verified against two different artefact
 
 ```
 CSS      25,259 CSS-driving controls   99.4% swept, 0 failures   (the delivered stylesheet)
-CLASS     3,308 wrapper-class controls 98.2% swept, 0 failures   (the delivered HTML)
+CLASS     3,308 wrapper-class controls 99.8% swept, 0 failures   (the delivered HTML)
 BROWSER  32,261 computed-style probes  6,177 verified in Chromium (getComputedStyle on
                                        the node each rule targets, on the public URL)
 WIDGETS  168 of 168 placeable widgets  functionally rendered, ONE PER PAGE, across two
@@ -45,8 +45,8 @@ HOVER    3,882 :hover probes           hovered with a real pointer: 297 verified
 
 Per-widget results in `data/widget-verification.csv`: 126 rendered with content or
 markers, 38 correctly empty without site context (cart/checkout/loop widgets on a
-bare page), 4 context-dependent, 0 broken. The remaining 18 V4 atomic elements are
-a different data model and excluded by design; 6 registry entries are not placeable.
+bare page), 4 context-dependent, 0 broken. The remaining 19 V4 atomic widgets are
+a different data model and excluded by design; 5 registry entries are not placeable.
 
 The browser pass is the only one that catches a rule that is IN the stylesheet and
 LOSES - and it found one that is systemic: **`_element_width` / `_element_custom_width`
@@ -56,14 +56,13 @@ directly inside a container** (`.elementor.elementor .e-con > .elementor-widget
 width still applies through `--container-widget-width`; the max-width is dead. 242
 of 292 browser-detected overrides are this one fact.
 
-The 2,766 unswept CSS controls are on the WooCommerce and Elementor V4 widgets,
-which were added to the schema after the sweep ran. **They are labelled unverified
-rather than counted as passes** - `data/control-verification.csv` and
-`data/class-verification.csv` are per-control, so the gap is visible, not averaged
-away.
+All 25,259 CSS-driving controls are now swept; the 157 for which no test could be
+synthesised are **labelled `skipped` rather than counted as passes** -
+`data/control-verification.csv` and `data/class-verification.csv` are per-control,
+so any gap is visible, not averaged away.
 
 Where Elementor's own metadata turned out to be wrong, **the rendered result wins**:
-9 controls advertise a responsive breakpoint they never emit, 29 widgets render no
+9 controls advertise a responsive breakpoint they never emit, 44 widgets render no
 markup at all on a bare page, and the schema now says both.
 
 ## Not every widget exists on every install
@@ -82,10 +81,12 @@ in Elementor's source:
 |---|---|
 | `plugin:woocommerce` — `class_exists('woocommerce')` | **29** |
 | `experiment:container` | 13 |
-| `experiment:e_atomic_elements` (Elementor V4) | 18 |
+| `experiment:e_pro_atomic_form` (Elementor V4) | 10 |
+| `experiment:e_atomic_elements` (Elementor V4) | 8 |
 | `experiment:nested-elements` | 5 |
+| `experiment:e_components` | 1 |
 | a WP legacy widget some plugin registers | 33 |
-| nothing — always there | 104 |
+| nothing — always there | 93 |
 
 ```bash
 python tools/el.py widgets --requires woocommerce
@@ -117,8 +118,8 @@ there is no error. `el.py` prints every gate it has:
 | Shown as | What it means |
 |---|---|
 | `needs:{...}` | the simple `condition` — another setting must have a given value |
-| `needs-adv:...` | the **advanced** `conditions` form — a boolean tree with `and`/`or` and operators (`>`, `!==`, `in`). **152 controls are gated only this way and have no `condition` at all** |
-| `needs-value-of:a,b` | not a condition. This control's CSS interpolates `a` and `b`, and **Elementor throws away the whole declaration if either is empty** — however satisfied the conditions are. 499 controls do this |
+| `needs-adv:...` | the **advanced** `conditions` form — a boolean tree with `and`/`or` and operators (`>`, `!==`, `in`). **82 controls are gated only this way and have no `condition` at all** |
+| `needs-value-of:a,b` | not a condition. This control's CSS interpolates `a` and `b`, and **Elementor throws away the whole declaration if either is empty** — however satisfied the conditions are. 661 controls do this |
 | `rwd-BROKEN:tablet` | Elementor says the `_tablet` suffix is legal. Rendering says it emits nothing. Believe the rendering |
 
 The third is the quiet killer. Set `background_background: "gradient"` plus
@@ -139,7 +140,7 @@ Detail: [extraction-traps.md](references/extraction-traps.md).
 
 ## Half the controls do not emit CSS at all - they emit a CLASS
 
-2,573 controls act by appending a class to the element wrapper instead of styling
+3,308 controls act by appending a class to the element wrapper instead of styling
 it. `el.py` prints `class:` for those, and there are four ways to get them wrong:
 
 | | |
@@ -149,9 +150,9 @@ it. `el.py` prints `class:` for those, and there are four ways to get them wrong
 | **a switcher stores its `return_value`** | not `true`, not always `"yes"`. `hide_tablet: "yes"` renders the class `elementor-yes` and hides nothing. The value is `"hidden-tablet"`. `el.py` prints `on:'hidden-tablet'` |
 | **zero must be a string** | `"columns": 0` emits nothing; `"columns": "0"` emits `elementor-grid-0`. PHP's `empty()` plus a strict `'0' !==` check |
 
-**29 widgets render no markup at all on a bare page** - `template`, `loop-grid`,
-`sidebar`, `post-comments`, every `wp-widget-*`. Place one and you get an invisible
-page with no error. `el.py widget <name>` warns you.
+**44 widgets render no markup at all on a bare page** - `template`, `loop-grid`,
+`sidebar`, and half the `wp-widget-*` bridges among them. Place one and you get an
+invisible page with no error. `el.py widget <name>` warns you.
 
 ## Look it up like this
 
@@ -302,13 +303,13 @@ Only **active** breakpoints exist (`el.py breakpoints`).
 | Doc | What's in it |
 |---|---|
 | [data-model.md](references/data-model.md) | the tree, the 4 meta keys, `__globals__`, `__dynamic__`, the active Kit, caches |
-| [control-types.md](references/control-types.md) | all 59 value shapes, group controls, conditions, units, the icon-name trap |
+| [control-types.md](references/control-types.md) | all 56 value shapes, group controls, conditions, units, the icon-name trap |
 | [containers-and-layout.md](references/containers-and-layout.md) | container flex + grid, sizing children, section/column legacy |
 | [responsive.md](references/responsive.md) | breakpoints, suffixes, why `padding_tablet` has no control object |
 | [templates-and-conditions.md](references/templates-and-conditions.md) | template CRUD, Display Conditions, priority resolution — **Pro** |
 | [import-export.md](references/import-export.md) | Elementor's JSON interchange format; moving blocks across sites without breaking media |
 | [extraction-traps.md](references/extraction-traps.md) | the eleven ways a schema goes silently wrong, and how this one is verified |
-| [token-efficiency.md](references/token-efficiency.md) | the 89% figure, measured, with the script that reproduces it |
+| [token-efficiency.md](references/token-efficiency.md) | the 86.8% figure, measured, with the script that reproduces it |
 
 ## Verify it rather than trusting it
 
@@ -375,7 +376,7 @@ PASS - the page a visitor receives contains every element of the tree,
 | `verify-schema.py` | does the schema match your install? |
 | `verify-render.py` | does Elementor emit the CSS the schema promised? |
 | `verify-live.py` | does the page **the public gets** contain it, through the cache and the CDN? |
-| `sweep-controls.py` | render EVERY CSS control and assert it works (99.1% covered, 0 failures) |
+| `sweep-controls.py` | render EVERY CSS control and assert it works (99.4% covered, 0 failures) |
 | `sweep-classes.py` | render every CLASS control and assert the wrapper class (0 failures) |
 | `sweep-browser.py` | declared vs computed for every control, in Chromium, on the public URL |
 | `sweep-widgets.py` | every widget functionally, one per page, with screenshots |

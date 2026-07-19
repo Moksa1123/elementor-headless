@@ -22,7 +22,7 @@ Then the CSS. Elementor compiles each post's styling into its own file
 **old** stylesheet, so a perfectly correct tree still renders wrong:
 
 ```bash
-wp elementor flush-css --post-id=<id>
+wp elementor flush_css --post-id=<id>
 ```
 
 `tools/apply-page.php` does all of this — meta, slashing, CSS rebuild — and backs
@@ -64,10 +64,10 @@ before you write anything.
 ## elType: what actually exists
 
 ```
-container   the modern layout primitive — flex or grid   356 controls
-section     legacy, pre-3.6                              292 controls
+container   the modern layout primitive — flex or grid   354 controls
+section     legacy, pre-3.6                              290 controls
 column      legacy, only valid inside a section          262 controls
-widget      a leaf; 135 kinds (64 free, 71 Pro)
+widget      a leaf; 192 kinds (82 free, 110 Pro)
 ```
 
 Build new pages with **containers**. Section/column still render (Elementor keeps
@@ -276,7 +276,7 @@ is a post id, and ITS `_elementor_page_settings` is the entire Site Settings pan
 global fonts, theme style, layout defaults, lightbox. A `__globals__` reference
 like `globals/colors?id=primary` resolves to the repeater item whose `_id`
 matches. After editing the kit, regenerate CSS for the whole site
-(`wp elementor flush-css`), not one post. `el.py kit` queries the surface.
+(`wp elementor flush_css`), not one post. `el.py kit` queries the surface.
 
 ## Caches, flushed inside-out
 
@@ -288,7 +288,7 @@ There are **four** layers, and the innermost one is the one nobody expects:
 wp post meta delete <id> _elementor_element_cache
 
 # 2. the compiled CSS
-wp elementor flush-css --post-id=<id>
+wp elementor flush_css --post-id=<id>
 
 # 3. the page cache
 wp breeze purge --cache=all

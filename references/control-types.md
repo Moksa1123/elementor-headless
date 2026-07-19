@@ -6,7 +6,7 @@ the styling just does not appear.
 
 This is the single most common way headless Elementor work fails, and it is
 entirely avoidable: the shapes are not a matter of opinion, they come from
-Elementor's own `Control_Base::get_default_value()`. All 59 are in
+Elementor's own `Control_Base::get_default_value()`. All 56 are in
 `data/control-types.csv`; ask for one with:
 
 ```bash

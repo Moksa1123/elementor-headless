@@ -83,7 +83,7 @@ def compute_common(widgets: dict) -> tuple[list, dict, set]:
 
     Not every widget is in that system. Elementor V4's atomic widgets (`e-heading`,
     `e-button`, the `e-form-*` set) have their own style model and register NONE of
-    the Advanced-tab controls - no `_margin`, no `_animation`, nothing. There are 20
+    the Advanced-tab controls - no `_margin`, no `_animation`, nothing. There are 19
     of them, out of 192.
 
     A fixed "appears on >= 90% of widgets" threshold cannot survive that, and it
