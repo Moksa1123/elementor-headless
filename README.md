@@ -70,7 +70,32 @@ right one is worse than no installer.
 
 ## Use
 
-Look things up — one query costs ~700 tokens and answers completely:
+Install the skill, then just describe the page to your agent. You never run the
+tools below yourself unless you want to — the skill teaches the agent the loop:
+
+> Build a landing page on post 123: dark hero, 960px boxed, three icon-box
+> cards in a row that stack on mobile, and a rounded CTA button. This site
+> has no Elementor Pro — free widgets only.
+
+What the agent does with that, and which tool carries each step:
+
+```
+1. query the surface     el.py            which controls exist, their JSON value
+                                          shapes, their gates, Free or Pro
+2. write the tree        (the agent)      _elementor_data, straight from the shapes
+3. validate BEFORE write validate-page.py unknown controls, wrong shapes, unmet
+                                          dependencies, Pro-on-Free, missing plugins
+4. apply over WP-CLI     apply-page.php   4 meta keys + page settings + CSS rebuild
+                                          + rendered-HTML cache purge
+5. verify the live page  verify-live.py   the public URL, through the cache/CDN
+```
+
+Steps 1-3 are entirely local — planning and validating need no site at all.
+Steps 4-5 need WP-CLI on the WordPress host (usually over SSH); any transport
+that can run `wp eval-file` works.
+
+The queries the agent leans on — one query costs a few hundred tokens and
+answers completely:
 
 ```bash
 python tools/el.py widgets --tier free --grep box    # find a widget
@@ -309,16 +334,16 @@ Each of these built headlessly, then verified in a browser on the live site:
 **8. Does the page the PUBLIC gets contain all of it?**
 
 ```bash
-python tools/verify-live.py examples/demo-page.json https://moksaweb.com/elementor-headless-demo/
+python tools/verify-live.py page.json https://your-site/your-page/
 ```
 
 Fetches the public URL and **every stylesheet that page links** (a page's styling
 is split across several files — the Kit's globals live in a different one),
 through the edge cache, and asserts tree + CSS values + wrapper classes. It
 fails on a tampered tree — a verifier that has never gone red is not a verifier.
-
-The demo page is real, published, and has never been opened in the editor:
-**https://moksaweb.com/elementor-headless-demo/**
+[examples/demo-page.json](examples/demo-page.json) is a complete page built this
+way, published live and never opened in the editor, and it passes this check at
+three viewports.
 
 ## The traps
 

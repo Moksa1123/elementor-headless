@@ -124,8 +124,8 @@ container (flex, column, boxed)
 └── widget  button
 ```
 
-That is `examples/demo-page.json`, which is a real published page:
-**https://moksaweb.com/elementor-headless-demo/**
+That is `examples/demo-page.json`, a real page that was published and
+verify-live'd without ever being opened in the editor.
 
 ## What Pro adds to the container
 

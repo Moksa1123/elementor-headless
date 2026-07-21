@@ -180,8 +180,11 @@ run **`verify-live.py` against the public URL**. It is the repo's proof that the
 is real; a demo that renders wrong is worse than no demo.
 
 ```bash
-python tools/verify-live.py examples/demo-page.json https://moksaweb.com/elementor-headless-demo/
+python tools/verify-live.py examples/demo-page.json https://<the-demo-page-url>/
 ```
+
+(The demo page lives on the maintainer's site; its URL is deliberately not
+published anywhere in this repo.)
 
 Prefer `verify-live.py` over `verify-render.py` for the demo. `verify-render.py`
 reads one CSS file you hand it off the disk, and a page's styling is spread across
@@ -202,8 +205,10 @@ Elementor's own *class definitions* (control names, types, defaults), never from
 site's content. Keep it that way — if the extractor ever starts capturing live
 `settings` values, that changes.
 
-The one deliberate exception is the demo page URL. It is the maintainer's own site,
-published on purpose as the skill's proof, and it stays.
+The demo page URL was once the deliberate exception, published as the skill's
+proof. That decision was reversed: the URL now appears nowhere in the repo —
+`examples/demo-page.json` plus the verify-live output stand as the proof. Do not
+reintroduce it.
 
 ## Adding a platform config
 

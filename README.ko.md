@@ -70,8 +70,33 @@ python tools/install-skill.py --list
 
 ## 사용법
 
-조회는 이렇게 합니다 — 질의 한 번에 약 700토큰이 들고, 그 한 번으로 완전한
-답이 나옵니다:
+스킬을 설치한 뒤에는 에이전트에게 원하는 페이지를 설명하기만 하면 됩니다.
+아래 도구들은 원해서 쓰는 경우가 아니면 직접 실행할 일이 없습니다 — 스킬이
+에이전트에게 이 루프를 가르칩니다:
+
+> post 123에 랜딩 페이지를 만들어 줘: 어두운 hero, 960px boxed, 한 줄에
+> icon-box 카드 3개가 놓이고 모바일에서는 세로로 쌓이게, 그리고 모서리가
+> 둥근 CTA 버튼. 이 사이트에는 Elementor Pro가 없으니 free 위젯만 써.
+
+그 요청을 받은 에이전트가 하는 일과, 각 단계를 맡는 도구입니다:
+
+```
+1. 표면을 질의           el.py            어떤 컨트롤이 존재하는지, JSON value
+                                          shape와 gate, Free인지 Pro인지
+2. 트리를 작성           (에이전트)       shape 그대로 _elementor_data를 작성
+3. 쓰기 전에 검증        validate-page.py 알 수 없는 컨트롤, 잘못된 shape, 미충족
+                                          의존성, Pro-on-Free, 빠진 플러그인
+4. WP-CLI로 적용         apply-page.php   meta key 4개 + 페이지 설정 + CSS 재생성
+                                          + 렌더링 HTML 캐시 삭제
+5. 라이브 페이지 검증    verify-live.py   캐시/CDN을 거친 공개 URL
+```
+
+1-3단계는 전부 로컬에서 이루어집니다 — 계획하고 검증하는 데는 사이트가 전혀
+필요 없습니다. 4-5단계는 WordPress 호스트의 WP-CLI가 필요하며(보통 SSH 경유),
+`wp eval-file`을 실행할 수 있는 수단이면 무엇이든 됩니다.
+
+에이전트가 기대는 질의들입니다 — 질의 한 번에 몇백 토큰이 들고, 그 한 번으로
+완전한 답이 나옵니다:
 
 ```bash
 python tools/el.py widgets --tier free --grep box    # find a widget
@@ -319,17 +344,16 @@ same-element seed 충돌(hover 컨트롤 두 개가 같은 property에 일부러
 **8. 일반 방문자가 받는 페이지에 이 전부가 들어 있는가?**
 
 ```bash
-python tools/verify-live.py examples/demo-page.json https://moksaweb.com/elementor-headless-demo/
+python tools/verify-live.py page.json https://your-site/your-page/
 ```
 
 공개 URL과 **그 페이지가 링크하는 모든 stylesheet**(페이지의 스타일은 여러
 파일에 나뉘어 있습니다 — Kit의 globals는 별도 파일에 들어 있습니다)를 edge cache를
 거쳐 가져와서, 트리 + CSS 값 + wrapper class를 assert합니다. 변조된 트리에서는
 실패합니다 — 한 번도 빨간불이 들어온 적 없는 verifier는 verifier가
-아닙니다.
-
-demo 페이지는 실제로 존재하고, 게시되어 있으며, 에디터에서 열린 적이 한 번도
-없습니다: **https://moksaweb.com/elementor-headless-demo/**
+아닙니다. [examples/demo-page.json](examples/demo-page.json)은 이 방식으로 만든
+완성된 페이지로, 실제로 게시되어 있고 에디터에서 열린 적이 한 번도 없으며,
+viewport 3종에서 이 검사를 통과합니다.
 
 ## 함정들
 

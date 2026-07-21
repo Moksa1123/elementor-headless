@@ -349,8 +349,8 @@ It fetches the public URL, fetches **every** Elementor stylesheet that page link
 wrapper classes against what actually came down the wire. It prints the cache
 headers, so a stale edge is visible rather than silent.
 
-Live proof, built headlessly and published:
-**https://moksaweb.com/elementor-headless-demo/**
+Live proof: `examples/demo-page.json` was built headlessly, published, and passes
+this check at three viewports without ever being opened in the editor.
 
 ```
 elements delivered      : 8/8
