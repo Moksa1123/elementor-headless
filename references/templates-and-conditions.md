@@ -57,6 +57,13 @@ define one:
 
 **Apply**: setting `_elementor_conditions` is what actually activates it — see below. Multiple templates of the same `_elementor_template_type` can coexist (e.g. several `single` templates for different post types); Theme Builder's condition-matching + priority system (below) decides which one renders for a given request.
 
+**Update in place — do not stomp the type.** Location resolution reads
+`_elementor_template_type`; overwrite a header's type with `wp-post` and the
+header silently vanishes from every page on the site, with no error anywhere.
+`apply-page.php` preserves an existing library type for exactly this reason: it
+only writes the `wp-page`/`wp-post` default when the meta is absent or already a
+page/post type. This shipped as a live incident before it was a rule.
+
 ## Embedding a template anywhere: the shortcode and the widget
 
 Two ways to drop a saved template into other content, both Pro-less friendly on

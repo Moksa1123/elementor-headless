@@ -113,7 +113,15 @@ if ( $previous ) {
 // its backslashes. Elementor's own save path slashes for the same reason.
 update_post_meta( $post_id, '_elementor_data', wp_slash( wp_json_encode( $tree ) ) );
 update_post_meta( $post_id, '_elementor_edit_mode', 'builder' );
-update_post_meta( $post_id, '_elementor_template_type', $post->post_type === 'page' ? 'wp-page' : 'wp-post' );
+
+// Do NOT stomp the template type of a library template. A Theme Builder header
+// applied through this script once became 'wp-post', and the header vanished
+// from every page on the site: location resolution reads this meta. Only set
+// the page/post default when the meta is absent or already a page/post type.
+$existing_type = get_post_meta( $post_id, '_elementor_template_type', true );
+if ( ! $existing_type || in_array( $existing_type, array( 'wp-page', 'wp-post', 'post', 'page' ), true ) ) {
+	update_post_meta( $post_id, '_elementor_template_type', $post->post_type === 'page' ? 'wp-page' : 'wp-post' );
+}
 update_post_meta( $post_id, '_elementor_version', ELEMENTOR_VERSION );
 
 $page_settings_applied = false;
