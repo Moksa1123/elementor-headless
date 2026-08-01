@@ -1,0 +1,210 @@
+[
+  {
+    "id": "000001",
+    "elType": "container",
+    "widgetType": null,
+    "settings": {
+      "container_type": "flex",
+      "flex_direction": "column"
+    },
+    "elements": [
+      {
+        "id": "000002",
+        "elType": "container",
+        "widgetType": null,
+        "settings": {
+          "container_type": "flex",
+          "flex_direction": "column"
+        },
+        "elements": [
+          {
+            "id": "000003",
+            "elType": "container",
+            "widgetType": null,
+            "settings": {
+              "container_type": "flex",
+              "flex_direction": "column"
+            },
+            "elements": [
+              {
+                "id": "000004",
+                "elType": "widget",
+                "widgetType": "heading",
+                "settings": {
+                  "title": "Welcome to Our Product",
+                  "header_size": "h2"
+                },
+                "elements": []
+              },
+              {
+                "id": "000005",
+                "elType": "widget",
+                "widgetType": "text-editor",
+                "settings": {
+                  "editor": "<p>Build amazing websites without coding</p>"
+                },
+                "elements": []
+              },
+              {
+                "id": "000006",
+                "elType": "widget",
+                "widgetType": "button",
+                "settings": {
+                  "text": "Get Started Now",
+                  "link": {
+                    "url": "#contact"
+                  }
+                },
+                "elements": []
+              }
+            ]
+          },
+          {
+            "id": "000007",
+            "elType": "container",
+            "widgetType": null,
+            "settings": {
+              "container_type": "flex",
+              "flex_direction": "row",
+              "flex_wrap": "wrap"
+            },
+            "elements": [
+              {
+                "id": "000008",
+                "elType": "container",
+                "widgetType": null,
+                "settings": {
+                  "container_type": "flex",
+                  "flex_direction": "column"
+                },
+                "elements": [
+                  {
+                    "id": "000009",
+                    "elType": "widget",
+                    "widgetType": "heading",
+                    "settings": {
+                      "title": "🚀 Fast",
+                      "header_size": "h2"
+                    },
+                    "elements": []
+                  },
+                  {
+                    "id": "00000a",
+                    "elType": "widget",
+                    "widgetType": "text-editor",
+                    "settings": {
+                      "editor": "<p>Lightning quick performance</p>"
+                    },
+                    "elements": []
+                  }
+                ]
+              },
+              {
+                "id": "00000b",
+                "elType": "container",
+                "widgetType": null,
+                "settings": {
+                  "container_type": "flex",
+                  "flex_direction": "column"
+                },
+                "elements": [
+                  {
+                    "id": "00000c",
+                    "elType": "widget",
+                    "widgetType": "heading",
+                    "settings": {
+                      "title": "🎨 Flexible",
+                      "header_size": "h2"
+                    },
+                    "elements": []
+                  },
+                  {
+                    "id": "00000d",
+                    "elType": "widget",
+                    "widgetType": "text-editor",
+                    "settings": {
+                      "editor": "<p>Fully customizable design</p>"
+                    },
+                    "elements": []
+                  }
+                ]
+              },
+              {
+                "id": "00000e",
+                "elType": "container",
+                "widgetType": null,
+                "settings": {
+                  "container_type": "flex",
+                  "flex_direction": "column"
+                },
+                "elements": [
+                  {
+                    "id": "00000f",
+                    "elType": "widget",
+                    "widgetType": "heading",
+                    "settings": {
+                      "title": "📱 Responsive",
+                      "header_size": "h2"
+                    },
+                    "elements": []
+                  },
+                  {
+                    "id": "000010",
+                    "elType": "widget",
+                    "widgetType": "text-editor",
+                    "settings": {
+                      "editor": "<p>Works on all devices</p>"
+                    },
+                    "elements": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "000011",
+            "elType": "container",
+            "widgetType": null,
+            "settings": {
+              "container_type": "flex",
+              "flex_direction": "column"
+            },
+            "elements": [
+              {
+                "id": "000012",
+                "elType": "widget",
+                "widgetType": "heading",
+                "settings": {
+                  "title": "Ready to get started?",
+                  "header_size": "h2"
+                },
+                "elements": []
+              },
+              {
+                "id": "000013",
+                "elType": "widget",
+                "widgetType": "text-editor",
+                "settings": {
+                  "editor": "<p>Join thousands of happy users</p>"
+                },
+                "elements": []
+              },
+              {
+                "id": "000014",
+                "elType": "widget",
+                "widgetType": "button",
+                "settings": {
+                  "text": "Start Free Trial",
+                  "link": {
+                    "url": "#"
+                  }
+                },
+                "elements": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 60px 20px; text-align: center; }
+        .hero h1 { margin: 0; font-size: 48px; }
+        .hero p { margin: 20px 0; font-size: 18px; }
+        .cta-btn { display: inline-block; background: #fff; color: #667eea; padding: 15px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; }
+        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 60px 20px; }
+        .feature-card { background: #f5f5f5; padding: 30px; border-radius: 8px; text-align: center; }
+        .feature-card h3 { margin-top: 20px; }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to Our Product</h1>
+        <p>Build amazing websites without coding</p>
+        <a href="#contact" class="cta-btn">Get Started Now</a>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature-card">
+            <h3>🚀 Fast</h3>
+            <p>Lightning quick performance</p>
+        </div>
+        <div class="feature-card">
+            <h3>🎨 Flexible</h3>
+            <p>Fully customizable design</p>
+        </div>
+        <div class="feature-card">
+            <h3>📱 Responsive</h3>
+            <p>Works on all devices</p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" style="background: #f9f9f9; padding: 60px 20px; text-align: center;">
+        <h2>Ready to get started?</h2>
+        <p>Join thousands of happy users</p>
+        <button class="cta-btn">Start Free Trial</button>
+    </section>
+</body>
+</html>
