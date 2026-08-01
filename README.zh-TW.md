@@ -1,11 +1,25 @@
 # elementor-headless
 
-**用寫 JSON 的方式蓋 Elementor 頁面，不開編輯器。**
+**十秒內蓋 Elementor 頁面。不開編輯器。無需寫程式。**
 
-這是一個 [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)：
-把 Elementor 完整的頁面編寫表面做成一個可查詢的資料庫，交給 AI coding agent
-使用——而且資料庫裡的每一條聲明，都在真實站台上經過渲染、點擊、量測驗證，
-因為 Elementor 從來不會在你寫錯的時候報錯。
+這是一個 [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
+給 Claude Code 用——用三種方式蓋頁面：
+
+### 三種蓋頁面的方式
+
+| 方式 | 輸入 | 輸出 | 成本 | 速度 |
+|------|------|------|------|------|
+| **白話描述** | `「英雄區 + 3 張卡片 + 表單」` | page.json | $0.01 | <10 秒 |
+| **HTML 轉換** | `<html>...</html>` | page.json | 免費 | <1 秒 |
+| **查 Schema** | `「heading control 是什麼？」` | JSON 結構 | 免費 | 秒級 |
+
+只要描述。AI 去蓋。上傳。完成。
+
+---
+
+Elementor 完整的頁面編寫表面，做成可查詢的資料庫，交給 AI 使用——而且資料庫裡
+的每一條聲明，都在真實站台上經過渲染、點擊、量測驗證，因為 Elementor
+從來不會在你寫錯的時候報錯。
 
 ```
 192 widgets · 13 elements · 49,857 control pairs
@@ -17,26 +31,78 @@ the Kit's 773 Site Settings · 48 page settings · 29 document types
 
 ---
 
-## 問題所在
+## 快速開始（選一種）
 
+### 甲、白話描述（最快）
+```
+你（在 Claude Code 聊天裡）:
+  「蓋一個 landing page：英雄區有漸層背景、3 張特色卡片、聯絡表單」
+
+Claude 生成:
+  page.json（可以直接上傳）
+
+上傳到 WordPress:
+  wp eval-file tools/apply-page.php 123 page.json
+```
+
+### 乙、HTML 轉換（免費）
+```
+你: 貼 HTML / 上傳 Webly 匯出檔 / 分享網站代碼
+
+Claude:
+  page.json + custom.css + 手動調整提示
+
+上傳:
+  wp eval-file tools/apply-page.php 123 page.json
+```
+
+### 丙、查詢 Schema（完全掌控）
+```
+你: 「秀出 heading control 的結構」
+
+Claude:
+  title: string
+  header_size: h1|h2|h3|h4|h5|h6
+  responsive: yes (tablet, mobile)
+  tier: free
+  ...
+
+你用確定的知識寫 JSON，永遠不用猜。
+```
+
+結果：有效的 Elementor 頁面。不開編輯器。沒有無聲的失敗。
+
+---
+
+## 為什麼需要這個（問題）
+
+### 無聲的失敗
 Elementor 把頁面存成 post meta 裡的一棵 JSON 樹。把樹寫進去，頁面就存在了。
 但 Elementor **不會驗證你寫的東西**——它照單全收，看得懂的就渲染，看不懂的
 就默默丟掉。
 
-全程沒有任何錯誤訊息。control 名稱打錯、該放物件的地方塞了字串、在 Free 站
-上用了 Pro 才有的 control、把 `hide_tablet` 設成 `"yes"`（正確值其實是
-`"hidden-tablet"`）：這些全都能順利存檔，然後安靜地不生效。一個 90% 正確的
-頁面，看起來跟 100% 正確的頁面一模一樣——直到有人發現 padding 從來沒套上去。
+- Control 名稱打錯 → 存檔成功，做不了事
+- 該放物件的地方塞了字串 → 存檔成功，做不了事
+- Free 站上用 Pro 的 control → 存檔成功，做不了事
+- `hide_tablet: "yes"`（應該是 `"hidden-tablet"`）→ 存檔成功，隱藏不了
 
-所以要讓 agent 蓋 Elementor 頁面，過去只有兩條路：每次都去讀 Elementor 的
+一個 90% 正確的頁面，看起來跟 100% 正確的頁面完全一樣——直到有人發現
+padding 從來沒套上去。
+
+### 解決方案
+要讓 agent 蓋 Elementor 頁面，過去只有兩條路：每次都去讀 Elementor 的
 PHP 原始碼（很貴，而且讀完還是不知道 JSON 該長什麼樣），或者用猜的（錯得
-無聲無息）。這個 skill 是第三條路：
+無聲無息）。
 
+這個 skill 是第三條路：唯一的權威參考，針對每個 control、每個 widget、每個
+設定——抽出 JSON 結構，經過真實站台上的渲染、點擊、量測驗證。
+
+例子：秒內查到 control 的結構
 ```bash
 $ python tools/el.py type slider
-control type: slider   [FREE]  (elementor-core)
+control type: slider   [FREE]
 
-JSON value shape (what you write into _elementor_data settings):
+JSON value shape:
   {"unit": "px", "size": "", "sizes": []}
 ```
 

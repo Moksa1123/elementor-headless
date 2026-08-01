@@ -1,12 +1,26 @@
 # elementor-headless
 
-**Elementor ページはエディタを操作して作るのではなく、JSON を直接書いて作る。**
+**Elementor ページを 10 秒で作れる。エディタを使わない。コードを書かない。**
 
-AI コーディングエージェントに Elementor のオーサリングサーフェス全体を
-クエリ可能なデータベースとして与える
-[Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)。
-そして、そこに書かれたすべての主張を、実サイト上でのレンダリング・クリック・
-計測によって証明する。Elementor は何を間違えてもエラーを一切出さないからだ。
+Claude Code 用の [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)。
+3 つの方法でページを作れる：
+
+### 3 つのページ製作方法
+
+| 方法 | 入力 | 出力 | コスト | 時間 |
+|------|------|------|--------|------|
+| **説明文** | `「ヒーロー + 3 カード + フォーム」` | page.json | $0.01 | <10 秒 |
+| **HTML 変換** | `<html>...</html>` | page.json | 無料 | <1 秒 |
+| **Schema 照会** | `「heading コントロールは？」` | JSON 形 | 無料 | 秒単位 |
+
+説明すれば AI が作る。アップロード。完了。
+
+---
+
+AI コーディングエージェントに Elementor のオーサリングサーフェス全体をクエリ可能
+なデータベースとして与える。そして、そこに書かれたすべての主張を、実サイト上での
+レンダリング・クリック・計測によって証明する。Elementor は何を間違えてもエラーを
+一切出さないからだ。
 
 ```
 192 widgets · 13 elements · 49,857 control pairs
@@ -18,27 +32,78 @@ the Kit's 773 Site Settings · 48 page settings · 29 document types
 
 ---
 
-## 問題
+## クイックスタート（どれか 1 つ選ぶ）
 
+### 甲、説明文（最速）
+```
+あなた（Claude Code チャットで）:
+  「ランディングページを作って：グラデーション背景のヒーロー + 3 つの機能カード + お問い合わせフォーム」
+
+Claude が生成:
+  page.json（そのままアップロード可能）
+
+WordPress へアップロード:
+  wp eval-file tools/apply-page.php 123 page.json
+```
+
+### 乙、HTML 変換（無料）
+```
+あなた: HTML を貼る / Webly エクスポートをアップロード / ウェブサイトのコードを共有
+
+Claude:
+  page.json + custom.css + 手動調整のヒント
+
+アップロード:
+  wp eval-file tools/apply-page.php 123 page.json
+```
+
+### 丙、Schema 照会（完全制御）
+```
+あなた: 「heading コントロールの構造を見せて」
+
+Claude:
+  title: string
+  header_size: h1|h2|h3|h4|h5|h6
+  responsive: yes (tablet, mobile)
+  tier: free
+  ...
+
+確実な知識で JSON を書く。推測は不要。
+```
+
+結果：有効な Elementor ページ。エディタなし。静かな失敗なし。
+
+---
+
+## なぜこれが必要か（問題）
+
+### 静かな失敗
 Elementor はページを post meta 内の JSON ツリーとして保存する。ツリーを書けば
 ページは存在する。だが Elementor は**書いた内容を検証しない** — 値をそのまま
 保存し、理解できた分だけレンダリングし、残りは黙って捨てる。
 
-エラーは出ない。コントロール名のタイポ、オブジェクトを置くべき場所の文字列、
-Free サイト上の Pro 専用コントロール、`"hidden-tablet"` と書くべきところの
-`hide_tablet: "yes"`。どれも問題なく保存され、静かに何もしない。90% 正しい
-ページは、誰かが「padding が一度も効いていない」と気づくまで、100% 正しい
-ページと見分けがつかない。
+- コントロール名のタイポ → 保存成功、動作なし
+- オブジェクトを置くべき場所の文字列 → 保存成功、動作なし
+- Free サイト上の Pro 専用コントロール → 保存成功、動作なし
+- `hide_tablet: "yes"`（`"hidden-tablet"` と書くべき） → 保存成功、隠さない
 
-したがって Elementor ページを組むエージェントの選択肢は 2 つだった。毎回
-Elementor の PHP ソースを読む(高コストで、しかも JSON の形は分からない)か、
-推測する(黙って間違える)か。このスキルは第 3 の選択肢だ：
+90% 正しいページは、100% 正しいページと見分けがつかない—
+誰かが「padding が一度も効いていない」と気づくまで。
 
+### 解決策
+Elementor ページを組むエージェントの選択肢は 2 つだった。毎回 PHP ソースを読む
+(高コストで、しかも JSON の形は分からない)か、推測する(黙って間違える)か。
+
+このスキルは第 3 の選択肢だ。唯一の権威参考として、すべてのコントロール・
+ウィジェット・設定について、JSON 構造を抽出し、実サイト上でのレンダリング・
+クリック・計測で証明する。
+
+例：秒内にコントロール構造を照会
 ```bash
 $ python tools/el.py type slider
-control type: slider   [FREE]  (elementor-core)
+control type: slider   [FREE]
 
-JSON value shape (what you write into _elementor_data settings):
+JSON value shape:
   {"unit": "px", "size": "", "sizes": []}
 ```
 

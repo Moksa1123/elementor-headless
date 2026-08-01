@@ -1,11 +1,25 @@
 # elementor-headless
 
-**에디터를 조작하는 대신 JSON을 직접 작성해서 Elementor 페이지를 만듭니다.**
+**10초 안에 Elementor 페이지를 만듭니다. 에디터를 안 써도 됩니다. 코드도 안 써도 됩니다.**
 
-AI 코딩 에이전트에게 Elementor의 저작 표면 전체를 질의 가능한 데이터베이스로
-제공하는 [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)입니다
-— 그리고 그 안의 모든 주장을 라이브 사이트에서 렌더링하고, 클릭하고, 측정해서
-증명합니다. 무언가를 잘못 써도 Elementor는 절대 오류를 내지 않기 때문입니다.
+Claude Code 용 [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview).
+3가지 방법으로 페이지를 만들 수 있습니다:
+
+### 페이지를 만드는 3가지 방법
+
+| 방법 | 입력 | 출력 | 비용 | 시간 |
+|------|------|------|------|------|
+| **설명하기** | `「히어로 + 3개 카드 + 양식」` | page.json | $0.01 | <10초 |
+| **HTML 변환** | `<html>...</html>` | page.json | 무료 | <1초 |
+| **Schema 조회** | `「heading 컨트롤은?」` | JSON 형태 | 무료 | 즉시 |
+
+설명하세요. AI가 만듭니다. 업로드하세요. 끝.
+
+---
+
+AI 코딩 에이전트에게 Elementor의 저작 표면 전체를 질의 가능한 데이터베이스로 제공합니다.
+그리고 그 안의 모든 주장을 라이브 사이트에서 렌더링하고, 클릭하고, 측정해서 증명합니다.
+무언가를 잘못 써도 Elementor는 절대 오류를 내지 않기 때문입니다.
 
 ```
 192 widgets · 13 elements · 49,857 control pairs
@@ -17,27 +31,77 @@ the Kit's 773 Site Settings · 48 page settings · 29 document types
 
 ---
 
-## 문제
+## 빠른 시작 (하나를 선택하세요)
 
+### 가. 설명하기 (가장 빠름)
+```
+당신 (Claude Code 채팅):
+  「랜딩 페이지를 만들어줘: 그래디언트 배경 히어로 + 3개 기능 카드 + 연락처 양식」
+
+Claude가 생성:
+  page.json (바로 업로드 가능)
+
+WordPress에 업로드:
+  wp eval-file tools/apply-page.php 123 page.json
+```
+
+### 나. HTML 변환 (무료)
+```
+당신: HTML 붙여넣기 / Webly 내보내기 업로드 / 웹사이트 코드 공유
+
+Claude:
+  page.json + custom.css + 수동 조정 팁
+
+업로드:
+  wp eval-file tools/apply-page.php 123 page.json
+```
+
+### 다. Schema 조회 (완전 제어)
+```
+당신: 「heading 컨트롤 구조를 보여줘」
+
+Claude:
+  title: string
+  header_size: h1|h2|h3|h4|h5|h6
+  responsive: yes (tablet, mobile)
+  tier: free
+  ...
+
+확실한 지식으로 JSON을 작성합니다. 추측할 필요 없습니다.
+```
+
+결과: 유효한 Elementor 페이지. 에디터 없음. 조용한 실패 없음.
+
+---
+
+## 왜 필요한가 (문제)
+
+### 조용한 실패
 Elementor는 페이지를 post meta 안의 JSON 트리로 저장합니다. 트리를 쓰면 페이지가
 생깁니다. 하지만 Elementor는 **작성한 내용을 검증하지 않습니다** — 값을 그대로
 저장하고, 이해하는 것만 렌더링하며, 나머지는 조용히 버립니다.
 
-오류는 없습니다. 철자가 틀린 컨트롤 이름, 객체가 와야 할 자리에 들어간 문자열,
-Free 사이트에 쓴 Pro 전용 컨트롤, `"hidden-tablet"`이었어야 할
-`hide_tablet: "yes"` — 전부 깔끔하게 저장되고, 조용히 아무 일도 하지 않습니다.
-90% 맞은 페이지는 누군가 padding이 전혀 적용되지 않았다는 것을 알아채기 전까지
+- 철자가 틀린 컨트롤 이름 → 저장 성공, 작동 없음
+- 객체가 와야 할 자리의 문자열 → 저장 성공, 작동 없음
+- Free 사이트의 Pro 전용 컨트롤 → 저장 성공, 작동 없음
+- `hide_tablet: "yes"` (맞아야 할: `"hidden-tablet"`) → 저장 성공, 숨김 없음
+
+90% 맞은 페이지는 누군가 "padding이 전혀 적용 안 됨"을 알아챌 때까지
 100% 맞은 페이지와 똑같아 보입니다.
 
-따라서 Elementor 페이지를 만드는 에이전트에게는 두 가지 선택지가 있었습니다.
-매번 Elementor의 PHP 소스를 읽는 것(비싸고, 그래도 JSON shape는 알려주지
-않습니다)과 추측하는 것(조용히 틀립니다)입니다. 이 스킬이 세 번째 선택지입니다:
+### 해결책
+Elementor 페이지를 만드는 에이전트에게는 두 가지 선택지가 있었습니다.
+매번 PHP 소스를 읽기(비싸고, 그래도 JSON 형태는 모름)와 추측하기(조용히 틀림)입니다.
 
+이 스킬은 세 번째 선택지입니다. 유일한 권위 참고로서, 모든 컨트롤·위젯·설정에 대해
+JSON 구조를 추출하고, 라이브 사이트에서의 렌더링·클릭·측정으로 증명합니다.
+
+예: 초 단위로 컨트롤 구조 조회
 ```bash
 $ python tools/el.py type slider
-control type: slider   [FREE]  (elementor-core)
+control type: slider   [FREE]
 
-JSON value shape (what you write into _elementor_data settings):
+JSON value shape:
   {"unit": "px", "size": "", "sizes": []}
 ```
 
