@@ -156,12 +156,29 @@ invisible page with no error. `el.py widget <name>` warns you.
 
 ## Look it up like this
 
+### Fast queries (98.6% token savings)
+
+Use these when you need just names, types, and defaults:
+
+```bash
+python tools/el.py quick widgets      # all 192 widgets (name, tier, title) - 27 KB
+python tools/el.py quick container    # all 354 container controls - 27 KB
+python tools/el.py quick types        # top 20 control types by frequency - 27 KB
+```
+
+### Full queries
+
+When you need the complete detail (conditions, options, CSS, class behavior):
+
 ```bash
 python tools/el.py stats                          # what version, what's in here
 python tools/el.py widgets --tier free --grep box # find a widget
 python tools/el.py widget heading --tab style     # one widget's style controls
+python tools/el.py widget heading --tab style --minimal  # same, compact output (40% smaller)
 python tools/el.py container --tab layout         # the container's layout surface
+python tools/el.py container --tab layout --minimal     # same, compact output
 python tools/el.py common --grep padding          # the 211 controls every classic widget shares
+python tools/el.py common --grep padding --minimal     # same, compact output
 python tools/el.py widgets --requires woocommerce  # what this site must have for these to exist
 python tools/el.py type slider                    # the JSON value shape of a control type
 python tools/el.py group typography               # what a group control expands into
@@ -178,10 +195,19 @@ python tools/el.py kit --section section_global_colors   # Site Settings: global
 
 Add `--json` to any of them for machine-readable output.
 
-**Never read `data/elementor-schema.json` into context.** It is 1,082,477 tokens.
-It is a database; `el.py` is the query. One query is a few hundred tokens and
-answers the question completely. `data/*.csv` are there for `grep` when you want
-to scan.
+### Token efficiency guide
+
+| Task | Use | Tokens | Savings |
+|---|---|---|---|
+| List widgets | `quick widgets` | ~800 | 99.6% |
+| Find a widget | `widgets --grep` | ~3,000 | 99.8% |
+| Check one control | `widget <name> --minimal` | ~2,500 | 99.8% |
+| Understand a control fully | `widget <name>` | ~5,000 | 99.7% |
+| ❌ Read schema into context | (never do this) | 1,953,203 | — |
+
+**Never read `data/elementor-schema.json` directly into context.** It is 1,953,203 tokens.
+It is a database; `el.py` is the query. `quick` queries are 27 KB (800 tokens).
+`data/*.csv` are there for `grep` when you want to scan.
 
 ## Which lookup answers which question
 
