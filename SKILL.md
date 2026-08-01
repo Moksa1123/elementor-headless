@@ -1,17 +1,54 @@
 ---
 name: elementor-headless
-description: Build and modify Elementor pages by writing the underlying JSON directly - no visual editor, no DOM. Use when creating or editing Elementor pages, containers, widgets, templates, WooCommerce product/cart/checkout layouts, display conditions, responsive breakpoints, or custom CSS; when you need a control's exact name, its JSON value shape, its allowed options/units, or the CSS or wrapper class it drives; or when you need to know whether something requires Elementor Pro, the WooCommerce plugin, or an Elementor experiment. Triggers on - elementor, _elementor_data, container, flex container, grid container, elementor widget, elementor control, elementor template, woocommerce widget, product price, add to cart, display conditions, theme builder, responsive breakpoint, tablet, mobile, motion effects, sticky, custom css, dynamic tags, global colors, elementor pro.
+description: Build and modify Elementor pages without the visual editor. Three ways to work: (1) Describe a page in natural language → I generate Elementor JSON; (2) Upload/paste HTML → I convert to Elementor; (3) Write JSON directly with full control. Use for creating pages, containers, widgets, templates, WooCommerce layouts, display conditions, responsive breakpoints, custom CSS. Query the schema for control names, JSON value shapes, Free/Pro tiers. Vibe-coding friendly.
 license: MIT
 ---
 
 # Headless Elementor
 
-Build Elementor pages by writing the data model directly. The editor is one client
-of that data model; it is not the format, and you do not need it.
+Build Elementor pages without opening the editor. Three ways to work:
+
+1. **Vibe Code It** — Describe page layout in natural language → JSON generated
+2. **Convert HTML** — Upload HTML/Webly export → Elementor JSON
+3. **Write JSON** — Full control, reference the schema, no guessing
+
+The editor is one client of the data model; it is not the format, and you do not need it.
 
 **Scope: page construction.** Not site health checks, not plugin audits, not media
 cleanup. If a task is not "make this page exist / look like this", it is out of
 scope.
+
+## Three Ways to Build
+
+### 1. Vibe Code (Natural Language)
+```
+You: "Build a page: hero section with gradient + 3 feature cards + contact form"
+Me: Generates Elementor JSON (Claude does the reasoning)
+Result: page.json → upload to WordPress
+```
+**Best for:** Quick prototyping, non-coders, "I have an idea"
+**Cost:** $0.01-0.05 per page (Claude Opus)
+**Speed:** <10 seconds
+
+### 2. HTML to Elementor
+```
+You: Upload/paste HTML (from Webly, Figma export, saved website)
+Me: Parses HTML → infers layout + widgets → Elementor JSON
+Result: page.json + custom.css + hints for manual work
+```
+**Best for:** Porting existing sites, design exports
+**Cost:** Free (local Python)
+**Speed:** <1 second
+
+### 3. Schema-Guided JSON
+```
+You: "What's the shape of a button control?"
+Me: Queries schema → shows you JSON structure, options, units, Free/Pro status
+You: Write JSON with confidence, never from memory
+```
+**Best for:** Complex pages, Pro controls, pixel-perfect styling
+**Cost:** 99% token savings vs loading schema
+**Speed:** Instant lookup
 
 ## The one rule that overrides everything
 
