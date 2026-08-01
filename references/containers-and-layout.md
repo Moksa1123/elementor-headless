@@ -46,8 +46,8 @@ condition.
 ```json
 {
   "container_type": "grid",
-  "grid_columns_grid": { "unit": "fr", "size": 3, "sizes": [] },
-  "grid_rows_grid":    { "unit": "fr", "size": 2, "sizes": [] },
+  "grid_columns_grid": { "unit": "fr", "size": 2, "sizes": [] },
+  "grid_rows_grid":    { "unit": "fr", "size": 1, "sizes": [] },
   "grid_gaps": { "column": "20", "row": "20", "isLinked": true, "unit": "px" },
   "grid_auto_flow": "row",
   "grid_justify_items": "stretch",
