@@ -9324,313 +9324,6 @@ media-carousel,slideshow_height,{{WRAPPER}} .elementor-main-swiper:not(.elemento
 media-carousel,space_between,{{WRAPPER}}.elementor-skin-slideshow .elementor-main-swiper:not(.elementor-thumbnails-swiper),margin-bottom
 media-carousel,thumbs_ratio,{{WRAPPER}} .elementor-thumbnails-swiper .elementor-carousel-image,aspect-ratio
 media-carousel,width,{{WRAPPER}} .elementor-main-swiper,width
-mega-menu,_background_attachment,(desktop+){{WRAPPER}},background-attachment
-mega-menu,_background_bg_width,{{WRAPPER}},background-size
-mega-menu,_background_color,{{WRAPPER}},background-color
-mega-menu,_background_gradient_angle,{{WRAPPER}},background-color background-image
-mega-menu,_background_gradient_position,{{WRAPPER}},background-color background-image
-mega-menu,_background_hover_attachment,(desktop+){{WRAPPER}}:hover,background-attachment
-mega-menu,_background_hover_bg_width,{{WRAPPER}}:hover,background-size
-mega-menu,_background_hover_color,{{WRAPPER}}:hover,background-color
-mega-menu,_background_hover_gradient_angle,{{WRAPPER}}:hover,background-color background-image
-mega-menu,_background_hover_gradient_position,{{WRAPPER}}:hover,background-color background-image
-mega-menu,_background_hover_image,{{WRAPPER}}:hover,background-image
-mega-menu,_background_hover_position,{{WRAPPER}}:hover,background-position
-mega-menu,_background_hover_repeat,{{WRAPPER}}:hover,background-repeat
-mega-menu,_background_hover_size,{{WRAPPER}}:hover,background-size
-mega-menu,_background_hover_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
-mega-menu,_background_hover_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
-mega-menu,_background_hover_transition,{{WRAPPER}},transition
-mega-menu,_background_hover_video_fallback,{{WRAPPER}}:hover,background background-size
-mega-menu,_background_hover_xpos,{{WRAPPER}}:hover,background-position
-mega-menu,_background_hover_ypos,{{WRAPPER}}:hover,background-position
-mega-menu,_background_image,{{WRAPPER}},background-image
-mega-menu,_background_position,{{WRAPPER}},background-position
-mega-menu,_background_repeat,{{WRAPPER}},background-repeat
-mega-menu,_background_size,{{WRAPPER}},background-size
-mega-menu,_background_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
-mega-menu,_background_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
-mega-menu,_background_video_fallback,{{WRAPPER}},background background-size
-mega-menu,_background_xpos,{{WRAPPER}},background-position
-mega-menu,_background_ypos,{{WRAPPER}},background-position
-mega-menu,_border_border,{{WRAPPER}},border-style
-mega-menu,_border_color,{{WRAPPER}},border-color
-mega-menu,_border_hover_border,{{WRAPPER}}:hover,border-style
-mega-menu,_border_hover_color,{{WRAPPER}}:hover,border-color
-mega-menu,_border_hover_transition,{{WRAPPER}},transition
-mega-menu,_border_hover_width,{{WRAPPER}}:hover,border-width
-mega-menu,_border_radius,{{WRAPPER}},border-radius
-mega-menu,_border_radius_hover,{{WRAPPER}}:hover,border-radius
-mega-menu,_border_width,{{WRAPPER}},border-width
-mega-menu,_box_shadow_box_shadow,{{WRAPPER}},box-shadow
-mega-menu,_box_shadow_hover_box_shadow,{{WRAPPER}}:hover,box-shadow
-mega-menu,_element_custom_width,{{WRAPPER}},--container-widget-width --container-widget-flex-grow width max-width
-mega-menu,_element_vertical_align,{{WRAPPER}},align-self
-mega-menu,_element_width,{{WRAPPER}},width max-width
-mega-menu,_flex_align_self,{{WRAPPER}}.elementor-element,--align-self
-mega-menu,_flex_grow,{{WRAPPER}}.elementor-element,--flex-grow
-mega-menu,_flex_order,{{WRAPPER}}.elementor-element,--order
-mega-menu,_flex_order_custom,{{WRAPPER}}.elementor-element,--order
-mega-menu,_flex_shrink,{{WRAPPER}}.elementor-element,--flex-shrink
-mega-menu,_grid_column,{{WRAPPER}},grid-column
-mega-menu,_grid_column_custom,{{WRAPPER}},grid-column
-mega-menu,_grid_row,{{WRAPPER}},grid-row
-mega-menu,_grid_row_custom,{{WRAPPER}},grid-row
-mega-menu,_margin,{{WRAPPER}},margin
-mega-menu,_mask_image,"{{WRAPPER}}:not( .elementor-widget-image ), {{WRAPPER}}.elementor-widget-image img",-webkit-mask-image
-mega-menu,_mask_position,"{{WRAPPER}}:not( .elementor-widget-image ), {{WRAPPER}}.elementor-widget-image img",-webkit-mask-position
-mega-menu,_mask_position_x,"{{WRAPPER}}:not( .elementor-widget-image ), {{WRAPPER}}.elementor-widget-image img",-webkit-mask-position-x
-mega-menu,_mask_position_y,"{{WRAPPER}}:not( .elementor-widget-image ), {{WRAPPER}}.elementor-widget-image img",-webkit-mask-position-y
-mega-menu,_mask_repeat,"{{WRAPPER}}:not( .elementor-widget-image ), {{WRAPPER}}.elementor-widget-image img",-webkit-mask-repeat
-mega-menu,_mask_shape,"{{WRAPPER}}:not( .elementor-widget-image ), {{WRAPPER}}.elementor-widget-image img",-webkit-mask-image
-mega-menu,_mask_size,"{{WRAPPER}}:not( .elementor-widget-image ), {{WRAPPER}}.elementor-widget-image img",-webkit-mask-size
-mega-menu,_mask_size_scale,"{{WRAPPER}}:not( .elementor-widget-image ), {{WRAPPER}}.elementor-widget-image img",-webkit-mask-size
-mega-menu,_offset_x,body.rtl {{WRAPPER}},right
-mega-menu,_offset_x,body:not(.rtl) {{WRAPPER}},left
-mega-menu,_offset_x_end,body.rtl {{WRAPPER}},left
-mega-menu,_offset_x_end,body:not(.rtl) {{WRAPPER}},right
-mega-menu,_offset_y,{{WRAPPER}},top
-mega-menu,_offset_y_end,{{WRAPPER}},bottom
-mega-menu,_padding,{{WRAPPER}},padding
-mega-menu,_transform_flipX_effect,{{WRAPPER}},--e-transform-flipX
-mega-menu,_transform_flipX_effect_hover,{{WRAPPER}}:hover,--e-transform-flipX
-mega-menu,_transform_flipY_effect,{{WRAPPER}},--e-transform-flipY
-mega-menu,_transform_flipY_effect_hover,{{WRAPPER}}:hover,--e-transform-flipY
-mega-menu,_transform_perspective_effect,{{WRAPPER}},--e-transform-perspective
-mega-menu,_transform_perspective_effect_hover,{{WRAPPER}}:hover,--e-transform-perspective
-mega-menu,_transform_rotateX_effect,{{WRAPPER}},--e-transform-rotateX
-mega-menu,_transform_rotateX_effect_hover,{{WRAPPER}}:hover,--e-transform-rotateX
-mega-menu,_transform_rotateY_effect,{{WRAPPER}},--e-transform-rotateY
-mega-menu,_transform_rotateY_effect_hover,{{WRAPPER}}:hover,--e-transform-rotateY
-mega-menu,_transform_rotateZ_effect,{{WRAPPER}},--e-transform-rotateZ
-mega-menu,_transform_rotateZ_effect_hover,{{WRAPPER}}:hover,--e-transform-rotateZ
-mega-menu,_transform_rotate_3d,{{WRAPPER}},--e-transform-rotateX --e-transform-perspective
-mega-menu,_transform_rotate_3d_hover,{{WRAPPER}}:hover,--e-transform-rotateX --e-transform-perspective
-mega-menu,_transform_scaleX_effect,{{WRAPPER}},--e-transform-scaleX
-mega-menu,_transform_scaleX_effect_hover,{{WRAPPER}}:hover,--e-transform-scaleX
-mega-menu,_transform_scaleY_effect,{{WRAPPER}},--e-transform-scaleY
-mega-menu,_transform_scaleY_effect_hover,{{WRAPPER}}:hover,--e-transform-scaleY
-mega-menu,_transform_scale_effect,{{WRAPPER}},--e-transform-scale
-mega-menu,_transform_scale_effect_hover,{{WRAPPER}}:hover,--e-transform-scale
-mega-menu,_transform_skewX_effect,{{WRAPPER}},--e-transform-skewX
-mega-menu,_transform_skewX_effect_hover,{{WRAPPER}}:hover,--e-transform-skewX
-mega-menu,_transform_skewY_effect,{{WRAPPER}},--e-transform-skewY
-mega-menu,_transform_skewY_effect_hover,{{WRAPPER}}:hover,--e-transform-skewY
-mega-menu,_transform_transition_hover,{{WRAPPER}},--e-transform-transition-duration
-mega-menu,_transform_translateX_effect,{{WRAPPER}},--e-transform-translateX
-mega-menu,_transform_translateX_effect_hover,{{WRAPPER}}:hover,--e-transform-translateX
-mega-menu,_transform_translateY_effect,{{WRAPPER}},--e-transform-translateY
-mega-menu,_transform_translateY_effect_hover,{{WRAPPER}}:hover,--e-transform-translateY
-mega-menu,_z_index,{{WRAPPER}},z-index
-mega-menu,content_background_color_attachment,(desktop+):where( {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-content ) > .e-con,background-attachment
-mega-menu,content_background_color_bg_width,:where( {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-content ) > .e-con,background-size
-mega-menu,content_background_color_color,:where( {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-content ) > .e-con,background-color
-mega-menu,content_background_color_gradient_angle,:where( {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-content ) > .e-con,background-color background-image
-mega-menu,content_background_color_gradient_position,:where( {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-content ) > .e-con,background-color background-image
-mega-menu,content_background_color_position,:where( {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-content ) > .e-con,background-position
-mega-menu,content_background_color_repeat,:where( {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-content ) > .e-con,background-repeat
-mega-menu,content_background_color_size,:where( {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-content ) > .e-con,background-size
-mega-menu,content_background_color_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
-mega-menu,content_background_color_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
-mega-menu,content_background_color_video_fallback,:where( {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-content ) > .e-con,background background-size
-mega-menu,content_background_color_xpos,:where( {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-content ) > .e-con,background-position
-mega-menu,content_background_color_ypos,:where( {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-content ) > .e-con,background-position
-mega-menu,content_border_border,:where( {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-content ) > .e-con,border-style
-mega-menu,content_border_color,:where( {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-content ) > .e-con,border-color
-mega-menu,content_border_radius,:where( {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-content ) > .e-con,--border-radius
-mega-menu,content_border_width,:where( {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-content ) > .e-con,border-width
-mega-menu,content_padding,:where( [data-core-v316-plus='true'] .elementor-element.elementor-widget-n-menu > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-content ) > .e-con,--padding-block-start --padding-inline-end --padding-block-end --padding-inline-start
-mega-menu,content_padding,:where( {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-content ) > .e-con,--padding-top --padding-right --padding-bottom --padding-left
-mega-menu,content_shadow_box_shadow,:where( {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-content ) > .e-con,box-shadow
-mega-menu,content_width,{{WRAPPER}},--n-menu-dropdown-content-max-width
-mega-menu,dropdown_menu_item_background_color_active_attachment,(desktop+){{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background-attachment
-mega-menu,dropdown_menu_item_background_color_active_bg_width,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background-size
-mega-menu,dropdown_menu_item_background_color_active_color,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background-color
-mega-menu,dropdown_menu_item_background_color_active_gradient_angle,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background-color background-image
-mega-menu,dropdown_menu_item_background_color_active_gradient_position,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background-color background-image
-mega-menu,dropdown_menu_item_background_color_active_position,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background-position
-mega-menu,dropdown_menu_item_background_color_active_repeat,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background-repeat
-mega-menu,dropdown_menu_item_background_color_active_size,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background-size
-mega-menu,dropdown_menu_item_background_color_active_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
-mega-menu,dropdown_menu_item_background_color_active_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
-mega-menu,dropdown_menu_item_background_color_active_video_fallback,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background background-size
-mega-menu,dropdown_menu_item_background_color_active_xpos,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background-position
-mega-menu,dropdown_menu_item_background_color_active_ypos,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background-position
-mega-menu,dropdown_menu_item_background_color_normal_attachment,(desktop+){{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ),background-attachment
-mega-menu,dropdown_menu_item_background_color_normal_bg_width,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ),background-size
-mega-menu,dropdown_menu_item_background_color_normal_color,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ),background
-mega-menu,dropdown_menu_item_background_color_normal_gradient_angle,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ),background-color background-image
-mega-menu,dropdown_menu_item_background_color_normal_gradient_position,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ),background-color background-image
-mega-menu,dropdown_menu_item_background_color_normal_position,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ),background-position
-mega-menu,dropdown_menu_item_background_color_normal_repeat,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ),background-repeat
-mega-menu,dropdown_menu_item_background_color_normal_size,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ),background-size
-mega-menu,dropdown_menu_item_background_color_normal_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
-mega-menu,dropdown_menu_item_background_color_normal_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
-mega-menu,dropdown_menu_item_background_color_normal_video_fallback,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ),background background-size
-mega-menu,dropdown_menu_item_background_color_normal_xpos,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ),background-position
-mega-menu,dropdown_menu_item_background_color_normal_ypos,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ),background-position
-mega-menu,dropdown_menu_item_box_shadow_active_box_shadow,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,box-shadow
-mega-menu,dropdown_menu_item_box_shadow_normal_box_shadow,{{WRAPPER}} > .e-n-menu[data-layout='dropdown'] > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ),box-shadow
-mega-menu,dropdown_menu_item_text_color_active,{{WRAPPER}},--n-menu-title-active-color-dropdown
-mega-menu,dropdown_menu_item_text_color_normal,{{WRAPPER}},--n-menu-title-normal-color-dropdown
-mega-menu,icon_color,{{WRAPPER}},--n-menu-icon-color
-mega-menu,icon_color_active,{{WRAPPER}},--n-menu-icon-color-active
-mega-menu,icon_color_hover,{{WRAPPER}},--n-menu-icon-color-hover
-mega-menu,icon_size,{{WRAPPER}},--n-menu-icon-size
-mega-menu,icon_spacing,{{WRAPPER}},--n-menu-icon-gap
-mega-menu,menu_divider,{{WRAPPER}},--n-menu-divider-content
-mega-menu,menu_divider_color,{{WRAPPER}},--n-menu-divider-color
-mega-menu,menu_divider_height,{{WRAPPER}},--n-menu-divider-height
-mega-menu,menu_divider_style,{{WRAPPER}},--n-menu-divider-style
-mega-menu,menu_divider_width,{{WRAPPER}},--n-menu-divider-width
-mega-menu,menu_dropdown_box_border_border,{{WRAPPER}},--n-menu-dropdown-content-box-border-style
-mega-menu,menu_dropdown_box_border_color,{{WRAPPER}},--n-menu-dropdown-content-box-border-color
-mega-menu,menu_dropdown_box_border_radius,{{WRAPPER}},--n-menu-dropdown-content-box-border-radius
-mega-menu,menu_dropdown_box_border_width,{{WRAPPER}},--n-menu-dropdown-content-box-border-block-start-width --n-menu-dropdown-content-box-border-inline-end-width --n-menu-dropdown-content-box-border-block-end-width --n-menu-dropdown-content-box-border-inline-start-width
-mega-menu,menu_dropdown_box_shadow_box_shadow,{{WRAPPER}},--n-menu-dropdown-content-box-shadow-horizontal --n-menu-dropdown-content-box-shadow-vertical --n-menu-dropdown-content-box-shadow-blur --n-menu-dropdown-content-box-shadow-spread --n-menu-dropdown-content-box-shadow-color --n-menu-dropdown-content-box-shadow-position
-mega-menu,menu_dropdown_indicator_color_active,{{WRAPPER}},--n-menu-dropdown-indicator-color-active
-mega-menu,menu_dropdown_indicator_color_hover,{{WRAPPER}},--n-menu-dropdown-indicator-color-hover
-mega-menu,menu_dropdown_indicator_color_normal,{{WRAPPER}},--n-menu-dropdown-indicator-color-normal
-mega-menu,menu_item_title_background_color_active_attachment,(desktop+){{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background-attachment
-mega-menu,menu_item_title_background_color_active_bg_width,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background-size
-mega-menu,menu_item_title_background_color_active_color,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background-color
-mega-menu,menu_item_title_background_color_active_gradient_angle,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background-color background-image
-mega-menu,menu_item_title_background_color_active_gradient_position,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background-color background-image
-mega-menu,menu_item_title_background_color_active_position,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background-position
-mega-menu,menu_item_title_background_color_active_repeat,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background-repeat
-mega-menu,menu_item_title_background_color_active_size,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background-size
-mega-menu,menu_item_title_background_color_active_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
-mega-menu,menu_item_title_background_color_active_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
-mega-menu,menu_item_title_background_color_active_video_fallback,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background background-size
-mega-menu,menu_item_title_background_color_active_xpos,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background-position
-mega-menu,menu_item_title_background_color_active_ypos,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,background-position
-mega-menu,menu_item_title_background_color_attachment,(desktop+){{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ):not( :hover ),background-attachment
-mega-menu,menu_item_title_background_color_bg_width,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ):not( :hover ),background-size
-mega-menu,menu_item_title_background_color_color,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ):not( :hover ),background-color
-mega-menu,menu_item_title_background_color_gradient_angle,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ):not( :hover ),background-color background-image
-mega-menu,menu_item_title_background_color_gradient_position,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ):not( :hover ),background-color background-image
-mega-menu,menu_item_title_background_color_hover_attachment,(desktop+){{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:hover:not( .e-current ),background-attachment
-mega-menu,menu_item_title_background_color_hover_bg_width,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:hover:not( .e-current ),background-size
-mega-menu,menu_item_title_background_color_hover_color,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:hover:not( .e-current ),background-color
-mega-menu,menu_item_title_background_color_hover_gradient_angle,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:hover:not( .e-current ),background-color background-image
-mega-menu,menu_item_title_background_color_hover_gradient_position,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:hover:not( .e-current ),background-color background-image
-mega-menu,menu_item_title_background_color_hover_position,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:hover:not( .e-current ),background-position
-mega-menu,menu_item_title_background_color_hover_repeat,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:hover:not( .e-current ),background-repeat
-mega-menu,menu_item_title_background_color_hover_size,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:hover:not( .e-current ),background-size
-mega-menu,menu_item_title_background_color_hover_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
-mega-menu,menu_item_title_background_color_hover_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
-mega-menu,menu_item_title_background_color_hover_video_fallback,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:hover:not( .e-current ),background background-size
-mega-menu,menu_item_title_background_color_hover_xpos,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:hover:not( .e-current ),background-position
-mega-menu,menu_item_title_background_color_hover_ypos,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:hover:not( .e-current ),background-position
-mega-menu,menu_item_title_background_color_position,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ):not( :hover ),background-position
-mega-menu,menu_item_title_background_color_repeat,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ):not( :hover ),background-repeat
-mega-menu,menu_item_title_background_color_size,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ):not( :hover ),background-size
-mega-menu,menu_item_title_background_color_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
-mega-menu,menu_item_title_background_color_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
-mega-menu,menu_item_title_background_color_video_fallback,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ):not( :hover ),background background-size
-mega-menu,menu_item_title_background_color_xpos,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ):not( :hover ),background-position
-mega-menu,menu_item_title_background_color_ypos,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ):not( :hover ),background-position
-mega-menu,menu_item_title_border_radius,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title,border-radius
-mega-menu,menu_item_title_box_border_active_border,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,border-style
-mega-menu,menu_item_title_box_border_active_color,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,border-color
-mega-menu,menu_item_title_box_border_active_width,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,border-width
-mega-menu,menu_item_title_box_border_border,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ):not( :hover ),border-style
-mega-menu,menu_item_title_box_border_color,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ):not( :hover ),border-color
-mega-menu,menu_item_title_box_border_hover_border,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:hover:not( .e-current ),border-style
-mega-menu,menu_item_title_box_border_hover_color,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:hover:not( .e-current ),border-color
-mega-menu,menu_item_title_box_border_hover_width,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:hover:not( .e-current ),border-width
-mega-menu,menu_item_title_box_border_width,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ):not( :hover ),border-width
-mega-menu,menu_item_title_box_shadow_active_box_shadow,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,box-shadow
-mega-menu,menu_item_title_box_shadow_box_shadow,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ):not( :hover ),box-shadow
-mega-menu,menu_item_title_box_shadow_hover_box_shadow,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:hover:not( .e-current ),box-shadow
-mega-menu,menu_item_title_distance_from_content,{{WRAPPER}},--n-menu-title-distance-from-content
-mega-menu,menu_item_title_padding,{{WRAPPER}},--n-menu-title-padding
-mega-menu,menu_item_title_space_between,{{WRAPPER}},--n-menu-title-space-between
-mega-menu,menu_item_title_text_color_active,{{WRAPPER}},--n-menu-title-color-active
-mega-menu,menu_item_title_text_color_hover,{{WRAPPER}},--n-menu-title-color-hover
-mega-menu,menu_item_title_text_color_normal,{{WRAPPER}},--n-menu-title-color-normal
-mega-menu,menu_item_title_text_shadow_active_text_shadow,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title.e-current,text-shadow
-mega-menu,menu_item_title_text_shadow_hover_text_shadow,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:hover:not( .e-current ),text-shadow
-mega-menu,menu_item_title_text_shadow_normal_text_shadow,{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title:not( .e-current ):not( :hover ),text-shadow
-mega-menu,menu_item_title_transition_duration,{{WRAPPER}},--n-menu-title-transition
-mega-menu,menu_item_title_typography_font_family,"{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title, {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title > .e-n-menu-title-container, {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title > .e-n-menu-title-container > span",font-family
-mega-menu,menu_item_title_typography_font_size,{{WRAPPER}},--n-menu-title-font-size
-mega-menu,menu_item_title_typography_font_style,"{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title, {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title > .e-n-menu-title-container, {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title > .e-n-menu-title-container > span",font-style
-mega-menu,menu_item_title_typography_font_weight,"{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title, {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title > .e-n-menu-title-container, {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title > .e-n-menu-title-container > span",font-weight
-mega-menu,menu_item_title_typography_letter_spacing,"{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title, {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title > .e-n-menu-title-container, {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title > .e-n-menu-title-container > span",letter-spacing
-mega-menu,menu_item_title_typography_line_height,"{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title, {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title > .e-n-menu-title-container, {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title > .e-n-menu-title-container > span",--n-menu-title-line-height
-mega-menu,menu_item_title_typography_text_decoration,"{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title, {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title > .e-n-menu-title-container, {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title > .e-n-menu-title-container > span",text-decoration
-mega-menu,menu_item_title_typography_text_transform,"{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title, {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title > .e-n-menu-title-container, {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title > .e-n-menu-title-container > span",text-transform
-mega-menu,menu_item_title_typography_word_spacing,"{{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title, {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title > .e-n-menu-title-container, {{WRAPPER}} > .e-n-menu > .e-n-menu-wrapper > .e-n-menu-heading > .e-n-menu-item > .e-n-menu-title > .e-n-menu-title-container > span",word-spacing
-mega-menu,menu_toggle_animation_duration,{{WRAPPER}},--n-menu-toggle-icon-wrapper-animation-duration
-mega-menu,menu_toggle_icon__padding,{{WRAPPER}},--n-menu-toggle-icon-padding
-mega-menu,menu_toggle_icon_animation_duration,{{WRAPPER}},--n-menu-toggle-icon-hover-duration
-mega-menu,menu_toggle_icon_background_color_active_attachment,"(desktop+){{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""true""] > .e-n-menu-toggle-icon",background-attachment
-mega-menu,menu_toggle_icon_background_color_active_bg_width,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""true""] > .e-n-menu-toggle-icon",background-size
-mega-menu,menu_toggle_icon_background_color_active_color,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""true""] > .e-n-menu-toggle-icon",background
-mega-menu,menu_toggle_icon_background_color_active_gradient_angle,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""true""] > .e-n-menu-toggle-icon",background-color background-image
-mega-menu,menu_toggle_icon_background_color_active_gradient_position,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""true""] > .e-n-menu-toggle-icon",background-color background-image
-mega-menu,menu_toggle_icon_background_color_active_position,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""true""] > .e-n-menu-toggle-icon",background-position
-mega-menu,menu_toggle_icon_background_color_active_repeat,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""true""] > .e-n-menu-toggle-icon",background-repeat
-mega-menu,menu_toggle_icon_background_color_active_size,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""true""] > .e-n-menu-toggle-icon",background-size
-mega-menu,menu_toggle_icon_background_color_active_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
-mega-menu,menu_toggle_icon_background_color_active_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
-mega-menu,menu_toggle_icon_background_color_active_video_fallback,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""true""] > .e-n-menu-toggle-icon",background background-size
-mega-menu,menu_toggle_icon_background_color_active_xpos,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""true""] > .e-n-menu-toggle-icon",background-position
-mega-menu,menu_toggle_icon_background_color_active_ypos,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""true""] > .e-n-menu-toggle-icon",background-position
-mega-menu,menu_toggle_icon_background_color_hover_attachment,"(desktop+){{WRAPPER}} > .e-n-menu > .e-n-menu-toggle:hover:is( [aria-expanded=""true""], [aria-expanded=""false""] ) > .e-n-menu-toggle-icon",background-attachment
-mega-menu,menu_toggle_icon_background_color_hover_bg_width,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle:hover:is( [aria-expanded=""true""], [aria-expanded=""false""] ) > .e-n-menu-toggle-icon",background-size
-mega-menu,menu_toggle_icon_background_color_hover_color,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle:hover:is( [aria-expanded=""true""], [aria-expanded=""false""] ) > .e-n-menu-toggle-icon",background
-mega-menu,menu_toggle_icon_background_color_hover_gradient_angle,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle:hover:is( [aria-expanded=""true""], [aria-expanded=""false""] ) > .e-n-menu-toggle-icon",background-color background-image
-mega-menu,menu_toggle_icon_background_color_hover_gradient_position,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle:hover:is( [aria-expanded=""true""], [aria-expanded=""false""] ) > .e-n-menu-toggle-icon",background-color background-image
-mega-menu,menu_toggle_icon_background_color_hover_position,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle:hover:is( [aria-expanded=""true""], [aria-expanded=""false""] ) > .e-n-menu-toggle-icon",background-position
-mega-menu,menu_toggle_icon_background_color_hover_repeat,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle:hover:is( [aria-expanded=""true""], [aria-expanded=""false""] ) > .e-n-menu-toggle-icon",background-repeat
-mega-menu,menu_toggle_icon_background_color_hover_size,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle:hover:is( [aria-expanded=""true""], [aria-expanded=""false""] ) > .e-n-menu-toggle-icon",background-size
-mega-menu,menu_toggle_icon_background_color_hover_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
-mega-menu,menu_toggle_icon_background_color_hover_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
-mega-menu,menu_toggle_icon_background_color_hover_video_fallback,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle:hover:is( [aria-expanded=""true""], [aria-expanded=""false""] ) > .e-n-menu-toggle-icon",background background-size
-mega-menu,menu_toggle_icon_background_color_hover_xpos,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle:hover:is( [aria-expanded=""true""], [aria-expanded=""false""] ) > .e-n-menu-toggle-icon",background-position
-mega-menu,menu_toggle_icon_background_color_hover_ypos,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle:hover:is( [aria-expanded=""true""], [aria-expanded=""false""] ) > .e-n-menu-toggle-icon",background-position
-mega-menu,menu_toggle_icon_background_color_normal_attachment,"(desktop+){{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""false""]:not( :hover ) > .e-n-menu-toggle-icon",background-attachment
-mega-menu,menu_toggle_icon_background_color_normal_bg_width,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""false""]:not( :hover ) > .e-n-menu-toggle-icon",background-size
-mega-menu,menu_toggle_icon_background_color_normal_color,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""false""]:not( :hover ) > .e-n-menu-toggle-icon",background
-mega-menu,menu_toggle_icon_background_color_normal_gradient_angle,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""false""]:not( :hover ) > .e-n-menu-toggle-icon",background-color background-image
-mega-menu,menu_toggle_icon_background_color_normal_gradient_position,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""false""]:not( :hover ) > .e-n-menu-toggle-icon",background-color background-image
-mega-menu,menu_toggle_icon_background_color_normal_position,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""false""]:not( :hover ) > .e-n-menu-toggle-icon",background-position
-mega-menu,menu_toggle_icon_background_color_normal_repeat,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""false""]:not( :hover ) > .e-n-menu-toggle-icon",background-repeat
-mega-menu,menu_toggle_icon_background_color_normal_size,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""false""]:not( :hover ) > .e-n-menu-toggle-icon",background-size
-mega-menu,menu_toggle_icon_background_color_normal_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
-mega-menu,menu_toggle_icon_background_color_normal_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
-mega-menu,menu_toggle_icon_background_color_normal_video_fallback,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""false""]:not( :hover ) > .e-n-menu-toggle-icon",background background-size
-mega-menu,menu_toggle_icon_background_color_normal_xpos,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""false""]:not( :hover ) > .e-n-menu-toggle-icon",background-position
-mega-menu,menu_toggle_icon_background_color_normal_ypos,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""false""]:not( :hover ) > .e-n-menu-toggle-icon",background-position
-mega-menu,menu_toggle_icon_border_active_border,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""true""] > .e-n-menu-toggle-icon",border-style
-mega-menu,menu_toggle_icon_border_active_color,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""true""] > .e-n-menu-toggle-icon",border-color
-mega-menu,menu_toggle_icon_border_active_width,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""true""] > .e-n-menu-toggle-icon",border-width
-mega-menu,menu_toggle_icon_border_hover_border,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle:hover:is( [aria-expanded=""true""], [aria-expanded=""false""] ) > .e-n-menu-toggle-icon",border-style
-mega-menu,menu_toggle_icon_border_hover_color,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle:hover:is( [aria-expanded=""true""], [aria-expanded=""false""] ) > .e-n-menu-toggle-icon",border-color
-mega-menu,menu_toggle_icon_border_hover_width,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle:hover:is( [aria-expanded=""true""], [aria-expanded=""false""] ) > .e-n-menu-toggle-icon",border-width
-mega-menu,menu_toggle_icon_border_normal_border,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""false""]:not( :hover ) > .e-n-menu-toggle-icon",border-style
-mega-menu,menu_toggle_icon_border_normal_color,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""false""]:not( :hover ) > .e-n-menu-toggle-icon",border-color
-mega-menu,menu_toggle_icon_border_normal_width,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""false""]:not( :hover ) > .e-n-menu-toggle-icon",border-width
-mega-menu,menu_toggle_icon_border_radius,{{WRAPPER}},--n-menu-toggle-icon-border-radius
-mega-menu,menu_toggle_icon_box_shadow_active_box_shadow,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""true""] > .e-n-menu-toggle-icon",box-shadow
-mega-menu,menu_toggle_icon_box_shadow_hover_box_shadow,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle:hover:is( [aria-expanded=""true""], [aria-expanded=""false""] ) > .e-n-menu-toggle-icon",box-shadow
-mega-menu,menu_toggle_icon_box_shadow_normal_box_shadow,"{{WRAPPER}} > .e-n-menu > .e-n-menu-toggle[aria-expanded=""false""]:not( :hover ) > .e-n-menu-toggle-icon",box-shadow
-mega-menu,menu_toggle_icon_color_active,{{WRAPPER}},--n-menu-toggle-icon-color-active
-mega-menu,menu_toggle_icon_color_hover,{{WRAPPER}},--n-menu-toggle-icon-color-hover
-mega-menu,menu_toggle_icon_color_normal,{{WRAPPER}},--n-menu-toggle-icon-color
-mega-menu,menu_toggle_icon_distance_from_dropdown,{{WRAPPER}},--n-menu-toggle-icon-distance-from-dropdown
-mega-menu,motion_fx_transform_origin_x,{{WRAPPER}},--e-transform-origin-x
-mega-menu,motion_fx_transform_origin_y,{{WRAPPER}},--e-transform-origin-y
-mega-menu,motion_fx_transform_x_anchor_point,{{WRAPPER}},--e-transform-origin-x
-mega-menu,motion_fx_transform_y_anchor_point,{{WRAPPER}},--e-transform-origin-y
-mega-menu,open_animation_duration,{{WRAPPER}},--n-menu-open-animation-duration
-mega-menu,style_dropdown_indicator_rotate,{{WRAPPER}},--n-menu-dropdown-indicator-rotate
-mega-menu,style_dropdown_indicator_size,{{WRAPPER}},--n-menu-dropdown-indicator-size
-mega-menu,style_dropdown_indicator_space,{{WRAPPER}},--n-menu-dropdown-indicator-space
-mega-menu,style_menu_toggle_icon_size,{{WRAPPER}},--n-menu-toggle-icon-size
-mega-menu,toggle_align,{{WRAPPER}},--n-menu-toggle-align
 menu-anchor,_background_attachment,(desktop+){{WRAPPER}},background-attachment
 menu-anchor,_background_bg_width,{{WRAPPER}},background-size
 menu-anchor,_background_color,{{WRAPPER}},background-color
@@ -19041,8 +18734,29 @@ woocommerce-checkout-page,billing_details_titles_typography_line_height,{{WRAPPE
 woocommerce-checkout-page,billing_details_titles_typography_text_decoration,{{WRAPPER}} .woocommerce-billing-fields h3,text-decoration
 woocommerce-checkout-page,billing_details_titles_typography_text_transform,{{WRAPPER}} .woocommerce-billing-fields h3,text-transform
 woocommerce-checkout-page,billing_details_titles_typography_word_spacing,{{WRAPPER}} .woocommerce-billing-fields h3,word-spacing
+woocommerce-checkout-page,coupon_alignment,{{WRAPPER}},--coupon-title-alignment
+woocommerce-checkout-page,coupon_border_color,{{WRAPPER}} .e-coupon-box,--sections-border-color
+woocommerce-checkout-page,coupon_border_radius,{{WRAPPER}} .e-coupon-box,--sections-border-radius
+woocommerce-checkout-page,coupon_border_type,{{WRAPPER}} .e-coupon-box,--sections-border-type
+woocommerce-checkout-page,coupon_border_width,{{WRAPPER}} .e-coupon-box,border-width
+woocommerce-checkout-page,coupon_content_typography_font_family,{{WRAPPER}} .e-woocommerce-coupon-nudge.e-checkout-secondary-title,font-family
+woocommerce-checkout-page,coupon_content_typography_font_size,{{WRAPPER}} .e-woocommerce-coupon-nudge.e-checkout-secondary-title,font-size
+woocommerce-checkout-page,coupon_content_typography_font_style,{{WRAPPER}} .e-woocommerce-coupon-nudge.e-checkout-secondary-title,font-style
+woocommerce-checkout-page,coupon_content_typography_font_weight,{{WRAPPER}} .e-woocommerce-coupon-nudge.e-checkout-secondary-title,font-weight
+woocommerce-checkout-page,coupon_content_typography_letter_spacing,{{WRAPPER}} .e-woocommerce-coupon-nudge.e-checkout-secondary-title,letter-spacing
+woocommerce-checkout-page,coupon_content_typography_line_height,{{WRAPPER}} .e-woocommerce-coupon-nudge.e-checkout-secondary-title,line-height
+woocommerce-checkout-page,coupon_content_typography_text_decoration,{{WRAPPER}} .e-woocommerce-coupon-nudge.e-checkout-secondary-title,text-decoration
+woocommerce-checkout-page,coupon_content_typography_text_transform,{{WRAPPER}} .e-woocommerce-coupon-nudge.e-checkout-secondary-title,text-transform
+woocommerce-checkout-page,coupon_content_typography_word_spacing,{{WRAPPER}} .e-woocommerce-coupon-nudge.e-checkout-secondary-title,word-spacing
+woocommerce-checkout-page,coupon_hover_links_color,{{WRAPPER}} .e-coupon-box,--links-hover-color
+woocommerce-checkout-page,coupon_margin,{{WRAPPER}} .e-coupon-box,--sections-margin
+woocommerce-checkout-page,coupon_normal_links_color,{{WRAPPER}} .e-coupon-box,--links-normal-color
+woocommerce-checkout-page,coupon_padding,{{WRAPPER}} .e-coupon-box,--sections-padding
+woocommerce-checkout-page,coupon_secondary_title_color,{{WRAPPER}} .e-woocommerce-coupon-nudge,--sections-secondary-title-color
+woocommerce-checkout-page,coupon_section_normal_box_shadow_box_shadow,{{WRAPPER}} .e-coupon-box,box-shadow
 woocommerce-checkout-page,customize_additional_information_background_color,{{WRAPPER}} .woocommerce-additional-fields,--sections-background-color
 woocommerce-checkout-page,customize_billing_details_background_color,{{WRAPPER}} .col2-set .col-1,--sections-background-color
+woocommerce-checkout-page,customize_coupon_background_color,{{WRAPPER}} .e-coupon-box,--sections-background-color
 woocommerce-checkout-page,customize_order_summary_background_color,{{WRAPPER}} .e-checkout__order_review,--sections-background-color
 woocommerce-checkout-page,customize_payment_background_color,{{WRAPPER}} .woocommerce-checkout #payment,--sections-background-color
 woocommerce-checkout-page,customize_returning_customer_background_color,{{WRAPPER}} .e-woocommerce-login-section,--sections-background-color
@@ -23206,6 +22920,210 @@ wp-widget-custom_html,motion_fx_transform_origin_x,{{WRAPPER}} .elementor-widget
 wp-widget-custom_html,motion_fx_transform_origin_y,{{WRAPPER}} .elementor-widget-container,--e-transform-origin-y
 wp-widget-custom_html,motion_fx_transform_x_anchor_point,{{WRAPPER}},--e-transform-origin-x
 wp-widget-custom_html,motion_fx_transform_y_anchor_point,{{WRAPPER}},--e-transform-origin-y
+wp-widget-ez_toc_widget_sticky,_background_attachment,(desktop+){{WRAPPER}} > .elementor-widget-container,background-attachment
+wp-widget-ez_toc_widget_sticky,_background_bg_width,{{WRAPPER}} > .elementor-widget-container,background-size
+wp-widget-ez_toc_widget_sticky,_background_color,{{WRAPPER}} > .elementor-widget-container,background-color
+wp-widget-ez_toc_widget_sticky,_background_gradient_angle,{{WRAPPER}} > .elementor-widget-container,background-color background-image
+wp-widget-ez_toc_widget_sticky,_background_gradient_position,{{WRAPPER}} > .elementor-widget-container,background-color background-image
+wp-widget-ez_toc_widget_sticky,_background_hover_attachment,(desktop+){{WRAPPER}}:hover .elementor-widget-container,background-attachment
+wp-widget-ez_toc_widget_sticky,_background_hover_bg_width,{{WRAPPER}}:hover .elementor-widget-container,background-size
+wp-widget-ez_toc_widget_sticky,_background_hover_color,{{WRAPPER}}:hover .elementor-widget-container,background-color
+wp-widget-ez_toc_widget_sticky,_background_hover_gradient_angle,{{WRAPPER}}:hover .elementor-widget-container,background-color background-image
+wp-widget-ez_toc_widget_sticky,_background_hover_gradient_position,{{WRAPPER}}:hover .elementor-widget-container,background-color background-image
+wp-widget-ez_toc_widget_sticky,_background_hover_image,{{WRAPPER}}:hover .elementor-widget-container,background-image
+wp-widget-ez_toc_widget_sticky,_background_hover_position,{{WRAPPER}}:hover .elementor-widget-container,background-position
+wp-widget-ez_toc_widget_sticky,_background_hover_repeat,{{WRAPPER}}:hover .elementor-widget-container,background-repeat
+wp-widget-ez_toc_widget_sticky,_background_hover_size,{{WRAPPER}}:hover .elementor-widget-container,background-size
+wp-widget-ez_toc_widget_sticky,_background_hover_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
+wp-widget-ez_toc_widget_sticky,_background_hover_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
+wp-widget-ez_toc_widget_sticky,_background_hover_transition,{{WRAPPER}} > .elementor-widget-container,transition
+wp-widget-ez_toc_widget_sticky,_background_hover_video_fallback,{{WRAPPER}}:hover .elementor-widget-container,background background-size
+wp-widget-ez_toc_widget_sticky,_background_hover_xpos,{{WRAPPER}}:hover .elementor-widget-container,background-position
+wp-widget-ez_toc_widget_sticky,_background_hover_ypos,{{WRAPPER}}:hover .elementor-widget-container,background-position
+wp-widget-ez_toc_widget_sticky,_background_image,{{WRAPPER}} > .elementor-widget-container,background-image
+wp-widget-ez_toc_widget_sticky,_background_position,{{WRAPPER}} > .elementor-widget-container,background-position
+wp-widget-ez_toc_widget_sticky,_background_repeat,{{WRAPPER}} > .elementor-widget-container,background-repeat
+wp-widget-ez_toc_widget_sticky,_background_size,{{WRAPPER}} > .elementor-widget-container,background-size
+wp-widget-ez_toc_widget_sticky,_background_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
+wp-widget-ez_toc_widget_sticky,_background_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
+wp-widget-ez_toc_widget_sticky,_background_video_fallback,{{WRAPPER}} > .elementor-widget-container,background background-size
+wp-widget-ez_toc_widget_sticky,_background_xpos,{{WRAPPER}} > .elementor-widget-container,background-position
+wp-widget-ez_toc_widget_sticky,_background_ypos,{{WRAPPER}} > .elementor-widget-container,background-position
+wp-widget-ez_toc_widget_sticky,_border_border,{{WRAPPER}} > .elementor-widget-container,border-style
+wp-widget-ez_toc_widget_sticky,_border_color,{{WRAPPER}} > .elementor-widget-container,border-color
+wp-widget-ez_toc_widget_sticky,_border_hover_border,{{WRAPPER}}:hover .elementor-widget-container,border-style
+wp-widget-ez_toc_widget_sticky,_border_hover_color,{{WRAPPER}}:hover .elementor-widget-container,border-color
+wp-widget-ez_toc_widget_sticky,_border_hover_transition,{{WRAPPER}} .elementor-widget-container,transition
+wp-widget-ez_toc_widget_sticky,_border_hover_width,{{WRAPPER}}:hover .elementor-widget-container,border-width
+wp-widget-ez_toc_widget_sticky,_border_radius,{{WRAPPER}} > .elementor-widget-container,border-radius
+wp-widget-ez_toc_widget_sticky,_border_radius_hover,{{WRAPPER}}:hover > .elementor-widget-container,border-radius
+wp-widget-ez_toc_widget_sticky,_border_width,{{WRAPPER}} > .elementor-widget-container,border-width
+wp-widget-ez_toc_widget_sticky,_box_shadow_box_shadow,{{WRAPPER}} > .elementor-widget-container,box-shadow
+wp-widget-ez_toc_widget_sticky,_box_shadow_hover_box_shadow,{{WRAPPER}}:hover .elementor-widget-container,box-shadow
+wp-widget-ez_toc_widget_sticky,_element_custom_width,{{WRAPPER}},--container-widget-width --container-widget-flex-grow width max-width
+wp-widget-ez_toc_widget_sticky,_element_vertical_align,{{WRAPPER}},align-self
+wp-widget-ez_toc_widget_sticky,_element_width,{{WRAPPER}},width max-width
+wp-widget-ez_toc_widget_sticky,_flex_align_self,{{WRAPPER}}.elementor-element,--align-self
+wp-widget-ez_toc_widget_sticky,_flex_grow,{{WRAPPER}}.elementor-element,--flex-grow
+wp-widget-ez_toc_widget_sticky,_flex_order,{{WRAPPER}}.elementor-element,--order
+wp-widget-ez_toc_widget_sticky,_flex_order_custom,{{WRAPPER}}.elementor-element,--order
+wp-widget-ez_toc_widget_sticky,_flex_shrink,{{WRAPPER}}.elementor-element,--flex-shrink
+wp-widget-ez_toc_widget_sticky,_grid_column,{{WRAPPER}},grid-column
+wp-widget-ez_toc_widget_sticky,_grid_column_custom,{{WRAPPER}},grid-column
+wp-widget-ez_toc_widget_sticky,_grid_row,{{WRAPPER}},grid-row
+wp-widget-ez_toc_widget_sticky,_grid_row_custom,{{WRAPPER}},grid-row
+wp-widget-ez_toc_widget_sticky,_margin,{{WRAPPER}} > .elementor-widget-container,margin
+wp-widget-ez_toc_widget_sticky,_mask_image,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-image
+wp-widget-ez_toc_widget_sticky,_mask_position,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-position
+wp-widget-ez_toc_widget_sticky,_mask_position_x,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-position-x
+wp-widget-ez_toc_widget_sticky,_mask_position_y,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-position-y
+wp-widget-ez_toc_widget_sticky,_mask_repeat,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-repeat
+wp-widget-ez_toc_widget_sticky,_mask_shape,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-image
+wp-widget-ez_toc_widget_sticky,_mask_size,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-size
+wp-widget-ez_toc_widget_sticky,_mask_size_scale,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-size
+wp-widget-ez_toc_widget_sticky,_offset_x,body.rtl {{WRAPPER}},right
+wp-widget-ez_toc_widget_sticky,_offset_x,body:not(.rtl) {{WRAPPER}},left
+wp-widget-ez_toc_widget_sticky,_offset_x_end,body.rtl {{WRAPPER}},left
+wp-widget-ez_toc_widget_sticky,_offset_x_end,body:not(.rtl) {{WRAPPER}},right
+wp-widget-ez_toc_widget_sticky,_offset_y,{{WRAPPER}},top
+wp-widget-ez_toc_widget_sticky,_offset_y_end,{{WRAPPER}},bottom
+wp-widget-ez_toc_widget_sticky,_padding,{{WRAPPER}} > .elementor-widget-container,padding
+wp-widget-ez_toc_widget_sticky,_transform_flipX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-flipX
+wp-widget-ez_toc_widget_sticky,_transform_flipX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-flipX
+wp-widget-ez_toc_widget_sticky,_transform_flipY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-flipY
+wp-widget-ez_toc_widget_sticky,_transform_flipY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-flipY
+wp-widget-ez_toc_widget_sticky,_transform_perspective_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-perspective
+wp-widget-ez_toc_widget_sticky,_transform_perspective_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-perspective
+wp-widget-ez_toc_widget_sticky,_transform_rotateX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateX
+wp-widget-ez_toc_widget_sticky,_transform_rotateX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateX
+wp-widget-ez_toc_widget_sticky,_transform_rotateY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateY
+wp-widget-ez_toc_widget_sticky,_transform_rotateY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateY
+wp-widget-ez_toc_widget_sticky,_transform_rotateZ_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateZ
+wp-widget-ez_toc_widget_sticky,_transform_rotateZ_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateZ
+wp-widget-ez_toc_widget_sticky,_transform_rotate_3d,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateX --e-transform-perspective
+wp-widget-ez_toc_widget_sticky,_transform_rotate_3d_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateX --e-transform-perspective
+wp-widget-ez_toc_widget_sticky,_transform_scaleX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-scaleX
+wp-widget-ez_toc_widget_sticky,_transform_scaleX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-scaleX
+wp-widget-ez_toc_widget_sticky,_transform_scaleY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-scaleY
+wp-widget-ez_toc_widget_sticky,_transform_scaleY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-scaleY
+wp-widget-ez_toc_widget_sticky,_transform_scale_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-scale
+wp-widget-ez_toc_widget_sticky,_transform_scale_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-scale
+wp-widget-ez_toc_widget_sticky,_transform_skewX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-skewX
+wp-widget-ez_toc_widget_sticky,_transform_skewX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-skewX
+wp-widget-ez_toc_widget_sticky,_transform_skewY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-skewY
+wp-widget-ez_toc_widget_sticky,_transform_skewY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-skewY
+wp-widget-ez_toc_widget_sticky,_transform_transition_hover,{{WRAPPER}},--e-transform-transition-duration
+wp-widget-ez_toc_widget_sticky,_transform_translateX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-translateX
+wp-widget-ez_toc_widget_sticky,_transform_translateX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-translateX
+wp-widget-ez_toc_widget_sticky,_transform_translateY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-translateY
+wp-widget-ez_toc_widget_sticky,_transform_translateY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-translateY
+wp-widget-ez_toc_widget_sticky,_z_index,{{WRAPPER}},z-index
+wp-widget-ez_toc_widget_sticky,motion_fx_transform_origin_x,{{WRAPPER}} .elementor-widget-container,--e-transform-origin-x
+wp-widget-ez_toc_widget_sticky,motion_fx_transform_origin_y,{{WRAPPER}} .elementor-widget-container,--e-transform-origin-y
+wp-widget-ez_toc_widget_sticky,motion_fx_transform_x_anchor_point,{{WRAPPER}},--e-transform-origin-x
+wp-widget-ez_toc_widget_sticky,motion_fx_transform_y_anchor_point,{{WRAPPER}},--e-transform-origin-y
+wp-widget-ezw_tco,_background_attachment,(desktop+){{WRAPPER}} > .elementor-widget-container,background-attachment
+wp-widget-ezw_tco,_background_bg_width,{{WRAPPER}} > .elementor-widget-container,background-size
+wp-widget-ezw_tco,_background_color,{{WRAPPER}} > .elementor-widget-container,background-color
+wp-widget-ezw_tco,_background_gradient_angle,{{WRAPPER}} > .elementor-widget-container,background-color background-image
+wp-widget-ezw_tco,_background_gradient_position,{{WRAPPER}} > .elementor-widget-container,background-color background-image
+wp-widget-ezw_tco,_background_hover_attachment,(desktop+){{WRAPPER}}:hover .elementor-widget-container,background-attachment
+wp-widget-ezw_tco,_background_hover_bg_width,{{WRAPPER}}:hover .elementor-widget-container,background-size
+wp-widget-ezw_tco,_background_hover_color,{{WRAPPER}}:hover .elementor-widget-container,background-color
+wp-widget-ezw_tco,_background_hover_gradient_angle,{{WRAPPER}}:hover .elementor-widget-container,background-color background-image
+wp-widget-ezw_tco,_background_hover_gradient_position,{{WRAPPER}}:hover .elementor-widget-container,background-color background-image
+wp-widget-ezw_tco,_background_hover_image,{{WRAPPER}}:hover .elementor-widget-container,background-image
+wp-widget-ezw_tco,_background_hover_position,{{WRAPPER}}:hover .elementor-widget-container,background-position
+wp-widget-ezw_tco,_background_hover_repeat,{{WRAPPER}}:hover .elementor-widget-container,background-repeat
+wp-widget-ezw_tco,_background_hover_size,{{WRAPPER}}:hover .elementor-widget-container,background-size
+wp-widget-ezw_tco,_background_hover_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
+wp-widget-ezw_tco,_background_hover_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
+wp-widget-ezw_tco,_background_hover_transition,{{WRAPPER}} > .elementor-widget-container,transition
+wp-widget-ezw_tco,_background_hover_video_fallback,{{WRAPPER}}:hover .elementor-widget-container,background background-size
+wp-widget-ezw_tco,_background_hover_xpos,{{WRAPPER}}:hover .elementor-widget-container,background-position
+wp-widget-ezw_tco,_background_hover_ypos,{{WRAPPER}}:hover .elementor-widget-container,background-position
+wp-widget-ezw_tco,_background_image,{{WRAPPER}} > .elementor-widget-container,background-image
+wp-widget-ezw_tco,_background_position,{{WRAPPER}} > .elementor-widget-container,background-position
+wp-widget-ezw_tco,_background_repeat,{{WRAPPER}} > .elementor-widget-container,background-repeat
+wp-widget-ezw_tco,_background_size,{{WRAPPER}} > .elementor-widget-container,background-size
+wp-widget-ezw_tco,_background_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
+wp-widget-ezw_tco,_background_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
+wp-widget-ezw_tco,_background_video_fallback,{{WRAPPER}} > .elementor-widget-container,background background-size
+wp-widget-ezw_tco,_background_xpos,{{WRAPPER}} > .elementor-widget-container,background-position
+wp-widget-ezw_tco,_background_ypos,{{WRAPPER}} > .elementor-widget-container,background-position
+wp-widget-ezw_tco,_border_border,{{WRAPPER}} > .elementor-widget-container,border-style
+wp-widget-ezw_tco,_border_color,{{WRAPPER}} > .elementor-widget-container,border-color
+wp-widget-ezw_tco,_border_hover_border,{{WRAPPER}}:hover .elementor-widget-container,border-style
+wp-widget-ezw_tco,_border_hover_color,{{WRAPPER}}:hover .elementor-widget-container,border-color
+wp-widget-ezw_tco,_border_hover_transition,{{WRAPPER}} .elementor-widget-container,transition
+wp-widget-ezw_tco,_border_hover_width,{{WRAPPER}}:hover .elementor-widget-container,border-width
+wp-widget-ezw_tco,_border_radius,{{WRAPPER}} > .elementor-widget-container,border-radius
+wp-widget-ezw_tco,_border_radius_hover,{{WRAPPER}}:hover > .elementor-widget-container,border-radius
+wp-widget-ezw_tco,_border_width,{{WRAPPER}} > .elementor-widget-container,border-width
+wp-widget-ezw_tco,_box_shadow_box_shadow,{{WRAPPER}} > .elementor-widget-container,box-shadow
+wp-widget-ezw_tco,_box_shadow_hover_box_shadow,{{WRAPPER}}:hover .elementor-widget-container,box-shadow
+wp-widget-ezw_tco,_element_custom_width,{{WRAPPER}},--container-widget-width --container-widget-flex-grow width max-width
+wp-widget-ezw_tco,_element_vertical_align,{{WRAPPER}},align-self
+wp-widget-ezw_tco,_element_width,{{WRAPPER}},width max-width
+wp-widget-ezw_tco,_flex_align_self,{{WRAPPER}}.elementor-element,--align-self
+wp-widget-ezw_tco,_flex_grow,{{WRAPPER}}.elementor-element,--flex-grow
+wp-widget-ezw_tco,_flex_order,{{WRAPPER}}.elementor-element,--order
+wp-widget-ezw_tco,_flex_order_custom,{{WRAPPER}}.elementor-element,--order
+wp-widget-ezw_tco,_flex_shrink,{{WRAPPER}}.elementor-element,--flex-shrink
+wp-widget-ezw_tco,_grid_column,{{WRAPPER}},grid-column
+wp-widget-ezw_tco,_grid_column_custom,{{WRAPPER}},grid-column
+wp-widget-ezw_tco,_grid_row,{{WRAPPER}},grid-row
+wp-widget-ezw_tco,_grid_row_custom,{{WRAPPER}},grid-row
+wp-widget-ezw_tco,_margin,{{WRAPPER}} > .elementor-widget-container,margin
+wp-widget-ezw_tco,_mask_image,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-image
+wp-widget-ezw_tco,_mask_position,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-position
+wp-widget-ezw_tco,_mask_position_x,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-position-x
+wp-widget-ezw_tco,_mask_position_y,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-position-y
+wp-widget-ezw_tco,_mask_repeat,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-repeat
+wp-widget-ezw_tco,_mask_shape,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-image
+wp-widget-ezw_tco,_mask_size,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-size
+wp-widget-ezw_tco,_mask_size_scale,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-size
+wp-widget-ezw_tco,_offset_x,body.rtl {{WRAPPER}},right
+wp-widget-ezw_tco,_offset_x,body:not(.rtl) {{WRAPPER}},left
+wp-widget-ezw_tco,_offset_x_end,body.rtl {{WRAPPER}},left
+wp-widget-ezw_tco,_offset_x_end,body:not(.rtl) {{WRAPPER}},right
+wp-widget-ezw_tco,_offset_y,{{WRAPPER}},top
+wp-widget-ezw_tco,_offset_y_end,{{WRAPPER}},bottom
+wp-widget-ezw_tco,_padding,{{WRAPPER}} > .elementor-widget-container,padding
+wp-widget-ezw_tco,_transform_flipX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-flipX
+wp-widget-ezw_tco,_transform_flipX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-flipX
+wp-widget-ezw_tco,_transform_flipY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-flipY
+wp-widget-ezw_tco,_transform_flipY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-flipY
+wp-widget-ezw_tco,_transform_perspective_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-perspective
+wp-widget-ezw_tco,_transform_perspective_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-perspective
+wp-widget-ezw_tco,_transform_rotateX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateX
+wp-widget-ezw_tco,_transform_rotateX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateX
+wp-widget-ezw_tco,_transform_rotateY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateY
+wp-widget-ezw_tco,_transform_rotateY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateY
+wp-widget-ezw_tco,_transform_rotateZ_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateZ
+wp-widget-ezw_tco,_transform_rotateZ_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateZ
+wp-widget-ezw_tco,_transform_rotate_3d,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateX --e-transform-perspective
+wp-widget-ezw_tco,_transform_rotate_3d_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateX --e-transform-perspective
+wp-widget-ezw_tco,_transform_scaleX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-scaleX
+wp-widget-ezw_tco,_transform_scaleX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-scaleX
+wp-widget-ezw_tco,_transform_scaleY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-scaleY
+wp-widget-ezw_tco,_transform_scaleY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-scaleY
+wp-widget-ezw_tco,_transform_scale_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-scale
+wp-widget-ezw_tco,_transform_scale_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-scale
+wp-widget-ezw_tco,_transform_skewX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-skewX
+wp-widget-ezw_tco,_transform_skewX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-skewX
+wp-widget-ezw_tco,_transform_skewY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-skewY
+wp-widget-ezw_tco,_transform_skewY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-skewY
+wp-widget-ezw_tco,_transform_transition_hover,{{WRAPPER}},--e-transform-transition-duration
+wp-widget-ezw_tco,_transform_translateX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-translateX
+wp-widget-ezw_tco,_transform_translateX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-translateX
+wp-widget-ezw_tco,_transform_translateY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-translateY
+wp-widget-ezw_tco,_transform_translateY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-translateY
+wp-widget-ezw_tco,_z_index,{{WRAPPER}},z-index
+wp-widget-ezw_tco,motion_fx_transform_origin_x,{{WRAPPER}} .elementor-widget-container,--e-transform-origin-x
+wp-widget-ezw_tco,motion_fx_transform_origin_y,{{WRAPPER}} .elementor-widget-container,--e-transform-origin-y
+wp-widget-ezw_tco,motion_fx_transform_x_anchor_point,{{WRAPPER}},--e-transform-origin-x
+wp-widget-ezw_tco,motion_fx_transform_y_anchor_point,{{WRAPPER}},--e-transform-origin-y
 wp-widget-media_audio,_background_attachment,(desktop+){{WRAPPER}} > .elementor-widget-container,background-attachment
 wp-widget-media_audio,_background_bg_width,{{WRAPPER}} > .elementor-widget-container,background-size
 wp-widget-media_audio,_background_color,{{WRAPPER}} > .elementor-widget-container,background-color
@@ -23614,6 +23532,210 @@ wp-widget-media_video,motion_fx_transform_origin_x,{{WRAPPER}} .elementor-widget
 wp-widget-media_video,motion_fx_transform_origin_y,{{WRAPPER}} .elementor-widget-container,--e-transform-origin-y
 wp-widget-media_video,motion_fx_transform_x_anchor_point,{{WRAPPER}},--e-transform-origin-x
 wp-widget-media_video,motion_fx_transform_y_anchor_point,{{WRAPPER}},--e-transform-origin-y
+wp-widget-members-widget-login,_background_attachment,(desktop+){{WRAPPER}} > .elementor-widget-container,background-attachment
+wp-widget-members-widget-login,_background_bg_width,{{WRAPPER}} > .elementor-widget-container,background-size
+wp-widget-members-widget-login,_background_color,{{WRAPPER}} > .elementor-widget-container,background-color
+wp-widget-members-widget-login,_background_gradient_angle,{{WRAPPER}} > .elementor-widget-container,background-color background-image
+wp-widget-members-widget-login,_background_gradient_position,{{WRAPPER}} > .elementor-widget-container,background-color background-image
+wp-widget-members-widget-login,_background_hover_attachment,(desktop+){{WRAPPER}}:hover .elementor-widget-container,background-attachment
+wp-widget-members-widget-login,_background_hover_bg_width,{{WRAPPER}}:hover .elementor-widget-container,background-size
+wp-widget-members-widget-login,_background_hover_color,{{WRAPPER}}:hover .elementor-widget-container,background-color
+wp-widget-members-widget-login,_background_hover_gradient_angle,{{WRAPPER}}:hover .elementor-widget-container,background-color background-image
+wp-widget-members-widget-login,_background_hover_gradient_position,{{WRAPPER}}:hover .elementor-widget-container,background-color background-image
+wp-widget-members-widget-login,_background_hover_image,{{WRAPPER}}:hover .elementor-widget-container,background-image
+wp-widget-members-widget-login,_background_hover_position,{{WRAPPER}}:hover .elementor-widget-container,background-position
+wp-widget-members-widget-login,_background_hover_repeat,{{WRAPPER}}:hover .elementor-widget-container,background-repeat
+wp-widget-members-widget-login,_background_hover_size,{{WRAPPER}}:hover .elementor-widget-container,background-size
+wp-widget-members-widget-login,_background_hover_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
+wp-widget-members-widget-login,_background_hover_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
+wp-widget-members-widget-login,_background_hover_transition,{{WRAPPER}} > .elementor-widget-container,transition
+wp-widget-members-widget-login,_background_hover_video_fallback,{{WRAPPER}}:hover .elementor-widget-container,background background-size
+wp-widget-members-widget-login,_background_hover_xpos,{{WRAPPER}}:hover .elementor-widget-container,background-position
+wp-widget-members-widget-login,_background_hover_ypos,{{WRAPPER}}:hover .elementor-widget-container,background-position
+wp-widget-members-widget-login,_background_image,{{WRAPPER}} > .elementor-widget-container,background-image
+wp-widget-members-widget-login,_background_position,{{WRAPPER}} > .elementor-widget-container,background-position
+wp-widget-members-widget-login,_background_repeat,{{WRAPPER}} > .elementor-widget-container,background-repeat
+wp-widget-members-widget-login,_background_size,{{WRAPPER}} > .elementor-widget-container,background-size
+wp-widget-members-widget-login,_background_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
+wp-widget-members-widget-login,_background_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
+wp-widget-members-widget-login,_background_video_fallback,{{WRAPPER}} > .elementor-widget-container,background background-size
+wp-widget-members-widget-login,_background_xpos,{{WRAPPER}} > .elementor-widget-container,background-position
+wp-widget-members-widget-login,_background_ypos,{{WRAPPER}} > .elementor-widget-container,background-position
+wp-widget-members-widget-login,_border_border,{{WRAPPER}} > .elementor-widget-container,border-style
+wp-widget-members-widget-login,_border_color,{{WRAPPER}} > .elementor-widget-container,border-color
+wp-widget-members-widget-login,_border_hover_border,{{WRAPPER}}:hover .elementor-widget-container,border-style
+wp-widget-members-widget-login,_border_hover_color,{{WRAPPER}}:hover .elementor-widget-container,border-color
+wp-widget-members-widget-login,_border_hover_transition,{{WRAPPER}} .elementor-widget-container,transition
+wp-widget-members-widget-login,_border_hover_width,{{WRAPPER}}:hover .elementor-widget-container,border-width
+wp-widget-members-widget-login,_border_radius,{{WRAPPER}} > .elementor-widget-container,border-radius
+wp-widget-members-widget-login,_border_radius_hover,{{WRAPPER}}:hover > .elementor-widget-container,border-radius
+wp-widget-members-widget-login,_border_width,{{WRAPPER}} > .elementor-widget-container,border-width
+wp-widget-members-widget-login,_box_shadow_box_shadow,{{WRAPPER}} > .elementor-widget-container,box-shadow
+wp-widget-members-widget-login,_box_shadow_hover_box_shadow,{{WRAPPER}}:hover .elementor-widget-container,box-shadow
+wp-widget-members-widget-login,_element_custom_width,{{WRAPPER}},--container-widget-width --container-widget-flex-grow width max-width
+wp-widget-members-widget-login,_element_vertical_align,{{WRAPPER}},align-self
+wp-widget-members-widget-login,_element_width,{{WRAPPER}},width max-width
+wp-widget-members-widget-login,_flex_align_self,{{WRAPPER}}.elementor-element,--align-self
+wp-widget-members-widget-login,_flex_grow,{{WRAPPER}}.elementor-element,--flex-grow
+wp-widget-members-widget-login,_flex_order,{{WRAPPER}}.elementor-element,--order
+wp-widget-members-widget-login,_flex_order_custom,{{WRAPPER}}.elementor-element,--order
+wp-widget-members-widget-login,_flex_shrink,{{WRAPPER}}.elementor-element,--flex-shrink
+wp-widget-members-widget-login,_grid_column,{{WRAPPER}},grid-column
+wp-widget-members-widget-login,_grid_column_custom,{{WRAPPER}},grid-column
+wp-widget-members-widget-login,_grid_row,{{WRAPPER}},grid-row
+wp-widget-members-widget-login,_grid_row_custom,{{WRAPPER}},grid-row
+wp-widget-members-widget-login,_margin,{{WRAPPER}} > .elementor-widget-container,margin
+wp-widget-members-widget-login,_mask_image,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-image
+wp-widget-members-widget-login,_mask_position,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-position
+wp-widget-members-widget-login,_mask_position_x,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-position-x
+wp-widget-members-widget-login,_mask_position_y,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-position-y
+wp-widget-members-widget-login,_mask_repeat,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-repeat
+wp-widget-members-widget-login,_mask_shape,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-image
+wp-widget-members-widget-login,_mask_size,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-size
+wp-widget-members-widget-login,_mask_size_scale,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-size
+wp-widget-members-widget-login,_offset_x,body.rtl {{WRAPPER}},right
+wp-widget-members-widget-login,_offset_x,body:not(.rtl) {{WRAPPER}},left
+wp-widget-members-widget-login,_offset_x_end,body.rtl {{WRAPPER}},left
+wp-widget-members-widget-login,_offset_x_end,body:not(.rtl) {{WRAPPER}},right
+wp-widget-members-widget-login,_offset_y,{{WRAPPER}},top
+wp-widget-members-widget-login,_offset_y_end,{{WRAPPER}},bottom
+wp-widget-members-widget-login,_padding,{{WRAPPER}} > .elementor-widget-container,padding
+wp-widget-members-widget-login,_transform_flipX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-flipX
+wp-widget-members-widget-login,_transform_flipX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-flipX
+wp-widget-members-widget-login,_transform_flipY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-flipY
+wp-widget-members-widget-login,_transform_flipY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-flipY
+wp-widget-members-widget-login,_transform_perspective_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-perspective
+wp-widget-members-widget-login,_transform_perspective_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-perspective
+wp-widget-members-widget-login,_transform_rotateX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateX
+wp-widget-members-widget-login,_transform_rotateX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateX
+wp-widget-members-widget-login,_transform_rotateY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateY
+wp-widget-members-widget-login,_transform_rotateY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateY
+wp-widget-members-widget-login,_transform_rotateZ_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateZ
+wp-widget-members-widget-login,_transform_rotateZ_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateZ
+wp-widget-members-widget-login,_transform_rotate_3d,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateX --e-transform-perspective
+wp-widget-members-widget-login,_transform_rotate_3d_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateX --e-transform-perspective
+wp-widget-members-widget-login,_transform_scaleX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-scaleX
+wp-widget-members-widget-login,_transform_scaleX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-scaleX
+wp-widget-members-widget-login,_transform_scaleY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-scaleY
+wp-widget-members-widget-login,_transform_scaleY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-scaleY
+wp-widget-members-widget-login,_transform_scale_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-scale
+wp-widget-members-widget-login,_transform_scale_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-scale
+wp-widget-members-widget-login,_transform_skewX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-skewX
+wp-widget-members-widget-login,_transform_skewX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-skewX
+wp-widget-members-widget-login,_transform_skewY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-skewY
+wp-widget-members-widget-login,_transform_skewY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-skewY
+wp-widget-members-widget-login,_transform_transition_hover,{{WRAPPER}},--e-transform-transition-duration
+wp-widget-members-widget-login,_transform_translateX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-translateX
+wp-widget-members-widget-login,_transform_translateX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-translateX
+wp-widget-members-widget-login,_transform_translateY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-translateY
+wp-widget-members-widget-login,_transform_translateY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-translateY
+wp-widget-members-widget-login,_z_index,{{WRAPPER}},z-index
+wp-widget-members-widget-login,motion_fx_transform_origin_x,{{WRAPPER}} .elementor-widget-container,--e-transform-origin-x
+wp-widget-members-widget-login,motion_fx_transform_origin_y,{{WRAPPER}} .elementor-widget-container,--e-transform-origin-y
+wp-widget-members-widget-login,motion_fx_transform_x_anchor_point,{{WRAPPER}},--e-transform-origin-x
+wp-widget-members-widget-login,motion_fx_transform_y_anchor_point,{{WRAPPER}},--e-transform-origin-y
+wp-widget-members-widget-users,_background_attachment,(desktop+){{WRAPPER}} > .elementor-widget-container,background-attachment
+wp-widget-members-widget-users,_background_bg_width,{{WRAPPER}} > .elementor-widget-container,background-size
+wp-widget-members-widget-users,_background_color,{{WRAPPER}} > .elementor-widget-container,background-color
+wp-widget-members-widget-users,_background_gradient_angle,{{WRAPPER}} > .elementor-widget-container,background-color background-image
+wp-widget-members-widget-users,_background_gradient_position,{{WRAPPER}} > .elementor-widget-container,background-color background-image
+wp-widget-members-widget-users,_background_hover_attachment,(desktop+){{WRAPPER}}:hover .elementor-widget-container,background-attachment
+wp-widget-members-widget-users,_background_hover_bg_width,{{WRAPPER}}:hover .elementor-widget-container,background-size
+wp-widget-members-widget-users,_background_hover_color,{{WRAPPER}}:hover .elementor-widget-container,background-color
+wp-widget-members-widget-users,_background_hover_gradient_angle,{{WRAPPER}}:hover .elementor-widget-container,background-color background-image
+wp-widget-members-widget-users,_background_hover_gradient_position,{{WRAPPER}}:hover .elementor-widget-container,background-color background-image
+wp-widget-members-widget-users,_background_hover_image,{{WRAPPER}}:hover .elementor-widget-container,background-image
+wp-widget-members-widget-users,_background_hover_position,{{WRAPPER}}:hover .elementor-widget-container,background-position
+wp-widget-members-widget-users,_background_hover_repeat,{{WRAPPER}}:hover .elementor-widget-container,background-repeat
+wp-widget-members-widget-users,_background_hover_size,{{WRAPPER}}:hover .elementor-widget-container,background-size
+wp-widget-members-widget-users,_background_hover_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
+wp-widget-members-widget-users,_background_hover_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
+wp-widget-members-widget-users,_background_hover_transition,{{WRAPPER}} > .elementor-widget-container,transition
+wp-widget-members-widget-users,_background_hover_video_fallback,{{WRAPPER}}:hover .elementor-widget-container,background background-size
+wp-widget-members-widget-users,_background_hover_xpos,{{WRAPPER}}:hover .elementor-widget-container,background-position
+wp-widget-members-widget-users,_background_hover_ypos,{{WRAPPER}}:hover .elementor-widget-container,background-position
+wp-widget-members-widget-users,_background_image,{{WRAPPER}} > .elementor-widget-container,background-image
+wp-widget-members-widget-users,_background_position,{{WRAPPER}} > .elementor-widget-container,background-position
+wp-widget-members-widget-users,_background_repeat,{{WRAPPER}} > .elementor-widget-container,background-repeat
+wp-widget-members-widget-users,_background_size,{{WRAPPER}} > .elementor-widget-container,background-size
+wp-widget-members-widget-users,_background_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
+wp-widget-members-widget-users,_background_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
+wp-widget-members-widget-users,_background_video_fallback,{{WRAPPER}} > .elementor-widget-container,background background-size
+wp-widget-members-widget-users,_background_xpos,{{WRAPPER}} > .elementor-widget-container,background-position
+wp-widget-members-widget-users,_background_ypos,{{WRAPPER}} > .elementor-widget-container,background-position
+wp-widget-members-widget-users,_border_border,{{WRAPPER}} > .elementor-widget-container,border-style
+wp-widget-members-widget-users,_border_color,{{WRAPPER}} > .elementor-widget-container,border-color
+wp-widget-members-widget-users,_border_hover_border,{{WRAPPER}}:hover .elementor-widget-container,border-style
+wp-widget-members-widget-users,_border_hover_color,{{WRAPPER}}:hover .elementor-widget-container,border-color
+wp-widget-members-widget-users,_border_hover_transition,{{WRAPPER}} .elementor-widget-container,transition
+wp-widget-members-widget-users,_border_hover_width,{{WRAPPER}}:hover .elementor-widget-container,border-width
+wp-widget-members-widget-users,_border_radius,{{WRAPPER}} > .elementor-widget-container,border-radius
+wp-widget-members-widget-users,_border_radius_hover,{{WRAPPER}}:hover > .elementor-widget-container,border-radius
+wp-widget-members-widget-users,_border_width,{{WRAPPER}} > .elementor-widget-container,border-width
+wp-widget-members-widget-users,_box_shadow_box_shadow,{{WRAPPER}} > .elementor-widget-container,box-shadow
+wp-widget-members-widget-users,_box_shadow_hover_box_shadow,{{WRAPPER}}:hover .elementor-widget-container,box-shadow
+wp-widget-members-widget-users,_element_custom_width,{{WRAPPER}},--container-widget-width --container-widget-flex-grow width max-width
+wp-widget-members-widget-users,_element_vertical_align,{{WRAPPER}},align-self
+wp-widget-members-widget-users,_element_width,{{WRAPPER}},width max-width
+wp-widget-members-widget-users,_flex_align_self,{{WRAPPER}}.elementor-element,--align-self
+wp-widget-members-widget-users,_flex_grow,{{WRAPPER}}.elementor-element,--flex-grow
+wp-widget-members-widget-users,_flex_order,{{WRAPPER}}.elementor-element,--order
+wp-widget-members-widget-users,_flex_order_custom,{{WRAPPER}}.elementor-element,--order
+wp-widget-members-widget-users,_flex_shrink,{{WRAPPER}}.elementor-element,--flex-shrink
+wp-widget-members-widget-users,_grid_column,{{WRAPPER}},grid-column
+wp-widget-members-widget-users,_grid_column_custom,{{WRAPPER}},grid-column
+wp-widget-members-widget-users,_grid_row,{{WRAPPER}},grid-row
+wp-widget-members-widget-users,_grid_row_custom,{{WRAPPER}},grid-row
+wp-widget-members-widget-users,_margin,{{WRAPPER}} > .elementor-widget-container,margin
+wp-widget-members-widget-users,_mask_image,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-image
+wp-widget-members-widget-users,_mask_position,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-position
+wp-widget-members-widget-users,_mask_position_x,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-position-x
+wp-widget-members-widget-users,_mask_position_y,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-position-y
+wp-widget-members-widget-users,_mask_repeat,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-repeat
+wp-widget-members-widget-users,_mask_shape,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-image
+wp-widget-members-widget-users,_mask_size,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-size
+wp-widget-members-widget-users,_mask_size_scale,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-size
+wp-widget-members-widget-users,_offset_x,body.rtl {{WRAPPER}},right
+wp-widget-members-widget-users,_offset_x,body:not(.rtl) {{WRAPPER}},left
+wp-widget-members-widget-users,_offset_x_end,body.rtl {{WRAPPER}},left
+wp-widget-members-widget-users,_offset_x_end,body:not(.rtl) {{WRAPPER}},right
+wp-widget-members-widget-users,_offset_y,{{WRAPPER}},top
+wp-widget-members-widget-users,_offset_y_end,{{WRAPPER}},bottom
+wp-widget-members-widget-users,_padding,{{WRAPPER}} > .elementor-widget-container,padding
+wp-widget-members-widget-users,_transform_flipX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-flipX
+wp-widget-members-widget-users,_transform_flipX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-flipX
+wp-widget-members-widget-users,_transform_flipY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-flipY
+wp-widget-members-widget-users,_transform_flipY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-flipY
+wp-widget-members-widget-users,_transform_perspective_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-perspective
+wp-widget-members-widget-users,_transform_perspective_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-perspective
+wp-widget-members-widget-users,_transform_rotateX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateX
+wp-widget-members-widget-users,_transform_rotateX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateX
+wp-widget-members-widget-users,_transform_rotateY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateY
+wp-widget-members-widget-users,_transform_rotateY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateY
+wp-widget-members-widget-users,_transform_rotateZ_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateZ
+wp-widget-members-widget-users,_transform_rotateZ_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateZ
+wp-widget-members-widget-users,_transform_rotate_3d,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateX --e-transform-perspective
+wp-widget-members-widget-users,_transform_rotate_3d_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateX --e-transform-perspective
+wp-widget-members-widget-users,_transform_scaleX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-scaleX
+wp-widget-members-widget-users,_transform_scaleX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-scaleX
+wp-widget-members-widget-users,_transform_scaleY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-scaleY
+wp-widget-members-widget-users,_transform_scaleY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-scaleY
+wp-widget-members-widget-users,_transform_scale_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-scale
+wp-widget-members-widget-users,_transform_scale_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-scale
+wp-widget-members-widget-users,_transform_skewX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-skewX
+wp-widget-members-widget-users,_transform_skewX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-skewX
+wp-widget-members-widget-users,_transform_skewY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-skewY
+wp-widget-members-widget-users,_transform_skewY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-skewY
+wp-widget-members-widget-users,_transform_transition_hover,{{WRAPPER}},--e-transform-transition-duration
+wp-widget-members-widget-users,_transform_translateX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-translateX
+wp-widget-members-widget-users,_transform_translateX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-translateX
+wp-widget-members-widget-users,_transform_translateY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-translateY
+wp-widget-members-widget-users,_transform_translateY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-translateY
+wp-widget-members-widget-users,_z_index,{{WRAPPER}},z-index
+wp-widget-members-widget-users,motion_fx_transform_origin_x,{{WRAPPER}} .elementor-widget-container,--e-transform-origin-x
+wp-widget-members-widget-users,motion_fx_transform_origin_y,{{WRAPPER}} .elementor-widget-container,--e-transform-origin-y
+wp-widget-members-widget-users,motion_fx_transform_x_anchor_point,{{WRAPPER}},--e-transform-origin-x
+wp-widget-members-widget-users,motion_fx_transform_y_anchor_point,{{WRAPPER}},--e-transform-origin-y
 wp-widget-meta,_background_attachment,(desktop+){{WRAPPER}} > .elementor-widget-container,background-attachment
 wp-widget-meta,_background_bg_width,{{WRAPPER}} > .elementor-widget-container,background-size
 wp-widget-meta,_background_color,{{WRAPPER}} > .elementor-widget-container,background-color
@@ -23818,6 +23940,108 @@ wp-widget-nav_menu,motion_fx_transform_origin_x,{{WRAPPER}} .elementor-widget-co
 wp-widget-nav_menu,motion_fx_transform_origin_y,{{WRAPPER}} .elementor-widget-container,--e-transform-origin-y
 wp-widget-nav_menu,motion_fx_transform_x_anchor_point,{{WRAPPER}},--e-transform-origin-x
 wp-widget-nav_menu,motion_fx_transform_y_anchor_point,{{WRAPPER}},--e-transform-origin-y
+wp-widget-nextend_social_login,_background_attachment,(desktop+){{WRAPPER}} > .elementor-widget-container,background-attachment
+wp-widget-nextend_social_login,_background_bg_width,{{WRAPPER}} > .elementor-widget-container,background-size
+wp-widget-nextend_social_login,_background_color,{{WRAPPER}} > .elementor-widget-container,background-color
+wp-widget-nextend_social_login,_background_gradient_angle,{{WRAPPER}} > .elementor-widget-container,background-color background-image
+wp-widget-nextend_social_login,_background_gradient_position,{{WRAPPER}} > .elementor-widget-container,background-color background-image
+wp-widget-nextend_social_login,_background_hover_attachment,(desktop+){{WRAPPER}}:hover .elementor-widget-container,background-attachment
+wp-widget-nextend_social_login,_background_hover_bg_width,{{WRAPPER}}:hover .elementor-widget-container,background-size
+wp-widget-nextend_social_login,_background_hover_color,{{WRAPPER}}:hover .elementor-widget-container,background-color
+wp-widget-nextend_social_login,_background_hover_gradient_angle,{{WRAPPER}}:hover .elementor-widget-container,background-color background-image
+wp-widget-nextend_social_login,_background_hover_gradient_position,{{WRAPPER}}:hover .elementor-widget-container,background-color background-image
+wp-widget-nextend_social_login,_background_hover_image,{{WRAPPER}}:hover .elementor-widget-container,background-image
+wp-widget-nextend_social_login,_background_hover_position,{{WRAPPER}}:hover .elementor-widget-container,background-position
+wp-widget-nextend_social_login,_background_hover_repeat,{{WRAPPER}}:hover .elementor-widget-container,background-repeat
+wp-widget-nextend_social_login,_background_hover_size,{{WRAPPER}}:hover .elementor-widget-container,background-size
+wp-widget-nextend_social_login,_background_hover_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
+wp-widget-nextend_social_login,_background_hover_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
+wp-widget-nextend_social_login,_background_hover_transition,{{WRAPPER}} > .elementor-widget-container,transition
+wp-widget-nextend_social_login,_background_hover_video_fallback,{{WRAPPER}}:hover .elementor-widget-container,background background-size
+wp-widget-nextend_social_login,_background_hover_xpos,{{WRAPPER}}:hover .elementor-widget-container,background-position
+wp-widget-nextend_social_login,_background_hover_ypos,{{WRAPPER}}:hover .elementor-widget-container,background-position
+wp-widget-nextend_social_login,_background_image,{{WRAPPER}} > .elementor-widget-container,background-image
+wp-widget-nextend_social_login,_background_position,{{WRAPPER}} > .elementor-widget-container,background-position
+wp-widget-nextend_social_login,_background_repeat,{{WRAPPER}} > .elementor-widget-container,background-repeat
+wp-widget-nextend_social_login,_background_size,{{WRAPPER}} > .elementor-widget-container,background-size
+wp-widget-nextend_social_login,_background_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
+wp-widget-nextend_social_login,_background_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
+wp-widget-nextend_social_login,_background_video_fallback,{{WRAPPER}} > .elementor-widget-container,background background-size
+wp-widget-nextend_social_login,_background_xpos,{{WRAPPER}} > .elementor-widget-container,background-position
+wp-widget-nextend_social_login,_background_ypos,{{WRAPPER}} > .elementor-widget-container,background-position
+wp-widget-nextend_social_login,_border_border,{{WRAPPER}} > .elementor-widget-container,border-style
+wp-widget-nextend_social_login,_border_color,{{WRAPPER}} > .elementor-widget-container,border-color
+wp-widget-nextend_social_login,_border_hover_border,{{WRAPPER}}:hover .elementor-widget-container,border-style
+wp-widget-nextend_social_login,_border_hover_color,{{WRAPPER}}:hover .elementor-widget-container,border-color
+wp-widget-nextend_social_login,_border_hover_transition,{{WRAPPER}} .elementor-widget-container,transition
+wp-widget-nextend_social_login,_border_hover_width,{{WRAPPER}}:hover .elementor-widget-container,border-width
+wp-widget-nextend_social_login,_border_radius,{{WRAPPER}} > .elementor-widget-container,border-radius
+wp-widget-nextend_social_login,_border_radius_hover,{{WRAPPER}}:hover > .elementor-widget-container,border-radius
+wp-widget-nextend_social_login,_border_width,{{WRAPPER}} > .elementor-widget-container,border-width
+wp-widget-nextend_social_login,_box_shadow_box_shadow,{{WRAPPER}} > .elementor-widget-container,box-shadow
+wp-widget-nextend_social_login,_box_shadow_hover_box_shadow,{{WRAPPER}}:hover .elementor-widget-container,box-shadow
+wp-widget-nextend_social_login,_element_custom_width,{{WRAPPER}},--container-widget-width --container-widget-flex-grow width max-width
+wp-widget-nextend_social_login,_element_vertical_align,{{WRAPPER}},align-self
+wp-widget-nextend_social_login,_element_width,{{WRAPPER}},width max-width
+wp-widget-nextend_social_login,_flex_align_self,{{WRAPPER}}.elementor-element,--align-self
+wp-widget-nextend_social_login,_flex_grow,{{WRAPPER}}.elementor-element,--flex-grow
+wp-widget-nextend_social_login,_flex_order,{{WRAPPER}}.elementor-element,--order
+wp-widget-nextend_social_login,_flex_order_custom,{{WRAPPER}}.elementor-element,--order
+wp-widget-nextend_social_login,_flex_shrink,{{WRAPPER}}.elementor-element,--flex-shrink
+wp-widget-nextend_social_login,_grid_column,{{WRAPPER}},grid-column
+wp-widget-nextend_social_login,_grid_column_custom,{{WRAPPER}},grid-column
+wp-widget-nextend_social_login,_grid_row,{{WRAPPER}},grid-row
+wp-widget-nextend_social_login,_grid_row_custom,{{WRAPPER}},grid-row
+wp-widget-nextend_social_login,_margin,{{WRAPPER}} > .elementor-widget-container,margin
+wp-widget-nextend_social_login,_mask_image,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-image
+wp-widget-nextend_social_login,_mask_position,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-position
+wp-widget-nextend_social_login,_mask_position_x,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-position-x
+wp-widget-nextend_social_login,_mask_position_y,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-position-y
+wp-widget-nextend_social_login,_mask_repeat,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-repeat
+wp-widget-nextend_social_login,_mask_shape,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-image
+wp-widget-nextend_social_login,_mask_size,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-size
+wp-widget-nextend_social_login,_mask_size_scale,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-size
+wp-widget-nextend_social_login,_offset_x,body.rtl {{WRAPPER}},right
+wp-widget-nextend_social_login,_offset_x,body:not(.rtl) {{WRAPPER}},left
+wp-widget-nextend_social_login,_offset_x_end,body.rtl {{WRAPPER}},left
+wp-widget-nextend_social_login,_offset_x_end,body:not(.rtl) {{WRAPPER}},right
+wp-widget-nextend_social_login,_offset_y,{{WRAPPER}},top
+wp-widget-nextend_social_login,_offset_y_end,{{WRAPPER}},bottom
+wp-widget-nextend_social_login,_padding,{{WRAPPER}} > .elementor-widget-container,padding
+wp-widget-nextend_social_login,_transform_flipX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-flipX
+wp-widget-nextend_social_login,_transform_flipX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-flipX
+wp-widget-nextend_social_login,_transform_flipY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-flipY
+wp-widget-nextend_social_login,_transform_flipY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-flipY
+wp-widget-nextend_social_login,_transform_perspective_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-perspective
+wp-widget-nextend_social_login,_transform_perspective_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-perspective
+wp-widget-nextend_social_login,_transform_rotateX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateX
+wp-widget-nextend_social_login,_transform_rotateX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateX
+wp-widget-nextend_social_login,_transform_rotateY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateY
+wp-widget-nextend_social_login,_transform_rotateY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateY
+wp-widget-nextend_social_login,_transform_rotateZ_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateZ
+wp-widget-nextend_social_login,_transform_rotateZ_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateZ
+wp-widget-nextend_social_login,_transform_rotate_3d,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateX --e-transform-perspective
+wp-widget-nextend_social_login,_transform_rotate_3d_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateX --e-transform-perspective
+wp-widget-nextend_social_login,_transform_scaleX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-scaleX
+wp-widget-nextend_social_login,_transform_scaleX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-scaleX
+wp-widget-nextend_social_login,_transform_scaleY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-scaleY
+wp-widget-nextend_social_login,_transform_scaleY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-scaleY
+wp-widget-nextend_social_login,_transform_scale_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-scale
+wp-widget-nextend_social_login,_transform_scale_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-scale
+wp-widget-nextend_social_login,_transform_skewX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-skewX
+wp-widget-nextend_social_login,_transform_skewX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-skewX
+wp-widget-nextend_social_login,_transform_skewY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-skewY
+wp-widget-nextend_social_login,_transform_skewY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-skewY
+wp-widget-nextend_social_login,_transform_transition_hover,{{WRAPPER}},--e-transform-transition-duration
+wp-widget-nextend_social_login,_transform_translateX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-translateX
+wp-widget-nextend_social_login,_transform_translateX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-translateX
+wp-widget-nextend_social_login,_transform_translateY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-translateY
+wp-widget-nextend_social_login,_transform_translateY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-translateY
+wp-widget-nextend_social_login,_z_index,{{WRAPPER}},z-index
+wp-widget-nextend_social_login,motion_fx_transform_origin_x,{{WRAPPER}} .elementor-widget-container,--e-transform-origin-x
+wp-widget-nextend_social_login,motion_fx_transform_origin_y,{{WRAPPER}} .elementor-widget-container,--e-transform-origin-y
+wp-widget-nextend_social_login,motion_fx_transform_x_anchor_point,{{WRAPPER}},--e-transform-origin-x
+wp-widget-nextend_social_login,motion_fx_transform_y_anchor_point,{{WRAPPER}},--e-transform-origin-y
 wp-widget-pages,_background_attachment,(desktop+){{WRAPPER}} > .elementor-widget-container,background-attachment
 wp-widget-pages,_background_bg_width,{{WRAPPER}} > .elementor-widget-container,background-size
 wp-widget-pages,_background_color,{{WRAPPER}} > .elementor-widget-container,background-color
@@ -26062,3 +26286,105 @@ wp-widget-woocommerce_widget_cart,motion_fx_transform_origin_x,{{WRAPPER}} .elem
 wp-widget-woocommerce_widget_cart,motion_fx_transform_origin_y,{{WRAPPER}} .elementor-widget-container,--e-transform-origin-y
 wp-widget-woocommerce_widget_cart,motion_fx_transform_x_anchor_point,{{WRAPPER}},--e-transform-origin-x
 wp-widget-woocommerce_widget_cart,motion_fx_transform_y_anchor_point,{{WRAPPER}},--e-transform-origin-y
+wp-widget-wpforms-widget,_background_attachment,(desktop+){{WRAPPER}} > .elementor-widget-container,background-attachment
+wp-widget-wpforms-widget,_background_bg_width,{{WRAPPER}} > .elementor-widget-container,background-size
+wp-widget-wpforms-widget,_background_color,{{WRAPPER}} > .elementor-widget-container,background-color
+wp-widget-wpforms-widget,_background_gradient_angle,{{WRAPPER}} > .elementor-widget-container,background-color background-image
+wp-widget-wpforms-widget,_background_gradient_position,{{WRAPPER}} > .elementor-widget-container,background-color background-image
+wp-widget-wpforms-widget,_background_hover_attachment,(desktop+){{WRAPPER}}:hover .elementor-widget-container,background-attachment
+wp-widget-wpforms-widget,_background_hover_bg_width,{{WRAPPER}}:hover .elementor-widget-container,background-size
+wp-widget-wpforms-widget,_background_hover_color,{{WRAPPER}}:hover .elementor-widget-container,background-color
+wp-widget-wpforms-widget,_background_hover_gradient_angle,{{WRAPPER}}:hover .elementor-widget-container,background-color background-image
+wp-widget-wpforms-widget,_background_hover_gradient_position,{{WRAPPER}}:hover .elementor-widget-container,background-color background-image
+wp-widget-wpforms-widget,_background_hover_image,{{WRAPPER}}:hover .elementor-widget-container,background-image
+wp-widget-wpforms-widget,_background_hover_position,{{WRAPPER}}:hover .elementor-widget-container,background-position
+wp-widget-wpforms-widget,_background_hover_repeat,{{WRAPPER}}:hover .elementor-widget-container,background-repeat
+wp-widget-wpforms-widget,_background_hover_size,{{WRAPPER}}:hover .elementor-widget-container,background-size
+wp-widget-wpforms-widget,_background_hover_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
+wp-widget-wpforms-widget,_background_hover_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
+wp-widget-wpforms-widget,_background_hover_transition,{{WRAPPER}} > .elementor-widget-container,transition
+wp-widget-wpforms-widget,_background_hover_video_fallback,{{WRAPPER}}:hover .elementor-widget-container,background background-size
+wp-widget-wpforms-widget,_background_hover_xpos,{{WRAPPER}}:hover .elementor-widget-container,background-position
+wp-widget-wpforms-widget,_background_hover_ypos,{{WRAPPER}}:hover .elementor-widget-container,background-position
+wp-widget-wpforms-widget,_background_image,{{WRAPPER}} > .elementor-widget-container,background-image
+wp-widget-wpforms-widget,_background_position,{{WRAPPER}} > .elementor-widget-container,background-position
+wp-widget-wpforms-widget,_background_repeat,{{WRAPPER}} > .elementor-widget-container,background-repeat
+wp-widget-wpforms-widget,_background_size,{{WRAPPER}} > .elementor-widget-container,background-size
+wp-widget-wpforms-widget,_background_slideshow_background_position,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-position
+wp-widget-wpforms-widget,_background_slideshow_background_size,{{WRAPPER}} .elementor-background-slideshow__slide__image,background-size
+wp-widget-wpforms-widget,_background_video_fallback,{{WRAPPER}} > .elementor-widget-container,background background-size
+wp-widget-wpforms-widget,_background_xpos,{{WRAPPER}} > .elementor-widget-container,background-position
+wp-widget-wpforms-widget,_background_ypos,{{WRAPPER}} > .elementor-widget-container,background-position
+wp-widget-wpforms-widget,_border_border,{{WRAPPER}} > .elementor-widget-container,border-style
+wp-widget-wpforms-widget,_border_color,{{WRAPPER}} > .elementor-widget-container,border-color
+wp-widget-wpforms-widget,_border_hover_border,{{WRAPPER}}:hover .elementor-widget-container,border-style
+wp-widget-wpforms-widget,_border_hover_color,{{WRAPPER}}:hover .elementor-widget-container,border-color
+wp-widget-wpforms-widget,_border_hover_transition,{{WRAPPER}} .elementor-widget-container,transition
+wp-widget-wpforms-widget,_border_hover_width,{{WRAPPER}}:hover .elementor-widget-container,border-width
+wp-widget-wpforms-widget,_border_radius,{{WRAPPER}} > .elementor-widget-container,border-radius
+wp-widget-wpforms-widget,_border_radius_hover,{{WRAPPER}}:hover > .elementor-widget-container,border-radius
+wp-widget-wpforms-widget,_border_width,{{WRAPPER}} > .elementor-widget-container,border-width
+wp-widget-wpforms-widget,_box_shadow_box_shadow,{{WRAPPER}} > .elementor-widget-container,box-shadow
+wp-widget-wpforms-widget,_box_shadow_hover_box_shadow,{{WRAPPER}}:hover .elementor-widget-container,box-shadow
+wp-widget-wpforms-widget,_element_custom_width,{{WRAPPER}},--container-widget-width --container-widget-flex-grow width max-width
+wp-widget-wpforms-widget,_element_vertical_align,{{WRAPPER}},align-self
+wp-widget-wpforms-widget,_element_width,{{WRAPPER}},width max-width
+wp-widget-wpforms-widget,_flex_align_self,{{WRAPPER}}.elementor-element,--align-self
+wp-widget-wpforms-widget,_flex_grow,{{WRAPPER}}.elementor-element,--flex-grow
+wp-widget-wpforms-widget,_flex_order,{{WRAPPER}}.elementor-element,--order
+wp-widget-wpforms-widget,_flex_order_custom,{{WRAPPER}}.elementor-element,--order
+wp-widget-wpforms-widget,_flex_shrink,{{WRAPPER}}.elementor-element,--flex-shrink
+wp-widget-wpforms-widget,_grid_column,{{WRAPPER}},grid-column
+wp-widget-wpforms-widget,_grid_column_custom,{{WRAPPER}},grid-column
+wp-widget-wpforms-widget,_grid_row,{{WRAPPER}},grid-row
+wp-widget-wpforms-widget,_grid_row_custom,{{WRAPPER}},grid-row
+wp-widget-wpforms-widget,_margin,{{WRAPPER}} > .elementor-widget-container,margin
+wp-widget-wpforms-widget,_mask_image,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-image
+wp-widget-wpforms-widget,_mask_position,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-position
+wp-widget-wpforms-widget,_mask_position_x,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-position-x
+wp-widget-wpforms-widget,_mask_position_y,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-position-y
+wp-widget-wpforms-widget,_mask_repeat,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-repeat
+wp-widget-wpforms-widget,_mask_shape,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-image
+wp-widget-wpforms-widget,_mask_size,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-size
+wp-widget-wpforms-widget,_mask_size_scale,"{{WRAPPER}}:not( .elementor-widget-image ) .elementor-widget-container, {{WRAPPER}}.elementor-widget-image .elementor-widget-container img",-webkit-mask-size
+wp-widget-wpforms-widget,_offset_x,body.rtl {{WRAPPER}},right
+wp-widget-wpforms-widget,_offset_x,body:not(.rtl) {{WRAPPER}},left
+wp-widget-wpforms-widget,_offset_x_end,body.rtl {{WRAPPER}},left
+wp-widget-wpforms-widget,_offset_x_end,body:not(.rtl) {{WRAPPER}},right
+wp-widget-wpforms-widget,_offset_y,{{WRAPPER}},top
+wp-widget-wpforms-widget,_offset_y_end,{{WRAPPER}},bottom
+wp-widget-wpforms-widget,_padding,{{WRAPPER}} > .elementor-widget-container,padding
+wp-widget-wpforms-widget,_transform_flipX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-flipX
+wp-widget-wpforms-widget,_transform_flipX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-flipX
+wp-widget-wpforms-widget,_transform_flipY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-flipY
+wp-widget-wpforms-widget,_transform_flipY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-flipY
+wp-widget-wpforms-widget,_transform_perspective_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-perspective
+wp-widget-wpforms-widget,_transform_perspective_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-perspective
+wp-widget-wpforms-widget,_transform_rotateX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateX
+wp-widget-wpforms-widget,_transform_rotateX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateX
+wp-widget-wpforms-widget,_transform_rotateY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateY
+wp-widget-wpforms-widget,_transform_rotateY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateY
+wp-widget-wpforms-widget,_transform_rotateZ_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateZ
+wp-widget-wpforms-widget,_transform_rotateZ_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateZ
+wp-widget-wpforms-widget,_transform_rotate_3d,{{WRAPPER}} > .elementor-widget-container,--e-transform-rotateX --e-transform-perspective
+wp-widget-wpforms-widget,_transform_rotate_3d_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-rotateX --e-transform-perspective
+wp-widget-wpforms-widget,_transform_scaleX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-scaleX
+wp-widget-wpforms-widget,_transform_scaleX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-scaleX
+wp-widget-wpforms-widget,_transform_scaleY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-scaleY
+wp-widget-wpforms-widget,_transform_scaleY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-scaleY
+wp-widget-wpforms-widget,_transform_scale_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-scale
+wp-widget-wpforms-widget,_transform_scale_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-scale
+wp-widget-wpforms-widget,_transform_skewX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-skewX
+wp-widget-wpforms-widget,_transform_skewX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-skewX
+wp-widget-wpforms-widget,_transform_skewY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-skewY
+wp-widget-wpforms-widget,_transform_skewY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-skewY
+wp-widget-wpforms-widget,_transform_transition_hover,{{WRAPPER}},--e-transform-transition-duration
+wp-widget-wpforms-widget,_transform_translateX_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-translateX
+wp-widget-wpforms-widget,_transform_translateX_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-translateX
+wp-widget-wpforms-widget,_transform_translateY_effect,{{WRAPPER}} > .elementor-widget-container,--e-transform-translateY
+wp-widget-wpforms-widget,_transform_translateY_effect_hover,{{WRAPPER}} > .elementor-widget-container:hover,--e-transform-translateY
+wp-widget-wpforms-widget,_z_index,{{WRAPPER}},z-index
+wp-widget-wpforms-widget,motion_fx_transform_origin_x,{{WRAPPER}} .elementor-widget-container,--e-transform-origin-x
+wp-widget-wpforms-widget,motion_fx_transform_origin_y,{{WRAPPER}} .elementor-widget-container,--e-transform-origin-y
+wp-widget-wpforms-widget,motion_fx_transform_x_anchor_point,{{WRAPPER}},--e-transform-origin-x
+wp-widget-wpforms-widget,motion_fx_transform_y_anchor_point,{{WRAPPER}},--e-transform-origin-y

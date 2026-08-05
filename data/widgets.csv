@@ -2,17 +2,7 @@ name,elType,tier,requires,title,categories,controls_own,controls_total,has_commo
 section,section,free,,Section,,290,290,no
 column,column,free,,Column,,262,262,no
 container,container,free,,Container,,354,354,no
-e-div-block,e-div-block,free,experiment:e_atomic_elements,Div block,,0,0,no
-e-flexbox,e-flexbox,free,experiment:e_atomic_elements,Flexbox,,0,0,no
-e-tabs,e-tabs,free,experiment:e_atomic_elements,Tabs,,0,0,no
-e-tabs-menu,e-tabs-menu,free,experiment:e_atomic_elements,Tabs menu,,0,0,no
-e-tab,e-tab,free,experiment:e_atomic_elements,Tab trigger,,0,0,no
-e-tabs-content-area,e-tabs-content-area,free,experiment:e_atomic_elements,Tabs content area,,0,0,no
-e-tab-content,e-tab-content,free,experiment:e_atomic_elements,Tab content,,0,0,no
-e-form,e-form,free,experiment:e_atomic_elements,Atomic form,,0,0,no
-e-form-success-message,e-form-success-message,free,experiment:e_atomic_elements,Success message,,0,0,no
-e-form-error-message,e-form-error-message,free,experiment:e_atomic_elements,Error message,,0,0,no
-accordion,widget,free,,Accordion,general,45,256,yes
+accordion,widget,free,,Accordion,general,46,257,yes
 alert,widget,free,,Alert,general,40,251,yes
 animated-headline,widget,pro,,Animated Headline,pro-elements,51,262,yes
 archive-posts,widget,pro,,Archive Posts,theme-elements-archive,438,649,yes
@@ -38,25 +28,7 @@ contact-buttons-var-9,widget,pro,experiment:container,Animated Classic,general,3
 countdown,widget,pro,,Countdown,pro-elements,74,285,yes
 counter,widget,free,,Counter,general,48,259,yes
 divider,widget,free,,Divider,basic,41,252,yes
-e-button,widget,free,experiment:e_atomic_elements,Button,v4-elements,0,0,no
 e-component,widget,free,experiment:e_components,Component,v4-elements,0,0,no
-e-divider,widget,free,experiment:e_atomic_elements,Divider,v4-elements,0,0,no
-e-form-checkbox,widget,pro,experiment:e_pro_atomic_form,Checkbox,atomic-form,0,0,no
-e-form-date-picker,widget,pro,experiment:e_pro_atomic_form,Date picker,atomic-form,0,0,no
-e-form-file-upload,widget,pro,experiment:e_pro_atomic_form,File Upload,atomic-form,0,0,no
-e-form-input,widget,pro,experiment:e_pro_atomic_form,Input,atomic-form,0,0,no
-e-form-label,widget,pro,experiment:e_pro_atomic_form,Label,atomic-form,0,0,no
-e-form-radio-button,widget,pro,experiment:e_pro_atomic_form,Radio button,atomic-form,0,0,no
-e-form-select,widget,pro,experiment:e_pro_atomic_form,Select,atomic-form,0,0,no
-e-form-submit-button,widget,pro,experiment:e_pro_atomic_form,Submit button,atomic-form,0,0,no
-e-form-textarea,widget,pro,experiment:e_pro_atomic_form,Text area,atomic-form,0,0,no
-e-form-time-picker,widget,pro,experiment:e_pro_atomic_form,Time picker,atomic-form,0,0,no
-e-heading,widget,free,experiment:e_atomic_elements,Heading,v4-elements,0,0,no
-e-image,widget,free,experiment:e_atomic_elements,Image,v4-elements,0,0,no
-e-paragraph,widget,free,experiment:e_atomic_elements,Paragraph,v4-elements,0,0,no
-e-self-hosted-video,widget,free,experiment:e_atomic_elements,Video,v4-elements,0,0,no
-e-svg,widget,free,experiment:e_atomic_elements,SVG,v4-elements,0,0,no
-e-youtube,widget,free,experiment:e_atomic_elements,YouTube,v4-elements,0,0,no
 facebook-button,widget,pro,,Facebook Button,pro-elements,9,220,yes
 facebook-comments,widget,pro,,Facebook Comments,pro-elements,5,216,yes
 facebook-embed,widget,pro,,Facebook Embed,pro-elements,9,220,yes
@@ -87,15 +59,14 @@ link-in-bio-var-4,widget,pro,,Links,link-in-bio,141,352,yes
 link-in-bio-var-5,widget,pro,,Services,link-in-bio,144,355,yes
 link-in-bio-var-6,widget,pro,,Portfolio Bio,link-in-bio,134,345,yes
 link-in-bio-var-7,widget,pro,,Business Card,link-in-bio,189,400,yes
-login,widget,pro,,Login,pro-elements,142,353,yes
+login,widget,pro,,Login,pro-elements,143,354,yes
 loop-carousel,widget,pro,,Loop Carousel,pro-elements,212,423,yes
 loop-grid,widget,pro,,Loop Grid,pro-elements,243,454,yes
 lottie,widget,pro,,Lottie,pro-elements,52,263,yes
 media-carousel,widget,pro,,Media Carousel,pro-elements,62,273,yes
-mega-menu,widget,pro,experiment:nested-elements,Menu,pro-elements|theme-elements,416,627,yes
 menu-anchor,widget,free,,Menu Anchor,general,1,212,yes
 nav-menu,widget,pro,,WordPress Menu,pro-elements|theme-elements,78,289,yes
-nested-accordion,widget,free,experiment:nested-elements,Accordion,general,189,400,yes
+nested-accordion,widget,free,experiment:nested-elements,Accordion,general,190,401,yes
 nested-carousel,widget,pro,experiment:nested-elements,Carousel,pro-elements,178,389,yes
 nested-tabs,widget,free,experiment:nested-elements,Tabs,general,202,413,yes
 off-canvas,widget,pro,experiment:nested-elements,Off-Canvas,pro-elements,87,298,yes
@@ -103,7 +74,7 @@ paypal-button,widget,pro,,PayPal Button,pro-elements,134,345,yes
 portfolio,widget,pro,,Portfolio,pro-elements,60,271,yes
 post-comments,widget,pro,,Post Comments,theme-elements-single,4,215,yes
 post-info,widget,pro,,Post Info,theme-elements-single,24,235,yes
-post-navigation,widget,pro,,Post Navigation,theme-elements-single,43,254,yes
+post-navigation,widget,pro,,Post Navigation,theme-elements-single,44,255,yes
 posts,widget,pro,,Posts,pro-elements,464,675,yes
 price-list,widget,pro,,Price List,pro-elements,50,261,yes
 price-table,widget,pro,,Price Table,pro-elements,218,429,yes
@@ -151,8 +122,8 @@ wc-single-elements,widget,pro,plugin:woocommerce,Woo - Single Elements,woocommer
 woocommerce-archive-description,widget,pro,plugin:woocommerce,Archive Description,woocommerce-elements-archive,12,223,yes
 woocommerce-archive-products,widget,pro,plugin:woocommerce,Archive Products (deprecated),woocommerce-elements-archive,177,388,yes
 woocommerce-breadcrumb,widget,pro,plugin:woocommerce,WooCommerce Breadcrumbs,woocommerce-elements|woocommerce-elements-single,13,224,yes
-woocommerce-cart,widget,pro,plugin:woocommerce,Cart,woocommerce-elements,459,670,yes
-woocommerce-checkout-page,widget,pro,plugin:woocommerce,Checkout,woocommerce-elements,687,898,yes
+woocommerce-cart,widget,pro,plugin:woocommerce,Cart,woocommerce-elements,462,673,yes
+woocommerce-checkout-page,widget,pro,plugin:woocommerce,Checkout,woocommerce-elements,716,927,yes
 woocommerce-menu-cart,widget,pro,plugin:woocommerce,Menu Cart,theme-elements|woocommerce-elements,209,420,yes
 woocommerce-my-account,widget,pro,plugin:woocommerce,My Account,woocommerce-elements,541,752,yes
 woocommerce-notices,widget,pro,plugin:woocommerce,WooCommerce Notices,woocommerce-elements,0,211,yes
@@ -176,12 +147,17 @@ wp-widget-block,widget,free,wp-widget,區塊,wordpress,1,212,yes
 wp-widget-calendar,widget,free,wp-widget,月曆,wordpress,1,212,yes
 wp-widget-categories,widget,free,wp-widget,分類,wordpress,1,212,yes
 wp-widget-custom_html,widget,free,wp-widget,自訂 HTML,wordpress,1,212,yes
+wp-widget-ez_toc_widget_sticky,widget,free,wp-widget,資訊欄固定位置內容目錄,wordpress,1,212,yes
+wp-widget-ezw_tco,widget,free,wp-widget,內容目錄,wordpress,1,212,yes
 wp-widget-media_audio,widget,free,wp-widget,音訊,wordpress,1,212,yes
 wp-widget-media_gallery,widget,free,wp-widget,圖庫,wordpress,1,212,yes
 wp-widget-media_image,widget,free,wp-widget,圖片,wordpress,1,212,yes
 wp-widget-media_video,widget,free,wp-widget,視訊,wordpress,1,212,yes
+wp-widget-members-widget-login,widget,free,wp-widget,Members: Login Form,wordpress,1,212,yes
+wp-widget-members-widget-users,widget,free,wp-widget,Members: Users,wordpress,1,212,yes
 wp-widget-meta,widget,free,wp-widget,其他操作,wordpress,1,212,yes
 wp-widget-nav_menu,widget,free,wp-widget,導覽選單,wordpress,1,212,yes
+wp-widget-nextend_social_login,widget,free,wp-widget,Nextend Social Login Buttons,wordpress,1,212,yes
 wp-widget-pages,widget,free,wp-widget,頁面,wordpress,1,212,yes
 wp-widget-recent-comments,widget,free,wp-widget,近期留言,wordpress,1,212,yes
 wp-widget-recent-posts,widget,free,wp-widget,近期文章,wordpress,1,212,yes
@@ -204,3 +180,4 @@ wp-widget-woocommerce_recent_reviews,widget,free,wp-widget,近期商品評價,wo
 wp-widget-woocommerce_recently_viewed_products,widget,free,wp-widget,近期瀏覽商品清單,wordpress,1,212,yes
 wp-widget-woocommerce_top_rated_products,widget,free,wp-widget,好評商品清單,wordpress,1,212,yes
 wp-widget-woocommerce_widget_cart,widget,free,wp-widget,購物車,wordpress,1,212,yes
+wp-widget-wpforms-widget,widget,free,wp-widget,WPForms,wordpress,1,212,yes

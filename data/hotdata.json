@@ -378,6 +378,20 @@
         "wordpress"
       ]
     },
+    "wp-widget-members-widget-login": {
+      "tier": "free",
+      "title": "Members: Login Form",
+      "categories": [
+        "wordpress"
+      ]
+    },
+    "wp-widget-members-widget-users": {
+      "tier": "free",
+      "title": "Members: Users",
+      "categories": [
+        "wordpress"
+      ]
+    },
     "wp-widget-woocommerce_widget_cart": {
       "tier": "free",
       "title": "購物車",
@@ -462,6 +476,34 @@
         "wordpress"
       ]
     },
+    "wp-widget-wpforms-widget": {
+      "tier": "free",
+      "title": "WPForms",
+      "categories": [
+        "wordpress"
+      ]
+    },
+    "wp-widget-ezw_tco": {
+      "tier": "free",
+      "title": "內容目錄",
+      "categories": [
+        "wordpress"
+      ]
+    },
+    "wp-widget-ez_toc_widget_sticky": {
+      "tier": "free",
+      "title": "資訊欄固定位置內容目錄",
+      "categories": [
+        "wordpress"
+      ]
+    },
+    "wp-widget-nextend_social_login": {
+      "tier": "free",
+      "title": "Nextend Social Login Buttons",
+      "categories": [
+        "wordpress"
+      ]
+    },
     "wp-widget-wc_brands_brand_description": {
       "tier": "free",
       "title": "WooCommerce 品牌描述",
@@ -511,62 +553,6 @@
         "general"
       ]
     },
-    "e-heading": {
-      "tier": "free",
-      "title": "Heading",
-      "categories": [
-        "v4-elements"
-      ]
-    },
-    "e-image": {
-      "tier": "free",
-      "title": "Image",
-      "categories": [
-        "v4-elements"
-      ]
-    },
-    "e-paragraph": {
-      "tier": "free",
-      "title": "Paragraph",
-      "categories": [
-        "v4-elements"
-      ]
-    },
-    "e-svg": {
-      "tier": "free",
-      "title": "SVG",
-      "categories": [
-        "v4-elements"
-      ]
-    },
-    "e-button": {
-      "tier": "free",
-      "title": "Button",
-      "categories": [
-        "v4-elements"
-      ]
-    },
-    "e-youtube": {
-      "tier": "free",
-      "title": "YouTube",
-      "categories": [
-        "v4-elements"
-      ]
-    },
-    "e-divider": {
-      "tier": "free",
-      "title": "Divider",
-      "categories": [
-        "v4-elements"
-      ]
-    },
-    "e-self-hosted-video": {
-      "tier": "free",
-      "title": "Video",
-      "categories": [
-        "v4-elements"
-      ]
-    },
     "e-component": {
       "tier": "free",
       "title": "Component",
@@ -579,76 +565,6 @@
       "title": "Global",
       "categories": [
         "pro-elements"
-      ]
-    },
-    "e-form-input": {
-      "tier": "pro",
-      "title": "Input",
-      "categories": [
-        "atomic-form"
-      ]
-    },
-    "e-form-label": {
-      "tier": "pro",
-      "title": "Label",
-      "categories": [
-        "atomic-form"
-      ]
-    },
-    "e-form-textarea": {
-      "tier": "pro",
-      "title": "Text area",
-      "categories": [
-        "atomic-form"
-      ]
-    },
-    "e-form-submit-button": {
-      "tier": "pro",
-      "title": "Submit button",
-      "categories": [
-        "atomic-form"
-      ]
-    },
-    "e-form-checkbox": {
-      "tier": "pro",
-      "title": "Checkbox",
-      "categories": [
-        "atomic-form"
-      ]
-    },
-    "e-form-radio-button": {
-      "tier": "pro",
-      "title": "Radio button",
-      "categories": [
-        "atomic-form"
-      ]
-    },
-    "e-form-date-picker": {
-      "tier": "pro",
-      "title": "Date picker",
-      "categories": [
-        "atomic-form"
-      ]
-    },
-    "e-form-time-picker": {
-      "tier": "pro",
-      "title": "Time picker",
-      "categories": [
-        "atomic-form"
-      ]
-    },
-    "e-form-select": {
-      "tier": "pro",
-      "title": "Select",
-      "categories": [
-        "atomic-form"
-      ]
-    },
-    "e-form-file-upload": {
-      "tier": "pro",
-      "title": "File Upload",
-      "categories": [
-        "atomic-form"
       ]
     },
     "theme-site-logo": {
@@ -1203,14 +1119,6 @@
         "theme-elements-single"
       ]
     },
-    "mega-menu": {
-      "tier": "pro",
-      "title": "Menu",
-      "categories": [
-        "pro-elements",
-        "theme-elements"
-      ]
-    },
     "nested-carousel": {
       "tier": "pro",
       "title": "Carousel",
@@ -1355,7 +1263,7 @@
   "container_controls": {
     "container_type": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": "flex",
       "responsive": null,
       "css": [
@@ -1364,14 +1272,14 @@
     },
     "content_width": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": "boxed",
       "responsive": null,
       "css": null
     },
     "width": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "%",
         "size": "",
@@ -1387,7 +1295,7 @@
     },
     "boxed_width": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -1403,7 +1311,7 @@
     },
     "min_height": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -1419,7 +1327,7 @@
     },
     "flex_direction": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -1429,21 +1337,21 @@
     },
     "flex__is_row": {
       "type": "hidden",
-      "tier": "unknown",
+      "tier": "free",
       "default": "row",
       "responsive": null,
       "css": null
     },
     "flex__is_column": {
       "type": "hidden",
-      "tier": "unknown",
+      "tier": "free",
       "default": "column",
       "responsive": null,
       "css": null
     },
     "flex_justify_content": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -1455,7 +1363,7 @@
     },
     "flex_align_items": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -1468,7 +1376,7 @@
     },
     "flex_gap": {
       "type": "gaps",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "column": "",
         "row": "",
@@ -1487,7 +1395,7 @@
     },
     "flex_wrap": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -1499,7 +1407,7 @@
     },
     "flex_align_content": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -1511,14 +1419,14 @@
     },
     "grid_outline": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": "yes",
       "responsive": null,
       "css": null
     },
     "grid_columns_grid": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "fr",
         "size": 2,
@@ -1534,7 +1442,7 @@
     },
     "grid_rows_grid": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "fr",
         "size": 1,
@@ -1550,7 +1458,7 @@
     },
     "grid_gaps": {
       "type": "gaps",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "column": "",
         "row": "",
@@ -1569,7 +1477,7 @@
     },
     "grid_auto_flow": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": "row",
       "responsive": [
         "mobile",
@@ -1581,7 +1489,7 @@
     },
     "grid_justify_items": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -1593,7 +1501,7 @@
     },
     "grid_align_items": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -1605,7 +1513,7 @@
     },
     "grid_justify_content": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -1617,7 +1525,7 @@
     },
     "grid_align_content": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -1629,21 +1537,21 @@
     },
     "grid__is_row": {
       "type": "hidden",
-      "tier": "unknown",
+      "tier": "free",
       "default": "row",
       "responsive": null,
       "css": null
     },
     "grid__is_column": {
       "type": "hidden",
-      "tier": "unknown",
+      "tier": "free",
       "default": "column",
       "responsive": null,
       "css": null
     },
     "overflow": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -1652,14 +1560,14 @@
     },
     "html_tag": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "link": {
       "type": "url",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "url": "",
         "is_external": "",
@@ -1671,14 +1579,14 @@
     },
     "background_background": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_color": {
       "type": "color",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -1687,7 +1595,7 @@
     },
     "background_color_stop": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "%",
         "size": 0,
@@ -1701,14 +1609,14 @@
     },
     "background_color_b": {
       "type": "color",
-      "tier": "unknown",
+      "tier": "free",
       "default": "#f2295b",
       "responsive": null,
       "css": null
     },
     "background_color_b_stop": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "%",
         "size": 100,
@@ -1722,14 +1630,14 @@
     },
     "background_gradient_type": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": "linear",
       "responsive": null,
       "css": null
     },
     "background_gradient_angle": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "deg",
         "size": 180,
@@ -1746,7 +1654,7 @@
     },
     "background_gradient_position": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": "center center",
       "responsive": [
         "mobile",
@@ -1759,7 +1667,7 @@
     },
     "background_image": {
       "type": "media",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "url": "",
         "id": "",
@@ -1775,7 +1683,7 @@
     },
     "background_position": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -1787,7 +1695,7 @@
     },
     "background_xpos": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 0,
@@ -1803,7 +1711,7 @@
     },
     "background_ypos": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 0,
@@ -1819,7 +1727,7 @@
     },
     "background_attachment": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -1828,7 +1736,7 @@
     },
     "background_repeat": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -1840,7 +1748,7 @@
     },
     "background_size": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -1852,7 +1760,7 @@
     },
     "background_bg_width": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "%",
         "size": 100,
@@ -1868,49 +1776,49 @@
     },
     "background_video_link": {
       "type": "text",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_video_start": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_video_end": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_play_once": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_play_on_mobile": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_privacy_mode": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_video_fallback": {
       "type": "media",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "url": "",
         "id": "",
@@ -1924,42 +1832,42 @@
     },
     "background_slideshow_gallery": {
       "type": "gallery",
-      "tier": "unknown",
+      "tier": "free",
       "default": [],
       "responsive": null,
       "css": null
     },
     "background_slideshow_loop": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": "yes",
       "responsive": null,
       "css": null
     },
     "background_slideshow_slide_duration": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": 5000,
       "responsive": null,
       "css": null
     },
     "background_slideshow_slide_transition": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": "fade",
       "responsive": null,
       "css": null
     },
     "background_slideshow_transition_duration": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": 500,
       "responsive": null,
       "css": null
     },
     "background_slideshow_background_size": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -1971,7 +1879,7 @@
     },
     "background_slideshow_background_position": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -1983,42 +1891,42 @@
     },
     "background_slideshow_lazyload": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_slideshow_ken_burns": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_slideshow_ken_burns_zoom_direction": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": "in",
       "responsive": null,
       "css": null
     },
     "handle_slideshow_asset_loading": {
       "type": "hidden",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_hover_background": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_hover_color": {
       "type": "color",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -2027,7 +1935,7 @@
     },
     "background_hover_color_stop": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "%",
         "size": 0,
@@ -2041,14 +1949,14 @@
     },
     "background_hover_color_b": {
       "type": "color",
-      "tier": "unknown",
+      "tier": "free",
       "default": "#f2295b",
       "responsive": null,
       "css": null
     },
     "background_hover_color_b_stop": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "%",
         "size": 100,
@@ -2062,14 +1970,14 @@
     },
     "background_hover_gradient_type": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": "linear",
       "responsive": null,
       "css": null
     },
     "background_hover_gradient_angle": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "deg",
         "size": 180,
@@ -2086,7 +1994,7 @@
     },
     "background_hover_gradient_position": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": "center center",
       "responsive": [
         "mobile",
@@ -2099,7 +2007,7 @@
     },
     "background_hover_image": {
       "type": "media",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "url": "",
         "id": "",
@@ -2115,7 +2023,7 @@
     },
     "background_hover_position": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -2127,7 +2035,7 @@
     },
     "background_hover_xpos": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 0,
@@ -2143,7 +2051,7 @@
     },
     "background_hover_ypos": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 0,
@@ -2159,7 +2067,7 @@
     },
     "background_hover_attachment": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -2168,7 +2076,7 @@
     },
     "background_hover_repeat": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -2180,7 +2088,7 @@
     },
     "background_hover_size": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -2192,7 +2100,7 @@
     },
     "background_hover_bg_width": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "%",
         "size": 100,
@@ -2208,49 +2116,49 @@
     },
     "background_hover_video_link": {
       "type": "text",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_hover_video_start": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_hover_video_end": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_hover_play_once": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_hover_play_on_mobile": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_hover_privacy_mode": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_hover_video_fallback": {
       "type": "media",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "url": "",
         "id": "",
@@ -2264,42 +2172,42 @@
     },
     "background_hover_slideshow_gallery": {
       "type": "gallery",
-      "tier": "unknown",
+      "tier": "free",
       "default": [],
       "responsive": null,
       "css": null
     },
     "background_hover_slideshow_loop": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": "yes",
       "responsive": null,
       "css": null
     },
     "background_hover_slideshow_slide_duration": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": 5000,
       "responsive": null,
       "css": null
     },
     "background_hover_slideshow_slide_transition": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": "fade",
       "responsive": null,
       "css": null
     },
     "background_hover_slideshow_transition_duration": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": 500,
       "responsive": null,
       "css": null
     },
     "background_hover_slideshow_background_size": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -2311,7 +2219,7 @@
     },
     "background_hover_slideshow_background_position": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -2323,28 +2231,28 @@
     },
     "background_hover_slideshow_lazyload": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_hover_slideshow_ken_burns": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_hover_slideshow_ken_burns_zoom_direction": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": "in",
       "responsive": null,
       "css": null
     },
     "background_hover_transition": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 0.3,
@@ -2357,28 +2265,28 @@
     },
     "background_motion_fx_motion_fx_scrolling": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_motion_fx_translateY_effect": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_motion_fx_translateY_direction": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_motion_fx_translateY_speed": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "px",
         "size": 4,
@@ -2389,7 +2297,7 @@
     },
     "background_motion_fx_translateY_affectedRange": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "%",
         "size": "",
@@ -2403,21 +2311,21 @@
     },
     "background_motion_fx_translateX_effect": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_motion_fx_translateX_direction": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_motion_fx_translateX_speed": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "px",
         "size": 4,
@@ -2428,7 +2336,7 @@
     },
     "background_motion_fx_translateX_affectedRange": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "%",
         "size": "",
@@ -2442,21 +2350,21 @@
     },
     "background_motion_fx_opacity_effect": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_motion_fx_opacity_direction": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "pro",
       "default": "out-in",
       "responsive": null,
       "css": null
     },
     "background_motion_fx_opacity_level": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "px",
         "size": 10,
@@ -2467,7 +2375,7 @@
     },
     "background_motion_fx_opacity_range": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "%",
         "size": "",
@@ -2481,21 +2389,21 @@
     },
     "background_motion_fx_blur_effect": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_motion_fx_blur_direction": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "pro",
       "default": "out-in",
       "responsive": null,
       "css": null
     },
     "background_motion_fx_blur_level": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "px",
         "size": 7,
@@ -2506,7 +2414,7 @@
     },
     "background_motion_fx_blur_range": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "%",
         "size": "",
@@ -2520,14 +2428,14 @@
     },
     "background_motion_fx_rotateZ_direction": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_motion_fx_rotateZ_speed": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "px",
         "size": 1,
@@ -2538,7 +2446,7 @@
     },
     "background_motion_fx_rotateZ_affectedRange": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "%",
         "size": "",
@@ -2552,21 +2460,21 @@
     },
     "background_motion_fx_scale_effect": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_motion_fx_scale_direction": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "pro",
       "default": "out-in",
       "responsive": null,
       "css": null
     },
     "background_motion_fx_scale_speed": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "px",
         "size": 4,
@@ -2577,7 +2485,7 @@
     },
     "background_motion_fx_scale_range": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "%",
         "size": "",
@@ -2591,7 +2499,7 @@
     },
     "background_motion_fx_devices": {
       "type": "select2",
-      "tier": "unknown",
+      "tier": "pro",
       "default": [
         "desktop",
         "tablet",
@@ -2602,35 +2510,35 @@
     },
     "background_motion_fx_range": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_motion_fx_motion_fx_mouse": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_motion_fx_mouseTrack_effect": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_motion_fx_mouseTrack_direction": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_motion_fx_mouseTrack_speed": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "px",
         "size": 1,
@@ -2641,14 +2549,14 @@
     },
     "background_motion_fx_tilt_direction": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_motion_fx_tilt_speed": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "px",
         "size": 4,
@@ -2659,14 +2567,14 @@
     },
     "background_handle_motion_fx_asset_loading": {
       "type": "hidden",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_overlay_background": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -2675,7 +2583,7 @@
     },
     "background_overlay_color": {
       "type": "color",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -2684,7 +2592,7 @@
     },
     "background_overlay_color_stop": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "%",
         "size": 0,
@@ -2698,14 +2606,14 @@
     },
     "background_overlay_color_b": {
       "type": "color",
-      "tier": "unknown",
+      "tier": "free",
       "default": "#f2295b",
       "responsive": null,
       "css": null
     },
     "background_overlay_color_b_stop": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "%",
         "size": 100,
@@ -2719,14 +2627,14 @@
     },
     "background_overlay_gradient_type": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": "linear",
       "responsive": null,
       "css": null
     },
     "background_overlay_gradient_angle": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "deg",
         "size": 180,
@@ -2743,7 +2651,7 @@
     },
     "background_overlay_gradient_position": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": "center center",
       "responsive": [
         "mobile",
@@ -2756,7 +2664,7 @@
     },
     "background_overlay_image": {
       "type": "media",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "url": "",
         "id": "",
@@ -2772,7 +2680,7 @@
     },
     "background_overlay_position": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -2784,7 +2692,7 @@
     },
     "background_overlay_xpos": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 0,
@@ -2800,7 +2708,7 @@
     },
     "background_overlay_ypos": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 0,
@@ -2816,7 +2724,7 @@
     },
     "background_overlay_attachment": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -2825,7 +2733,7 @@
     },
     "background_overlay_repeat": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -2837,7 +2745,7 @@
     },
     "background_overlay_size": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -2849,7 +2757,7 @@
     },
     "background_overlay_bg_width": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "%",
         "size": 100,
@@ -2865,49 +2773,49 @@
     },
     "background_overlay_video_link": {
       "type": "text",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_overlay_video_start": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_overlay_video_end": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_overlay_play_once": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_overlay_play_on_mobile": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_overlay_privacy_mode": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_overlay_video_fallback": {
       "type": "media",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "url": "",
         "id": "",
@@ -2921,42 +2829,42 @@
     },
     "background_overlay_slideshow_gallery": {
       "type": "gallery",
-      "tier": "unknown",
+      "tier": "free",
       "default": [],
       "responsive": null,
       "css": null
     },
     "background_overlay_slideshow_loop": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": "yes",
       "responsive": null,
       "css": null
     },
     "background_overlay_slideshow_slide_duration": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": 5000,
       "responsive": null,
       "css": null
     },
     "background_overlay_slideshow_slide_transition": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": "fade",
       "responsive": null,
       "css": null
     },
     "background_overlay_slideshow_transition_duration": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": 500,
       "responsive": null,
       "css": null
     },
     "background_overlay_slideshow_background_size": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -2968,7 +2876,7 @@
     },
     "background_overlay_slideshow_background_position": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -2980,28 +2888,28 @@
     },
     "background_overlay_slideshow_lazyload": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_overlay_slideshow_ken_burns": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_overlay_slideshow_ken_burns_zoom_direction": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": "in",
       "responsive": null,
       "css": null
     },
     "background_overlay_opacity": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 0.5,
@@ -3017,14 +2925,14 @@
     },
     "css_filters_css_filter": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "css_filters_blur": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 0,
@@ -3037,7 +2945,7 @@
     },
     "css_filters_brightness": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 100,
@@ -3048,7 +2956,7 @@
     },
     "css_filters_contrast": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 100,
@@ -3059,7 +2967,7 @@
     },
     "css_filters_saturate": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 100,
@@ -3070,7 +2978,7 @@
     },
     "css_filters_hue": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 0,
@@ -3081,7 +2989,7 @@
     },
     "overlay_blend_mode": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -3090,7 +2998,7 @@
     },
     "background_overlay_hover_background": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -3099,7 +3007,7 @@
     },
     "background_overlay_hover_color": {
       "type": "color",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -3108,7 +3016,7 @@
     },
     "background_overlay_hover_color_stop": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "%",
         "size": 0,
@@ -3122,14 +3030,14 @@
     },
     "background_overlay_hover_color_b": {
       "type": "color",
-      "tier": "unknown",
+      "tier": "free",
       "default": "#f2295b",
       "responsive": null,
       "css": null
     },
     "background_overlay_hover_color_b_stop": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "%",
         "size": 100,
@@ -3143,14 +3051,14 @@
     },
     "background_overlay_hover_gradient_type": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": "linear",
       "responsive": null,
       "css": null
     },
     "background_overlay_hover_gradient_angle": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "deg",
         "size": 180,
@@ -3167,7 +3075,7 @@
     },
     "background_overlay_hover_gradient_position": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": "center center",
       "responsive": [
         "mobile",
@@ -3180,7 +3088,7 @@
     },
     "background_overlay_hover_image": {
       "type": "media",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "url": "",
         "id": "",
@@ -3196,7 +3104,7 @@
     },
     "background_overlay_hover_position": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -3208,7 +3116,7 @@
     },
     "background_overlay_hover_xpos": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 0,
@@ -3224,7 +3132,7 @@
     },
     "background_overlay_hover_ypos": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 0,
@@ -3240,7 +3148,7 @@
     },
     "background_overlay_hover_attachment": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -3249,7 +3157,7 @@
     },
     "background_overlay_hover_repeat": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -3261,7 +3169,7 @@
     },
     "background_overlay_hover_size": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -3273,7 +3181,7 @@
     },
     "background_overlay_hover_bg_width": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "%",
         "size": 100,
@@ -3289,49 +3197,49 @@
     },
     "background_overlay_hover_video_link": {
       "type": "text",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_overlay_hover_video_start": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_overlay_hover_video_end": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_overlay_hover_play_once": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_overlay_hover_play_on_mobile": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_overlay_hover_privacy_mode": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_overlay_hover_video_fallback": {
       "type": "media",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "url": "",
         "id": "",
@@ -3345,42 +3253,42 @@
     },
     "background_overlay_hover_slideshow_gallery": {
       "type": "gallery",
-      "tier": "unknown",
+      "tier": "free",
       "default": [],
       "responsive": null,
       "css": null
     },
     "background_overlay_hover_slideshow_loop": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": "yes",
       "responsive": null,
       "css": null
     },
     "background_overlay_hover_slideshow_slide_duration": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": 5000,
       "responsive": null,
       "css": null
     },
     "background_overlay_hover_slideshow_slide_transition": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": "fade",
       "responsive": null,
       "css": null
     },
     "background_overlay_hover_slideshow_transition_duration": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": 500,
       "responsive": null,
       "css": null
     },
     "background_overlay_hover_slideshow_background_size": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -3392,7 +3300,7 @@
     },
     "background_overlay_hover_slideshow_background_position": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -3404,28 +3312,28 @@
     },
     "background_overlay_hover_slideshow_lazyload": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_overlay_hover_slideshow_ken_burns": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "background_overlay_hover_slideshow_ken_burns_zoom_direction": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": "in",
       "responsive": null,
       "css": null
     },
     "background_overlay_hover_opacity": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 0.5,
@@ -3441,7 +3349,7 @@
     },
     "background_overlay_hover_transition": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -3454,14 +3362,14 @@
     },
     "css_filters_hover_css_filter": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "css_filters_hover_blur": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 0,
@@ -3474,7 +3382,7 @@
     },
     "css_filters_hover_brightness": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 100,
@@ -3485,7 +3393,7 @@
     },
     "css_filters_hover_contrast": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 100,
@@ -3496,7 +3404,7 @@
     },
     "css_filters_hover_saturate": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 100,
@@ -3507,7 +3415,7 @@
     },
     "css_filters_hover_hue": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 0,
@@ -3518,7 +3426,7 @@
     },
     "border_border": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -3528,7 +3436,7 @@
     },
     "border_width": {
       "type": "dimensions",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "top": "",
@@ -3551,7 +3459,7 @@
     },
     "border_color": {
       "type": "color",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -3561,7 +3469,7 @@
     },
     "border_radius": {
       "type": "dimensions",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "top": "",
@@ -3580,14 +3488,14 @@
     },
     "box_shadow_box_shadow_type": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "box_shadow_box_shadow": {
       "type": "box_shadow",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "horizontal": 0,
         "vertical": 0,
@@ -3602,14 +3510,14 @@
     },
     "box_shadow_box_shadow_position": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": " ",
       "responsive": null,
       "css": null
     },
     "border_hover_border": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -3618,7 +3526,7 @@
     },
     "border_hover_width": {
       "type": "dimensions",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "top": "",
@@ -3641,7 +3549,7 @@
     },
     "border_hover_color": {
       "type": "color",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -3651,7 +3559,7 @@
     },
     "border_radius_hover": {
       "type": "dimensions",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "top": "",
@@ -3674,14 +3582,14 @@
     },
     "box_shadow_hover_box_shadow_type": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "box_shadow_hover_box_shadow": {
       "type": "box_shadow",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "horizontal": 0,
         "vertical": 0,
@@ -3696,14 +3604,14 @@
     },
     "box_shadow_hover_box_shadow_position": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": " ",
       "responsive": null,
       "css": null
     },
     "border_hover_transition": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 0.3,
@@ -3716,14 +3624,14 @@
     },
     "shape_divider_top": {
       "type": "visual_choice",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "shape_divider_top_color": {
       "type": "color",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -3732,7 +3640,7 @@
     },
     "shape_divider_top_width": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "%",
         "size": "",
@@ -3748,7 +3656,7 @@
     },
     "shape_divider_top_height": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -3764,7 +3672,7 @@
     },
     "shape_divider_top_flip": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -3773,14 +3681,14 @@
     },
     "shape_divider_top_negative": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "shape_divider_top_above_content": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -3790,14 +3698,14 @@
     },
     "shape_divider_bottom": {
       "type": "visual_choice",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "shape_divider_bottom_color": {
       "type": "color",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -3806,7 +3714,7 @@
     },
     "shape_divider_bottom_width": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "%",
         "size": "",
@@ -3822,7 +3730,7 @@
     },
     "shape_divider_bottom_height": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -3838,7 +3746,7 @@
     },
     "shape_divider_bottom_flip": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -3847,14 +3755,14 @@
     },
     "shape_divider_bottom_negative": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "shape_divider_bottom_above_content": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -3864,7 +3772,7 @@
     },
     "margin": {
       "type": "dimensions",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "top": "",
@@ -3886,7 +3794,7 @@
     },
     "padding": {
       "type": "dimensions",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "top": "",
@@ -3908,7 +3816,7 @@
     },
     "grid_column": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -3920,7 +3828,7 @@
     },
     "grid_column_custom": {
       "type": "text",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -3932,7 +3840,7 @@
     },
     "grid_row": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -3944,7 +3852,7 @@
     },
     "grid_row_custom": {
       "type": "text",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -3956,7 +3864,7 @@
     },
     "_flex_align_self": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -3968,7 +3876,7 @@
     },
     "_flex_order": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -3980,7 +3888,7 @@
     },
     "_flex_order_custom": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -3992,7 +3900,7 @@
     },
     "_flex_size": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -4002,7 +3910,7 @@
     },
     "_flex_grow": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": 1,
       "responsive": [
         "mobile",
@@ -4014,7 +3922,7 @@
     },
     "_flex_shrink": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": 1,
       "responsive": [
         "mobile",
@@ -4026,7 +3934,7 @@
     },
     "position": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -4035,14 +3943,14 @@
     },
     "_offset_orientation_h": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": "start",
       "responsive": null,
       "css": null
     },
     "_offset_x": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 0,
@@ -4059,7 +3967,7 @@
     },
     "_offset_x_end": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 0,
@@ -4076,14 +3984,14 @@
     },
     "_offset_orientation_v": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": "start",
       "responsive": null,
       "css": null
     },
     "_offset_y": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 0,
@@ -4099,7 +4007,7 @@
     },
     "_offset_y_end": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": 0,
@@ -4115,7 +4023,7 @@
     },
     "z_index": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -4127,49 +4035,49 @@
     },
     "_element_id": {
       "type": "text",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "css_classes": {
       "type": "text",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "e_display_conditions": {
       "type": "hidden",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "motion_fx_motion_fx_scrolling": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "motion_fx_translateY_effect": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "motion_fx_translateY_direction": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "motion_fx_translateY_speed": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "px",
         "size": 4,
@@ -4180,7 +4088,7 @@
     },
     "motion_fx_translateY_affectedRange": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "%",
         "size": "",
@@ -4194,21 +4102,21 @@
     },
     "motion_fx_translateX_effect": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "motion_fx_translateX_direction": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "motion_fx_translateX_speed": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "px",
         "size": 4,
@@ -4219,7 +4127,7 @@
     },
     "motion_fx_translateX_affectedRange": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "%",
         "size": "",
@@ -4233,21 +4141,21 @@
     },
     "motion_fx_opacity_effect": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "motion_fx_opacity_direction": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "pro",
       "default": "out-in",
       "responsive": null,
       "css": null
     },
     "motion_fx_opacity_level": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "px",
         "size": 10,
@@ -4258,7 +4166,7 @@
     },
     "motion_fx_opacity_range": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "%",
         "size": "",
@@ -4272,21 +4180,21 @@
     },
     "motion_fx_blur_effect": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "motion_fx_blur_direction": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "pro",
       "default": "out-in",
       "responsive": null,
       "css": null
     },
     "motion_fx_blur_level": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "px",
         "size": 7,
@@ -4297,7 +4205,7 @@
     },
     "motion_fx_blur_range": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "%",
         "size": "",
@@ -4311,21 +4219,21 @@
     },
     "motion_fx_rotateZ_effect": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "motion_fx_rotateZ_direction": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "motion_fx_rotateZ_speed": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "px",
         "size": 1,
@@ -4336,7 +4244,7 @@
     },
     "motion_fx_rotateZ_affectedRange": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "%",
         "size": "",
@@ -4350,21 +4258,21 @@
     },
     "motion_fx_scale_effect": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "motion_fx_scale_direction": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "pro",
       "default": "out-in",
       "responsive": null,
       "css": null
     },
     "motion_fx_scale_speed": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "px",
         "size": 4,
@@ -4375,7 +4283,7 @@
     },
     "motion_fx_scale_range": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "%",
         "size": "",
@@ -4389,7 +4297,7 @@
     },
     "motion_fx_transform_origin_x": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "pro",
       "default": "center",
       "responsive": null,
       "css": [
@@ -4398,7 +4306,7 @@
     },
     "motion_fx_transform_origin_y": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "pro",
       "default": "center",
       "responsive": null,
       "css": [
@@ -4407,7 +4315,7 @@
     },
     "motion_fx_devices": {
       "type": "select2",
-      "tier": "unknown",
+      "tier": "pro",
       "default": [
         "desktop",
         "tablet",
@@ -4418,35 +4326,35 @@
     },
     "motion_fx_range": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "motion_fx_motion_fx_mouse": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "motion_fx_mouseTrack_effect": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "motion_fx_mouseTrack_direction": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "motion_fx_mouseTrack_speed": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "px",
         "size": 1,
@@ -4457,21 +4365,21 @@
     },
     "motion_fx_tilt_effect": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "motion_fx_tilt_direction": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "motion_fx_tilt_speed": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "pro",
       "default": {
         "unit": "px",
         "size": 4,
@@ -4482,21 +4390,21 @@
     },
     "handle_motion_fx_asset_loading": {
       "type": "hidden",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "sticky": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "sticky_on": {
       "type": "select2",
-      "tier": "unknown",
+      "tier": "pro",
       "default": [
         "desktop",
         "tablet",
@@ -4507,7 +4415,7 @@
     },
     "sticky_offset": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "pro",
       "default": 0,
       "responsive": [
         "mobile",
@@ -4517,7 +4425,7 @@
     },
     "sticky_effects_offset": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "pro",
       "default": 0,
       "responsive": [
         "mobile",
@@ -4527,7 +4435,7 @@
     },
     "sticky_anchor_link_offset": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "pro",
       "default": 0,
       "responsive": [
         "mobile",
@@ -4537,14 +4445,14 @@
     },
     "sticky_parent": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "animation": {
       "type": "animation",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -4554,28 +4462,28 @@
     },
     "animation_duration": {
       "type": "select",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "animation_delay": {
       "type": "number",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "_transform_rotate_popover": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "_transform_rotateZ_effect": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -4591,7 +4499,7 @@
     },
     "_transform_rotate_3d": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -4601,7 +4509,7 @@
     },
     "_transform_rotateX_effect": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -4617,7 +4525,7 @@
     },
     "_transform_rotateY_effect": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -4633,7 +4541,7 @@
     },
     "_transform_perspective_effect": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -4649,14 +4557,14 @@
     },
     "_transform_translate_popover": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "_transform_translateX_effect": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -4672,7 +4580,7 @@
     },
     "_transform_translateY_effect": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -4688,21 +4596,21 @@
     },
     "_transform_scale_popover": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "_transform_keep_proportions": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": "yes",
       "responsive": null,
       "css": null
     },
     "_transform_scale_effect": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -4718,7 +4626,7 @@
     },
     "_transform_scaleX_effect": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -4734,7 +4642,7 @@
     },
     "_transform_scaleY_effect": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -4750,14 +4658,14 @@
     },
     "_transform_skew_popover": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "_transform_skewX_effect": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -4773,7 +4681,7 @@
     },
     "_transform_skewY_effect": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -4789,7 +4697,7 @@
     },
     "_transform_flipX_effect": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -4798,7 +4706,7 @@
     },
     "_transform_flipY_effect": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -4807,14 +4715,14 @@
     },
     "_transform_rotate_popover_hover": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "_transform_rotateZ_effect_hover": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -4830,7 +4738,7 @@
     },
     "_transform_rotate_3d_hover": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -4840,7 +4748,7 @@
     },
     "_transform_rotateX_effect_hover": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -4856,7 +4764,7 @@
     },
     "_transform_rotateY_effect_hover": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -4872,7 +4780,7 @@
     },
     "_transform_perspective_effect_hover": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -4888,14 +4796,14 @@
     },
     "_transform_translate_popover_hover": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "_transform_translateX_effect_hover": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -4911,7 +4819,7 @@
     },
     "_transform_translateY_effect_hover": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -4927,21 +4835,21 @@
     },
     "_transform_scale_popover_hover": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "_transform_keep_proportions_hover": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": "yes",
       "responsive": null,
       "css": null
     },
     "_transform_scale_effect_hover": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -4957,7 +4865,7 @@
     },
     "_transform_scaleX_effect_hover": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -4973,7 +4881,7 @@
     },
     "_transform_scaleY_effect_hover": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -4989,14 +4897,14 @@
     },
     "_transform_skew_popover_hover": {
       "type": "popover_toggle",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "_transform_skewX_effect_hover": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -5012,7 +4920,7 @@
     },
     "_transform_skewY_effect_hover": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -5028,7 +4936,7 @@
     },
     "_transform_flipX_effect_hover": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -5037,7 +4945,7 @@
     },
     "_transform_flipY_effect_hover": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": [
@@ -5046,7 +4954,7 @@
     },
     "_transform_transition_hover": {
       "type": "slider",
-      "tier": "unknown",
+      "tier": "free",
       "default": {
         "unit": "px",
         "size": "",
@@ -5059,7 +4967,7 @@
     },
     "motion_fx_transform_x_anchor_point": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -5071,7 +4979,7 @@
     },
     "motion_fx_transform_y_anchor_point": {
       "type": "choose",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": [
         "mobile",
@@ -5083,65 +4991,1882 @@
     },
     "hide_desktop": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "hide_tablet": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "hide_mobile": {
       "type": "switcher",
-      "tier": "unknown",
+      "tier": "free",
       "default": null,
       "responsive": null,
       "css": null
     },
     "_attributes": {
       "type": "textarea",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     },
     "custom_css": {
       "type": "code",
-      "tier": "unknown",
+      "tier": "pro",
       "default": null,
       "responsive": null,
       "css": null
     }
   },
-  "common_controls": {},
+  "common_controls": {
+    "_animation": {
+      "type": "animation",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_animation_delay": {
+      "type": "number",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_attributes": {
+      "type": "textarea",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "_background_attachment": {
+      "type": "select",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "background-attachment"
+      ]
+    },
+    "_background_background": {
+      "type": "choose",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_background_bg_width": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "%",
+        "size": 100,
+        "sizes": []
+      },
+      "css": [
+        "background-size"
+      ]
+    },
+    "_background_color": {
+      "type": "color",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "background-color"
+      ]
+    },
+    "_background_color_b": {
+      "type": "color",
+      "tier": "free",
+      "default": "#f2295b",
+      "css": null
+    },
+    "_background_color_b_stop": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "%",
+        "size": 100,
+        "sizes": []
+      },
+      "css": null
+    },
+    "_background_color_stop": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "%",
+        "size": 0,
+        "sizes": []
+      },
+      "css": null
+    },
+    "_background_gradient_angle": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "deg",
+        "size": 180,
+        "sizes": []
+      },
+      "css": [
+        "background-color",
+        "background-image"
+      ]
+    },
+    "_background_gradient_position": {
+      "type": "select",
+      "tier": "free",
+      "default": "center center",
+      "css": [
+        "background-color",
+        "background-image"
+      ]
+    },
+    "_background_gradient_type": {
+      "type": "select",
+      "tier": "free",
+      "default": "linear",
+      "css": null
+    },
+    "_background_hover_attachment": {
+      "type": "select",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "background-attachment"
+      ]
+    },
+    "_background_hover_background": {
+      "type": "choose",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_background_hover_bg_width": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "%",
+        "size": 100,
+        "sizes": []
+      },
+      "css": [
+        "background-size"
+      ]
+    },
+    "_background_hover_color": {
+      "type": "color",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "background-color"
+      ]
+    },
+    "_background_hover_color_b": {
+      "type": "color",
+      "tier": "free",
+      "default": "#f2295b",
+      "css": null
+    },
+    "_background_hover_color_b_stop": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "%",
+        "size": 100,
+        "sizes": []
+      },
+      "css": null
+    },
+    "_background_hover_color_stop": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "%",
+        "size": 0,
+        "sizes": []
+      },
+      "css": null
+    },
+    "_background_hover_gradient_angle": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "deg",
+        "size": 180,
+        "sizes": []
+      },
+      "css": [
+        "background-color",
+        "background-image"
+      ]
+    },
+    "_background_hover_gradient_position": {
+      "type": "select",
+      "tier": "free",
+      "default": "center center",
+      "css": [
+        "background-color",
+        "background-image"
+      ]
+    },
+    "_background_hover_gradient_type": {
+      "type": "select",
+      "tier": "free",
+      "default": "linear",
+      "css": null
+    },
+    "_background_hover_image": {
+      "type": "media",
+      "tier": "free",
+      "default": {
+        "url": "",
+        "id": "",
+        "size": ""
+      },
+      "css": [
+        "background-image"
+      ]
+    },
+    "_background_hover_play_on_mobile": {
+      "type": "switcher",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_background_hover_play_once": {
+      "type": "switcher",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_background_hover_position": {
+      "type": "select",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "background-position"
+      ]
+    },
+    "_background_hover_privacy_mode": {
+      "type": "switcher",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_background_hover_repeat": {
+      "type": "select",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "background-repeat"
+      ]
+    },
+    "_background_hover_size": {
+      "type": "select",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "background-size"
+      ]
+    },
+    "_background_hover_slideshow_background_position": {
+      "type": "select",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "background-position"
+      ]
+    },
+    "_background_hover_slideshow_background_size": {
+      "type": "select",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "background-size"
+      ]
+    },
+    "_background_hover_slideshow_gallery": {
+      "type": "gallery",
+      "tier": "free",
+      "default": [],
+      "css": null
+    },
+    "_background_hover_slideshow_ken_burns": {
+      "type": "switcher",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_background_hover_slideshow_ken_burns_zoom_direction": {
+      "type": "select",
+      "tier": "free",
+      "default": "in",
+      "css": null
+    },
+    "_background_hover_slideshow_lazyload": {
+      "type": "switcher",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_background_hover_slideshow_loop": {
+      "type": "switcher",
+      "tier": "free",
+      "default": "yes",
+      "css": null
+    },
+    "_background_hover_slideshow_slide_duration": {
+      "type": "number",
+      "tier": "free",
+      "default": 5000,
+      "css": null
+    },
+    "_background_hover_slideshow_slide_transition": {
+      "type": "select",
+      "tier": "free",
+      "default": "fade",
+      "css": null
+    },
+    "_background_hover_slideshow_transition_duration": {
+      "type": "number",
+      "tier": "free",
+      "default": 500,
+      "css": null
+    },
+    "_background_hover_transition": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "transition"
+      ]
+    },
+    "_background_hover_video_end": {
+      "type": "number",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_background_hover_video_fallback": {
+      "type": "media",
+      "tier": "free",
+      "default": {
+        "url": "",
+        "id": "",
+        "size": ""
+      },
+      "css": [
+        "background",
+        "background-size"
+      ]
+    },
+    "_background_hover_video_link": {
+      "type": "text",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_background_hover_video_start": {
+      "type": "number",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_background_hover_xpos": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": 0,
+        "sizes": []
+      },
+      "css": [
+        "background-position"
+      ]
+    },
+    "_background_hover_ypos": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": 0,
+        "sizes": []
+      },
+      "css": [
+        "background-position"
+      ]
+    },
+    "_background_image": {
+      "type": "media",
+      "tier": "free",
+      "default": {
+        "url": "",
+        "id": "",
+        "size": ""
+      },
+      "css": [
+        "background-image"
+      ]
+    },
+    "_background_play_on_mobile": {
+      "type": "switcher",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_background_play_once": {
+      "type": "switcher",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_background_position": {
+      "type": "select",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "background-position"
+      ]
+    },
+    "_background_privacy_mode": {
+      "type": "switcher",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_background_repeat": {
+      "type": "select",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "background-repeat"
+      ]
+    },
+    "_background_size": {
+      "type": "select",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "background-size"
+      ]
+    },
+    "_background_slideshow_background_position": {
+      "type": "select",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "background-position"
+      ]
+    },
+    "_background_slideshow_background_size": {
+      "type": "select",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "background-size"
+      ]
+    },
+    "_background_slideshow_gallery": {
+      "type": "gallery",
+      "tier": "free",
+      "default": [],
+      "css": null
+    },
+    "_background_slideshow_ken_burns": {
+      "type": "switcher",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_background_slideshow_ken_burns_zoom_direction": {
+      "type": "select",
+      "tier": "free",
+      "default": "in",
+      "css": null
+    },
+    "_background_slideshow_lazyload": {
+      "type": "switcher",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_background_slideshow_loop": {
+      "type": "switcher",
+      "tier": "free",
+      "default": "yes",
+      "css": null
+    },
+    "_background_slideshow_slide_duration": {
+      "type": "number",
+      "tier": "free",
+      "default": 5000,
+      "css": null
+    },
+    "_background_slideshow_slide_transition": {
+      "type": "select",
+      "tier": "free",
+      "default": "fade",
+      "css": null
+    },
+    "_background_slideshow_transition_duration": {
+      "type": "number",
+      "tier": "free",
+      "default": 500,
+      "css": null
+    },
+    "_background_video_end": {
+      "type": "number",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_background_video_fallback": {
+      "type": "media",
+      "tier": "free",
+      "default": {
+        "url": "",
+        "id": "",
+        "size": ""
+      },
+      "css": [
+        "background",
+        "background-size"
+      ]
+    },
+    "_background_video_link": {
+      "type": "text",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_background_video_start": {
+      "type": "number",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_background_xpos": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": 0,
+        "sizes": []
+      },
+      "css": [
+        "background-position"
+      ]
+    },
+    "_background_ypos": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": 0,
+        "sizes": []
+      },
+      "css": [
+        "background-position"
+      ]
+    },
+    "_border_border": {
+      "type": "select",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "border-style"
+      ]
+    },
+    "_border_color": {
+      "type": "color",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "border-color"
+      ]
+    },
+    "_border_hover_border": {
+      "type": "select",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "border-style"
+      ]
+    },
+    "_border_hover_color": {
+      "type": "color",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "border-color"
+      ]
+    },
+    "_border_hover_transition": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "transition"
+      ]
+    },
+    "_border_hover_width": {
+      "type": "dimensions",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "isLinked": true
+      },
+      "css": [
+        "border-width"
+      ]
+    },
+    "_border_radius": {
+      "type": "dimensions",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "isLinked": true
+      },
+      "css": [
+        "border-radius"
+      ]
+    },
+    "_border_radius_hover": {
+      "type": "dimensions",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "isLinked": true
+      },
+      "css": [
+        "border-radius"
+      ]
+    },
+    "_border_width": {
+      "type": "dimensions",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "isLinked": true
+      },
+      "css": [
+        "border-width"
+      ]
+    },
+    "_box_shadow_box_shadow": {
+      "type": "box_shadow",
+      "tier": "free",
+      "default": {
+        "horizontal": 0,
+        "vertical": 0,
+        "blur": 10,
+        "spread": 0,
+        "color": "rgba(0,0,0,0.5)"
+      },
+      "css": [
+        "box-shadow"
+      ]
+    },
+    "_box_shadow_box_shadow_position": {
+      "type": "select",
+      "tier": "free",
+      "default": " ",
+      "css": null
+    },
+    "_box_shadow_box_shadow_type": {
+      "type": "popover_toggle",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_box_shadow_hover_box_shadow": {
+      "type": "box_shadow",
+      "tier": "free",
+      "default": {
+        "horizontal": 0,
+        "vertical": 0,
+        "blur": 10,
+        "spread": 0,
+        "color": "rgba(0,0,0,0.5)"
+      },
+      "css": [
+        "box-shadow"
+      ]
+    },
+    "_box_shadow_hover_box_shadow_position": {
+      "type": "select",
+      "tier": "free",
+      "default": " ",
+      "css": null
+    },
+    "_box_shadow_hover_box_shadow_type": {
+      "type": "popover_toggle",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_css_classes": {
+      "type": "text",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_element_cache": {
+      "type": "select",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_element_custom_width": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "%",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--container-widget-width",
+        "--container-widget-flex-grow",
+        "width",
+        "max-width"
+      ]
+    },
+    "_element_id": {
+      "type": "text",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_element_vertical_align": {
+      "type": "choose",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "align-self"
+      ]
+    },
+    "_element_width": {
+      "type": "select",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "width",
+        "max-width"
+      ]
+    },
+    "_flex_align_self": {
+      "type": "choose",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "--align-self"
+      ]
+    },
+    "_flex_grow": {
+      "type": "number",
+      "tier": "free",
+      "default": 1,
+      "css": [
+        "--flex-grow"
+      ]
+    },
+    "_flex_order": {
+      "type": "choose",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "--order"
+      ]
+    },
+    "_flex_order_custom": {
+      "type": "number",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "--order"
+      ]
+    },
+    "_flex_shrink": {
+      "type": "number",
+      "tier": "free",
+      "default": 1,
+      "css": [
+        "--flex-shrink"
+      ]
+    },
+    "_flex_size": {
+      "type": "choose",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_grid_column": {
+      "type": "select",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "grid-column"
+      ]
+    },
+    "_grid_column_custom": {
+      "type": "text",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "grid-column"
+      ]
+    },
+    "_grid_row": {
+      "type": "select",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "grid-row"
+      ]
+    },
+    "_grid_row_custom": {
+      "type": "text",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "grid-row"
+      ]
+    },
+    "_margin": {
+      "type": "dimensions",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "isLinked": true
+      },
+      "css": [
+        "margin"
+      ]
+    },
+    "_mask_image": {
+      "type": "media",
+      "tier": "free",
+      "default": {
+        "url": "",
+        "id": "",
+        "size": ""
+      },
+      "css": [
+        "-webkit-mask-image"
+      ]
+    },
+    "_mask_position": {
+      "type": "select",
+      "tier": "free",
+      "default": "center center",
+      "css": [
+        "-webkit-mask-position"
+      ]
+    },
+    "_mask_position_x": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "%",
+        "size": 0,
+        "sizes": []
+      },
+      "css": [
+        "-webkit-mask-position-x"
+      ]
+    },
+    "_mask_position_y": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "%",
+        "size": 0,
+        "sizes": []
+      },
+      "css": [
+        "-webkit-mask-position-y"
+      ]
+    },
+    "_mask_repeat": {
+      "type": "select",
+      "tier": "free",
+      "default": "no-repeat",
+      "css": [
+        "-webkit-mask-repeat"
+      ]
+    },
+    "_mask_shape": {
+      "type": "visual_choice",
+      "tier": "free",
+      "default": "circle",
+      "css": [
+        "-webkit-mask-image"
+      ]
+    },
+    "_mask_size": {
+      "type": "select",
+      "tier": "free",
+      "default": "contain",
+      "css": [
+        "-webkit-mask-size"
+      ]
+    },
+    "_mask_size_scale": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "%",
+        "size": 100,
+        "sizes": []
+      },
+      "css": [
+        "-webkit-mask-size"
+      ]
+    },
+    "_mask_switch": {
+      "type": "switcher",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_offset_orientation_h": {
+      "type": "choose",
+      "tier": "free",
+      "default": "start",
+      "css": null
+    },
+    "_offset_orientation_v": {
+      "type": "choose",
+      "tier": "free",
+      "default": "start",
+      "css": null
+    },
+    "_offset_x": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": 0,
+        "sizes": []
+      },
+      "css": [
+        "left",
+        "right"
+      ]
+    },
+    "_offset_x_end": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": 0,
+        "sizes": []
+      },
+      "css": [
+        "right",
+        "left"
+      ]
+    },
+    "_offset_y": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": 0,
+        "sizes": []
+      },
+      "css": [
+        "top"
+      ]
+    },
+    "_offset_y_end": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": 0,
+        "sizes": []
+      },
+      "css": [
+        "bottom"
+      ]
+    },
+    "_padding": {
+      "type": "dimensions",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": "",
+        "isLinked": true
+      },
+      "css": [
+        "padding"
+      ]
+    },
+    "_position": {
+      "type": "select",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_title": {
+      "type": "hidden",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_transform_flipX_effect": {
+      "type": "choose",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "--e-transform-flipX"
+      ]
+    },
+    "_transform_flipX_effect_hover": {
+      "type": "choose",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "--e-transform-flipX"
+      ]
+    },
+    "_transform_flipY_effect": {
+      "type": "choose",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "--e-transform-flipY"
+      ]
+    },
+    "_transform_flipY_effect_hover": {
+      "type": "choose",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "--e-transform-flipY"
+      ]
+    },
+    "_transform_keep_proportions": {
+      "type": "switcher",
+      "tier": "free",
+      "default": "yes",
+      "css": null
+    },
+    "_transform_keep_proportions_hover": {
+      "type": "switcher",
+      "tier": "free",
+      "default": "yes",
+      "css": null
+    },
+    "_transform_perspective_effect": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-perspective"
+      ]
+    },
+    "_transform_perspective_effect_hover": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-perspective"
+      ]
+    },
+    "_transform_rotateX_effect": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-rotateX"
+      ]
+    },
+    "_transform_rotateX_effect_hover": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-rotateX"
+      ]
+    },
+    "_transform_rotateY_effect": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-rotateY"
+      ]
+    },
+    "_transform_rotateY_effect_hover": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-rotateY"
+      ]
+    },
+    "_transform_rotateZ_effect": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-rotateZ"
+      ]
+    },
+    "_transform_rotateZ_effect_hover": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-rotateZ"
+      ]
+    },
+    "_transform_rotate_3d": {
+      "type": "switcher",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "--e-transform-rotateX",
+        "--e-transform-perspective"
+      ]
+    },
+    "_transform_rotate_3d_hover": {
+      "type": "switcher",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "--e-transform-rotateX",
+        "--e-transform-perspective"
+      ]
+    },
+    "_transform_rotate_popover": {
+      "type": "popover_toggle",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_transform_rotate_popover_hover": {
+      "type": "popover_toggle",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_transform_scaleX_effect": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-scaleX"
+      ]
+    },
+    "_transform_scaleX_effect_hover": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-scaleX"
+      ]
+    },
+    "_transform_scaleY_effect": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-scaleY"
+      ]
+    },
+    "_transform_scaleY_effect_hover": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-scaleY"
+      ]
+    },
+    "_transform_scale_effect": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-scale"
+      ]
+    },
+    "_transform_scale_effect_hover": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-scale"
+      ]
+    },
+    "_transform_scale_popover": {
+      "type": "popover_toggle",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_transform_scale_popover_hover": {
+      "type": "popover_toggle",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_transform_skewX_effect": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-skewX"
+      ]
+    },
+    "_transform_skewX_effect_hover": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-skewX"
+      ]
+    },
+    "_transform_skewY_effect": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-skewY"
+      ]
+    },
+    "_transform_skewY_effect_hover": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-skewY"
+      ]
+    },
+    "_transform_skew_popover": {
+      "type": "popover_toggle",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_transform_skew_popover_hover": {
+      "type": "popover_toggle",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_transform_transition_hover": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-transition-duration"
+      ]
+    },
+    "_transform_translateX_effect": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-translateX"
+      ]
+    },
+    "_transform_translateX_effect_hover": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-translateX"
+      ]
+    },
+    "_transform_translateY_effect": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-translateY"
+      ]
+    },
+    "_transform_translateY_effect_hover": {
+      "type": "slider",
+      "tier": "free",
+      "default": {
+        "unit": "px",
+        "size": "",
+        "sizes": []
+      },
+      "css": [
+        "--e-transform-translateY"
+      ]
+    },
+    "_transform_translate_popover": {
+      "type": "popover_toggle",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_transform_translate_popover_hover": {
+      "type": "popover_toggle",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "_z_index": {
+      "type": "number",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "z-index"
+      ]
+    },
+    "animation_duration": {
+      "type": "select",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "custom_css": {
+      "type": "code",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "e_display_conditions": {
+      "type": "hidden",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "handle_motion_fx_asset_loading": {
+      "type": "hidden",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "hide_desktop": {
+      "type": "switcher",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "hide_mobile": {
+      "type": "switcher",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "hide_tablet": {
+      "type": "switcher",
+      "tier": "free",
+      "default": null,
+      "css": null
+    },
+    "motion_fx_blur_direction": {
+      "type": "select",
+      "tier": "pro",
+      "default": "out-in",
+      "css": null
+    },
+    "motion_fx_blur_effect": {
+      "type": "popover_toggle",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "motion_fx_blur_level": {
+      "type": "slider",
+      "tier": "pro",
+      "default": {
+        "unit": "px",
+        "size": 7,
+        "sizes": []
+      },
+      "css": null
+    },
+    "motion_fx_blur_range": {
+      "type": "slider",
+      "tier": "pro",
+      "default": {
+        "unit": "%",
+        "size": "",
+        "sizes": {
+          "start": 20,
+          "end": 80
+        }
+      },
+      "css": null
+    },
+    "motion_fx_devices": {
+      "type": "select2",
+      "tier": "pro",
+      "default": [
+        "desktop",
+        "tablet",
+        "mobile"
+      ],
+      "css": null
+    },
+    "motion_fx_motion_fx_mouse": {
+      "type": "switcher",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "motion_fx_motion_fx_scrolling": {
+      "type": "switcher",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "motion_fx_mouseTrack_direction": {
+      "type": "select",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "motion_fx_mouseTrack_effect": {
+      "type": "popover_toggle",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "motion_fx_mouseTrack_speed": {
+      "type": "slider",
+      "tier": "pro",
+      "default": {
+        "unit": "px",
+        "size": 1,
+        "sizes": []
+      },
+      "css": null
+    },
+    "motion_fx_opacity_direction": {
+      "type": "select",
+      "tier": "pro",
+      "default": "out-in",
+      "css": null
+    },
+    "motion_fx_opacity_effect": {
+      "type": "popover_toggle",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "motion_fx_opacity_level": {
+      "type": "slider",
+      "tier": "pro",
+      "default": {
+        "unit": "px",
+        "size": 10,
+        "sizes": []
+      },
+      "css": null
+    },
+    "motion_fx_opacity_range": {
+      "type": "slider",
+      "tier": "pro",
+      "default": {
+        "unit": "%",
+        "size": "",
+        "sizes": {
+          "start": 20,
+          "end": 80
+        }
+      },
+      "css": null
+    },
+    "motion_fx_range": {
+      "type": "select",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "motion_fx_rotateZ_affectedRange": {
+      "type": "slider",
+      "tier": "pro",
+      "default": {
+        "unit": "%",
+        "size": "",
+        "sizes": {
+          "start": 0,
+          "end": 100
+        }
+      },
+      "css": null
+    },
+    "motion_fx_rotateZ_direction": {
+      "type": "select",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "motion_fx_rotateZ_effect": {
+      "type": "popover_toggle",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "motion_fx_rotateZ_speed": {
+      "type": "slider",
+      "tier": "pro",
+      "default": {
+        "unit": "px",
+        "size": 1,
+        "sizes": []
+      },
+      "css": null
+    },
+    "motion_fx_scale_direction": {
+      "type": "select",
+      "tier": "pro",
+      "default": "out-in",
+      "css": null
+    },
+    "motion_fx_scale_effect": {
+      "type": "popover_toggle",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "motion_fx_scale_range": {
+      "type": "slider",
+      "tier": "pro",
+      "default": {
+        "unit": "%",
+        "size": "",
+        "sizes": {
+          "start": 20,
+          "end": 80
+        }
+      },
+      "css": null
+    },
+    "motion_fx_scale_speed": {
+      "type": "slider",
+      "tier": "pro",
+      "default": {
+        "unit": "px",
+        "size": 4,
+        "sizes": []
+      },
+      "css": null
+    },
+    "motion_fx_tilt_direction": {
+      "type": "select",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "motion_fx_tilt_effect": {
+      "type": "popover_toggle",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "motion_fx_tilt_speed": {
+      "type": "slider",
+      "tier": "pro",
+      "default": {
+        "unit": "px",
+        "size": 4,
+        "sizes": []
+      },
+      "css": null
+    },
+    "motion_fx_transform_origin_x": {
+      "type": "choose",
+      "tier": "pro",
+      "default": "center",
+      "css": [
+        "--e-transform-origin-x"
+      ]
+    },
+    "motion_fx_transform_origin_y": {
+      "type": "choose",
+      "tier": "pro",
+      "default": "center",
+      "css": [
+        "--e-transform-origin-y"
+      ]
+    },
+    "motion_fx_transform_x_anchor_point": {
+      "type": "choose",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "--e-transform-origin-x"
+      ]
+    },
+    "motion_fx_transform_y_anchor_point": {
+      "type": "choose",
+      "tier": "free",
+      "default": null,
+      "css": [
+        "--e-transform-origin-y"
+      ]
+    },
+    "motion_fx_translateX_affectedRange": {
+      "type": "slider",
+      "tier": "pro",
+      "default": {
+        "unit": "%",
+        "size": "",
+        "sizes": {
+          "start": 0,
+          "end": 100
+        }
+      },
+      "css": null
+    },
+    "motion_fx_translateX_direction": {
+      "type": "select",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "motion_fx_translateX_effect": {
+      "type": "popover_toggle",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "motion_fx_translateX_speed": {
+      "type": "slider",
+      "tier": "pro",
+      "default": {
+        "unit": "px",
+        "size": 4,
+        "sizes": []
+      },
+      "css": null
+    },
+    "motion_fx_translateY_affectedRange": {
+      "type": "slider",
+      "tier": "pro",
+      "default": {
+        "unit": "%",
+        "size": "",
+        "sizes": {
+          "start": 0,
+          "end": 100
+        }
+      },
+      "css": null
+    },
+    "motion_fx_translateY_direction": {
+      "type": "select",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "motion_fx_translateY_effect": {
+      "type": "popover_toggle",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "motion_fx_translateY_speed": {
+      "type": "slider",
+      "tier": "pro",
+      "default": {
+        "unit": "px",
+        "size": 4,
+        "sizes": []
+      },
+      "css": null
+    },
+    "sticky": {
+      "type": "select",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    },
+    "sticky_anchor_link_offset": {
+      "type": "number",
+      "tier": "pro",
+      "default": 0,
+      "css": null
+    },
+    "sticky_effects_offset": {
+      "type": "number",
+      "tier": "pro",
+      "default": 0,
+      "css": null
+    },
+    "sticky_offset": {
+      "type": "number",
+      "tier": "pro",
+      "default": 0,
+      "css": null
+    },
+    "sticky_on": {
+      "type": "select2",
+      "tier": "pro",
+      "default": [
+        "desktop",
+        "tablet",
+        "mobile"
+      ],
+      "css": null
+    },
+    "sticky_parent": {
+      "type": "switcher",
+      "tier": "pro",
+      "default": null,
+      "css": null
+    }
+  },
   "control_type_frequencies": {
-    "select": 3559,
-    "slider": 3417,
-    "color": 1470,
-    "switcher": 1129,
-    "popover_toggle": 738,
-    "number": 571,
-    "text": 431,
-    "choose": 414,
+    "select": 3448,
+    "slider": 3348,
+    "color": 1434,
+    "switcher": 1079,
+    "popover_toggle": 726,
+    "number": 535,
+    "text": 425,
+    "choose": 403,
     "font": 378,
-    "dimensions": 363,
-    "media": 202,
-    "box_shadow": 142,
-    "gallery": 119,
-    "query": 102,
-    "text_shadow": 93,
-    "select2": 68,
-    "icons": 62,
+    "dimensions": 352,
+    "media": 193,
+    "box_shadow": 133,
+    "gallery": 110,
+    "query": 104,
+    "text_shadow": 90,
+    "select2": 66,
     "textarea": 60,
+    "icons": 58,
     "url": 45,
     "hidden": 44,
     "repeater": 42,
-    "hover_animation": 33,
-    "wp_widget": 33,
+    "wp_widget": 39,
+    "hover_animation": 31,
     "animation": 18,
     "image_dimensions": 17,
     "hover_animation_contact_buttons": 12,
