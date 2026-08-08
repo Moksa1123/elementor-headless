@@ -284,6 +284,11 @@ control names, wrong value shapes, illegal units, invalid select options, duplic
 element ids, all three kinds of unmet dependency, `0` written as a number into a
 class control, and Pro-only controls on a Free target.
 
+**If validation fails:** check the live page first. Validation tools have false positives
+— gradient backgrounds, mode-driven control rewrites, and computed CSS overrides can
+trigger reports that the page is correct. See your rendered page in DevTools before
+assuming the validator is right. ([verification-tool-limits.md](references/verification-tool-limits.md))
+
 `apply-page.php` writes the 4 meta keys, rebuilds the compiled CSS **and deletes
 the rendered-HTML cache**. Skip that last one and the page serves its previous
 markup forever - correct tree, correct CSS, wrong page, no error
