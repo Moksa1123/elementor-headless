@@ -5,3 +5,4 @@ build/
 *.zip
 _test_install/
 shots/
+data/elementor-schema-free-*.json
