@@ -308,10 +308,12 @@ wp --user=1 eval-file tools/import-template.php hero-block.json <target_post_id>
 
 **Never move a block between sites by copying `_elementor_data`.** Media controls
 store an attachment `id`, and that id means a *different image* on the other site —
-or nothing. Elementor's `on_export` swaps the id for a url and `on_import`
-re-downloads it into the target site's media library. Copy the raw meta and the
-images silently break or, worse, silently become the wrong images. These tools call
-Elementor's own import path precisely to get those hooks.
+or nothing. Elementor's `on_import` hook re-downloads every media URL into the
+target site's media library and assigns a fresh local `id`. The export file preserves
+the original ids (they're not stripped), but the import process ignores them completely
+and re-maps based on URL. Copy the raw meta and the images silently break or, worse,
+silently become the wrong images. These tools call Elementor's own import path
+precisely to get that hook.
 
 Import needs a user (`--user=1`); WP-CLI has none by default and Elementor's
 importer does a capability check.

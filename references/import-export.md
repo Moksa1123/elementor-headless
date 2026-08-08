@@ -43,13 +43,16 @@ page exports as `page`; something already in the library keeps its declared type
 This is the whole reason the tools exist, and the failure is silent.
 
 `get_export_data()` runs every control through its `on_export()` hook.
-`Control_Media::on_export()` **strips the attachment `id`** and keeps the `url`. On
-the way back in, `on_import()` **re-downloads that url into the target site's media
-library** and rewrites the id to the new attachment.
+`Control_Media::on_export()` preserves the attachment `id` in the export file, but
+it also triggers a hook that collects the media URL. On import, `on_import()`
+completely ignores the original `id` and **re-downloads the URL into the target
+site's media library**, assigning a fresh local `id` that matches the target site's
+attachments.
 
 Copy `_elementor_data` verbatim to another site and the attachment ids survive —
 pointing at ids that on the other site mean a **different image**, or nothing at
-all. Nothing errors. The block imports, renders, and shows the wrong pictures.
+all. The import process is what prevents this; skipping it guarantees the silent
+failure. Nothing errors. The block imports, renders, and shows the wrong pictures.
 
 The same applies to a hand-rolled importer that writes `_elementor_data` directly:
 it skips `on_import()`, so the media never arrives. `import-template.php` hands the
