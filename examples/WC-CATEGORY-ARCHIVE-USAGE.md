@@ -39,33 +39,46 @@ wc-categories widget
 
 ## 使用步驟
 
-### 1. 建立 Theme Builder 模板
+### 方法 A：用 Elementor 後台 import（推薦）
 
 ```bash
 # WordPress 後台
-Elementor > Templates > Create New
-├─ Name: "WooCommerce Category Archive"
-├─ Type: "Archive"
-└─ Category: "Product Category"
+Elementor > Templates > Create New > Import
+  ↓
+選擇: wc-category-archive-export.json
+  ↓
+自動建立 Theme Builder template
 ```
 
-### 2. 上傳頁面 JSON
-
-```bash
-# 本地
-wp eval-file tools/import-template.php examples/wc-category-archive-template.json
-
-# 將生成的 template ID 套用到所有商品分類頁面
-```
-
-### 3. 設定條件
-
-在 Theme Builder 中：
+設定條件：
 ```
 Display Conditions
 ├─ Post Type: Product Category
 └─ All Categories
 ```
+
+### 方法 B：用 WP-CLI（無需後台操作）
+
+```bash
+# 本地命令行
+wp eval-file tools/import-template.php examples/wc-category-archive-template.json
+
+# 將生成的 template ID 套用到所有商品分類頁面
+```
+
+---
+
+## 檔案說明
+
+| 檔案 | 用途 | 格式 |
+|-----|------|------|
+| **wc-category-archive-export.json** | Elementor 後台 import | 包含 content/page_settings/version |
+| **wc-category-archive-template.json** | WP-CLI import-template.php | 純 _elementor_data 陣列 |
+| **wc-category-archive-page.json** | WP-CLI apply-page.php | 純 _elementor_data 陣列 |
+
+**選擇方法：**
+- 🖱️ 不想用 CLI → 用 **export.json**（後台拖拽）
+- ⌨️ 偏好 CLI → 用 **template.json** 或 **page.json**
 
 ---
 
