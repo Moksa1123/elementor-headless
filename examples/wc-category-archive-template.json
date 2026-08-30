@@ -1,0 +1,171 @@
+[
+  {
+    "id": "a1b2c3d",
+    "elType": "container",
+    "settings": {
+      "container_type": "flex",
+      "content_width": "full",
+      "flex_direction": "row",
+      "flex_wrap": "nowrap",
+      "overflow": "auto",
+      "padding": {
+        "unit": "px",
+        "top": "20",
+        "right": "20",
+        "bottom": "20",
+        "left": "20",
+        "isLinked": false
+      },
+      "background_background": "classic",
+      "background_color": "#FFFFFF",
+      "border_border": "solid",
+      "border_width": {
+        "unit": "px",
+        "top": "0",
+        "right": "0",
+        "bottom": "1",
+        "left": "0",
+        "isLinked": false
+      },
+      "border_color": "#E5E7EB"
+    },
+    "elements": [
+      {
+        "id": "b2c3d4e",
+        "elType": "widget",
+        "widgetType": "wc-categories",
+        "settings": {
+          "source": "by_parent",
+          "parent": "0",
+          "columns": "6",
+          "columns_tablet": "4",
+          "columns_mobile": "2",
+          "number": "12",
+          "hide_empty": "yes",
+          "orderby": "name",
+          "order": "asc"
+        },
+        "elements": []
+      }
+    ]
+  },
+  {
+    "id": "c3d4e5f",
+    "elType": "container",
+    "settings": {
+      "container_type": "flex",
+      "content_width": "boxed",
+      "flex_direction": "column",
+      "padding": {
+        "unit": "px",
+        "top": "60",
+        "right": "20",
+        "bottom": "40",
+        "left": "20",
+        "isLinked": false
+      },
+      "padding_mobile": {
+        "unit": "px",
+        "top": "40",
+        "right": "16",
+        "bottom": "30",
+        "left": "16",
+        "isLinked": false
+      }
+    },
+    "elements": [
+      {
+        "id": "d4e5f6g",
+        "elType": "widget",
+        "widgetType": "woocommerce-breadcrumb",
+        "settings": {},
+        "elements": []
+      },
+      {
+        "id": "e5f6g7h",
+        "elType": "widget",
+        "widgetType": "theme-archive-title",
+        "settings": {
+          "align": "start"
+        },
+        "elements": []
+      },
+      {
+        "id": "f6g7h8i",
+        "elType": "widget",
+        "widgetType": "woocommerce-archive-description",
+        "settings": {},
+        "elements": []
+      },
+      {
+        "id": "g7h8i9j",
+        "elType": "widget",
+        "widgetType": "woocommerce-products",
+        "settings": {
+          "columns": "4",
+          "columns_tablet": "2",
+          "columns_mobile": "1",
+          "paginate": "yes",
+          "rows": "4"
+        },
+        "elements": []
+      }
+    ]
+  },
+  {
+    "id": "h8i9j0k",
+    "elType": "container",
+    "settings": {
+      "container_type": "flex",
+      "content_width": "boxed",
+      "flex_direction": "column",
+      "padding": {
+        "unit": "px",
+        "top": "60",
+        "right": "20",
+        "bottom": "60",
+        "left": "20",
+        "isLinked": false
+      },
+      "padding_mobile": {
+        "unit": "px",
+        "top": "40",
+        "right": "16",
+        "bottom": "40",
+        "left": "16",
+        "isLinked": false
+      },
+      "background_background": "classic",
+      "background_color": "#F9FAFB"
+    },
+    "elements": [
+      {
+        "id": "i9j0k1l",
+        "elType": "widget",
+        "widgetType": "heading",
+        "settings": {
+          "title": "也許你也需要……",
+          "header_size": "h3",
+          "align": "center",
+          "title_color": "#1F2937"
+        },
+        "elements": []
+      },
+      {
+        "id": "j0k1l2m",
+        "elType": "widget",
+        "widgetType": "wc-categories",
+        "settings": {
+          "source": "current_subcategories",
+          "columns": "4",
+          "columns_tablet": "2",
+          "columns_mobile": "1",
+          "hide_empty": "yes",
+          "orderby": "name",
+          "order": "asc"
+        },
+        "elements": []
+      }
+    ]
+  }
+]
