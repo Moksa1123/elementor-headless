@@ -1,5 +1,9 @@
 # elementor-headless
 
+[![npm version](https://img.shields.io/npm/v/elementor-headless.svg)](https://www.npmjs.com/package/elementor-headless)
+[![npm downloads](https://img.shields.io/npm/dt/elementor-headless.svg)](https://www.npmjs.com/package/elementor-headless)
+[![license](https://img.shields.io/npm/l/elementor-headless.svg)](LICENSE)
+
 **十秒內蓋 Elementor 頁面。不開編輯器。無需寫程式。**
 
 這是一個 [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
@@ -116,6 +120,14 @@ control、每個 widget、每個互動都放到真實站台上渲染一遍，再
 寫回資料裡。**Query** 則是 agent 蓋頁面時唯一要做的事。
 
 ## 安裝
+
+```bash
+npx elementor-headless                 # 互動式選單
+npx elementor-headless claude-code --global
+npx elementor-headless --list
+```
+
+或是從 clone 安裝，若你偏好 Python：
 
 ```bash
 git clone https://github.com/Moksa1123/elementor-headless

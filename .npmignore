@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.DS_Store
+build/
+*.zip
+_test_install/
+shots/
+CLAUDE.md
+CONTRIBUTING.md
+data/elementor-schema-free-*.json

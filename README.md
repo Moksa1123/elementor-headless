@@ -1,5 +1,9 @@
 # elementor-headless
 
+[![npm version](https://img.shields.io/npm/v/elementor-headless.svg)](https://www.npmjs.com/package/elementor-headless)
+[![npm downloads](https://img.shields.io/npm/dt/elementor-headless.svg)](https://www.npmjs.com/package/elementor-headless)
+[![license](https://img.shields.io/npm/l/elementor-headless.svg)](LICENSE)
+
 **Build Elementor pages in 10 seconds. No visual editor. No coding.**
 
 An [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
@@ -114,6 +118,14 @@ actually happened back into the data. **Query** is all an agent ever does at
 build time.
 
 ## Install
+
+```bash
+npx elementor-headless                 # interactive picker
+npx elementor-headless claude-code --global
+npx elementor-headless --list
+```
+
+Or from a clone, if you prefer Python:
 
 ```bash
 git clone https://github.com/Moksa1123/elementor-headless

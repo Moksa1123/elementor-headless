@@ -1,0 +1,54 @@
+{
+  "name": "elementor-headless",
+  "version": "1.0.0",
+  "description": "AI-agent skill: build and modify Elementor pages by writing the underlying JSON directly - no visual editor, no DOM. Queryable control surface of 192 widgets and 13 elements (49,857 control pairs), every Elementor Pro-only control labeled from a measured Free-vs-Pro diff, and a verification pipeline that ends at the rendered page. Installs into Claude Code, Cursor, Codex CLI, Gemini CLI, Copilot, Continue, Windsurf and Claude.ai.",
+  "keywords": [
+    "wordpress",
+    "elementor",
+    "elementor-pro",
+    "page-builder",
+    "claude-code",
+    "agent-skill",
+    "ai-agent",
+    "headless",
+    "woocommerce",
+    "wp-cli"
+  ],
+  "homepage": "https://github.com/Moksa1123/elementor-headless#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Moksa1123/elementor-headless.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Moksa1123/elementor-headless/issues"
+  },
+  "license": "MIT",
+  "author": "moksa (https://moksaweb.com)",
+  "type": "module",
+  "bin": {
+    "elementor-headless": "bin/install.mjs"
+  },
+  "files": [
+    "bin/",
+    "SKILL.md",
+    "README.md",
+    "README.zh-TW.md",
+    "README.ja.md",
+    "README.ko.md",
+    "LICENSE",
+    "assets/",
+    "data/",
+    "!data/elementor-schema-free-*.json",
+    "examples/",
+    "references/",
+    "tools/",
+    "!tools/__pycache__/",
+    "!**/*.pyc"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "install-skill": "node bin/install.mjs"
+  }
+}

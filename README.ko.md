@@ -1,5 +1,9 @@
 # elementor-headless
 
+[![npm version](https://img.shields.io/npm/v/elementor-headless.svg)](https://www.npmjs.com/package/elementor-headless)
+[![npm downloads](https://img.shields.io/npm/dt/elementor-headless.svg)](https://www.npmjs.com/package/elementor-headless)
+[![license](https://img.shields.io/npm/l/elementor-headless.svg)](LICENSE)
+
 **10초 안에 Elementor 페이지를 만듭니다. 에디터를 안 써도 됩니다. 코드도 안 써도 됩니다.**
 
 Claude Code 용 [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview).
@@ -116,6 +120,14 @@ JSON value shape:
 하는 일의 전부입니다.
 
 ## 설치
+
+```bash
+npx elementor-headless                 # 대화형 선택 메뉴
+npx elementor-headless claude-code --global
+npx elementor-headless --list
+```
+
+clone 해서 쓰고 싶다면 (Python):
 
 ```bash
 git clone https://github.com/Moksa1123/elementor-headless

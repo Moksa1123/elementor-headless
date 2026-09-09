@@ -1,5 +1,9 @@
 # elementor-headless
 
+[![npm version](https://img.shields.io/npm/v/elementor-headless.svg)](https://www.npmjs.com/package/elementor-headless)
+[![npm downloads](https://img.shields.io/npm/dt/elementor-headless.svg)](https://www.npmjs.com/package/elementor-headless)
+[![license](https://img.shields.io/npm/l/elementor-headless.svg)](LICENSE)
+
 **Elementor ページを 10 秒で作れる。エディタを使わない。コードを書かない。**
 
 Claude Code 用の [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)。
@@ -119,6 +123,14 @@ JSON value shape:
 行う唯一の操作だ。
 
 ## インストール
+
+```bash
+npx elementor-headless                 # 対話式メニュー
+npx elementor-headless claude-code --global
+npx elementor-headless --list
+```
+
+clone から入れる場合（Python 派向け）：
 
 ```bash
 git clone https://github.com/Moksa1123/elementor-headless

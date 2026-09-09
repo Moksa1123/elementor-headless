@@ -1,0 +1,86 @@
+name: Publish to npm
+
+# Release flow: bump + tag locally, push the tag, this workflow publishes.
+#
+#   npm version patch          # or minor / major - bumps package.json, commits, tags vX.Y.Z
+#   git push --follow-tags     # the tag triggers this workflow
+#
+# No token, no secret: publishing uses npm Trusted Publishing (OIDC).
+# The trust is configured on npmjs.com -> package Settings -> Trusted Publisher
+# (Moksa1123/elementor-headless, workflow publish.yml). Requires npm >= 11.5.1,
+# which Node 24 bundles.
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+  id-token: write # npm provenance attestation
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: npm must support trusted publishing (>= 11.5.1)
+        run: npm --version
+
+      - name: Tag must match package.json version
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          PKG="$(node -p "require('./package.json').version")"
+          if [ "$TAG" != "$PKG" ]; then
+            echo "Tag v$TAG != package.json $PKG - bump with 'npm version', don't hand-edit tags."
+            exit 1
+          fi
+
+      - name: PHP tools must parse
+        run: |
+          for f in tools/*.php; do php -l "$f"; done
+
+      - name: The shipped schema must load and report its surface
+        run: python tools/el.py stats
+
+      - name: Validate the shipped example pages against the shipped schema
+        run: |
+          python tools/validate-page.py examples/demo-page.json --target free
+          python tools/validate-page.py examples/test-page.json --target free
+          python tools/validate-page.py examples/wc-category-archive-template.json --target pro --have woocommerce
+
+      - name: Smoke-test the installer (all strategies, dry paths)
+        run: |
+          node bin/install.mjs --list
+          node bin/install.mjs --dry-run claude-code
+          node bin/install.mjs claude-code --to /tmp/skill-e2e --force
+          test -f /tmp/skill-e2e/skills/elementor-headless/SKILL.md
+          test -f /tmp/skill-e2e/skills/elementor-headless/data/elementor-schema.json
+          test -f /tmp/skill-e2e/skills/elementor-headless/data/hotdata.json
+          test -f /tmp/skill-e2e/skills/elementor-headless/tools/el.py
+          node bin/install.mjs cursor --to /tmp/rule-e2e --force
+          test -f /tmp/rule-e2e/rules/elementor-headless.mdc
+
+      - name: The tarball must not carry build intermediates
+        run: |
+          npm pack --dry-run --json > /tmp/pack.json
+          node -e '
+            const files = require("/tmp/pack.json")[0].files.map(f => f.path);
+            const bad = files.filter(f =>
+              f.includes("__pycache__") || f.endsWith(".pyc") || f.includes("schema-free"));
+            if (bad.length) { console.error("must not ship:", bad); process.exit(1); }
+            console.log(files.length + " files, clean");
+          '
+
+      - name: Publish (OIDC trusted publishing - no token)
+        run: npm publish --access public
