@@ -1,6 +1,6 @@
 {
   "name": "elementor-headless",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "AI-agent skill: build and modify Elementor pages by writing the underlying JSON directly - no visual editor, no DOM. Queryable control surface of 192 widgets and 13 elements (49,857 control pairs), every Elementor Pro-only control labeled from a measured Free-vs-Pro diff, and a verification pipeline that ends at the rendered page. Installs into Claude Code, Cursor, Codex CLI, Gemini CLI, Copilot, Continue, Windsurf and Claude.ai.",
   "keywords": [
     "wordpress",
