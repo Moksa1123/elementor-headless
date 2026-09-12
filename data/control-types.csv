@@ -53,5 +53,4 @@ v4_color_variable_list,free,elementor-core,,Elementor\Modules\DesignSystemSync\C
 v4_typography_list,free,elementor-core,,Elementor\Modules\DesignSystemSync\Controls\V4_Typography_List
 visual_choice,free,elementor-core,,Elementor\Control_Visual_Choice
 wp_widget,free,elementor-core,,Elementor\Control_WP_Widget
-wpforms_themes,free,wpforms-lite,,WPForms\Integrations\Elementor\Controls\WPFormsThemes
 wysiwyg,free,elementor-core,,Elementor\Control_Wysiwyg

@@ -378,20 +378,6 @@
         "wordpress"
       ]
     },
-    "wp-widget-members-widget-login": {
-      "tier": "free",
-      "title": "Members: Login Form",
-      "categories": [
-        "wordpress"
-      ]
-    },
-    "wp-widget-members-widget-users": {
-      "tier": "free",
-      "title": "Members: Users",
-      "categories": [
-        "wordpress"
-      ]
-    },
     "wp-widget-woocommerce_widget_cart": {
       "tier": "free",
       "title": "購物車",
@@ -443,7 +429,7 @@
     },
     "wp-widget-woocommerce_products": {
       "tier": "free",
-      "title": "商品列表",
+      "title": "商品清單",
       "categories": [
         "wordpress"
       ]
@@ -472,34 +458,6 @@
     "wp-widget-woocommerce_rating_filter": {
       "tier": "free",
       "title": "依評價篩選商品",
-      "categories": [
-        "wordpress"
-      ]
-    },
-    "wp-widget-wpforms-widget": {
-      "tier": "free",
-      "title": "WPForms",
-      "categories": [
-        "wordpress"
-      ]
-    },
-    "wp-widget-ezw_tco": {
-      "tier": "free",
-      "title": "內容目錄",
-      "categories": [
-        "wordpress"
-      ]
-    },
-    "wp-widget-ez_toc_widget_sticky": {
-      "tier": "free",
-      "title": "資訊欄固定位置內容目錄",
-      "categories": [
-        "wordpress"
-      ]
-    },
-    "wp-widget-nextend_social_login": {
-      "tier": "free",
-      "title": "Nextend Social Login Buttons",
       "categories": [
         "wordpress"
       ]
@@ -1429,7 +1387,7 @@
       "tier": "free",
       "default": {
         "unit": "fr",
-        "size": 2,
+        "size": 3,
         "sizes": []
       },
       "responsive": [
@@ -1445,7 +1403,7 @@
       "tier": "free",
       "default": {
         "unit": "fr",
-        "size": 1,
+        "size": 2,
         "sizes": []
       },
       "responsive": [
@@ -6844,10 +6802,10 @@
     }
   },
   "control_type_frequencies": {
-    "select": 3448,
+    "select": 3447,
     "slider": 3348,
     "color": 1434,
-    "switcher": 1079,
+    "switcher": 1077,
     "popover_toggle": 726,
     "number": 535,
     "text": 425,
@@ -6865,7 +6823,7 @@
     "url": 45,
     "hidden": 44,
     "repeater": 42,
-    "wp_widget": 39,
+    "wp_widget": 33,
     "hover_animation": 31,
     "animation": 18,
     "image_dimensions": 17,

@@ -2,7 +2,7 @@ name,elType,tier,requires,title,categories,controls_own,controls_total,has_commo
 section,section,free,,Section,,290,290,no
 column,column,free,,Column,,262,262,no
 container,container,free,,Container,,354,354,no
-accordion,widget,free,,Accordion,general,46,257,yes
+accordion,widget,free,,Accordion,general,45,256,yes
 alert,widget,free,,Alert,general,40,251,yes
 animated-headline,widget,pro,,Animated Headline,pro-elements,51,262,yes
 archive-posts,widget,pro,,Archive Posts,theme-elements-archive,438,649,yes
@@ -66,7 +66,7 @@ lottie,widget,pro,,Lottie,pro-elements,52,263,yes
 media-carousel,widget,pro,,Media Carousel,pro-elements,62,273,yes
 menu-anchor,widget,free,,Menu Anchor,general,1,212,yes
 nav-menu,widget,pro,,WordPress Menu,pro-elements|theme-elements,78,289,yes
-nested-accordion,widget,free,experiment:nested-elements,Accordion,general,190,401,yes
+nested-accordion,widget,free,experiment:nested-elements,Accordion,general,189,400,yes
 nested-carousel,widget,pro,experiment:nested-elements,Carousel,pro-elements,178,389,yes
 nested-tabs,widget,free,experiment:nested-elements,Tabs,general,202,413,yes
 off-canvas,widget,pro,experiment:nested-elements,Off-Canvas,pro-elements,87,298,yes
@@ -74,7 +74,7 @@ paypal-button,widget,pro,,PayPal Button,pro-elements,134,345,yes
 portfolio,widget,pro,,Portfolio,pro-elements,60,271,yes
 post-comments,widget,pro,,Post Comments,theme-elements-single,4,215,yes
 post-info,widget,pro,,Post Info,theme-elements-single,24,235,yes
-post-navigation,widget,pro,,Post Navigation,theme-elements-single,44,255,yes
+post-navigation,widget,pro,,Post Navigation,theme-elements-single,43,254,yes
 posts,widget,pro,,Posts,pro-elements,464,675,yes
 price-list,widget,pro,,Price List,pro-elements,50,261,yes
 price-table,widget,pro,,Price Table,pro-elements,218,429,yes
@@ -147,17 +147,12 @@ wp-widget-block,widget,free,wp-widget,區塊,wordpress,1,212,yes
 wp-widget-calendar,widget,free,wp-widget,月曆,wordpress,1,212,yes
 wp-widget-categories,widget,free,wp-widget,分類,wordpress,1,212,yes
 wp-widget-custom_html,widget,free,wp-widget,自訂 HTML,wordpress,1,212,yes
-wp-widget-ez_toc_widget_sticky,widget,free,wp-widget,資訊欄固定位置內容目錄,wordpress,1,212,yes
-wp-widget-ezw_tco,widget,free,wp-widget,內容目錄,wordpress,1,212,yes
 wp-widget-media_audio,widget,free,wp-widget,音訊,wordpress,1,212,yes
 wp-widget-media_gallery,widget,free,wp-widget,圖庫,wordpress,1,212,yes
 wp-widget-media_image,widget,free,wp-widget,圖片,wordpress,1,212,yes
 wp-widget-media_video,widget,free,wp-widget,視訊,wordpress,1,212,yes
-wp-widget-members-widget-login,widget,free,wp-widget,Members: Login Form,wordpress,1,212,yes
-wp-widget-members-widget-users,widget,free,wp-widget,Members: Users,wordpress,1,212,yes
 wp-widget-meta,widget,free,wp-widget,其他操作,wordpress,1,212,yes
 wp-widget-nav_menu,widget,free,wp-widget,導覽選單,wordpress,1,212,yes
-wp-widget-nextend_social_login,widget,free,wp-widget,Nextend Social Login Buttons,wordpress,1,212,yes
 wp-widget-pages,widget,free,wp-widget,頁面,wordpress,1,212,yes
 wp-widget-recent-comments,widget,free,wp-widget,近期留言,wordpress,1,212,yes
 wp-widget-recent-posts,widget,free,wp-widget,近期文章,wordpress,1,212,yes
@@ -174,10 +169,9 @@ wp-widget-woocommerce_price_filter,widget,free,wp-widget,依價格篩選商品,w
 wp-widget-woocommerce_product_categories,widget,free,wp-widget,商品分類,wordpress,1,212,yes
 wp-widget-woocommerce_product_search,widget,free,wp-widget,商品搜尋,wordpress,1,212,yes
 wp-widget-woocommerce_product_tag_cloud,widget,free,wp-widget,商品標籤雲,wordpress,1,212,yes
-wp-widget-woocommerce_products,widget,free,wp-widget,商品列表,wordpress,1,212,yes
+wp-widget-woocommerce_products,widget,free,wp-widget,商品清單,wordpress,1,212,yes
 wp-widget-woocommerce_rating_filter,widget,free,wp-widget,依評價篩選商品,wordpress,1,212,yes
 wp-widget-woocommerce_recent_reviews,widget,free,wp-widget,近期商品評價,wordpress,1,212,yes
 wp-widget-woocommerce_recently_viewed_products,widget,free,wp-widget,近期瀏覽商品清單,wordpress,1,212,yes
 wp-widget-woocommerce_top_rated_products,widget,free,wp-widget,好評商品清單,wordpress,1,212,yes
 wp-widget-woocommerce_widget_cart,widget,free,wp-widget,購物車,wordpress,1,212,yes
-wp-widget-wpforms-widget,widget,free,wp-widget,WPForms,wordpress,1,212,yes

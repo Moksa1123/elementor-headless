@@ -71,44 +71,80 @@ out of, and what an identical bug in a different artefact would look like.
 
 ## Regenerating data/
 
-`data/` is generated output. Do not hand-edit it. Two dumps are required, not one:
+`data/` is generated output. Do not hand-edit it.
 
-**Three dumps, and every other plugin switched off.** Not two, and not on a site with
-its plugins running:
+**Four dumps, and every other plugin switched off.** Not two, not three, and not on a
+site with its plugins running:
 
 ```bash
 # build the skip-list: everything active EXCEPT the ones whose surface you want
 ALL=$(wp plugin list --field=name --status=active)
 
-wp --skip-plugins="<all but elementor>"                    eval-file tools/extract-elementor-schema.php core+pro > iso-core.json
-wp --skip-plugins="<all but elementor,elementor-pro>"      eval-file tools/extract-elementor-schema.php core+pro > iso-pro.json
+wp --skip-plugins="<all but elementor>"                           eval-file tools/extract-elementor-schema.php core+pro > iso-core.json
+wp --skip-plugins="<all but elementor,elementor-pro>"             eval-file tools/extract-elementor-schema.php core+pro > iso-pro.json
+wp --skip-plugins="<all but elementor,woocommerce>"               eval-file tools/extract-elementor-schema.php core+pro > iso-woofree.json
 wp --skip-plugins="<all but elementor,elementor-pro,woocommerce>" eval-file tools/extract-elementor-schema.php core+pro > iso-woo.json
 
 python tools/build-indexes.py iso-woo.json \
-    --free-dump   iso-core.json \
+    --free-dump   iso-woofree.json \
     --gated-dump  woocommerce=iso-pro.json \
     --verification data/control-verification.csv \
     --class-verification data/class-verification.csv --out data/
-python tools/verify-schema.py iso-woo.json --free-dump iso-core.json   # must exit 0
+python tools/build-hotdata.py
+python tools/verify-schema.py iso-woo.json --free-dump iso-woofree.json   # must exit 0
 ```
 
 Each dump answers a different question:
 
 | dump | plugins | answers |
 |---|---|---|
-| `iso-core` | elementor | what is FREE |
-| `iso-pro` | + elementor-pro | what Pro adds — the per-control tier |
-| `iso-woo` | + woocommerce | what WooCommerce adds — the `requires` |
+| `iso-core` | elementor | what Elementor alone ships - the pollution baseline |
+| `iso-pro` | + elementor-pro | what Pro adds *without* WooCommerce - the `requires` diff |
+| `iso-woofree` | elementor + woocommerce | what is FREE - the per-control tier, and the only thing verify-schema can check against |
+| `iso-woo` | + elementor-pro + woocommerce | the full surface - what everything is built from |
 
-`--skip-plugins` affects only that one CLI process, so all three are safe against a
+**The free dump must hold WooCommerce constant.** `--free-dump` answers exactly one
+question - "does this control additionally need *Pro*?" - so the only variable between
+it and the main dump may be Pro. Hand it `iso-core` and every WooCommerce widget is
+simply absent, and absence reads as "needs Pro": measured on 4.2.4, that is **2,475
+spurious tier-wrong failures** against a schema that is fine.
+
+That one fails loudly. The quiet one is the same mistake on the build side:
+`build-indexes.py` given `iso-core` labels the 15 `wp-widget-woocommerce_*.wp` controls
+Pro when they are free, verify-schema files it as safe-direction drift, and it ships.
+Same 4.2.4 dumps, the two builds differ only in `--free-dump`:
+
+| `--free-dump` | failures | drift | Pro-only controls |
+|---|---|---|---|
+| `iso-core` | 0 | 181 (15 wrongly Pro) | 10,793 |
+| `iso-woofree` | 0 | 166 | 10,778 |
+
+`verify-schema.py` has no `--gated-dump` and cannot be given one: a single free dump is
+its whole definition of free. That is why the *build* needs four dumps while the *check*
+uses exactly two of them.
+
+`--skip-plugins` affects only that one CLI process, so all four are safe against a
 production site. Without `--free-dump`, `build-indexes.py` marks every control
 `tier: unknown` rather than guessing, and that is the correct behaviour: leave it
 that way.
+
+`build-indexes.py` does not write `data/hotdata.json` - run `build-hotdata.py` after it
+or the query path keeps serving the previous version's surface. It exits non-zero
+without `tiktoken`; that is the token report at the very end, after the file is already
+written.
 
 **Extracting on a site with its other plugins loaded pollutes the schema.** Rank Math
 injects `rank_math_add_faq_schema` into `accordion`; Unlimited Elements injects
 `uc_background_*` into the container. The schema shipped both, as if they were
 Elementor's. Isolate the plugins or the data is about your site, not about Elementor.
+
+The 4.2.1 schema shipped six of these and nobody noticed, because a polluted widget
+looks exactly like a real one: `wp-widget-ez_toc_widget_sticky`, `wp-widget-ezw_tco`,
+`wp-widget-members-widget-login`, `wp-widget-members-widget-users`,
+`wp-widget-nextend_social_login`, `wp-widget-wpforms-widget` - four unrelated plugins
+on the extraction host. The 4.2.4 rebuild removed all six, which is why its widget
+count went *down* (179 -> 173) across an Elementor upgrade. A shrinking count after a
+properly isolated extraction is the expected shape of this fix, not a regression.
 
 **And extract from a site that has WooCommerce.** Without it, Elementor Pro's
 `woocommerce` module does not load, its 29 widgets do not exist, and the schema will

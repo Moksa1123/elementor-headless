@@ -910,7 +910,6 @@ accordion,selected_icon,icons,content,section_title,,free,free,"{""value"":""fas
 accordion,selected_active_icon,icons,content,section_title,,free,free,"{""value"":""fas fa-minus"",""library"":""fa-solid""}",,"{""selected_icon[value]!"":""""}",,Active Icon
 accordion,title_html_tag,select,content,section_title,,free,free,div,"[""h1"",""h2"",""h3"",""h4"",""h5"",""h6"",""div""]",,,Title HTML Tag
 accordion,faq_schema,switcher,content,section_title,,free,free,,,,,FAQ Schema
-accordion,rank_math_add_faq_schema,switcher,content,section_title,,free,free,,,,,Add FAQ Schema Markup
 accordion,border_width,slider,style,section_title_style,,free,free,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,border-width,Border Width
 accordion,border_color,color,style,section_title_style,,free,free,,,,border-color|border-block-start-color|border-block-end-color,Border Color
 accordion,title_background,color,style,section_toggle_style_title,,free,free,,,,background-color,Background
@@ -1079,7 +1078,7 @@ archive-posts,archive_cards_read_more_text,text,content,section_layout,,pro,pro,
 archive-posts,archive_cards_read_more_alignment,switcher,content,section_layout,,pro,pro,,,"{""archive_cards_masonry!"":""yes"",""archive_cards_show_read_more"":""yes"",""_skin"":""archive_cards""}",--item-display|--read-more-alignment,Automatically align buttons
 archive-posts,archive_cards_open_new_tab,switcher,content,section_layout,,pro,pro,no,,"{""_skin"":""archive_cards""}",,Open in new window
 archive-posts,archive_cards_show_badge,switcher,content,section_layout,,pro,pro,yes,,"{""_skin"":""archive_cards""}",,Badge
-archive-posts,archive_cards_badge_taxonomy,select2,content,section_layout,,pro,pro,category,"["""",""category"",""post_tag"",""product_brand"",""product_cat"",""product_tag"",""blc-product-review-categories""]","{""archive_cards_show_badge"":""yes"",""_skin"":""archive_cards""}",,Badge Taxonomy
+archive-posts,archive_cards_badge_taxonomy,select2,content,section_layout,,pro,pro,category,"["""",""category"",""post_tag"",""product_brand"",""product_cat"",""product_tag""]","{""archive_cards_show_badge"":""yes"",""_skin"":""archive_cards""}",,Badge Taxonomy
 archive-posts,archive_cards_show_avatar,switcher,content,section_layout,,pro,pro,show-avatar,,"{""archive_cards_thumbnail!"":""none"",""_skin"":""archive_cards""}",,Avatar
 archive-posts,archive_full_content_row_gap,slider,content,section_layout,,pro,pro,"{""unit"":""px"",""size"":35,""sizes"":[]}",,"{""_skin"":""archive_full_content""}",margin-bottom,Rows Gap
 archive-posts,archive_full_content_thumbnail,switcher,content,section_layout,,pro,pro,,,"{""_skin"":""archive_full_content""}",,Show Thumbnail
@@ -2498,7 +2497,7 @@ contact-buttons-var-9,advanced_vertical_offset,slider,advanced-tab-floating-butt
 contact-buttons-var-9,advanced_custom_css_id,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS ID
 contact-buttons-var-9,advanced_custom_css_classes,text,advanced-tab-floating-buttons,advanced_custom_controls_section,,pro,pro,,,,,CSS Classes
 countdown,countdown_type,select,content,section_countdown,,pro,pro,due_date,"[""due_date"",""evergreen""]",,,Type
-countdown,due_date,date_time,content,section_countdown,,pro,pro,2026-09-05 14:18,,"{""countdown_type"":""due_date""}",,Due Date
+countdown,due_date,date_time,content,section_countdown,,pro,pro,2026-10-12 14:03,,"{""countdown_type"":""due_date""}",,Due Date
 countdown,evergreen_counter_hours,number,content,section_countdown,,pro,pro,47,,"{""countdown_type"":""evergreen""}",,Hours
 countdown,evergreen_counter_minutes,number,content,section_countdown,,pro,pro,59,,"{""countdown_type"":""evergreen""}",,Minutes
 countdown,show_days,switcher,content,section_countdown,,pro,pro,yes,,,,Days
@@ -5333,11 +5332,11 @@ loop-carousel,slides_to_show,select,content,section_layout,mobile|tablet,pro,pro
 loop-carousel,slides_to_scroll,select,content,section_layout,mobile|tablet,pro,pro,1,"["""",1,2,3,4,5,6,7,8]","{""posts_per_page!"":1,""template_id!"":""""}",,Slides on scroll
 loop-carousel,equal_height,switcher,content,section_layout,,pro,pro,yes,,"{""posts_per_page!"":1,""template_id!"":""""}",height,Equal Height
 loop-carousel,edit_handle_selector,hidden,content,section_layout,,pro,pro,.elementor-loop-container,,,,Edit Handle Selector
-loop-carousel,post_query_post_type,select,content,section_query,,pro,pro,post,"[""post"",""page"",""product"",""blc-product-review"",""by_id"",""current_query"",""related""]","{""_skin"":""post""}",,Source
+loop-carousel,post_query_post_type,select,content,section_query,,pro,pro,post,"[""post"",""page"",""product"",""by_id"",""current_query"",""related""]","{""_skin"":""post""}",,Source
 loop-carousel,post_query_posts_ids,query,content,section_query,,pro,pro,,,"{""post_query_post_type"":""by_id"",""_skin"":""post""}",,Search &amp; Select
 loop-carousel,post_query_include,select2,content,section_query,,pro,pro,,"[""terms"",""authors""]","{""post_query_post_type!"":[""by_id"",""current_query""],""_skin"":""post""}",,Include By
 loop-carousel,post_query_include_term_ids,query,content,section_query,,pro,pro,,,"{""post_query_include"":""terms"",""post_query_post_type!"":[""by_id"",""current_query"",""related""],""_skin"":""post""}",,Term
-loop-carousel,post_query_related_taxonomies,select2,content,section_query,,pro,pro,,"[""category"",""post_tag"",""post_format"",""product_brand"",""product_type"",""product_visibility"",""product_cat"",""product_tag"",""product_shipping_class"",""pos_product_visibility"",""pa_color"",""pa_size"",""blc-product-review-categories""]","{""post_query_include"":""terms"",""post_query_post_type"":[""related""],""_skin"":""post""}",,Term
+loop-carousel,post_query_related_taxonomies,select2,content,section_query,,pro,pro,,"[""category"",""post_tag"",""post_format"",""product_brand"",""product_type"",""product_visibility"",""product_cat"",""product_tag"",""product_shipping_class"",""pos_product_visibility"",""pa_color"",""pa_size""]","{""post_query_include"":""terms"",""post_query_post_type"":[""related""],""_skin"":""post""}",,Term
 loop-carousel,post_query_include_authors,query,content,section_query,,pro,pro,,,"{""post_query_include"":""authors"",""post_query_post_type!"":[""by_id"",""current_query"",""related""],""_skin"":""post""}",,Author
 loop-carousel,post_query_exclude,select2,content,section_query,,pro,pro,,"[""current_post"",""manual_selection"",""terms"",""authors""]","{""post_query_post_type!"":[""by_id"",""current_query""],""_skin"":""post""}",,Exclude By
 loop-carousel,post_query_exclude_ids,query,content,section_query,,pro,pro,,,"{""post_query_exclude"":""manual_selection"",""post_query_post_type!"":[""by_id"",""current_query""],""_skin"":""post""}",,Search &amp; Select
@@ -5364,7 +5363,7 @@ loop-carousel,product_query_exclude_ids,query,content,section_query,,pro,pro,,,"
 loop-carousel,product_query_exclude_term_ids,query,content,section_query,,pro,pro,,,"{""product_query_post_type!"":[""cross_sells"",""related_products"",""upsells""],""_skin"":""product""}",,Term
 loop-carousel,product_query_orderby,select,content,section_query,,pro,pro,date,"[""date"",""title"",""price"",""popularity"",""rating"",""rand"",""menu_order""]","{""product_query_post_type!"":""current_query"",""_skin"":""product""}",,Order By
 loop-carousel,product_query_order,select,content,section_query,,pro,pro,desc,"[""asc"",""desc""]","{""product_query_post_type!"":""current_query"",""_skin"":""product""}",,Order
-loop-carousel,post_taxonomy_query_post_type,select,content,section_query,,pro,pro,category,"[""category"",""post_tag"",""elementor_library_type"",""blc-product-review-categories""]","{""_skin"":""post_taxonomy""}",,Source
+loop-carousel,post_taxonomy_query_post_type,select,content,section_query,,pro,pro,category,"[""category"",""post_tag"",""elementor_library_type""]","{""_skin"":""post_taxonomy""}",,Source
 loop-carousel,post_taxonomy_query_filter_by,select,content,section_query,,pro,pro,show_all,"[""show_all"",""manual_selection""]","{""_skin"":""post_taxonomy""}",,Filter By
 loop-carousel,post_taxonomy_query_posts_ids,query,content,section_query,,pro,pro,,,"{""post_taxonomy_query_post_type"":""by_id"",""_skin"":""post_taxonomy""}",,Search &amp; Select
 loop-carousel,post_taxonomy_query_include_term_ids,query,content,section_query,,pro,pro,,,"{""post_taxonomy_query_include"":""terms"",""post_taxonomy_query_post_type!"":[""by_id"",""current_query""],""_skin"":""post_taxonomy""}",,Term
@@ -5547,11 +5546,11 @@ loop-grid,equal_height,switcher,content,section_layout,,pro,pro,,,"{""columns!""
 loop-grid,alternate_template,switcher,content,section_layout,,pro,pro,,,"{""posts_per_page!"":1,""template_id!"":"""",""_skin!"":[""post_taxonomy"",""product_taxonomy""]}",,Apply an alternate template
 loop-grid,alternate_templates,repeater,content,section_layout,,pro,pro,"[{""template_id"":null}]",,"{""alternate_template"":""yes"",""posts_per_page!"":1,""template_id!"":""""}",,Templates
 loop-grid,edit_handle_selector,hidden,content,section_layout,,pro,pro,"[data-elementor-type=""loop-item""]",,,,Edit Handle Selector
-loop-grid,post_query_post_type,select,content,section_query,,pro,pro,post,"[""post"",""page"",""product"",""blc-product-review"",""by_id"",""current_query"",""related""]","{""_skin"":""post""}",,Source
+loop-grid,post_query_post_type,select,content,section_query,,pro,pro,post,"[""post"",""page"",""product"",""by_id"",""current_query"",""related""]","{""_skin"":""post""}",,Source
 loop-grid,post_query_posts_ids,query,content,section_query,,pro,pro,,,"{""post_query_post_type"":""by_id"",""_skin"":""post""}",,Search &amp; Select
 loop-grid,post_query_include,select2,content,section_query,,pro,pro,,"[""terms"",""authors""]","{""post_query_post_type!"":[""by_id"",""current_query""],""_skin"":""post""}",,Include By
 loop-grid,post_query_include_term_ids,query,content,section_query,,pro,pro,,,"{""post_query_include"":""terms"",""post_query_post_type!"":[""by_id"",""current_query"",""related""],""_skin"":""post""}",,Term
-loop-grid,post_query_related_taxonomies,select2,content,section_query,,pro,pro,,"[""category"",""post_tag"",""post_format"",""product_brand"",""product_type"",""product_visibility"",""product_cat"",""product_tag"",""product_shipping_class"",""pos_product_visibility"",""pa_color"",""pa_size"",""blc-product-review-categories""]","{""post_query_include"":""terms"",""post_query_post_type"":[""related""],""_skin"":""post""}",,Term
+loop-grid,post_query_related_taxonomies,select2,content,section_query,,pro,pro,,"[""category"",""post_tag"",""post_format"",""product_brand"",""product_type"",""product_visibility"",""product_cat"",""product_tag"",""product_shipping_class"",""pos_product_visibility"",""pa_color"",""pa_size""]","{""post_query_include"":""terms"",""post_query_post_type"":[""related""],""_skin"":""post""}",,Term
 loop-grid,post_query_include_authors,query,content,section_query,,pro,pro,,,"{""post_query_include"":""authors"",""post_query_post_type!"":[""by_id"",""current_query"",""related""],""_skin"":""post""}",,Author
 loop-grid,post_query_exclude,select2,content,section_query,,pro,pro,,"[""current_post"",""manual_selection"",""terms"",""authors""]","{""post_query_post_type!"":[""by_id"",""current_query""],""_skin"":""post""}",,Exclude By
 loop-grid,post_query_exclude_ids,query,content,section_query,,pro,pro,,,"{""post_query_exclude"":""manual_selection"",""post_query_post_type!"":[""by_id"",""current_query""],""_skin"":""post""}",,Search &amp; Select
@@ -5578,7 +5577,7 @@ loop-grid,product_query_exclude_ids,query,content,section_query,,pro,pro,,,"{""p
 loop-grid,product_query_exclude_term_ids,query,content,section_query,,pro,pro,,,"{""product_query_post_type!"":[""cross_sells"",""related_products"",""upsells""],""_skin"":""product""}",,Term
 loop-grid,product_query_orderby,select,content,section_query,,pro,pro,date,"[""date"",""title"",""price"",""popularity"",""rating"",""rand"",""menu_order""]","{""product_query_post_type!"":""current_query"",""_skin"":""product""}",,Order By
 loop-grid,product_query_order,select,content,section_query,,pro,pro,desc,"[""asc"",""desc""]","{""product_query_post_type!"":""current_query"",""_skin"":""product""}",,Order
-loop-grid,post_taxonomy_query_post_type,select,content,section_query,,pro,pro,category,"[""category"",""post_tag"",""elementor_library_type"",""blc-product-review-categories""]","{""_skin"":""post_taxonomy""}",,Source
+loop-grid,post_taxonomy_query_post_type,select,content,section_query,,pro,pro,category,"[""category"",""post_tag"",""elementor_library_type""]","{""_skin"":""post_taxonomy""}",,Source
 loop-grid,post_taxonomy_query_filter_by,select,content,section_query,,pro,pro,show_all,"[""show_all"",""manual_selection""]","{""_skin"":""post_taxonomy""}",,Filter By
 loop-grid,post_taxonomy_query_posts_ids,query,content,section_query,,pro,pro,,,"{""post_taxonomy_query_post_type"":""by_id"",""_skin"":""post_taxonomy""}",,Search &amp; Select
 loop-grid,post_taxonomy_query_include_term_ids,query,content,section_query,,pro,pro,,,"{""post_taxonomy_query_include"":""terms"",""post_taxonomy_query_post_type!"":[""by_id"",""current_query""],""_skin"":""post_taxonomy""}",,Term
@@ -5981,7 +5980,6 @@ nested-accordion,accordion_item_title_icon,icons,content,section_items,,free,fre
 nested-accordion,accordion_item_title_icon_active,icons,content,section_items,,free,free,"{""value"":""fas fa-minus"",""library"":""fa-solid""}",,"{""accordion_item_title_icon[value]!"":""""}",,Collapse
 nested-accordion,title_tag,select,content,section_items,,free,free,div,"[""h1"",""h2"",""h3"",""h4"",""h5"",""h6"",""div"",""span"",""p""]",,,Title HTML Tag
 nested-accordion,faq_schema,switcher,content,section_items,,free,free,no,,,,FAQ Schema
-nested-accordion,rank_math_add_faq_schema,switcher,content,section_items,,free,free,,,,,Add FAQ Schema Markup
 nested-accordion,default_state,select,content,section_interactions,,free,free,expanded,"[""expanded"",""all_collapsed""]",,,Default State
 nested-accordion,max_items_expended,select,content,section_interactions,,free,free,one,"[""one"",""multiple""]",,,Max Items Expanded
 nested-accordion,n_accordion_animation_duration,slider,content,section_interactions,,free,free,"{""unit"":""ms"",""size"":400,""sizes"":[]}",,,,Animation Duration
@@ -6772,11 +6770,11 @@ portfolio,masonry,switcher,content,section_layout,,pro,pro,,,"{""columns!"":""1"
 portfolio,item_ratio,slider,content,section_layout,,pro,pro,"{""unit"":""px"",""size"":0.66,""sizes"":[]}",,"{""masonry"":""""}",padding-bottom|content|position|color,Item Ratio
 portfolio,show_title,switcher,content,section_layout,,pro,pro,yes,,,,Show Title
 portfolio,title_tag,select,content,section_layout,,pro,pro,h3,"[""h1"",""h2"",""h3"",""h4"",""h5"",""h6"",""div"",""span"",""p""]","{""show_title"":""yes""}",,Title HTML Tag
-portfolio,posts_post_type,select,content,section_query,,pro,pro,post,"[""post"",""page"",""product"",""blc-product-review"",""by_id"",""current_query"",""related""]",,,Source
+portfolio,posts_post_type,select,content,section_query,,pro,pro,post,"[""post"",""page"",""product"",""by_id"",""current_query"",""related""]",,,Source
 portfolio,posts_posts_ids,query,content,section_query,,pro,pro,,,"{""posts_post_type"":""by_id""}",,Search &amp; Select
 portfolio,posts_include,select2,content,section_query,,pro,pro,,"[""terms"",""authors""]","{""posts_post_type!"":[""by_id"",""current_query""]}",,Include By
 portfolio,posts_include_term_ids,query,content,section_query,,pro,pro,,,"{""posts_include"":""terms"",""posts_post_type!"":[""by_id"",""current_query"",""related""]}",,Term
-portfolio,posts_related_taxonomies,select2,content,section_query,,pro,pro,,"[""category"",""post_tag"",""post_format"",""product_brand"",""product_type"",""product_visibility"",""product_cat"",""product_tag"",""product_shipping_class"",""pos_product_visibility"",""pa_color"",""pa_size"",""blc-product-review-categories""]","{""posts_include"":""terms"",""posts_post_type"":[""related""]}",,Term
+portfolio,posts_related_taxonomies,select2,content,section_query,,pro,pro,,"[""category"",""post_tag"",""post_format"",""product_brand"",""product_type"",""product_visibility"",""product_cat"",""product_tag"",""product_shipping_class"",""pos_product_visibility"",""pa_color"",""pa_size""]","{""posts_include"":""terms"",""posts_post_type"":[""related""]}",,Term
 portfolio,posts_include_authors,query,content,section_query,,pro,pro,,,"{""posts_include"":""authors"",""posts_post_type!"":[""by_id"",""current_query"",""related""]}",,Author
 portfolio,posts_exclude,select2,content,section_query,,pro,pro,,"[""current_post"",""manual_selection"",""terms"",""authors""]","{""posts_post_type!"":[""by_id"",""current_query""]}",,Exclude By
 portfolio,posts_exclude_ids,query,content,section_query,,pro,pro,,,"{""posts_exclude"":""manual_selection"",""posts_post_type!"":[""by_id"",""current_query""]}",,Search &amp; Select
@@ -6794,7 +6792,7 @@ portfolio,posts_order,select,content,section_query,,pro,pro,desc,"[""asc"",""des
 portfolio,posts_ignore_sticky_posts,switcher,content,section_query,,pro,pro,yes,,"{""posts_post_type"":""post""}",,Ignore Sticky Posts
 portfolio,posts_query_id,text,content,section_query,,pro,pro,,,,,Query ID
 portfolio,show_filter_bar,switcher,content,filter_bar,,pro,pro,,,,,Show
-portfolio,taxonomy,select2,content,filter_bar,,pro,pro,,"["""",""category"",""post_tag"",""product_brand"",""product_cat"",""product_tag"",""blc-product-review-categories""]","{""show_filter_bar"":""yes"",""posts_post_type!"":""by_id""}",,Taxonomy
+portfolio,taxonomy,select2,content,filter_bar,,pro,pro,,"["""",""category"",""post_tag"",""product_brand"",""product_cat"",""product_tag""]","{""show_filter_bar"":""yes"",""posts_post_type!"":""by_id""}",,Taxonomy
 portfolio,item_gap,slider,style,section_design_layout,,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,--grid-row-gap|--grid-column-gap,Item Gap
 portfolio,column_gap,slider,style,section_design_layout,,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,--grid-column-gap,Columns Gap
 portfolio,row_gap,slider,style,section_design_layout,,pro,pro,"{""unit"":""px"",""size"":"""",""sizes"":[]}",,,--grid-row-gap,Rows Gap
@@ -6861,10 +6859,9 @@ post-navigation,arrow_previous_icon,icons,content,section_post_navigation_conten
 post-navigation,arrow_next_icon,icons,content,section_post_navigation_content,,pro,pro,"{""value"":""fas fa-angle-right"",""library"":""fa-solid""}",,"{""show_arrow"":""yes""}",,Next Icon
 post-navigation,show_title,switcher,content,section_post_navigation_content,,pro,pro,yes,,,,Post Title
 post-navigation,show_borders,switcher,content,section_post_navigation_content,,pro,pro,yes,,,,Borders
-post-navigation,in_same_term,select2,content,section_post_navigation_content,,pro,pro,,"[""post"",""product"",""blc-product-review""]",,,In same Term
+post-navigation,in_same_term,select2,content,section_post_navigation_content,,pro,pro,,"[""post"",""product""]",,,In same Term
 post-navigation,post_taxonomy,select,content,section_post_navigation_content,,pro,pro,,"[""category"",""post_tag"",""post_format""]","{""in_same_term"":""post""}",,Posts Taxonomy
 post-navigation,product_taxonomy,select,content,section_post_navigation_content,,pro,pro,,"[""product_brand"",""product_type"",""product_visibility"",""product_cat"",""product_tag"",""product_shipping_class"",""pos_product_visibility"",""pa_color"",""pa_size""]","{""in_same_term"":""product""}",,商品 Taxonomy
-post-navigation,blc-product-review_taxonomy,select,content,section_post_navigation_content,,pro,pro,,"[""blc-product-review-categories""]","{""in_same_term"":""blc-product-review""}",,商品評論 Taxonomy
 post-navigation,label_color,color,style,label_style,,pro,pro,,,"{""show_label"":""yes""}",color,Color
 post-navigation,label_hover_color,color,style,label_style,,pro,pro,,,"{""show_label"":""yes""}",color,Color
 post-navigation,label_hover_color_transition_duration,slider,style,label_style,,pro,pro,"{""unit"":""ms"",""size"":"""",""sizes"":[]}",,"{""show_label"":""yes""}",transition-duration,Transition Duration
@@ -6934,7 +6931,7 @@ posts,cards_read_more_text,text,content,section_layout,,pro,pro,Read More »,,"{
 posts,cards_read_more_alignment,switcher,content,section_layout,,pro,pro,,,"{""cards_masonry!"":""yes"",""cards_show_read_more"":""yes"",""_skin"":""cards""}",--item-display|--read-more-alignment,Automatically align buttons
 posts,cards_open_new_tab,switcher,content,section_layout,,pro,pro,no,,"{""_skin"":""cards""}",,Open in new window
 posts,cards_show_badge,switcher,content,section_layout,,pro,pro,yes,,"{""_skin"":""cards""}",,Badge
-posts,cards_badge_taxonomy,select2,content,section_layout,,pro,pro,category,"["""",""category"",""post_tag"",""product_brand"",""product_cat"",""product_tag"",""blc-product-review-categories""]","{""cards_show_badge"":""yes"",""_skin"":""cards""}",,Badge Taxonomy
+posts,cards_badge_taxonomy,select2,content,section_layout,,pro,pro,category,"["""",""category"",""post_tag"",""product_brand"",""product_cat"",""product_tag""]","{""cards_show_badge"":""yes"",""_skin"":""cards""}",,Badge Taxonomy
 posts,cards_show_avatar,switcher,content,section_layout,,pro,pro,show-avatar,,"{""cards_thumbnail!"":""none"",""_skin"":""cards""}",,Avatar
 posts,full_content_posts_per_page,number,content,section_layout,,pro,pro,6,,"{""_skin"":""full_content""}",,Posts Per Page
 posts,full_content_row_gap,slider,content,section_layout,,pro,pro,"{""unit"":""px"",""size"":35,""sizes"":[]}",,"{""_skin"":""full_content""}",margin-bottom,Rows Gap
@@ -6947,11 +6944,11 @@ posts,full_content_title_tag,select,content,section_layout,,pro,pro,h3,"[""h1"",
 posts,full_content_meta_data,select2,content,section_layout,,pro,pro,"[""date"",""comments""]","[""author"",""date"",""time"",""comments"",""modified""]","{""_skin"":""full_content""}",,Meta Data
 posts,full_content_meta_separator,text,content,section_layout,,pro,pro,///,,"{""full_content_meta_data!"":[],""_skin"":""full_content""}",content,Separator Between
 posts,full_content_open_new_tab,switcher,content,section_layout,,pro,pro,no,,"{""_skin"":""full_content""}",,Open in new window
-posts,posts_post_type,select,content,section_query,,pro,pro,post,"[""post"",""page"",""product"",""blc-product-review"",""by_id"",""current_query"",""related""]",,,Source
+posts,posts_post_type,select,content,section_query,,pro,pro,post,"[""post"",""page"",""product"",""by_id"",""current_query"",""related""]",,,Source
 posts,posts_posts_ids,query,content,section_query,,pro,pro,,,"{""posts_post_type"":""by_id""}",,Search &amp; Select
 posts,posts_include,select2,content,section_query,,pro,pro,,"[""terms"",""authors""]","{""posts_post_type!"":[""by_id"",""current_query""]}",,Include By
 posts,posts_include_term_ids,query,content,section_query,,pro,pro,,,"{""posts_include"":""terms"",""posts_post_type!"":[""by_id"",""current_query"",""related""]}",,Term
-posts,posts_related_taxonomies,select2,content,section_query,,pro,pro,,"[""category"",""post_tag"",""post_format"",""product_brand"",""product_type"",""product_visibility"",""product_cat"",""product_tag"",""product_shipping_class"",""pos_product_visibility"",""pa_color"",""pa_size"",""blc-product-review-categories""]","{""posts_include"":""terms"",""posts_post_type"":[""related""]}",,Term
+posts,posts_related_taxonomies,select2,content,section_query,,pro,pro,,"[""category"",""post_tag"",""post_format"",""product_brand"",""product_type"",""product_visibility"",""product_cat"",""product_tag"",""product_shipping_class"",""pos_product_visibility"",""pa_color"",""pa_size""]","{""posts_include"":""terms"",""posts_post_type"":[""related""]}",,Term
 posts,posts_include_authors,query,content,section_query,,pro,pro,,,"{""posts_include"":""authors"",""posts_post_type!"":[""by_id"",""current_query"",""related""]}",,Author
 posts,posts_exclude,select2,content,section_query,,pro,pro,,"[""current_post"",""manual_selection"",""terms"",""authors""]","{""posts_post_type!"":[""by_id"",""current_query""]}",,Exclude By
 posts,posts_exclude_ids,query,content,section_query,,pro,pro,,,"{""posts_exclude"":""manual_selection"",""posts_post_type!"":[""by_id"",""current_query""]}",,Search &amp; Select
@@ -7871,7 +7868,7 @@ search,enable_loader,switcher,content,content_section_results,,pro,pro,,,"{""liv
 search,enable_nothing_found_message,switcher,content,content_section_results,,pro,pro,yes,,"{""live_results"":""yes"",""template_id!"":""""}",,Nothing Found Message
 search,nothing_found_message_text,textarea,content,content_section_results,,pro,pro,It seems we can’t find what you’re looking for.,,"{""enable_nothing_found_message"":""yes"",""live_results"":""yes"",""template_id!"":""""}",,
 search,nothing_found_message_html_tag,select,content,content_section_results,,pro,pro,div,"[""h1"",""h2"",""h3"",""h4"",""h5"",""h6"",""div"",""span""]","{""enable_nothing_found_message"":""yes"",""live_results"":""yes"",""template_id!"":""""}",,HTML Tag
-search,search_query_post_type,select,content,content_section_query,,pro,pro,any,"[""any"",""product"",""post"",""page"",""e-floating-buttons"",""blc-product-review""]",,,Source
+search,search_query_post_type,select,content,content_section_query,,pro,pro,any,"[""any"",""product"",""post"",""page"",""e-floating-buttons""]",,,Source
 search,search_query_posts_ids,query,content,content_section_query,,pro,pro,,,"{""search_query_post_type"":""by_id""}",,Search &amp; Select
 search,search_query_include,select2,content,content_section_query,,pro,pro,,"[""terms"",""authors""]","{""search_query_post_type!"":[""by_id"",""current_query""]}",,Include By
 search,search_query_include_term_ids,query,content,content_section_query,,pro,pro,,,"{""search_query_include"":""terms"",""search_query_post_type!"":[""by_id"",""current_query""]}",,Term
@@ -9848,8 +9845,8 @@ wc-archive-products,nothing_found_typography_word_spacing,slider,style,section_n
 wc-categories,columns,number,content,section_layout,mobile|tablet,pro,pro,4,,,,Columns
 wc-categories,number,number,content,section_layout,,pro,pro,4,,,,Categories Count
 wc-categories,source,select,content,section_filter,,pro,pro,,"["""",""by_id"",""by_parent"",""current_subcategories""]",,,Source
-wc-categories,categories,select2,content,section_filter,,pro,pro,,"[43,46,40,41,42,45,326,44,38,35,39,47,37,34]","{""source"":""by_id""}",,Categories
-wc-categories,parent,select,content,section_filter,,pro,pro,0,"[0,43,46,40,41,42,45,326,44,38,35,39,47,37,34]","{""source"":""by_parent""}",,Parent
+wc-categories,categories,select2,content,section_filter,,pro,pro,,"[759,762,761,763,43,46,40,41,42,45,326,44,38,35,39,47,37,34]","{""source"":""by_id""}",,Categories
+wc-categories,parent,select,content,section_filter,,pro,pro,0,"[0,759,762,761,763,43,46,40,41,42,45,326,44,38,35,39,47,37,34]","{""source"":""by_parent""}",,Parent
 wc-categories,hide_empty,switcher,content,section_filter,,pro,pro,,,,,Hide Empty
 wc-categories,orderby,select,content,section_filter,,pro,pro,name,"[""name"",""slug"",""description"",""count""]",,,Order By
 wc-categories,order,select,content,section_filter,,pro,pro,desc,"[""asc"",""desc""]",,,Order
@@ -9892,7 +9889,7 @@ wc-products,posts_per_page,number,content,section_layout,,pro,pro,4,,,,Products 
 wc-products,posts_post_type,select,content,section_filter,,pro,pro,product,"[""product"",""by_id"",""current_query""]",,,Source
 wc-products,posts_posts_ids,query,content,section_filter,,pro,pro,,,"{""posts_post_type"":""by_id""}",,Search &amp; Select
 wc-products,posts_authors,query,content,section_filter,,pro,pro,,,"{""posts_post_type!"":[""by_id"",""current_query""]}",,Author
-wc-products,posts_product_brand_ids,select2,content,section_filter,,pro,pro,,[354],"{""posts_post_type"":[""product""]}",,品牌
+wc-products,posts_product_brand_ids,select2,content,section_filter,,pro,pro,,[354],"{""posts_post_type"":[""product""]}",,產品品牌
 wc-products,posts_product_cat_ids,query,content,section_filter,,pro,pro,,,"{""posts_post_type"":[""product""]}",,商品分類
 wc-products,posts_product_tag_ids,query,content,section_filter,,pro,pro,,,"{""posts_post_type"":[""product""]}",,商品標籤
 wc-products,filter_by,select,content,section_filter,,pro,pro,,"["""",""featured"",""sale""]",,,Filter By
@@ -13203,17 +13200,12 @@ wp-widget-block,wp,wp_widget,content,,,free,free,,,,,Form
 wp-widget-calendar,wp,wp_widget,content,,,free,free,,,,,Form
 wp-widget-categories,wp,wp_widget,content,,,free,free,,,,,Form
 wp-widget-custom_html,wp,wp_widget,content,,,free,free,,,,,Form
-wp-widget-ez_toc_widget_sticky,wp,wp_widget,content,,,free,free,,,,,Form
-wp-widget-ezw_tco,wp,wp_widget,content,,,free,free,,,,,Form
 wp-widget-media_audio,wp,wp_widget,content,,,free,free,,,,,Form
 wp-widget-media_gallery,wp,wp_widget,content,,,free,free,,,,,Form
 wp-widget-media_image,wp,wp_widget,content,,,free,free,,,,,Form
 wp-widget-media_video,wp,wp_widget,content,,,free,free,,,,,Form
-wp-widget-members-widget-login,wp,wp_widget,content,,,free,free,,,,,Form
-wp-widget-members-widget-users,wp,wp_widget,content,,,free,free,,,,,Form
 wp-widget-meta,wp,wp_widget,content,,,free,free,,,,,Form
 wp-widget-nav_menu,wp,wp_widget,content,,,free,free,,,,,Form
-wp-widget-nextend_social_login,wp,wp_widget,content,,,free,free,,,,,Form
 wp-widget-pages,wp,wp_widget,content,,,free,free,,,,,Form
 wp-widget-recent-comments,wp,wp_widget,content,,,free,free,,,,,Form
 wp-widget-recent-posts,wp,wp_widget,content,,,free,free,,,,,Form
@@ -13236,4 +13228,3 @@ wp-widget-woocommerce_recent_reviews,wp,wp_widget,content,,,free,free,,,,,Form
 wp-widget-woocommerce_recently_viewed_products,wp,wp_widget,content,,,free,free,,,,,Form
 wp-widget-woocommerce_top_rated_products,wp,wp_widget,content,,,free,free,,,,,Form
 wp-widget-woocommerce_widget_cart,wp,wp_widget,content,,,free,free,,,,,Form
-wp-widget-wpforms-widget,wp,wp_widget,content,,,free,free,,,,,Form
